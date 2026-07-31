@@ -4,9 +4,12 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="footer-lead">
-        <p>Begin with a feeling.</p>
-        <h2>Let the island<br />find its way to you.</h2>
-        <Link href="/contact" className="light-cta">Design my journey <span>↗</span></Link>
+        <p>Your story starts here.</p>
+        <h2>Let Sri Lanka<br />surprise you.</h2>
+        <div className="footer-action-row">
+          <Link href="/contact" className="light-cta">Design my journey <span>↗</span></Link>
+          <a href="mailto:journeys@reiseceylon.com">journeys@reiseceylon.com</a>
+        </div>
       </div>
       <div className="footer-grid">
         <div>

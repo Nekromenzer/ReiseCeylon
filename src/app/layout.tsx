@@ -7,7 +7,8 @@ import { Footer } from '@/components/Footer';
 const display = Cormorant_Garamond({
   variable: '--font-display',
   subsets: ['latin'],
-  weight: ['500', '600', '700']
+  weight: ['500', '600', '700'],
+  style: ['normal', 'italic']
 });
 
 const body = Manrope({
@@ -18,6 +19,9 @@ const body = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://reiseceylon.com'),
+  icons: {
+    icon: '/brand/logo-primary.png'
+  },
   title: {
     default: 'ReiseCeylon — Where Memories Find Home',
     template: '%s — ReiseCeylon'
@@ -33,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${display.variable} ${body.variable}`}>
         <Navbar />
         {children}

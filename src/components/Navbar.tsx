@@ -40,7 +40,7 @@ export function Navbar() {
           </div>
           <div className="nav-actions">
             <ThemeToggle />
-            <Link href="/contact" className="nav-cta">Plan a journey <span>↗</span></Link>
+            <Link href="/contact" className="nav-cta">Start planning <span>↗</span></Link>
             <button
               type="button"
               className={`menu-button ${open ? 'menu-open' : ''}`}
