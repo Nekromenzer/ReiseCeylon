@@ -1,0 +1,10 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/blog/page": "/blog",
+  "/contact/page": "/contact",
+  "/destinations/[slug]/page": "/destinations/[slug]",
+  "/page": "/",
+  "/tours/[slug]/page": "/tours/[slug]"
+}

@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/tours/layout,_N_T_/tours/[slug]/layout,_N_T_/tours/[slug]/page,_N_T_/tours/wild-ceylon"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/tours/$d$slug/__PAGE__",
+    "/tours/$d$slug",
+    "/tours",
+    "/_index",
+    "/_head"
+  ]
+}
