@@ -9,31 +9,38 @@ import { useGSAP } from '@gsap/react';
 import Lenis from 'lenis';
 import {
   art,
+  attractionCategories,
   destinations,
   experienceDetail,
   heroPlates,
-  island,
   journeyNotes,
   manifestoStats,
   routeLine,
   ticker,
   tours,
+  touristAttractions,
   voices,
-  waypoints
+  waypoints,
+  type AttractionCategory
 } from '@/lib/content';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const manifestoLead = 'We plan the way a local would — slowly, and with one person in mind.';
 
+const projectAttraction = (lat: number, lon: number) => ({
+  x: 80 + ((lon - 79.5) / 2.4) * 360,
+  y: 34 + ((9.85 - lat) / 3.95) * 684
+});
+
 export function HomePage() {
   const root = useRef<HTMLElement>(null);
-  const indexRows = useRef<HTMLDivElement>(null);
-  const floater = useRef<HTMLDivElement>(null);
   const [plate, setPlate] = useState(0);
-  const [preview, setPreview] = useState(-1);
+  const [activeDestination, setActiveDestination] = useState(0);
   const [voice, setVoice] = useState(0);
   const [clock, setClock] = useState('—— ——');
+  const [attractionCategory, setAttractionCategory] = useState<'All' | AttractionCategory>('All');
+  const [activeAttraction, setActiveAttraction] = useState(touristAttractions[0].name);
 
   useEffect(() => {
     const tick = () =>
@@ -102,36 +109,23 @@ export function HomePage() {
         scrollTrigger: { trigger: '.rc-manifesto-line', start: 'top 78%', end: 'bottom 58%', scrub: 1 }
       });
 
-      /* Destination index — cursor-tethered plate, desktop only */
-      const desktop = gsap.matchMedia();
-
-      desktop.add('(min-width: 1025px) and (pointer: fine)', () => {
-        const container = indexRows.current;
-        const card = floater.current;
-        if (!container || !card) return;
-
-        const moveX = gsap.quickTo(card, 'x', { duration: 0.75, ease: 'power3' });
-        const moveY = gsap.quickTo(card, 'y', { duration: 0.75, ease: 'power3' });
-        let placed = false;
-
-        const onMove = (event: PointerEvent) => {
-          const bounds = container.getBoundingClientRect();
-          const x = event.clientX - bounds.left;
-          const y = event.clientY - bounds.top;
-
-          /* Drop it under the cursor the first time so it never flies in from the corner */
-          if (!placed) {
-            gsap.set(card, { x, y });
-            placed = true;
-            return;
+      /* Destination chapters — imagery opens up and resolves as the rail arrives */
+      gsap.utils.toArray<HTMLElement>('.rc-chapter-image').forEach((image) => {
+        gsap.fromTo(
+          image,
+          { scale: 0.88, opacity: 0.42 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.rc-chapters',
+              start: 'top 84%',
+              end: 'top 28%',
+              scrub: 1
+            }
           }
-
-          moveX(x);
-          moveY(y);
-        };
-
-        container.addEventListener('pointermove', onMove);
-        return () => container.removeEventListener('pointermove', onMove);
+        );
       });
 
       /* Experience stack — outgoing cards recede in depth */
@@ -165,6 +159,16 @@ export function HomePage() {
         scrollTrigger: { trigger: '.rc-atlas-map', start: 'top 62%' }
       });
 
+      gsap.from('.rc-attraction-pin', {
+        opacity: 0,
+        scale: 0,
+        transformOrigin: 'center',
+        duration: 0.45,
+        stagger: { each: 0.012, from: 'random' },
+        ease: 'back.out(1.8)',
+        scrollTrigger: { trigger: '.rc-map-holder', start: 'top 68%' }
+      });
+
       /* Closing frame — opens up as it arrives */
       gsap.from('.rc-invite-frame', {
         scale: 0.9,
@@ -183,10 +187,11 @@ export function HomePage() {
   }, { scope: root });
 
   const live = heroPlates[plate];
-  const shown = preview < 0 ? 0 : preview;
-
+  const visibleAttractions = touristAttractions.filter(
+    (attraction) => attractionCategory === 'All' || attraction.category === attractionCategory
+  );
   return (
-    <main ref={root} className="rc-home">
+    <main ref={root} className="rc-home overflow-x-hidden w-full max-w-full">
       {/* ——— Hero: the page as a printed plate ——— */}
       <section className="rc-hero">
         <div className="rc-shell">
@@ -328,56 +333,66 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ——— Destination index ——— */}
-      <section className="rc-index" id="destinations">
-        <header className="rc-head" data-reveal="0">
-          <div>
-            <span className="rc-eyebrow rc-eyebrow-ink">Destinations — five chapters</span>
-            <h2>The island, indexed</h2>
+      {/* ——— Destination chapters ——— */}
+      <section className="rc-chapters" id="destinations">
+        <header className="rc-chapters-head" data-reveal="0">
+          <h2>
+            Five ways into{' '}
+            <span className="rc-inline-landscape" aria-hidden="true">
+              <Image src={art.coast} alt="" fill sizes="160px" />
+            </span>
+            {' '}Sri Lanka.
+          </h2>
+          <div className="rc-chapters-intro">
+            <p>
+              Choose the landscape that pulls you in. Each chapter opens a different rhythm of the
+              island, from ancient stone to warm southern water.
+            </p>
+            <span>Move across the landscapes to explore</span>
           </div>
-          <p>
-            Ancient stone in the north, cloud forest in the middle, leopards in the east and a long
-            warm coast underneath it all.
-          </p>
         </header>
 
-        <div
-          className="rc-index-rows"
-          ref={indexRows}
-          onMouseLeave={() => setPreview(-1)}
-        >
+        <div className="rc-chapter-rail" data-reveal="0">
           {destinations.map((place, index) => (
             <Link
               href={`/destinations/${place.slug}`}
-              className="rc-row"
+              className={`rc-chapter${index === activeDestination ? ' is-active' : ''}`}
               key={place.slug}
-              onMouseEnter={() => setPreview(index)}
-              onFocus={() => setPreview(index)}
-              data-reveal={String(index * 0.05)}
+              onMouseEnter={() => setActiveDestination(index)}
+              onFocus={() => setActiveDestination(index)}
+              aria-label={`Explore ${place.name}, ${place.region}`}
             >
-              <span className="rc-row-num">{String(index + 1).padStart(2, '0')}</span>
-              <h3>{place.name}</h3>
-              <span className="rc-row-region">{place.region}</span>
-              <p>{place.note}</p>
-              <i className="rc-row-arrow">↗</i>
-              <div className="rc-row-thumb">
-                <Image src={place.image} alt={place.name} fill sizes="(max-width: 767px) 90vw, 30vw" />
+              <Image
+                className="rc-chapter-image"
+                src={place.image}
+                alt={`${place.name}, ${place.region}`}
+                fill
+                sizes="(max-width: 767px) 94vw, 48vw"
+              />
+              <span className="rc-chapter-wash" />
+              <span className="rc-chapter-top">
+                <span>{place.region}</span>
+                <i>{String(index + 1).padStart(2, '0')}</i>
+              </span>
+              <span className="rc-chapter-copy">
+                <strong>{place.name}</strong>
+                <span>{place.note}</span>
+              </span>
+              <span className="rc-chapter-action">
+                Explore <i>↗</i>
+              </span>
+              <div className="rc-chapter-closed" aria-hidden="true">
+                <strong>{place.name}</strong>
+                <span>{place.region}</span>
               </div>
             </Link>
           ))}
+        </div>
 
-          <div className={`rc-floater${preview > -1 ? ' is-live' : ''}`} ref={floater} aria-hidden="true">
-            {destinations.map((place, index) => (
-              <Image
-                key={place.slug}
-                src={place.image}
-                alt=""
-                fill
-                sizes="340px"
-                className={index === shown ? 'is-live' : ''}
-              />
-            ))}
-          </div>
+        <div className="rc-chapter-progress" aria-hidden="true">
+          <span>0{activeDestination + 1}</span>
+          <i><b style={{ width: `${((activeDestination + 1) / destinations.length) * 100}%` }} /></i>
+          <span>0{destinations.length}</span>
         </div>
       </section>
 
@@ -421,10 +436,51 @@ export function HomePage() {
       <section className="rc-atlas" id="journeys">
         <div className="rc-atlas-map" data-reveal="0">
           <span className="rc-eyebrow rc-eyebrow-ink">Signature journeys</span>
-          <h2>Routes drawn by hand</h2>
+          <h2>The island,<br /><em>drawn slowly.</em></h2>
+          <p className="rc-atlas-intro">
+            A route is more than a line between hotels. We shape each one around altitude,
+            monsoon, light and the people worth stopping for.
+          </p>
           <div className="rc-map-holder">
-            <svg viewBox="0 0 520 760" role="img" aria-label="A private route through Sri Lanka">
-              <path className="rc-island" d={island} />
+            <Image
+              className="rc-map-art"
+              src="/images/maps/sri-lanka-journey-map.webp"
+              alt="Watercolour topographic map of Sri Lanka"
+              fill
+              sizes="(max-width: 767px) 92vw, (max-width: 1024px) 48vw, 34vw"
+            />
+            <span className="rc-map-north" aria-hidden="true">N</span>
+            <svg viewBox="0 0 520 780" role="img" aria-label="A private route from Sigiriya through Kandy and Ella to Yala and Galle">
+              <g className="rc-attraction-pins">
+                {visibleAttractions.map((attraction) => {
+                  const point = projectAttraction(attraction.lat, attraction.lon);
+                  const isActive = attraction.name === activeAttraction;
+
+                  return (
+                    <g
+                      className={`rc-attraction-pin rc-pin-${attraction.category.toLowerCase().replace(' ', '-')}${isActive ? ' is-active' : ''}`}
+                      key={attraction.name}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`${attraction.name}, ${attraction.region}, ${attraction.category}`}
+                      onMouseEnter={() => setActiveAttraction(attraction.name)}
+                      onFocus={() => setActiveAttraction(attraction.name)}
+                      onClick={() => setActiveAttraction(attraction.name)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') setActiveAttraction(attraction.name);
+                      }}
+                    >
+                      <circle cx={point.x} cy={point.y} r={isActive ? 6 : 3.5} />
+                      {isActive && (
+                        <g className="rc-attraction-label" transform={`translate(${point.x}, ${point.y - 13})`}>
+                          <rect x="-87" y="-28" width="174" height="25" rx="12.5" />
+                          <text textAnchor="middle" y="-11">{attraction.name}</text>
+                        </g>
+                      )}
+                    </g>
+                  );
+                })}
+              </g>
               <path className="rc-route-ghost" d={routeLine} />
               <path className="rc-route" d={routeLine} />
               {waypoints.map((point) => (
@@ -435,10 +491,65 @@ export function HomePage() {
                 </g>
               ))}
             </svg>
+            <div className="rc-map-key" aria-hidden="true">
+              <span><i /> Your private route</span>
+              <span><b /> {visibleAttractions.length} places</span>
+            </div>
           </div>
         </div>
 
         <div className="rc-atlas-list">
+          <div className="rc-attraction-panel" data-reveal="0">
+            <div className="rc-attraction-head">
+              <div>
+                <span>Explore the whole island</span>
+                <h3>{touristAttractions.length} places worth the detour</h3>
+              </div>
+              <strong>{visibleAttractions.length}</strong>
+            </div>
+            <div className="rc-attraction-filters" aria-label="Filter attractions">
+              {attractionCategories.map((category) => (
+                <button
+                  type="button"
+                  className={attractionCategory === category ? 'is-active' : ''}
+                  aria-pressed={attractionCategory === category}
+                  key={category}
+                  onClick={() => {
+                    setAttractionCategory(category);
+                    setActiveAttraction(
+                      (category === 'All'
+                        ? touristAttractions[0]
+                        : touristAttractions.find((attraction) => attraction.category === category)
+                      )?.name ?? touristAttractions[0].name
+                    );
+                  }}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            <div className="rc-attraction-index" aria-live="polite">
+              {visibleAttractions.map((attraction) => (
+                <button
+                  type="button"
+                  className={activeAttraction === attraction.name ? 'is-active' : ''}
+                  key={attraction.name}
+                  onMouseEnter={() => setActiveAttraction(attraction.name)}
+                  onFocus={() => setActiveAttraction(attraction.name)}
+                  onClick={() => setActiveAttraction(attraction.name)}
+                >
+                  <i className={`rc-index-dot rc-pin-${attraction.category.toLowerCase().replace(' ', '-')}`} />
+                  <span>
+                    <strong>{attraction.name}</strong>
+                    <small>{attraction.region}</small>
+                  </span>
+                  <em>{attraction.category}</em>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <h3 className="rc-tour-list-title">Journeys that connect the dots</h3>
           {tours.map((tour, index) => (
             <Link href={`/tours/${tour.slug}`} className="rc-journey" key={tour.slug} data-reveal={String(index * 0.06)}>
               <div className="rc-journey-inner">
