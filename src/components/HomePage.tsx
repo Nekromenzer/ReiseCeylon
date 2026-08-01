@@ -15,23 +15,16 @@ import {
   heroPlates,
   journeyNotes,
   manifestoStats,
-  routeLine,
   ticker,
   tours,
   touristAttractions,
   voices,
-  waypoints,
   type AttractionCategory
 } from '@/lib/content';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const manifestoLead = 'We plan the way a local would — slowly, and with one person in mind.';
-
-const projectAttraction = (lat: number, lon: number) => ({
-  x: 80 + ((lon - 79.5) / 2.4) * 360,
-  y: 34 + ((9.85 - lat) / 3.95) * 684
-});
 
 export function HomePage() {
   const root = useRef<HTMLElement>(null);
@@ -137,36 +130,6 @@ export function HomePage() {
           ease: 'none',
           scrollTrigger: { trigger: cards[index + 1], start: 'top 92%', end: 'top 34%', scrub: 1 }
         });
-      });
-
-      /* Atlas — the route draws itself, waypoints land after it */
-      gsap.fromTo(
-        '.rc-route',
-        { strokeDashoffset: 1400 },
-        {
-          strokeDashoffset: 0,
-          ease: 'none',
-          scrollTrigger: { trigger: '.rc-atlas-map', start: 'top 78%', end: 'bottom 62%', scrub: 1 }
-        }
-      );
-
-      gsap.from('.rc-waypoint', {
-        opacity: 0,
-        y: 14,
-        duration: 0.6,
-        stagger: 0.18,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: '.rc-atlas-map', start: 'top 62%' }
-      });
-
-      gsap.from('.rc-attraction-pin', {
-        opacity: 0,
-        scale: 0,
-        transformOrigin: 'center',
-        duration: 0.45,
-        stagger: { each: 0.012, from: 'random' },
-        ease: 'back.out(1.8)',
-        scrollTrigger: { trigger: '.rc-map-holder', start: 'top 68%' }
       });
 
       /* Closing frame — opens up as it arrives */
@@ -444,57 +407,11 @@ export function HomePage() {
           <div className="rc-map-holder">
             <Image
               className="rc-map-art"
-              src="/images/maps/sri-lanka-journey-map.webp"
-              alt="Watercolour topographic map of Sri Lanka"
+              src="/images/maps/sri-lanka-tour-map.webp"
+              alt="Detailed Sri Lanka tourism map showing roads, railways, rivers, parks, cities and visitor attractions"
               fill
               sizes="(max-width: 767px) 92vw, (max-width: 1024px) 48vw, 34vw"
             />
-            <span className="rc-map-north" aria-hidden="true">N</span>
-            <svg viewBox="0 0 520 780" role="img" aria-label="A private route from Sigiriya through Kandy and Ella to Yala and Galle">
-              <g className="rc-attraction-pins">
-                {visibleAttractions.map((attraction) => {
-                  const point = projectAttraction(attraction.lat, attraction.lon);
-                  const isActive = attraction.name === activeAttraction;
-
-                  return (
-                    <g
-                      className={`rc-attraction-pin rc-pin-${attraction.category.toLowerCase().replace(' ', '-')}${isActive ? ' is-active' : ''}`}
-                      key={attraction.name}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`${attraction.name}, ${attraction.region}, ${attraction.category}`}
-                      onMouseEnter={() => setActiveAttraction(attraction.name)}
-                      onFocus={() => setActiveAttraction(attraction.name)}
-                      onClick={() => setActiveAttraction(attraction.name)}
-                      onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') setActiveAttraction(attraction.name);
-                      }}
-                    >
-                      <circle cx={point.x} cy={point.y} r={isActive ? 6 : 3.5} />
-                      {isActive && (
-                        <g className="rc-attraction-label" transform={`translate(${point.x}, ${point.y - 13})`}>
-                          <rect x="-87" y="-28" width="174" height="25" rx="12.5" />
-                          <text textAnchor="middle" y="-11">{attraction.name}</text>
-                        </g>
-                      )}
-                    </g>
-                  );
-                })}
-              </g>
-              <path className="rc-route-ghost" d={routeLine} />
-              <path className="rc-route" d={routeLine} />
-              {waypoints.map((point) => (
-                <g className="rc-waypoint" key={point.name}>
-                  <circle cx={point.x} cy={point.y} r="8" />
-                  <text x={point.x + 20} y={point.y + 1}>{point.name}</text>
-                  <text className="rc-waypoint-day" x={point.x + 20} y={point.y + 17}>{point.day}</text>
-                </g>
-              ))}
-            </svg>
-            <div className="rc-map-key" aria-hidden="true">
-              <span><i /> Your private route</span>
-              <span><b /> {visibleAttractions.length} places</span>
-            </div>
           </div>
         </div>
 

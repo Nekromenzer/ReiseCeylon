@@ -796,7 +796,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   position: relative;
   isolation: isolate;
   width: min(100%, 520px);
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 1040 / 1513;
   margin-top: 34px;
   overflow: hidden;
   border-radius: 30px;
@@ -814,55 +814,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   box-shadow: inset 0 0 0 1px rgba(13, 59, 46, .1), inset 0 -90px 100px rgba(250, 250, 248, .22);
 }
 
-.rc-map-art { z-index: -1; object-fit: cover; filter: saturate(.78) contrast(1.02); }
-.rc-map-holder svg { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; }
-
-.rc-map-north {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  z-index: 3;
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border: 1px solid rgba(13, 59, 46, .18);
-  border-radius: 50%;
-  color: var(--forest);
-  background: rgba(250, 250, 248, .76);
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 700;
-  backdrop-filter: blur(8px);
-}
-
-/* The dashed ghost shows the whole route; the solid line draws over it on scroll */
-.rc-route-ghost {
-  fill: none;
-  stroke: var(--ocean);
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-dasharray: 7 11;
-  opacity: .42;
-}
-
-.rc-route {
-  fill: none;
-  stroke: var(--ocean);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-dasharray: 1400;
-}
-
-.rc-waypoint circle { fill: var(--gold); stroke: #fafaf8; stroke-width: 5; filter: drop-shadow(0 3px 4px rgba(7, 39, 31, .25)); }
-.rc-waypoint text { fill: #07271f; paint-order: stroke; stroke: rgba(250, 250, 248, .92); stroke-width: 5px; stroke-linejoin: round; font-family: var(--font-interface), sans-serif; font-size: 15px; font-weight: 800; }
-.rc-waypoint-day { fill: #44534d; stroke-width: 4px; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
-
-.rc-attraction-pin {
-  --pin: #0d3b2e;
-  cursor: pointer;
-  outline: none;
-}
+.rc-map-art { z-index: 0; object-fit: contain; filter: saturate(.92) contrast(1.02); }
 
 .rc-pin-heritage { --pin: #c49a3a; }
 .rc-pin-wildlife { --pin: #2c8a59; }
@@ -870,47 +822,6 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .rc-pin-hill-country { --pin: #705b8b; }
 .rc-pin-nature { --pin: #5c7d3d; }
 .rc-pin-city { --pin: #c65d45; }
-
-.rc-attraction-pin > circle {
-  fill: var(--pin);
-  stroke: rgba(250, 250, 248, .96);
-  stroke-width: 2.5;
-  filter: drop-shadow(0 2px 3px rgba(7, 39, 31, .28));
-  transition: r 350ms var(--ease), filter 350ms var(--ease);
-}
-
-.rc-attraction-pin:hover > circle,
-.rc-attraction-pin:focus > circle,
-.rc-attraction-pin.is-active > circle { filter: drop-shadow(0 3px 5px rgba(7, 39, 31, .48)); }
-.rc-attraction-label { pointer-events: none; }
-.rc-attraction-label rect { fill: #07271f; stroke: rgba(246, 216, 136, .45); stroke-width: 1; }
-.rc-attraction-label text { fill: #fafaf8; font-family: var(--font-interface), sans-serif; font-size: 8px; font-weight: 700; letter-spacing: .02em; }
-
-.rc-map-key {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  left: 18px;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  color: #30453d;
-  background: rgba(250, 250, 248, .82);
-  box-shadow: inset 0 0 0 1px rgba(13, 59, 46, .12);
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  backdrop-filter: blur(12px);
-}
-
-.rc-map-key span { display: flex; align-items: center; gap: 8px; }
-.rc-map-key i { width: 22px; border-top: 2px dashed var(--ocean); }
-.rc-map-key b { width: 8px; height: 8px; border: 2px solid #fafaf8; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
 
 .rc-atlas-list { display: flex; flex-direction: column; gap: 16px; }
 
@@ -1364,7 +1275,6 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 
   .rc-atlas { padding: 90px 20px; gap: 60px; }
   .rc-map-holder { width: 100%; border-radius: 22px; }
-  .rc-map-key { align-items: flex-start; flex-direction: column; gap: 7px; }
   .rc-attraction-head { padding: 26px 20px; }
   .rc-attraction-head h3 { font-size: 2.35rem; }
   .rc-attraction-index { max-height: 420px; }
