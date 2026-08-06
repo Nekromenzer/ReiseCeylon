@@ -1,0 +1,4884 @@
+{
+  "type": "FeatureCollection",
+  "name": "Sri Lanka Tourist Places",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "mirissa-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4592,
+          5.9447
+        ]
+      },
+      "properties": {
+        "id": "mirissa-beach",
+        "name": "Mirissa Beach",
+        "slug": "mirissa-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Mirissa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9447,80.4592",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9447&mlon=80.4592#map=15/5.9447/80.4592",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "unawatuna-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2494,
+          6.0097
+        ]
+      },
+      "properties": {
+        "id": "unawatuna-beach",
+        "name": "Unawatuna Beach",
+        "slug": "unawatuna-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Galle",
+        "city": "Unawatuna",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0097,80.2494",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0097&mlon=80.2494#map=15/6.0097/80.2494",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hiriketiya-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7064,
+          5.9626
+        ]
+      },
+      "properties": {
+        "id": "hiriketiya-beach",
+        "name": "Hiriketiya Beach",
+        "slug": "hiriketiya-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Dickwella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9626,80.7064",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9626&mlon=80.7064#map=15/5.9626/80.7064",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "arugam-bay",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.8368,
+          6.8404
+        ]
+      },
+      "properties": {
+        "id": "arugam-bay",
+        "name": "Arugam Bay",
+        "slug": "arugam-bay",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Eastern",
+        "district": "Ampara",
+        "city": "Arugam Bay",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8404,81.8368",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8404&mlon=81.8368#map=15/6.8404/81.8368",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nilaveli-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.1987,
+          8.683
+        ]
+      },
+      "properties": {
+        "id": "nilaveli-beach",
+        "name": "Nilaveli Beach",
+        "slug": "nilaveli-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Eastern",
+        "district": "Trincomalee",
+        "city": "Nilaveli",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.6830,81.1987",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.6830&mlon=81.1987#map=15/8.6830/81.1987",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "uppuveli-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2152,
+          8.6118
+        ]
+      },
+      "properties": {
+        "id": "uppuveli-beach",
+        "name": "Uppuveli Beach",
+        "slug": "uppuveli-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Eastern",
+        "district": "Trincomalee",
+        "city": "Uppuveli",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.6118,81.2152",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.6118&mlon=81.2152#map=15/8.6118/81.2152",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bentota-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9989,
+          6.4211
+        ]
+      },
+      "properties": {
+        "id": "bentota-beach",
+        "name": "Bentota Beach",
+        "slug": "bentota-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Galle",
+        "city": "Bentota",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.4211,79.9989",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.4211&mlon=79.9989#map=15/6.4211/79.9989",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pasikudah-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.5612,
+          7.9296
+        ]
+      },
+      "properties": {
+        "id": "pasikudah-beach",
+        "name": "Pasikudah Beach",
+        "slug": "pasikudah-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Eastern",
+        "district": "Batticaloa",
+        "city": "Pasikudah",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.9296,81.5612",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.9296&mlon=81.5612#map=15/7.9296/81.5612",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kalkudah-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.5684,
+          7.9163
+        ]
+      },
+      "properties": {
+        "id": "kalkudah-beach",
+        "name": "Kalkudah Beach",
+        "slug": "kalkudah-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Eastern",
+        "district": "Batticaloa",
+        "city": "Kalkudah",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.9163,81.5684",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.9163&mlon=81.5684#map=15/7.9163/81.5684",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jungle-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2386,
+          6.0187
+        ]
+      },
+      "properties": {
+        "id": "jungle-beach",
+        "name": "Jungle Beach",
+        "slug": "jungle-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Galle",
+        "city": "Rumassala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0187,80.2386",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0187&mlon=80.2386#map=15/6.0187/80.2386",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dalawella-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2685,
+          6.0018
+        ]
+      },
+      "properties": {
+        "id": "dalawella-beach",
+        "name": "Dalawella Beach",
+        "slug": "dalawella-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Galle",
+        "city": "Dalawella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0018,80.2685",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0018&mlon=80.2685#map=15/6.0018/80.2685",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "talalla-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6244,
+          5.9467
+        ]
+      },
+      "properties": {
+        "id": "talalla-beach",
+        "name": "Talalla Beach",
+        "slug": "talalla-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Talalla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9467,80.6244",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9467&mlon=80.6244#map=15/5.9467/80.6244",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "weligama-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4297,
+          5.9731
+        ]
+      },
+      "properties": {
+        "id": "weligama-beach",
+        "name": "Weligama Beach",
+        "slug": "weligama-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Weligama",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9731,80.4297",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9731&mlon=80.4297#map=15/5.9731/80.4297",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tangalle-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7987,
+          6.0232
+        ]
+      },
+      "properties": {
+        "id": "tangalle-beach",
+        "name": "Tangalle Beach",
+        "slug": "tangalle-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Tangalle",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0232,80.7987",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0232&mlon=80.7987#map=15/6.0232/80.7987",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dickwella-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.695,
+          5.9668
+        ]
+      },
+      "properties": {
+        "id": "dickwella-beach",
+        "name": "Dickwella Beach",
+        "slug": "dickwella-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Dickwella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9668,80.6950",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9668&mlon=80.6950#map=15/5.9668/80.6950",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "casuarina-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9794,
+          9.7708
+        ]
+      },
+      "properties": {
+        "id": "casuarina-beach",
+        "name": "Casuarina Beach",
+        "slug": "casuarina-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Karainagar",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.7708,79.9794",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.7708&mlon=79.9794#map=15/9.7708/79.9794",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "marble-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2344,
+          8.5216
+        ]
+      },
+      "properties": {
+        "id": "marble-beach",
+        "name": "Marble Beach",
+        "slug": "marble-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Eastern",
+        "district": "Trincomalee",
+        "city": "Kinniya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.5216,81.2344",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.5216&mlon=81.2344#map=15/8.5216/81.2344",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kalpitiya-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.76,
+          8.2335
+        ]
+      },
+      "properties": {
+        "id": "kalpitiya-beach",
+        "name": "Kalpitiya Beach",
+        "slug": "kalpitiya-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "North Western",
+        "district": "Puttalam",
+        "city": "Kalpitiya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.2335,79.7600",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.2335&mlon=79.7600#map=15/8.2335/79.7600",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mount-lavinia-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8636,
+          6.8389
+        ]
+      },
+      "properties": {
+        "id": "mount-lavinia-beach",
+        "name": "Mount Lavinia Beach",
+        "slug": "mount-lavinia-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Western",
+        "district": "Colombo",
+        "city": "Mount Lavinia",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8389,79.8636",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8389&mlon=79.8636#map=15/6.8389/79.8636",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "goyambokka-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7799,
+          6.0106
+        ]
+      },
+      "properties": {
+        "id": "goyambokka-beach",
+        "name": "Goyambokka Beach",
+        "slug": "goyambokka-beach",
+        "categoryId": "beaches",
+        "category": "Beaches",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Tangalle",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0106,80.7799",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0106&mlon=80.7799#map=15/6.0106/80.7799",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sigiriya-rock-fortress",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7603,
+          7.957
+        ]
+      },
+      "properties": {
+        "id": "sigiriya-rock-fortress",
+        "name": "Sigiriya Rock Fortress",
+        "slug": "sigiriya-rock-fortress",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Sigiriya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.9570,80.7603",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.9570&mlon=80.7603#map=15/7.9570/80.7603",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "anuradhapura-ancient-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3971,
+          8.344
+        ]
+      },
+      "properties": {
+        "id": "anuradhapura-ancient-city",
+        "name": "Anuradhapura Ancient City",
+        "slug": "anuradhapura-ancient-city",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3440,80.3971",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3440&mlon=80.3971#map=15/8.3440/80.3971",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "polonnaruwa-ancient-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0188,
+          7.9403
+        ]
+      },
+      "properties": {
+        "id": "polonnaruwa-ancient-city",
+        "name": "Polonnaruwa Ancient City",
+        "slug": "polonnaruwa-ancient-city",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Polonnaruwa",
+        "city": "Polonnaruwa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.9403,81.0188",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.9403&mlon=81.0188#map=15/7.9403/81.0188",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dambulla-cave-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6492,
+          7.8567
+        ]
+      },
+      "properties": {
+        "id": "dambulla-cave-temple",
+        "name": "Dambulla Cave Temple",
+        "slug": "dambulla-cave-temple",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Dambulla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.8567,80.6492",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.8567&mlon=80.6492#map=15/7.8567/80.6492",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mihintale",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5167,
+          8.35
+        ]
+      },
+      "properties": {
+        "id": "mihintale",
+        "name": "Mihintale",
+        "slug": "mihintale",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Mihintale",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3500,80.5167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3500&mlon=80.5167#map=15/8.3500/80.5167",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "yapahuwa-rock-fortress",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3114,
+          7.8159
+        ]
+      },
+      "properties": {
+        "id": "yapahuwa-rock-fortress",
+        "name": "Yapahuwa Rock Fortress",
+        "slug": "yapahuwa-rock-fortress",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Western",
+        "district": "Kurunegala",
+        "city": "Yapahuwa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.8159,80.3114",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.8159&mlon=80.3114#map=15/7.8159/80.3114",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ritigala-monastery",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.654,
+          8.1036
+        ]
+      },
+      "properties": {
+        "id": "ritigala-monastery",
+        "name": "Ritigala Monastery",
+        "slug": "ritigala-monastery",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Ritigala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.1036,80.6540",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.1036&mlon=80.6540#map=15/8.1036/80.6540",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "aukana-buddha-statue",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5116,
+          8.0106
+        ]
+      },
+      "properties": {
+        "id": "aukana-buddha-statue",
+        "name": "Aukana Buddha Statue",
+        "slug": "aukana-buddha-statue",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Aukana",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.0106,80.5116",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.0106&mlon=80.5116#map=15/8.0106/80.5116",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "isurumuniya-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3899,
+          8.3346
+        ]
+      },
+      "properties": {
+        "id": "isurumuniya-temple",
+        "name": "Isurumuniya Temple",
+        "slug": "isurumuniya-temple",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3346,80.3899",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3346&mlon=80.3899#map=15/8.3346/80.3899",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "thuparamaya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3965,
+          8.3553
+        ]
+      },
+      "properties": {
+        "id": "thuparamaya",
+        "name": "Thuparamaya",
+        "slug": "thuparamaya",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3553,80.3965",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3553&mlon=80.3965#map=15/8.3553/80.3965",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ruwanwelisaya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3964,
+          8.35
+        ]
+      },
+      "properties": {
+        "id": "ruwanwelisaya",
+        "name": "Ruwanwelisaya",
+        "slug": "ruwanwelisaya",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3500,80.3964",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3500&mlon=80.3964#map=15/8.3500/80.3964",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jetavanaramaya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4037,
+          8.3518
+        ]
+      },
+      "properties": {
+        "id": "jetavanaramaya",
+        "name": "Jetavanaramaya",
+        "slug": "jetavanaramaya",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3518,80.4037",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3518&mlon=80.4037#map=15/8.3518/80.4037",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "abhayagiri-monastery",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3957,
+          8.3712
+        ]
+      },
+      "properties": {
+        "id": "abhayagiri-monastery",
+        "name": "Abhayagiri Monastery",
+        "slug": "abhayagiri-monastery",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3712,80.3957",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3712&mlon=80.3957#map=15/8.3712/80.3957",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "medirigiriya-vatadage",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9705,
+          8.1367
+        ]
+      },
+      "properties": {
+        "id": "medirigiriya-vatadage",
+        "name": "Medirigiriya Vatadage",
+        "slug": "medirigiriya-vatadage",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Central",
+        "district": "Polonnaruwa",
+        "city": "Medirigiriya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.1367,80.9705",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.1367&mlon=80.9705#map=15/8.1367/80.9705",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nalanda-gedige",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.643,
+          7.6719
+        ]
+      },
+      "properties": {
+        "id": "nalanda-gedige",
+        "name": "Nalanda Gedige",
+        "slug": "nalanda-gedige",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Nalanda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.6719,80.6430",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.6719&mlon=80.6430#map=15/7.6719/80.6430",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "panduwasnuwara-ancient-city",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.1304,
+          7.6069
+        ]
+      },
+      "properties": {
+        "id": "panduwasnuwara-ancient-city",
+        "name": "Panduwasnuwara Ancient City",
+        "slug": "panduwasnuwara-ancient-city",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Western",
+        "district": "Kurunegala",
+        "city": "Panduwasnuwara",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.6069,80.1304",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.6069&mlon=80.1304#map=15/7.6069/80.1304",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sithulpawwa-monastery",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.4696,
+          6.3124
+        ]
+      },
+      "properties": {
+        "id": "sithulpawwa-monastery",
+        "name": "Sithulpawwa Monastery",
+        "slug": "sithulpawwa-monastery",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Sithulpawwa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.3124,81.4696",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.3124&mlon=81.4696#map=15/6.3124/81.4696",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "arankele-forest-monastery",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4265,
+          7.6587
+        ]
+      },
+      "properties": {
+        "id": "arankele-forest-monastery",
+        "name": "Arankele Forest Monastery",
+        "slug": "arankele-forest-monastery",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "North Western",
+        "district": "Kurunegala",
+        "city": "Arankele",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.6587,80.4265",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.6587&mlon=80.4265#map=15/7.6587/80.4265",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "buduruwagala",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0789,
+          6.6906
+        ]
+      },
+      "properties": {
+        "id": "buduruwagala",
+        "name": "Buduruwagala",
+        "slug": "buduruwagala",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "Uva",
+        "district": "Monaragala",
+        "city": "Wellawaya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.6906,81.0789",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.6906&mlon=81.0789#map=15/6.6906/81.0789",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kushtarajagala-statue",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4178,
+          5.9757
+        ]
+      },
+      "properties": {
+        "id": "kushtarajagala-statue",
+        "name": "Kushtarajagala Statue",
+        "slug": "kushtarajagala-statue",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Weligama",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9757,80.4178",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9757&mlon=80.4178#map=15/5.9757/80.4178",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "temple-of-the-sacred-tooth-relic",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6413,
+          7.2936
+        ]
+      },
+      "properties": {
+        "id": "temple-of-the-sacred-tooth-relic",
+        "name": "Temple of the Sacred Tooth Relic",
+        "slug": "temple-of-the-sacred-tooth-relic",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Kandy",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2936,80.6413",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2936&mlon=80.6413#map=15/7.2936/80.6413",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gangaramaya-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8562,
+          6.9167
+        ]
+      },
+      "properties": {
+        "id": "gangaramaya-temple",
+        "name": "Gangaramaya Temple",
+        "slug": "gangaramaya-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Western",
+        "district": "Colombo",
+        "city": "Colombo",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9167,79.8562",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9167&mlon=79.8562#map=15/6.9167/79.8562",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kelaniya-raja-maha-vihara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.922,
+          6.9553
+        ]
+      },
+      "properties": {
+        "id": "kelaniya-raja-maha-vihara",
+        "name": "Kelaniya Raja Maha Vihara",
+        "slug": "kelaniya-raja-maha-vihara",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Western",
+        "district": "Gampaha",
+        "city": "Kelaniya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9553,79.9220",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9553&mlon=79.9220#map=15/6.9553/79.9220",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lankatilaka-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5652,
+          7.2337
+        ]
+      },
+      "properties": {
+        "id": "lankatilaka-temple",
+        "name": "Lankatilaka Temple",
+        "slug": "lankatilaka-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Udunuwara",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2337,80.5652",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2337&mlon=80.5652#map=15/7.2337/80.5652",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "embekke-devalaya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5684,
+          7.2176
+        ]
+      },
+      "properties": {
+        "id": "embekke-devalaya",
+        "name": "Embekke Devalaya",
+        "slug": "embekke-devalaya",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Embekke",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2176,80.5684",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2176&mlon=80.5684#map=15/7.2176/80.5684",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gadaladeniya-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5562,
+          7.2564
+        ]
+      },
+      "properties": {
+        "id": "gadaladeniya-temple",
+        "name": "Gadaladeniya Temple",
+        "slug": "gadaladeniya-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Pilimathalawa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2564,80.5562",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2564&mlon=80.5562#map=15/7.2564/80.5562",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "seetha-amman-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.81,
+          6.935
+        ]
+      },
+      "properties": {
+        "id": "seetha-amman-temple",
+        "name": "Seetha Amman Temple",
+        "slug": "seetha-amman-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Seetha Eliya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9350,80.8100",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9350&mlon=80.8100#map=15/6.9350/80.8100",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mulkirigala-raja-maha-vihara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7382,
+          6.1197
+        ]
+      },
+      "properties": {
+        "id": "mulkirigala-raja-maha-vihara",
+        "name": "Mulkirigala Raja Maha Vihara",
+        "slug": "mulkirigala-raja-maha-vihara",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Mulkirigala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.1197,80.7382",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.1197&mlon=80.7382#map=15/6.1197/80.7382",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nagadeepa-purana-vihara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.7684,
+          9.6025
+        ]
+      },
+      "properties": {
+        "id": "nagadeepa-purana-vihara",
+        "name": "Nagadeepa Purana Vihara",
+        "slug": "nagadeepa-purana-vihara",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Nainativu",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.6025,79.7684",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.6025&mlon=79.7684#map=15/9.6025/79.7684",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "munneswaram-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8216,
+          7.5754
+        ]
+      },
+      "properties": {
+        "id": "munneswaram-temple",
+        "name": "Munneswaram Temple",
+        "slug": "munneswaram-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "North Western",
+        "district": "Puttalam",
+        "city": "Chilaw",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5754,79.8216",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5754&mlon=79.8216#map=15/7.5754/79.8216",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "koneswaram-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2452,
+          8.582
+        ]
+      },
+      "properties": {
+        "id": "koneswaram-temple",
+        "name": "Koneswaram Temple",
+        "slug": "koneswaram-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Eastern",
+        "district": "Trincomalee",
+        "city": "Trincomalee",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.5820,81.2452",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.5820&mlon=81.2452#map=15/8.5820/81.2452",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kataragama-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.3326,
+          6.4135
+        ]
+      },
+      "properties": {
+        "id": "kataragama-temple",
+        "name": "Kataragama Temple",
+        "slug": "kataragama-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Uva",
+        "district": "Monaragala",
+        "city": "Kataragama",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.4135,81.3326",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.4135&mlon=81.3326#map=15/6.4135/81.3326",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dowa-rock-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9878,
+          6.8276
+        ]
+      },
+      "properties": {
+        "id": "dowa-rock-temple",
+        "name": "Dowa Rock Temple",
+        "slug": "dowa-rock-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Bandarawela",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8276,80.9878",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8276&mlon=80.9878#map=15/6.8276/80.9878",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wewurukannala-vihara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7319,
+          5.9702
+        ]
+      },
+      "properties": {
+        "id": "wewurukannala-vihara",
+        "name": "Wewurukannala Vihara",
+        "slug": "wewurukannala-vihara",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Dickwella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9702,80.7319",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9702&mlon=80.7319#map=15/5.9702/80.7319",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "maligawila-buddha-statue",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.3511,
+          6.6707
+        ]
+      },
+      "properties": {
+        "id": "maligawila-buddha-statue",
+        "name": "Maligawila Buddha Statue",
+        "slug": "maligawila-buddha-statue",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Uva",
+        "district": "Monaragala",
+        "city": "Maligawila",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.6707,81.3511",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.6707&mlon=81.3511#map=15/6.6707/81.3511",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "aluvihare-rock-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6239,
+          7.4957
+        ]
+      },
+      "properties": {
+        "id": "aluvihare-rock-temple",
+        "name": "Aluvihare Rock Temple",
+        "slug": "aluvihare-rock-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Aluvihare",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.4957,80.6239",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.4957&mlon=80.6239#map=15/7.4957/80.6239",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kalutara-bodhiya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9605,
+          6.5851
+        ]
+      },
+      "properties": {
+        "id": "kalutara-bodhiya",
+        "name": "Kalutara Bodhiya",
+        "slug": "kalutara-bodhiya",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Western",
+        "district": "Kalutara",
+        "city": "Kalutara",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.5851,79.9605",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.5851&mlon=79.9605#map=15/6.5851/79.9605",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "jaya-sri-maha-bodhi",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3961,
+          8.3445
+        ]
+      },
+      "properties": {
+        "id": "jaya-sri-maha-bodhi",
+        "name": "Jaya Sri Maha Bodhi",
+        "slug": "jaya-sri-maha-bodhi",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3445,80.3961",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3445&mlon=80.3961#map=15/8.3445/80.3961",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tissamaharama-raja-maha-vihara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2906,
+          6.2844
+        ]
+      },
+      "properties": {
+        "id": "tissamaharama-raja-maha-vihara",
+        "name": "Tissamaharama Raja Maha Vihara",
+        "slug": "tissamaharama-raja-maha-vihara",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Tissamaharama",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.2844,81.2906",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.2844&mlon=81.2906#map=15/6.2844/81.2906",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wariyapola-sri-sumangala-temple",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2363,
+          7.6268
+        ]
+      },
+      "properties": {
+        "id": "wariyapola-sri-sumangala-temple",
+        "name": "Wariyapola Sri Sumangala Temple",
+        "slug": "wariyapola-sri-sumangala-temple",
+        "categoryId": "temples",
+        "category": "Temples and Sacred Places",
+        "province": "North Western",
+        "district": "Kurunegala",
+        "city": "Wariyapola",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.6268,80.2363",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.6268&mlon=80.2363#map=15/7.6268/80.2363",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bambarakanda-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8311,
+          6.7731
+        ]
+      },
+      "properties": {
+        "id": "bambarakanda-falls",
+        "name": "Bambarakanda Falls",
+        "slug": "bambarakanda-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Kalupahana",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7731,80.8311",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7731&mlon=80.8311#map=15/6.7731/80.8311",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "diyaluma-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.031,
+          6.733
+        ]
+      },
+      "properties": {
+        "id": "diyaluma-falls",
+        "name": "Diyaluma Falls",
+        "slug": "diyaluma-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Koslanda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7330,81.0310",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7330&mlon=81.0310#map=15/6.7330/81.0310",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ravana-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0545,
+          6.8408
+        ]
+      },
+      "properties": {
+        "id": "ravana-falls",
+        "name": "Ravana Falls",
+        "slug": "ravana-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Ella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8408,81.0545",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8408&mlon=81.0545#map=15/6.8408/81.0545",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "st-clairs-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.647,
+          6.951
+        ]
+      },
+      "properties": {
+        "id": "st-clairs-falls",
+        "name": "St. Clair's Falls",
+        "slug": "st-clairs-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Talawakele",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9510,80.6470",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9510&mlon=80.6470#map=15/6.9510/80.6470",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "devon-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6234,
+          6.9498
+        ]
+      },
+      "properties": {
+        "id": "devon-falls",
+        "name": "Devon Falls",
+        "slug": "devon-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Talawakele",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9498,80.6234",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9498&mlon=80.6234#map=15/6.9498/80.6234",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "aberdeen-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5013,
+          6.9452
+        ]
+      },
+      "properties": {
+        "id": "aberdeen-falls",
+        "name": "Aberdeen Falls",
+        "slug": "aberdeen-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Ginigathhena",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9452,80.5013",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9452&mlon=80.5013#map=15/6.9452/80.5013",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "laxapana-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4989,
+          6.9236
+        ]
+      },
+      "properties": {
+        "id": "laxapana-falls",
+        "name": "Laxapana Falls",
+        "slug": "laxapana-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Maskeliya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9236,80.4989",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9236&mlon=80.4989#map=15/6.9236/80.4989",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dunhinda-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0635,
+          7.017
+        ]
+      },
+      "properties": {
+        "id": "dunhinda-falls",
+        "name": "Dunhinda Falls",
+        "slug": "dunhinda-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Badulla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.0170,81.0635",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.0170&mlon=81.0635#map=15/7.0170/81.0635",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ramboda-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6973,
+          7.0539
+        ]
+      },
+      "properties": {
+        "id": "ramboda-falls",
+        "name": "Ramboda Falls",
+        "slug": "ramboda-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Ramboda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.0539,80.6973",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.0539&mlon=80.6973#map=15/7.0539/80.6973",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bakers-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8008,
+          6.8018
+        ]
+      },
+      "properties": {
+        "id": "bakers-falls",
+        "name": "Baker's Falls",
+        "slug": "bakers-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Horton Plains",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8018,80.8008",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8018&mlon=80.8008#map=15/6.8018/80.8008",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bomburu-ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.83,
+          6.9415
+        ]
+      },
+      "properties": {
+        "id": "bomburu-ella",
+        "name": "Bomburu Ella",
+        "slug": "bomburu-ella",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Perawella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9415,80.8300",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9415&mlon=80.8300#map=15/6.9415/80.8300",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kirindi-ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6377,
+          6.672
+        ]
+      },
+      "properties": {
+        "id": "kirindi-ella",
+        "name": "Kirindi Ella",
+        "slug": "kirindi-ella",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Pelmadulla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.6720,80.6377",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.6720&mlon=80.6377#map=15/6.6720/80.6377",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bopath-ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3684,
+          6.8015
+        ]
+      },
+      "properties": {
+        "id": "bopath-ella",
+        "name": "Bopath Ella",
+        "slug": "bopath-ella",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Kuruwita",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8015,80.3684",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8015&mlon=80.3684#map=15/6.8015/80.3684",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "rathna-ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9876,
+          7.1947
+        ]
+      },
+      "properties": {
+        "id": "rathna-ella",
+        "name": "Rathna Ella",
+        "slug": "rathna-ella",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Hasalaka",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.1947,80.9876",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.1947&mlon=80.9876#map=15/7.1947/80.9876",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lovers-leap-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7893,
+          6.9662
+        ]
+      },
+      "properties": {
+        "id": "lovers-leap-falls",
+        "name": "Lover's Leap Falls",
+        "slug": "lovers-leap-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Nuwara Eliya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9662,80.7893",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9662&mlon=80.7893#map=15/6.9662/80.7893",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "elgin-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7437,
+          6.9524
+        ]
+      },
+      "properties": {
+        "id": "elgin-falls",
+        "name": "Elgin Falls",
+        "slug": "elgin-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Ambewela",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9524,80.7437",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9524&mlon=80.7437#map=15/6.9524/80.7437",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "alakola-ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.817,
+          7.3737
+        ]
+      },
+      "properties": {
+        "id": "alakola-ella",
+        "name": "Alakola Ella",
+        "slug": "alakola-ella",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Panwila",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.3737,80.8170",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.3737&mlon=80.8170#map=15/7.3737/80.8170",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sera-ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7543,
+          7.5204
+        ]
+      },
+      "properties": {
+        "id": "sera-ella",
+        "name": "Sera Ella",
+        "slug": "sera-ella",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Puwakpitiya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5204,80.7543",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5204&mlon=80.7543#map=15/7.5204/80.7543",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gerandi-ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6994,
+          7.0911
+        ]
+      },
+      "properties": {
+        "id": "gerandi-ella",
+        "name": "Gerandi Ella",
+        "slug": "gerandi-ella",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Ramboda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.0911,80.6994",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.0911&mlon=80.6994#map=15/7.0911/80.6994",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hulu-ganga-falls",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7824,
+          7.3986
+        ]
+      },
+      "properties": {
+        "id": "hulu-ganga-falls",
+        "name": "Hulu Ganga Falls",
+        "slug": "hulu-ganga-falls",
+        "categoryId": "waterfalls",
+        "category": "Waterfalls",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Huluganga",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.3986,80.7824",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.3986&mlon=80.7824#map=15/7.3986/80.7824",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "diyaluma-upper-natural-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0272,
+          6.7343
+        ]
+      },
+      "properties": {
+        "id": "diyaluma-upper-natural-pools",
+        "name": "Diyaluma Upper Natural Pools",
+        "slug": "diyaluma-upper-natural-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Koslanda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7343,81.0272",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7343&mlon=81.0272#map=15/6.7343/81.0272",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kadiyanlena-natural-pool",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.661,
+          7.0787
+        ]
+      },
+      "properties": {
+        "id": "kadiyanlena-natural-pool",
+        "name": "Kadiyanlena Natural Pool",
+        "slug": "kadiyanlena-natural-pool",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Nawalapitiya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.0787,80.6610",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.0787&mlon=80.6610#map=15/7.0787/80.6610",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bambarakiri-ella-pool",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7229,
+          7.4896
+        ]
+      },
+      "properties": {
+        "id": "bambarakiri-ella-pool",
+        "name": "Bambarakiri Ella Pool",
+        "slug": "bambarakiri-ella-pool",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Rattota",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.4896,80.7229",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.4896&mlon=80.7229#map=15/7.4896/80.7229",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "riverston-natural-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.739,
+          7.53
+        ]
+      },
+      "properties": {
+        "id": "riverston-natural-pools",
+        "name": "Riverston Natural Pools",
+        "slug": "riverston-natural-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Riverston",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5300,80.7390",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5300&mlon=80.7390#map=15/7.5300/80.7390",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "heel-oya-natural-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.833,
+          7.338
+        ]
+      },
+      "properties": {
+        "id": "heel-oya-natural-pools",
+        "name": "Heel Oya Natural Pools",
+        "slug": "heel-oya-natural-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Rangala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.3380,80.8330",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.3380&mlon=80.8330#map=15/7.3380/80.8330",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "belihuloya-river-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7714,
+          6.7181
+        ]
+      },
+      "properties": {
+        "id": "belihuloya-river-pools",
+        "name": "Belihuloya River Pools",
+        "slug": "belihuloya-river-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Belihuloya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7181,80.7714",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7181&mlon=80.7714#map=15/6.7181/80.7714",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kalu-ganga-natural-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4,
+          6.65
+        ]
+      },
+      "properties": {
+        "id": "kalu-ganga-natural-pools",
+        "name": "Kalu Ganga Natural Pools",
+        "slug": "kalu-ganga-natural-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Ratnapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.6500,80.4000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.6500&mlon=80.4000#map=15/6.6500/80.4000",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nil-diya-pokuna",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0638,
+          6.8068
+        ]
+      },
+      "properties": {
+        "id": "nil-diya-pokuna",
+        "name": "Nil Diya Pokuna",
+        "slug": "nil-diya-pokuna",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Karandagolla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8068,81.0638",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8068&mlon=81.0638#map=15/6.8068/81.0638",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kirindi-oya-natural-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.15,
+          6.6
+        ]
+      },
+      "properties": {
+        "id": "kirindi-oya-natural-pools",
+        "name": "Kirindi Oya Natural Pools",
+        "slug": "kirindi-oya-natural-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Uva",
+        "district": "Monaragala",
+        "city": "Wellawaya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.6000,81.1500",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.6000&mlon=81.1500#map=15/6.6000/81.1500",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gal-oya-river-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.47,
+          7.22
+        ]
+      },
+      "properties": {
+        "id": "gal-oya-river-pools",
+        "name": "Gal Oya River Pools",
+        "slug": "gal-oya-river-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Eastern",
+        "district": "Ampara",
+        "city": "Gal Oya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2200,81.4700",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2200&mlon=81.4700#map=15/7.2200/81.4700",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pitawala-river-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.748,
+          7.547
+        ]
+      },
+      "properties": {
+        "id": "pitawala-river-pools",
+        "name": "Pitawala River Pools",
+        "slug": "pitawala-river-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Pitawala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5470,80.7480",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5470&mlon=80.7480#map=15/7.5470/80.7480",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "manigala-stream-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.755,
+          7.56
+        ]
+      },
+      "properties": {
+        "id": "manigala-stream-pools",
+        "name": "Manigala Stream Pools",
+        "slug": "manigala-stream-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Atanwala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5600,80.7550",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5600&mlon=80.7550#map=15/7.5600/80.7550",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "madulsima-natural-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.16,
+          7.05
+        ]
+      },
+      "properties": {
+        "id": "madulsima-natural-pools",
+        "name": "Madulsima Natural Pools",
+        "slug": "madulsima-natural-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Madulsima",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.0500,81.1600",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.0500&mlon=81.1600#map=15/7.0500/81.1600",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sera-ella-natural-pool",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7543,
+          7.5204
+        ]
+      },
+      "properties": {
+        "id": "sera-ella-natural-pool",
+        "name": "Sera Ella Natural Pool",
+        "slug": "sera-ella-natural-pool",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Puwakpitiya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5204,80.7543",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5204&mlon=80.7543#map=15/7.5204/80.7543",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bambarakanda-river-pools",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.83,
+          6.774
+        ]
+      },
+      "properties": {
+        "id": "bambarakanda-river-pools",
+        "name": "Bambarakanda River Pools",
+        "slug": "bambarakanda-river-pools",
+        "categoryId": "natural-pools",
+        "category": "Natural Pools and River Baths",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Kalupahana",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7740,80.8300",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7740&mlon=80.8300#map=15/6.7740/80.8300",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "yala-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.5167,
+          6.3667
+        ]
+      },
+      "properties": {
+        "id": "yala-national-park",
+        "name": "Yala National Park",
+        "slug": "yala-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Yala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.3667,81.5167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.3667&mlon=81.5167#map=15/6.3667/81.5167",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "udawalawe-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8882,
+          6.4388
+        ]
+      },
+      "properties": {
+        "id": "udawalawe-national-park",
+        "name": "Udawalawe National Park",
+        "slug": "udawalawe-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Udawalawe",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.4388,80.8882",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.4388&mlon=80.8882#map=15/6.4388/80.8882",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wilpattu-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0142,
+          8.4585
+        ]
+      },
+      "properties": {
+        "id": "wilpattu-national-park",
+        "name": "Wilpattu National Park",
+        "slug": "wilpattu-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "North Western",
+        "district": "Puttalam",
+        "city": "Wilpattu",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.4585,80.0142",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.4585&mlon=80.0142#map=15/8.4585/80.0142",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "minneriya-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9058,
+          8.0385
+        ]
+      },
+      "properties": {
+        "id": "minneriya-national-park",
+        "name": "Minneriya National Park",
+        "slug": "minneriya-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "North Central",
+        "district": "Polonnaruwa",
+        "city": "Minneriya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.0385,80.9058",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.0385&mlon=80.9058#map=15/8.0385/80.9058",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kaudulla-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9083,
+          8.1633
+        ]
+      },
+      "properties": {
+        "id": "kaudulla-national-park",
+        "name": "Kaudulla National Park",
+        "slug": "kaudulla-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "North Central",
+        "district": "Polonnaruwa",
+        "city": "Kaudulla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.1633,80.9083",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.1633&mlon=80.9083#map=15/8.1633/80.9083",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "horton-plains-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8069,
+          6.8021
+        ]
+      },
+      "properties": {
+        "id": "horton-plains-national-park",
+        "name": "Horton Plains National Park",
+        "slug": "horton-plains-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Horton Plains",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8021,80.8069",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8021&mlon=80.8069#map=15/6.8021/80.8069",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gal-oya-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.37,
+          7.21
+        ]
+      },
+      "properties": {
+        "id": "gal-oya-national-park",
+        "name": "Gal Oya National Park",
+        "slug": "gal-oya-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Eastern",
+        "district": "Ampara",
+        "city": "Gal Oya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2100,81.3700",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2100&mlon=81.3700#map=15/7.2100/81.3700",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "wasgamuwa-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9333,
+          7.7083
+        ]
+      },
+      "properties": {
+        "id": "wasgamuwa-national-park",
+        "name": "Wasgamuwa National Park",
+        "slug": "wasgamuwa-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Wasgamuwa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.7083,80.9333",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.7083&mlon=80.9333#map=15/7.7083/80.9333",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lunugamvehera-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2,
+          6.4
+        ]
+      },
+      "properties": {
+        "id": "lunugamvehera-national-park",
+        "name": "Lunugamvehera National Park",
+        "slug": "lunugamvehera-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Lunugamvehera",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.4000,81.2000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.4000&mlon=81.2000#map=15/6.4000/81.2000",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bundala-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.225,
+          6.195
+        ]
+      },
+      "properties": {
+        "id": "bundala-national-park",
+        "name": "Bundala National Park",
+        "slug": "bundala-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Bundala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.1950,81.2250",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.1950&mlon=81.2250#map=15/6.1950/81.2250",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "sinharaja-forest-reserve",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4582,
+          6.4044
+        ]
+      },
+      "properties": {
+        "id": "sinharaja-forest-reserve",
+        "name": "Sinharaja Forest Reserve",
+        "slug": "sinharaja-forest-reserve",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Sinharaja",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.4044,80.4582",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.4044&mlon=80.4582#map=15/6.4044/80.4582",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "knuckles-forest-reserve",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.802,
+          7.457
+        ]
+      },
+      "properties": {
+        "id": "knuckles-forest-reserve",
+        "name": "Knuckles Forest Reserve",
+        "slug": "knuckles-forest-reserve",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Knuckles",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.4570,80.8020",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.4570&mlon=80.8020#map=15/7.4570/80.8020",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kumana-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.7042,
+          6.5817
+        ]
+      },
+      "properties": {
+        "id": "kumana-national-park",
+        "name": "Kumana National Park",
+        "slug": "kumana-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Eastern",
+        "district": "Ampara",
+        "city": "Kumana",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.5817,81.7042",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.5817&mlon=81.7042#map=15/6.5817/81.7042",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "maduru-oya-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2,
+          7.65
+        ]
+      },
+      "properties": {
+        "id": "maduru-oya-national-park",
+        "name": "Maduru Oya National Park",
+        "slug": "maduru-oya-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Eastern",
+        "district": "Ampara",
+        "city": "Maduru Oya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.6500,81.2000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.6500&mlon=81.2000#map=15/7.6500/81.2000",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "flood-plains-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.05,
+          8.1
+        ]
+      },
+      "properties": {
+        "id": "flood-plains-national-park",
+        "name": "Flood Plains National Park",
+        "slug": "flood-plains-national-park",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "North Central",
+        "district": "Polonnaruwa",
+        "city": "Polonnaruwa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.1000,81.0500",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.1000&mlon=81.0500#map=15/8.1000/81.0500",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "adams-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4994,
+          6.8096
+        ]
+      },
+      "properties": {
+        "id": "adams-peak",
+        "name": "Adam's Peak",
+        "slug": "adams-peak",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Nallathanniya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8096,80.4994",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8096&mlon=80.4994#map=15/6.8096/80.4994",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ella-rock",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0485,
+          6.836
+        ]
+      },
+      "properties": {
+        "id": "ella-rock",
+        "name": "Ella Rock",
+        "slug": "ella-rock",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Ella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8360,81.0485",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8360&mlon=81.0485#map=15/6.8360/81.0485",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "little-adams-peak",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0638,
+          6.865
+        ]
+      },
+      "properties": {
+        "id": "little-adams-peak",
+        "name": "Little Adam's Peak",
+        "slug": "little-adams-peak",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Ella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8650,81.0638",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8650&mlon=81.0638#map=15/6.8650/81.0638",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "knuckles-mountain-range",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8,
+          7.45
+        ]
+      },
+      "properties": {
+        "id": "knuckles-mountain-range",
+        "name": "Knuckles Mountain Range",
+        "slug": "knuckles-mountain-range",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Knuckles",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.4500,80.8000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.4500&mlon=80.8000#map=15/7.4500/80.8000",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "horton-plains",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8069,
+          6.8021
+        ]
+      },
+      "properties": {
+        "id": "horton-plains",
+        "name": "Horton Plains",
+        "slug": "horton-plains",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Horton Plains",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8021,80.8069",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8021&mlon=80.8069#map=15/6.8021/80.8069",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "worlds-end",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7936,
+          6.784
+        ]
+      },
+      "properties": {
+        "id": "worlds-end",
+        "name": "World's End",
+        "slug": "worlds-end",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Horton Plains",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7840,80.7936",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7840&mlon=80.7936#map=15/6.7840/80.7936",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "riverston",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7333,
+          7.5333
+        ]
+      },
+      "properties": {
+        "id": "riverston",
+        "name": "Riverston",
+        "slug": "riverston",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Riverston",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5333,80.7333",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5333&mlon=80.7333#map=15/7.5333/80.7333",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bible-rock",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.441,
+          7.1584
+        ]
+      },
+      "properties": {
+        "id": "bible-rock",
+        "name": "Bible Rock",
+        "slug": "bible-rock",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Sabaragamuwa",
+        "district": "Kegalle",
+        "city": "Aranayake",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.1584,80.4410",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.1584&mlon=80.4410#map=15/7.1584/80.4410",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "single-tree-hill",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.765,
+          6.9583
+        ]
+      },
+      "properties": {
+        "id": "single-tree-hill",
+        "name": "Single Tree Hill",
+        "slug": "single-tree-hill",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Nuwara Eliya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9583,80.7650",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9583&mlon=80.7650#map=15/6.9583/80.7650",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pidurangala-rock",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7603,
+          7.9666
+        ]
+      },
+      "properties": {
+        "id": "pidurangala-rock",
+        "name": "Pidurangala Rock",
+        "slug": "pidurangala-rock",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Sigiriya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.9666,80.7603",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.9666&mlon=80.7603#map=15/7.9666/80.7603",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "namunukula-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.1167,
+          6.9333
+        ]
+      },
+      "properties": {
+        "id": "namunukula-mountain",
+        "name": "Namunukula Mountain",
+        "slug": "namunukula-mountain",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Namunukula",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9333,81.1167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9333&mlon=81.1167#map=15/6.9333/81.1167",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "dolukanda-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3667,
+          7.6167
+        ]
+      },
+      "properties": {
+        "id": "dolukanda-mountain",
+        "name": "Dolukanda Mountain",
+        "slug": "dolukanda-mountain",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "North Western",
+        "district": "Kurunegala",
+        "city": "Dolukanda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.6167,80.3667",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.6167&mlon=80.3667#map=15/7.6167/80.3667",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "great-western-mountain",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7167,
+          6.9333
+        ]
+      },
+      "properties": {
+        "id": "great-western-mountain",
+        "name": "Great Western Mountain",
+        "slug": "great-western-mountain",
+        "categoryId": "mountains-and-hiking",
+        "category": "Mountains and Hiking",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Great Western",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9333,80.7167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9333&mlon=80.7167#map=15/6.9333/80.7167",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "gregory-lake",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7792,
+          6.9567
+        ]
+      },
+      "properties": {
+        "id": "gregory-lake",
+        "name": "Gregory Lake",
+        "slug": "gregory-lake",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Nuwara Eliya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9567,80.7792",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9567&mlon=80.7792#map=15/6.9567/80.7792",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "parakrama-samudraya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0,
+          7.9333
+        ]
+      },
+      "properties": {
+        "id": "parakrama-samudraya",
+        "name": "Parakrama Samudraya",
+        "slug": "parakrama-samudraya",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "North Central",
+        "district": "Polonnaruwa",
+        "city": "Polonnaruwa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.9333,81.0000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.9333&mlon=81.0000#map=15/7.9333/81.0000",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kala-wewa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5167,
+          8.0167
+        ]
+      },
+      "properties": {
+        "id": "kala-wewa",
+        "name": "Kala Wewa",
+        "slug": "kala-wewa",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Kalawewa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.0167,80.5167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.0167&mlon=80.5167#map=15/8.0167/80.5167",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "tissa-wewa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.381,
+          8.329
+        ]
+      },
+      "properties": {
+        "id": "tissa-wewa",
+        "name": "Tissa Wewa",
+        "slug": "tissa-wewa",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "North Central",
+        "district": "Anuradhapura",
+        "city": "Anuradhapura",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.3290,80.3810",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.3290&mlon=80.3810#map=15/8.3290/80.3810",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "minneriya-tank",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9,
+          8.036
+        ]
+      },
+      "properties": {
+        "id": "minneriya-tank",
+        "name": "Minneriya Tank",
+        "slug": "minneriya-tank",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "North Central",
+        "district": "Polonnaruwa",
+        "city": "Minneriya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.0360,80.9000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.0360&mlon=80.9000#map=15/8.0360/80.9000",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "maduru-oya-reservoir",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2,
+          7.5833
+        ]
+      },
+      "properties": {
+        "id": "maduru-oya-reservoir",
+        "name": "Maduru Oya Reservoir",
+        "slug": "maduru-oya-reservoir",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "Eastern",
+        "district": "Ampara",
+        "city": "Maduru Oya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5833,81.2000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5833&mlon=81.2000#map=15/7.5833/81.2000",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "samanala-wewa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7667,
+          6.6833
+        ]
+      },
+      "properties": {
+        "id": "samanala-wewa",
+        "name": "Samanala Wewa",
+        "slug": "samanala-wewa",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "Sabaragamuwa",
+        "district": "Ratnapura",
+        "city": "Belihuloya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.6833,80.7667",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.6833&mlon=80.7667#map=15/6.6833/80.7667",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "victoria-reservoir",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8,
+          7.25
+        ]
+      },
+      "properties": {
+        "id": "victoria-reservoir",
+        "name": "Victoria Reservoir",
+        "slug": "victoria-reservoir",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Teldeniya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2500,80.8000",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2500&mlon=80.8000#map=15/7.2500/80.8000",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "randenigala-reservoir",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9167,
+          7.2
+        ]
+      },
+      "properties": {
+        "id": "randenigala-reservoir",
+        "name": "Randenigala Reservoir",
+        "slug": "randenigala-reservoir",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Randenigala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2000,80.9167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2000&mlon=80.9167#map=15/7.2000/80.9167",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "chandrika-wewa",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.83,
+          6.21
+        ]
+      },
+      "properties": {
+        "id": "chandrika-wewa",
+        "name": "Chandrika Wewa",
+        "slug": "chandrika-wewa",
+        "categoryId": "lakes-and-reservoirs",
+        "category": "Lakes and Reservoirs",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Embilipitiya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.2100,80.8300",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.2100&mlon=80.8300#map=15/6.2100/80.8300",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "liptons-seat",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0158,
+          6.7804
+        ]
+      },
+      "properties": {
+        "id": "liptons-seat",
+        "name": "Lipton's Seat",
+        "slug": "liptons-seat",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Dambatenne",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7804,81.0158",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7804&mlon=81.0158#map=15/6.7804/81.0158",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "worlds-end-viewpoint",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7936,
+          6.784
+        ]
+      },
+      "properties": {
+        "id": "worlds-end-viewpoint",
+        "name": "World's End Viewpoint",
+        "slug": "worlds-end-viewpoint",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Horton Plains",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7840,80.7936",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7840&mlon=80.7936#map=15/6.7840/80.7936",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mini-worlds-end",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7527,
+          7.5457
+        ]
+      },
+      "properties": {
+        "id": "mini-worlds-end",
+        "name": "Mini World's End",
+        "slug": "mini-worlds-end",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Pitawala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5457,80.7527",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5457&mlon=80.7527#map=15/7.5457/80.7527",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ambuluwawa-tower",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.55,
+          7.1666
+        ]
+      },
+      "properties": {
+        "id": "ambuluwawa-tower",
+        "name": "Ambuluwawa Tower",
+        "slug": "ambuluwawa-tower",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Gampola",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.1666,80.5500",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.1666&mlon=80.5500#map=15/7.1666/80.5500",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ella-gap",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0467,
+          6.8667
+        ]
+      },
+      "properties": {
+        "id": "ella-gap",
+        "name": "Ella Gap",
+        "slug": "ella-gap",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Ella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8667,81.0467",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8667&mlon=81.0467#map=15/6.8667/81.0467",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nine-arches-bridge-viewpoint",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0612,
+          6.8768
+        ]
+      },
+      "properties": {
+        "id": "nine-arches-bridge-viewpoint",
+        "name": "Nine Arches Bridge Viewpoint",
+        "slug": "nine-arches-bridge-viewpoint",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Ella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8768,81.0612",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8768&mlon=81.0612#map=15/6.8768/81.0612",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "riverston-viewpoint",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7333,
+          7.5333
+        ]
+      },
+      "properties": {
+        "id": "riverston-viewpoint",
+        "name": "Riverston Viewpoint",
+        "slug": "riverston-viewpoint",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Central",
+        "district": "Matale",
+        "city": "Riverston",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.5333,80.7333",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.5333&mlon=80.7333#map=15/7.5333/80.7333",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "poonagala-viewpoint",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.05,
+          6.75
+        ]
+      },
+      "properties": {
+        "id": "poonagala-viewpoint",
+        "name": "Poonagala Viewpoint",
+        "slug": "poonagala-viewpoint",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Poonagala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7500,81.0500",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7500&mlon=81.0500#map=15/6.7500/81.0500",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "haputale-viewpoint",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9667,
+          6.7667
+        ]
+      },
+      "properties": {
+        "id": "haputale-viewpoint",
+        "name": "Haputale Viewpoint",
+        "slug": "haputale-viewpoint",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Haputale",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7667,80.9667",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7667&mlon=80.9667#map=15/6.7667/80.9667",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "diyaluma-upper-viewpoint",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0272,
+          6.7343
+        ]
+      },
+      "properties": {
+        "id": "diyaluma-upper-viewpoint",
+        "name": "Diyaluma Upper Viewpoint",
+        "slug": "diyaluma-upper-viewpoint",
+        "categoryId": "scenic-viewpoints",
+        "category": "Scenic Viewpoints",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Koslanda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7343,81.0272",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7343&mlon=81.0272#map=15/6.7343/81.0272",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kandy",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.6337,
+          7.2906
+        ]
+      },
+      "properties": {
+        "id": "kandy",
+        "name": "Kandy",
+        "slug": "kandy",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Kandy",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2906,80.6337",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2906&mlon=80.6337#map=15/7.2906/80.6337",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nanu-oya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7436,
+          6.9427
+        ]
+      },
+      "properties": {
+        "id": "nanu-oya",
+        "name": "Nanu Oya",
+        "slug": "nanu-oya",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Nanu Oya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9427,80.7436",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9427&mlon=80.7436#map=15/6.9427/80.7436",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ella",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0467,
+          6.8667
+        ]
+      },
+      "properties": {
+        "id": "ella",
+        "name": "Ella",
+        "slug": "ella",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Ella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8667,81.0467",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8667&mlon=81.0467#map=15/6.8667/81.0467",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "haputale",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9667,
+          6.7667
+        ]
+      },
+      "properties": {
+        "id": "haputale",
+        "name": "Haputale",
+        "slug": "haputale",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Haputale",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7667,80.9667",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7667&mlon=80.9667#map=15/6.7667/80.9667",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "ohiya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.841,
+          6.8214
+        ]
+      },
+      "properties": {
+        "id": "ohiya",
+        "name": "Ohiya",
+        "slug": "ohiya",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Ohiya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8214,80.8410",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8214&mlon=80.8410#map=15/6.8214/80.8410",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "badulla",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.055,
+          6.9934
+        ]
+      },
+      "properties": {
+        "id": "badulla",
+        "name": "Badulla",
+        "slug": "badulla",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Badulla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9934,81.0550",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9934&mlon=81.0550#map=15/6.9934/81.0550",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "demodara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.0566,
+          6.9009
+        ]
+      },
+      "properties": {
+        "id": "demodara",
+        "name": "Demodara",
+        "slug": "demodara",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Demodara",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9009,81.0566",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9009&mlon=81.0566#map=15/6.9009/81.0566",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pattipola",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8322,
+          6.8586
+        ]
+      },
+      "properties": {
+        "id": "pattipola",
+        "name": "Pattipola",
+        "slug": "pattipola",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Pattipola",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8586,80.8322",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8586&mlon=80.8322#map=15/6.8586/80.8322",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "idalgashinna",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8939,
+          6.7808
+        ]
+      },
+      "properties": {
+        "id": "idalgashinna",
+        "name": "Idalgashinna",
+        "slug": "idalgashinna",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Idalgashinna",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.7808,80.8939",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.7808&mlon=80.8939#map=15/6.7808/80.8939",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bandarawela",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.9885,
+          6.8295
+        ]
+      },
+      "properties": {
+        "id": "bandarawela",
+        "name": "Bandarawela",
+        "slug": "bandarawela",
+        "categoryId": "scenic-train-destinations",
+        "category": "Scenic Train Destinations",
+        "province": "Uva",
+        "district": "Badulla",
+        "city": "Bandarawela",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.8295,80.9885",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.8295&mlon=80.9885#map=15/6.8295/80.9885",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "delft-island",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.696,
+          9.502
+        ]
+      },
+      "properties": {
+        "id": "delft-island",
+        "name": "Delft Island",
+        "slug": "delft-island",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Delft",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.5020,79.6960",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.5020&mlon=79.6960#map=15/9.5020/79.6960",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "nainativu",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.7667,
+          9.6
+        ]
+      },
+      "properties": {
+        "id": "nainativu",
+        "name": "Nainativu",
+        "slug": "nainativu",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Nainativu",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.6000,79.7667",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.6000&mlon=79.7667#map=15/9.6000/79.7667",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pigeon-island",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2034,
+          8.7214
+        ]
+      },
+      "properties": {
+        "id": "pigeon-island",
+        "name": "Pigeon Island",
+        "slug": "pigeon-island",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Eastern",
+        "district": "Trincomalee",
+        "city": "Nilaveli",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.7214,81.2034",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.7214&mlon=81.2034#map=15/8.7214/81.2034",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mannar-island",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9044,
+          8.981
+        ]
+      },
+      "properties": {
+        "id": "mannar-island",
+        "name": "Mannar Island",
+        "slug": "mannar-island",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Northern",
+        "district": "Mannar",
+        "city": "Mannar",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.9810,79.9044",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.9810&mlon=79.9044#map=15/8.9810/79.9044",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kayts",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9167,
+          9.6667
+        ]
+      },
+      "properties": {
+        "id": "kayts",
+        "name": "Kayts",
+        "slug": "kayts",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Kayts",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.6667,79.9167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.6667&mlon=79.9167#map=15/9.6667/79.9167",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "velanai",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9167,
+          9.6333
+        ]
+      },
+      "properties": {
+        "id": "velanai",
+        "name": "Velanai",
+        "slug": "velanai",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Velanai",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.6333,79.9167",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.6333&mlon=79.9167#map=15/9.6333/79.9167",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "analaitivu",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.7667,
+          9.6667
+        ]
+      },
+      "properties": {
+        "id": "analaitivu",
+        "name": "Analaitivu",
+        "slug": "analaitivu",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Analaitivu",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.6667,79.7667",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.6667&mlon=79.7667#map=15/9.6667/79.7667",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "eluvaitivu",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.75,
+          9.7
+        ]
+      },
+      "properties": {
+        "id": "eluvaitivu",
+        "name": "Eluvaitivu",
+        "slug": "eluvaitivu",
+        "categoryId": "islands",
+        "category": "Islands",
+        "province": "Northern",
+        "district": "Jaffna",
+        "city": "Eluvaitivu",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=9.7000,79.7500",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=9.7000&mlon=79.7500#map=15/9.7000/79.7500",
+        "status": "published",
+        "featured": false,
+        "precision": "area-centroid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "royal-botanical-gardens-peradeniya",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.5955,
+          7.2707
+        ]
+      },
+      "properties": {
+        "id": "royal-botanical-gardens-peradeniya",
+        "name": "Royal Botanical Gardens, Peradeniya",
+        "slug": "royal-botanical-gardens-peradeniya",
+        "categoryId": "botanical-gardens-and-parks",
+        "category": "Botanical Gardens and Parks",
+        "province": "Central",
+        "district": "Kandy",
+        "city": "Peradeniya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.2707,80.5955",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.2707&mlon=80.5955#map=15/7.2707/80.5955",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hakgala-botanical-garden",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8212,
+          6.9258
+        ]
+      },
+      "properties": {
+        "id": "hakgala-botanical-garden",
+        "name": "Hakgala Botanical Garden",
+        "slug": "hakgala-botanical-garden",
+        "categoryId": "botanical-gardens-and-parks",
+        "category": "Botanical Gardens and Parks",
+        "province": "Central",
+        "district": "Nuwara Eliya",
+        "city": "Hakgala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9258,80.8212",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9258&mlon=80.8212#map=15/6.9258/80.8212",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mirijjawila-botanical-garden",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.091,
+          6.134
+        ]
+      },
+      "properties": {
+        "id": "mirijjawila-botanical-garden",
+        "name": "Mirijjawila Botanical Garden",
+        "slug": "mirijjawila-botanical-garden",
+        "categoryId": "botanical-gardens-and-parks",
+        "category": "Botanical Gardens and Parks",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Mirijjawila",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.1340,81.0910",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.1340&mlon=81.0910#map=15/6.1340/81.0910",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "seethawaka-wet-zone-botanic-gardens",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.218,
+          6.956
+        ]
+      },
+      "properties": {
+        "id": "seethawaka-wet-zone-botanic-gardens",
+        "name": "Seethawaka Wet Zone Botanic Gardens",
+        "slug": "seethawaka-wet-zone-botanic-gardens",
+        "categoryId": "botanical-gardens-and-parks",
+        "category": "Botanical Gardens and Parks",
+        "province": "Western",
+        "district": "Colombo",
+        "city": "Avissawella",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9560,80.2180",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9560&mlon=80.2180#map=15/6.9560/80.2180",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "viharamahadevi-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8612,
+          6.9147
+        ]
+      },
+      "properties": {
+        "id": "viharamahadevi-park",
+        "name": "Viharamahadevi Park",
+        "slug": "viharamahadevi-park",
+        "categoryId": "botanical-gardens-and-parks",
+        "category": "Botanical Gardens and Parks",
+        "province": "Western",
+        "district": "Colombo",
+        "city": "Colombo",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9147,79.8612",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9147&mlon=79.8612#map=15/6.9147/79.8612",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "diyatha-uyana",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.9095,
+          6.9047
+        ]
+      },
+      "properties": {
+        "id": "diyatha-uyana",
+        "name": "Diyatha Uyana",
+        "slug": "diyatha-uyana",
+        "categoryId": "botanical-gardens-and-parks",
+        "category": "Botanical Gardens and Parks",
+        "province": "Western",
+        "district": "Colombo",
+        "city": "Battaramulla",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9047,79.9095",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9047&mlon=79.9095#map=15/6.9047/79.9095",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "galle-face-green",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.8447,
+          6.9271
+        ]
+      },
+      "properties": {
+        "id": "galle-face-green",
+        "name": "Galle Face Green",
+        "slug": "galle-face-green",
+        "categoryId": "botanical-gardens-and-parks",
+        "category": "Botanical Gardens and Parks",
+        "province": "Western",
+        "district": "Colombo",
+        "city": "Colombo",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9271,79.8447",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9271&mlon=79.8447#map=15/6.9271/79.8447",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pigeon-island-marine-national-park",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.2034,
+          8.7214
+        ]
+      },
+      "properties": {
+        "id": "pigeon-island-marine-national-park",
+        "name": "Pigeon Island Marine National Park",
+        "slug": "pigeon-island-marine-national-park",
+        "categoryId": "marine-and-coastal-attractions",
+        "category": "Marine and Coastal Attractions",
+        "province": "Eastern",
+        "district": "Trincomalee",
+        "city": "Nilaveli",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.7214,81.2034",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.7214&mlon=81.2034#map=15/8.7214/81.2034",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hikkaduwa-marine-sanctuary",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.0998,
+          6.137
+        ]
+      },
+      "properties": {
+        "id": "hikkaduwa-marine-sanctuary",
+        "name": "Hikkaduwa Marine Sanctuary",
+        "slug": "hikkaduwa-marine-sanctuary",
+        "categoryId": "marine-and-coastal-attractions",
+        "category": "Marine and Coastal Attractions",
+        "province": "Southern",
+        "district": "Galle",
+        "city": "Hikkaduwa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.1370,80.0998",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.1370&mlon=80.0998#map=15/6.1370/80.0998",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kosgoda-turtle-conservation-centre",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.028,
+          6.3412
+        ]
+      },
+      "properties": {
+        "id": "kosgoda-turtle-conservation-centre",
+        "name": "Kosgoda Turtle Conservation Centre",
+        "slug": "kosgoda-turtle-conservation-centre",
+        "categoryId": "marine-and-coastal-attractions",
+        "category": "Marine and Coastal Attractions",
+        "province": "Southern",
+        "district": "Galle",
+        "city": "Kosgoda",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.3412,80.0280",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.3412&mlon=80.0280#map=15/6.3412/80.0280",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "rekawa-turtle-beach",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.8485,
+          6.0564
+        ]
+      },
+      "properties": {
+        "id": "rekawa-turtle-beach",
+        "name": "Rekawa Turtle Beach",
+        "slug": "rekawa-turtle-beach",
+        "categoryId": "marine-and-coastal-attractions",
+        "category": "Marine and Coastal Attractions",
+        "province": "Southern",
+        "district": "Hambantota",
+        "city": "Rekawa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0564,80.8485",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0564&mlon=80.8485#map=15/6.0564/80.8485",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "kalpitiya-dolphin-watching",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.76,
+          8.2335
+        ]
+      },
+      "properties": {
+        "id": "kalpitiya-dolphin-watching",
+        "name": "Kalpitiya Dolphin Watching",
+        "slug": "kalpitiya-dolphin-watching",
+        "categoryId": "marine-and-coastal-attractions",
+        "category": "Marine and Coastal Attractions",
+        "province": "North Western",
+        "district": "Puttalam",
+        "city": "Kalpitiya",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=8.2335,79.7600",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=8.2335&mlon=79.7600#map=15/8.2335/79.7600",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "mirissa-whale-watching",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.4555,
+          5.9496
+        ]
+      },
+      "properties": {
+        "id": "mirissa-whale-watching",
+        "name": "Mirissa Whale Watching",
+        "slug": "mirissa-whale-watching",
+        "categoryId": "marine-and-coastal-attractions",
+        "category": "Marine and Coastal Attractions",
+        "province": "Southern",
+        "district": "Matara",
+        "city": "Mirissa",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=5.9496,80.4555",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=5.9496&mlon=80.4555#map=15/5.9496/80.4555",
+        "status": "published",
+        "featured": false,
+        "precision": "representative"
+      }
+    }
+  ]
+}
