@@ -163,12 +163,12 @@
   },
   {
     "route": "/journeys",
-    "firstLoadUncompressedJsBytes": 569882,
+    "firstLoadUncompressedJsBytes": 570529,
     "firstLoadChunkPaths": [
       ".next/static/chunks/2yl1jv4w6po1z.js",
       ".next/static/chunks/1ntn7efqc-iiw.js",
       ".next/static/chunks/1mcv9gb-iwgyc.js",
-      ".next/static/chunks/2emiog6z5-k9-.js",
+      ".next/static/chunks/0w6z4mmp8l3u0.js",
       ".next/static/chunks/0_fwg-x3zjntx.js",
       ".next/static/chunks/1ekhfsxb4sjwt.js",
       ".next/static/chunks/2ejk_26znfoeu.js",

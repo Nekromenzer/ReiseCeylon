@@ -74,6 +74,13 @@ the viewport, the map stays pinned in view, and each pane scrolls on its own.
 Below 1100px it reverts to normal flow with the map pinned to the top of its own
 section.
 
+**Expand** on the map fills the window with it — the route on one side, the
+figures and the send button on the other (stacked, on a phone). Escape closes it.
+It is a class change rather than a remount, so the traveller's zoom and pan
+survive, and a ResizeObserver in `JourneyMap` re-measures Leaflet whenever the
+container changes size — without it the map keeps drawing tiles for the old box
+and leaves grey where the new space is.
+
 Either way the route is drawn on a Leaflet map over OpenStreetMap tiles
 (keyless — no billing account), and measured by the model in
 [src/lib/journey.ts](src/lib/journey.ts): road distance, drive time per leg,

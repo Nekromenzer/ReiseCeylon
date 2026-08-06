@@ -56,12 +56,14 @@ function pinIcon(index: number, active: boolean, stop: Waypoint) {
  * Keeps the viewport on the route. A single stop gets a fixed zoom — bounds of
  * one point have no extent to fit — and an empty route falls back to the island.
  */
-function FitToRoute({ stops }: { stops: Waypoint[] }) {
+function FitToRoute({ stops, fitSignal }: { stops: Waypoint[]; fitSignal?: string }) {
   const map = useMap();
 
   /* The signature, not the array: a re-render with the same stops must not move
-     a map the traveller has just panned somewhere by hand. */
-  const signature = stops.map((stop) => stop.slug).join('|');
+     a map the traveller has just panned somewhere by hand. `fitSignal` is the
+     deliberate exception — expanding the map is a request for more of the route,
+     so it reframes. */
+  const signature = `${stops.map((stop) => stop.slug).join('|')}::${fitSignal ?? ''}`;
 
   useEffect(() => {
     if (stops.length === 0) {
@@ -85,23 +87,49 @@ function FitToRoute({ stops }: { stops: Waypoint[] }) {
   return null;
 }
 
-/** Leaflet sizes itself on mount; a map revealed inside a tab needs telling again. */
-function Resize() {
+/**
+ * Leaflet measures its container once and then trusts that measurement forever.
+ * Anything that changes the container's size behind its back — a tab revealing
+ * it, the pane expanding to fill the screen — leaves it rendering tiles for the
+ * old box, with grey where the new space is.
+ *
+ * A ResizeObserver covers every one of those cases without any of them having to
+ * announce itself, and the work is coalesced into an animation frame so a CSS
+ * transition resizing the container does not queue one call per frame.
+ */
+function KeepSized() {
   const map = useMap();
+
   useEffect(() => {
-    const id = window.setTimeout(() => map.invalidateSize(), 180);
-    return () => window.clearTimeout(id);
+    let frame = 0;
+    const resize = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => map.invalidateSize({ animate: false }));
+    };
+
+    const observer = new ResizeObserver(resize);
+    observer.observe(map.getContainer());
+    resize();
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
   }, [map]);
+
   return null;
 }
 
 export default function JourneyMap({
   stops,
   activeSlug,
+  fitSignal,
   onSelect
 }: {
   stops: Waypoint[];
   activeSlug?: string | null;
+  /** Changing this reframes the route — see FitToRoute. */
+  fitSignal?: string;
   onSelect?: (slug: string) => void;
 }) {
   const line = useMemo(
@@ -157,8 +185,8 @@ export default function JourneyMap({
         </Marker>
       ))}
 
-      <FitToRoute stops={stops} />
-      <Resize />
+      <FitToRoute stops={stops} fitSignal={fitSignal} />
+      <KeepSized />
     </MapContainer>
   );
 }

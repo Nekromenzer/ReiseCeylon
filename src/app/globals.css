@@ -2937,6 +2937,132 @@ html.dark .rc-plan-transfer-tag { color: var(--light-gold) !important; backgroun
   .rc-plan-itinerary header { flex-direction: column; }
 }
 
+
+/* ——— The map, expanded ——— */
+
+.rc-plan-expand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 500; /* over Leaflet's own panes and controls */
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(7, 39, 31, .22);
+  font-size: 11.5px;
+  font-weight: 600;
+  transition: color 250ms var(--ease), background-color 250ms var(--ease), transform 250ms var(--ease);
+}
+.rc-plan-expand:hover { color: var(--gold); transform: translateY(-1px); }
+.rc-plan-expand span { font-size: 13px; line-height: 1; }
+.rc-plan-expand em { font-style: normal; letter-spacing: .04em; }
+
+/*
+ * Expanded, the pane leaves the layout and takes the window: the map on one
+ * side, the figures it produced on the other. Two classes deep so it overrides
+ * the flow rules the breakpoints set, including the `display: contents` that
+ * mobile uses to free the map from this very pane.
+ */
+.rc-plan-pane-map.is-expanded {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
+  /* Explicit rows and placement below: auto-placement put the toggle and the
+     figures in the same row and they drew over each other. */
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  border-radius: 0;
+  background: var(--ivory);
+  box-shadow: none;
+  animation: rc-plan-fade 260ms var(--ease);
+}
+
+.rc-plan-pane-map.is-expanded .rc-plan-map-holder {
+  /* Stays the containing block for the expand button and the caption, both of
+     which are absolutely positioned against the map — not the window. `top` is
+     reset because the mobile rules stick this to 74px, and an offset that is
+     harmless on a sticky box shifts a relative one down the screen. */
+  position: relative;
+  top: auto;
+  z-index: auto;
+  grid-column: 1;
+  grid-row: 1 / -1;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.rc-plan-pane-map.is-expanded .rc-journey-map { height: 100%; }
+
+/* The caption rides over the bottom of the map rather than taking a row of it. */
+.rc-plan-pane-map.is-expanded .rc-plan-map-caption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 500;
+  padding: 9px 15px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(7, 39, 31, .22);
+  font-weight: 600;
+}
+
+.rc-plan-pane-map.is-expanded .rc-plan-transfer {
+  order: 0;
+  grid-column: 2;
+  grid-row: 1;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.rc-plan-pane-map.is-expanded .rc-plan-pane-scroll {
+  order: 0;
+  grid-column: 2;
+  grid-row: 2;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.rc-plan-pane-map.is-expanded .rc-plan-pane-foot {
+  order: 0;
+  grid-column: 2;
+  grid-row: 3;
+  padding: 12px;
+  border-top: 1px solid var(--hairline);
+}
+
+@media (max-width: 900px) {
+  /* No room for a column beside the map — it goes above the figures instead. */
+  .rc-plan-pane-map.is-expanded {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 52vh auto minmax(0, 1fr) auto;
+  }
+  .rc-plan-pane-map.is-expanded .rc-plan-map-holder { grid-column: 1; grid-row: 1; }
+  .rc-plan-pane-map.is-expanded .rc-plan-transfer { grid-column: 1; grid-row: 2; }
+  .rc-plan-pane-map.is-expanded .rc-plan-pane-scroll { grid-column: 1; grid-row: 3; }
+  .rc-plan-pane-map.is-expanded .rc-plan-pane-foot { grid-column: 1; grid-row: 4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rc-plan-pane-map.is-expanded { animation: none; }
+  .rc-plan-expand:hover { transform: none; }
+}
+
 /* A drag needs its transitions; everything else here can stop moving. */
 @media (prefers-reduced-motion: reduce) {
   .rc-plan-modes button:hover,

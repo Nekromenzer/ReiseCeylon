@@ -22,7 +22,7 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   buildRoute,
   matchesDurationBand,
@@ -93,6 +93,26 @@ export function JourneyPlanner({
    * the honest default is to show the transfer time rather than hide it.
    */
   const [airportTransfers, setAirportTransfers] = useState(true);
+
+  /* The map pane, blown up to fill the screen for a proper look at the route. */
+  const [expanded, setExpanded] = useState(false);
+
+  /* Escape closes it, and the page behind must not scroll while it is open. */
+  useEffect(() => {
+    if (!expanded) return;
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setExpanded(false);
+    };
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [expanded]);
 
   const byBand = useMemo(
     () => packages.filter((journey) => matchesDurationBand(journey.durationDays, band)),
@@ -287,9 +307,22 @@ export function JourneyPlanner({
 
         {/* The map pane never scrolls as a whole: the map is pinned to the top,
             only the figures beneath it move, and the send button stays put. */}
-        <aside className="rc-plan-pane rc-plan-pane-map">
+        <aside className={`rc-plan-pane rc-plan-pane-map${expanded ? ' is-expanded' : ''}`}>
           <div className="rc-plan-map-holder">
-            <JourneyMap stops={stops} />
+            {/* One Leaflet instance throughout: expanding is a class change, not a
+                remount, so the zoom and pan the traveller set are kept. */}
+            <JourneyMap stops={stops} fitSignal={expanded ? 'expanded' : 'inline'} />
+
+            <button
+              type="button"
+              className="rc-plan-expand"
+              aria-expanded={expanded}
+              aria-label={expanded ? 'Close the full-screen map' : 'Expand the map to full screen'}
+              onClick={() => setExpanded((open) => !open)}
+            >
+              <span aria-hidden="true">{expanded ? '✕' : '⤢'}</span>
+              <em>{expanded ? 'Close' : 'Expand'}</em>
+            </button>
             {stops.length > 0 ? (
               <p className="rc-plan-map-caption">
                 {stops.length} {stops.length === 1 ? 'stop' : 'stops'} · {formatKm(route.roadKm)} ·{' '}

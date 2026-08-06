@@ -1,4 +1,3 @@
 {
-  "/(site)/journeys/page": "app/(site)/journeys/page.js",
-  "/api/journey-enquiry/route": "app/api/journey-enquiry/route.js"
+  "/(site)/journeys/page": "app/(site)/journeys/page.js"
 }
