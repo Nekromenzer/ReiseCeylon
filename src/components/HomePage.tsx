@@ -196,7 +196,7 @@ export function HomePage() {
             </div>
 
             <div className="rc-hero-body">
-              <span className="rc-eyebrow">Sri Lanka · Private journeys since 2016</span>
+              <span className="rc-eyebrow">Sri Lanka · Private journeys since 2017</span>
               <h1>
                 <span className="rc-line"><i>An island that</i></span>
                 <span className="rc-line"><i><em>remembers</em> you.</i></span>

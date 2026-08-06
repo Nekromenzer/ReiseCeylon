@@ -342,3 +342,72 @@
 {"timestamp":"00:35:59.733","source":"Server","level":"ERROR","message":"[browser] \"Error: No activity within 45000 milliseconds. No response received. Reconnecting.\""}
 {"timestamp":"00:35:59.733","source":"Browser","level":"ERROR","message":"Error: No activity within 45000 milliseconds. No response received. Reconnecting."}
 {"timestamp":"00:35:59.733","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:36:47.735","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:36:47.736","source":"Server","level":"ERROR","message":"[browser] \"Error: No activity within 45000 milliseconds. No response received. Reconnecting.\""}
+{"timestamp":"00:36:47.736","source":"Browser","level":"ERROR","message":"Error: No activity within 45000 milliseconds. No response received. Reconnecting."}
+{"timestamp":"00:36:48.226","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:36:48.227","source":"Server","level":"ERROR","message":"[browser] \"Error: No activity within 45000 milliseconds. No response received. Reconnecting.\""}
+{"timestamp":"00:36:48.227","source":"Browser","level":"ERROR","message":"Error: No activity within 45000 milliseconds. No response received. Reconnecting."}
+{"timestamp":"00:37:36.747","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:37:36.748","source":"Server","level":"ERROR","message":"[browser] \"Error: No activity within 45000 milliseconds. No response received. Reconnecting.\""}
+{"timestamp":"00:37:36.748","source":"Browser","level":"ERROR","message":"Error: No activity within 45000 milliseconds. No response received. Reconnecting."}
+{"timestamp":"00:37:41.225","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:37:41.226","source":"Server","level":"ERROR","message":"[browser] \"Error: No activity within 45000 milliseconds. No response received. Reconnecting.\""}
+{"timestamp":"00:37:41.226","source":"Browser","level":"ERROR","message":"Error: No activity within 45000 milliseconds. No response received. Reconnecting."}
+{"timestamp":"00:38:23.227","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:38:25.755","source":"Browser","level":"WARN","message":"Image with src \"https://cdn.sanity.io/images/fghpp67g/production/9f8a351d105d9493429abd1b6f9942fcbf8ab8e7-2400x3200.jpg?rect=0,829,2400,1543&w=1400&h=900&fit=crop&auto=format\" has \"fill\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height."}
+{"timestamp":"00:38:25.767","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"https://cdn.sanity.io/images/fghpp67g/production/9f8a351d105d9493429abd1b6f9942fcbf8ab8e7-2400x3200.jpg?rect=0,829,2400,1543&w=1400&h=900&fit=crop&auto=format\\\" has \\\"fill\\\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.\""}
+{"timestamp":"00:38:25.767","source":"Browser","level":"WARN","message":"Image with src \"https://cdn.sanity.io/images/fghpp67g/production/9f8a351d105d9493429abd1b6f9942fcbf8ab8e7-2400x3200.jpg?rect=0,829,2400,1543&w=1400&h=900&fit=crop&auto=format\" has \"fill\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height."}
+{"timestamp":"00:38:28.511","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:38:43.699","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:38:44.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:39:31.991","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:39:32.968","source":"Browser","level":"WARN","message":"Image with src \"https://cdn.sanity.io/images/fghpp67g/production/9f8a351d105d9493429abd1b6f9942fcbf8ab8e7-2400x3200.jpg?rect=0,829,2400,1543&w=1400&h=900&fit=crop&auto=format\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:39:32.989","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"https://cdn.sanity.io/images/fghpp67g/production/9f8a351d105d9493429abd1b6f9942fcbf8ab8e7-2400x3200.jpg?rect=0,829,2400,1543&w=1400&h=900&fit=crop&auto=format\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"00:39:32.989","source":"Browser","level":"WARN","message":"Image with src \"https://cdn.sanity.io/images/fghpp67g/production/9f8a351d105d9493429abd1b6f9942fcbf8ab8e7-2400x3200.jpg?rect=0,829,2400,1543&w=1400&h=900&fit=crop&auto=format\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:40:04.177","source":"Server","level":"LOG","message":"✓ Compiled in 207ms"}
+{"timestamp":"00:40:04.513","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:40:17.821","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:40:30.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:42:22.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:43:22.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:44:22.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:45:22.514","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:46:02.374","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:46:03.237","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:46:03.238","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/hikkaduwa.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"00:46:03.238","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:46:21.680","source":"Server","level":"LOG","message":"✓ Compiled in 68ms"}
+{"timestamp":"00:46:22.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:46:32.313","source":"Server","level":"LOG","message":"✓ Compiled in 57ms"}
+{"timestamp":"00:46:48.363","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:47:22.511","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:47:25.885","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:48:00.243","source":"Server","level":"LOG","message":"✓ Compiled in 81ms"}
+{"timestamp":"00:49:21.141","source":"Server","level":"LOG","message":"✓ Compiled in 110ms"}
+{"timestamp":"00:49:22.513","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:49:24.950","source":"Server","level":"LOG","message":"✓ Compiled in 78ms"}
+{"timestamp":"00:49:34.331","source":"Server","level":"LOG","message":"✓ Compiled in 63ms"}
+{"timestamp":"00:49:36.671","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:51:22.513","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:51:22.830","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:51:22.897","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:51:22.898","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/hikkaduwa.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"00:51:22.898","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:51:35.250","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:51:35.334","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/hikkaduwa.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"00:51:35.334","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:51:35.334","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:51:47.296","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:51:47.349","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:51:47.349","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/hikkaduwa.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"00:51:47.349","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:51:50.490","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:51:50.536","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:51:50.537","source":"Server","level":"WARN","message":"[browser] \"Image with src \\\"/images/hikkaduwa.jpg\\\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\\\"eager\\\"` property if this image is above the fold.\\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading\""}
+{"timestamp":"00:51:50.537","source":"Browser","level":"WARN","message":"Image with src \"/images/hikkaduwa.jpg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"}
+{"timestamp":"00:53:22.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:55:22.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:57:22.512","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"00:59:22.513","source":"Browser","level":"ERROR","message":"{}"}
+{"timestamp":"01:01:22.512","source":"Browser","level":"ERROR","message":"{}"}

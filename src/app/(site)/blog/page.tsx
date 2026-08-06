@@ -41,6 +41,7 @@ export default async function BlogPage() {
                       src={urlForImage(post.coverImage, 1400, 900)}
                       alt={post.coverImage.alt ?? ''}
                       fill
+                      priority={index === 0}
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="card-shade" />
