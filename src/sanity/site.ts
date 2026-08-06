@@ -23,6 +23,7 @@ import {
   type Stage
 } from '@/lib/defaults';
 import {
+  atlasRecordFor,
   categoryFor,
   defaultFeaturedSlugs,
   googleMapsUrlFor,
@@ -201,38 +202,53 @@ type DestinationRow = Omit<
 > & { image: RawImage | null; status?: 'published' | 'hidden' };
 
 /**
- * Studio documents carry only what an editor typed. Everything else — the display
- * copy, the category name, the map links, the photograph — is resolved here, so
- * a half-filled document still renders a complete page.
+ * Studio documents carry only what an editor typed. Everything else is resolved
+ * here, field by field: the studio wins wherever it holds a value, the atlas fills
+ * any location field left empty, and the default copy fills the rest.
+ *
+ * The merge is per field rather than per document on purpose. A destination
+ * created or edited by hand in the studio — before `npm run sync:destinations`
+ * has ever run, or with the location group left untouched — still gets its
+ * category, province, coordinates, map and nearby rail from the atlas.
  */
 function resolveDestination(row: DestinationRow): Destination {
-  const hasAsset = Boolean(row.image?.asset);
-  const image = hasAsset
+  const atlas = atlasRecordFor(row.slug);
+
+  const categoryId = row.categoryId || atlas?.categoryId || '';
+  const province = row.province || atlas?.province || '';
+  const district = row.district || atlas?.district || '';
+  const city = row.city || atlas?.city || '';
+  const latitude = typeof row.latitude === 'number' ? row.latitude : (atlas?.latitude ?? null);
+  const longitude = typeof row.longitude === 'number' ? row.longitude : (atlas?.longitude ?? null);
+  const hasPoint = latitude !== null && longitude !== null;
+
+  const image = row.image?.asset
     ? urlForImage(row.image as RawImage, 1600, 1100)
     : hasSamplePhotograph(row.slug)
       ? imageForSlug(row.slug)
-      : art.fortress;
-  const hasPoint = typeof row.latitude === 'number' && typeof row.longitude === 'number';
+      : (atlas?.image ?? art.fortress);
 
   return {
     ...row,
     image,
     imageAlt: row.image?.alt ?? row.name,
-    categoryId: row.categoryId ?? '',
-    category: categoryFor(row.categoryId)?.name ?? '',
-    province: row.province ?? '',
-    district: row.district ?? '',
-    city: row.city ?? '',
-    region: row.region || regionFor(row.province ?? ''),
-    note: row.note || noteFor({ categoryId: row.categoryId, city: row.city, district: row.district }),
+    categoryId,
+    category: categoryFor(categoryId)?.name ?? '',
+    province,
+    district,
+    city,
+    latitude,
+    longitude,
+    region: row.region || regionFor(province),
+    note: row.note || noteFor({ categoryId, city, district }),
     introHeading: row.introHeading || destinationDefaults.introHeading,
     introCopy: row.introCopy || destinationDefaults.introCopy(row.name),
     highlights: row.highlights.length > 0 ? row.highlights : defaultHighlights,
     goodToKnowHeading: row.goodToKnowHeading || destinationDefaults.goodToKnowHeading,
     goodToKnowCopy: row.goodToKnowCopy || destinationDefaults.goodToKnowCopy,
-    precision: row.precision ?? 'exact',
-    googleMapsUrl: hasPoint ? googleMapsUrlFor(row.latitude!, row.longitude!) : null,
-    openStreetMapUrl: hasPoint ? openStreetMapUrlFor(row.latitude!, row.longitude!) : null
+    precision: row.precision ?? atlas?.precision ?? 'exact',
+    googleMapsUrl: hasPoint ? googleMapsUrlFor(latitude, longitude) : null,
+    openStreetMapUrl: hasPoint ? openStreetMapUrlFor(latitude, longitude) : null
   };
 }
 

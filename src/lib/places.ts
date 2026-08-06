@@ -148,6 +148,27 @@ export const legacySlugAliases: Record<string, string> = {
   yala: 'yala-national-park'
 };
 
+/**
+ * The atlas record behind a slug, following a legacy alias if that is all we have.
+ * Used to fill the location fields of a studio document that has none.
+ */
+export function atlasRecordFor(slug: string): Place | undefined {
+  return bySlug.get(slug) ?? bySlug.get(legacySlugAliases[slug] ?? '');
+}
+
+/**
+ * Every slug that describes the same physical place — a legacy slug and the atlas
+ * record it points at. Two of them must never appear as “nearby” to each other.
+ */
+export function aliasGroupFor(slug: string): string[] {
+  const target = legacySlugAliases[slug];
+  const group = new Set([slug, ...(target ? [target] : [])]);
+  for (const [legacy, atlasSlug] of Object.entries(legacySlugAliases)) {
+    if (group.has(atlasSlug) || legacy === slug) group.add(legacy).add(atlasSlug);
+  }
+  return [...group];
+}
+
 /** What the homepage rail shows when nothing in Sanity is marked featured. */
 export const defaultFeaturedSlugs = [
   'sigiriya-rock-fortress',

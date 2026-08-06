@@ -1,7 +1,11 @@
 {
+  "/(site)/about/page": "app/(site)/about/page.js",
+  "/(site)/blog/[slug]/page": "app/(site)/blog/[slug]/page.js",
+  "/(site)/blog/page": "app/(site)/blog/page.js",
   "/(site)/contact/page": "app/(site)/contact/page.js",
   "/(site)/destinations/[slug]/page": "app/(site)/destinations/[slug]/page.js",
   "/(site)/destinations/page": "app/(site)/destinations/page.js",
   "/(site)/page": "app/(site)/page.js",
+  "/(site)/tours/[slug]/page": "app/(site)/tours/[slug]/page.js",
   "/(studio)/studio/[[...tool]]/page": "app/(studio)/studio/[[...tool]]/page.js"
 }

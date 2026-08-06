@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, permanentRedirect } from 'next/navigation';
+import { DestinationHighlights } from '@/components/DestinationHighlights';
 import { Reveal } from '@/components/Reveal';
 import {
+  aliasGroupFor,
   directionsUrlFor,
   distanceKm,
   formatCoordinate,
@@ -78,12 +80,12 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
 
   const hasPoint = destination.latitude !== null && destination.longitude !== null;
   const record = facts(destination);
+  /* A pre-atlas slug and the atlas record it points at are one place, not two. */
+  const self = new Set(aliasGroupFor(destination.slug));
 
   const nearby = hasPoint
     ? destinations
-        .filter(
-          (item) => item.slug !== destination.slug && item.latitude !== null && item.longitude !== null
-        )
+        .filter((item) => !self.has(item.slug) && item.latitude !== null && item.longitude !== null)
         .map((item) => ({
           place: item,
           km: distanceKm(
@@ -95,9 +97,11 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
         .slice(0, 4)
     : [];
 
-  const sameCategory = destinations
-    .filter((item) => item.categoryId === destination.categoryId && item.slug !== destination.slug)
-    .slice(0, 8);
+  const sameCategory = destination.categoryId
+    ? destinations
+        .filter((item) => item.categoryId === destination.categoryId && !self.has(item.slug))
+        .slice(0, 8)
+    : [];
 
   return (
     <main>
@@ -175,19 +179,12 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
         </Reveal>
       </section>
 
-      {destination.highlights.length > 0 ? (
-        <section className="content-section">
-          <div className="highlight-grid">
-            {destination.highlights.map((highlight, index) => (
-              <Reveal className="highlight-card" key={highlight.title}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <h3>{highlight.title}</h3>
-                <p>{highlight.copy}</p>
-              </Reveal>
-            ))}
-          </div>
-        </section>
-      ) : null}
+      <DestinationHighlights
+        highlights={destination.highlights}
+        image={destination.image}
+        imageAlt={destination.imageAlt}
+        heading={`What we would not miss in ${destination.name}.`}
+      />
 
       {hasPoint ? (
         <section className="detail-map">
