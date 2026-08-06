@@ -5,10 +5,13 @@
   "/(site)/contact/page": "/contact",
   "/(site)/destinations/[slug]/page": "/destinations/[slug]",
   "/(site)/destinations/page": "/destinations",
+  "/(site)/journeys/page": "/journeys",
   "/(site)/page": "/",
   "/(site)/tours/[slug]/page": "/tours/[slug]",
   "/(studio)/studio/[[...tool]]/page": "/studio/[[...tool]]",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/api/journey-enquiry/route": "/api/journey-enquiry",
+  "/api/places/search/route": "/api/places/search",
   "/api/revalidate/route": "/api/revalidate"
 }

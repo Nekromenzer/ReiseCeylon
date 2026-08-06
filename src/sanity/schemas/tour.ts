@@ -1,4 +1,15 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { places } from '../../lib/places';
+
+/**
+ * Every mapped place, as a picker. The value stored is the atlas slug, not a
+ * reference — the atlas is the source of truth for coordinates, and a journey
+ * can call at a place that has no destination document written for it yet.
+ */
+const placeOptions = places.map((place) => ({
+  title: `${place.name} — ${place.city || place.district}`,
+  value: place.slug
+}));
 
 export const tour = defineType({
   name: 'tour',
@@ -27,6 +38,14 @@ export const tour = defineType({
       validation: (rule) => rule.required()
     }),
     defineField({
+      name: 'durationDays',
+      title: 'Length in days',
+      type: 'number',
+      description:
+        'The number behind “Length”, used by the day-trip / 2–4 days / 10 days+ filter on /journeys. Use 1 for a day trip.',
+      validation: (rule) => rule.min(1).max(60)
+    }),
+    defineField({
       name: 'route',
       title: 'Route',
       type: 'string',
@@ -34,11 +53,26 @@ export const tour = defineType({
       validation: (rule) => rule.required()
     }),
     defineField({
+      name: 'stops',
+      title: 'Stops on the map',
+      type: 'array',
+      description:
+        'The places this journey calls at, in travel order. This is what draws the route on the Sri Lanka map and what every distance and drive time on /journeys is calculated from. Drag to reorder.',
+      of: [
+        defineArrayMember({
+          type: 'string',
+          options: { list: placeOptions }
+        })
+      ],
+      options: { layout: 'tags' }
+    }),
+    defineField({
       name: 'price',
       title: 'Price',
       type: 'string',
-      description: 'Shown as written, e.g. “From $2,480”.',
-      validation: (rule) => rule.required()
+      description:
+        'Not shown on the site — journeys are quoted per enquiry. Kept for internal reference only.',
+      initialValue: ''
     }),
     defineField({
       name: 'image',

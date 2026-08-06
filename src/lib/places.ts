@@ -12,6 +12,14 @@
  *   - as the source for nearby-place lookups on a destination page.
  */
 import atlas from '../../public/json/sri-lanka-tourist-places-map.json';
+import { distanceKm } from './journey';
+
+/**
+ * Re-exported rather than defined here. `journey.ts` owns it because the planner
+ * needs it in the browser, and importing this file would pull the whole atlas
+ * into the client bundle with it.
+ */
+export { distanceKm };
 
 export type Precision = 'exact' | 'representative' | 'area-centroid';
 
@@ -187,17 +195,6 @@ export function noteFor(place: Pick<Place, 'categoryId' | 'city' | 'district'>) 
 }
 
 export const provinces: string[] = [...new Set(places.map((place) => place.province))].sort();
-
-/** Great-circle distance in kilometres, for the “nearby” rail on a destination. */
-export function distanceKm(a: { latitude: number; longitude: number }, b: { latitude: number; longitude: number }) {
-  const toRad = (value: number) => (value * Math.PI) / 180;
-  const dLat = toRad(b.latitude - a.latitude);
-  const dLon = toRad(b.longitude - a.longitude);
-  const h =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(a.latitude)) * Math.cos(toRad(b.latitude)) * Math.sin(dLon / 2) ** 2;
-  return 2 * 6371 * Math.asin(Math.sqrt(h));
-}
 
 export function nearbyPlaces(origin: { latitude: number; longitude: number; slug?: string }, limit = 4) {
   return places

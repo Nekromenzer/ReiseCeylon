@@ -16,6 +16,7 @@ Open the local URL printed by Next.js. Use `npm run lint` for TypeScript validat
 - `/` — destination-led homepage
 - `/destinations` — the atlas: every mapped place, filterable by landscape and province
 - `/destinations/[slug]` — destination story, location record, map and what is nearby
+- `/journeys` — plan your journey: pick a ready-made package or build your own route
 - `/tours/[slug]` — private journey details
 - `/about` — brand story
 - `/blog` — travel journal (Sanity)
@@ -45,6 +46,78 @@ npm run images:destinations          # rebuild the sample plates (deterministic)
 Replacing a placeholder is a one-file drop — put the real photograph at the same
 path, or upload it in the studio, which takes precedence.
 
+## Plan your journey
+
+`/journeys` is the planner. Two ways in, one engine behind both:
+
+- **Ready-made journeys** — the packages, filtered by length (day trips through
+  to two weeks). Picking one draws its route and measures it.
+- **Design your own** — search the 174 atlas places, add them, and drag them
+  into the order you want. Every figure updates as you drag. Anything the atlas
+  does not have — a hotel, an airport, the town you start from — is found with
+  **Somewhere else?**, which looks it up in OpenStreetMap through
+  `/api/places/search` and adds it as your own stop, pinned in teal.
+
+**Airport pickup and drop-off** is on by default, and bookends the route with
+Bandaranaike International (CMB) — so a journey is measured the way it is
+actually driven, airport to airport. The bookends are added by the planner
+rather than stored in a journey's stops, so switching the option off leaves
+exactly the sights the traveller chose. Ready-made journeys therefore list no
+origin of their own.
+
+Journeys are not priced on the site. Every one is quoted per enquiry, so the
+`price` field is kept in the studio for internal reference only and is not
+rendered anywhere.
+
+On a desktop the page is an app shell rather than a scrolling document: it fills
+the viewport, the map stays pinned in view, and each pane scrolls on its own.
+Below 1100px it reverts to normal flow with the map pinned to the top of its own
+section.
+
+Either way the route is drawn on a Leaflet map over OpenStreetMap tiles
+(keyless — no billing account), and measured by the model in
+[src/lib/journey.ts](src/lib/journey.ts): road distance, drive time per leg,
+what the journey covers and what else it passes within 18 km.
+
+There is no routing service behind those numbers. Distance is the great-circle
+line scaled by a terrain-aware detour factor, and time comes from an average
+speed that drops from 42 km/h across the lowlands to 24 km/h through the central
+highlands. That is what lets a drag recalculate the whole page in one frame with
+no network call. It is calibrated against published road distances — most legs
+land within 10%, and the file documents the table it was checked against.
+
+Packages are defined in [src/lib/packages.ts](src/lib/packages.ts) and merged
+with the studio the same way destinations are: a `tour` document wins, and any
+package the studio has never heard of is offered alongside it. A journey's
+**Stops on the map** field is the list that draws its route.
+
+### Emailing a finished journey
+
+`POST /api/journey-enquiry` formats the itinerary the traveller was looking at —
+stops, legs and totals, plus their optional vehicle preference and budget range —
+and sends it with [Resend](https://resend.com). A stop they found themselves is
+flagged in the email with its coordinates and a map link, since there is no
+destination page to look it up on.
+
+Two emails go out: the enquiry to ReiseCeylon, then a copy of the itinerary to
+the traveller. The copy is sent second and its failure is swallowed — their plan
+reaching us is what matters, and a bounced copy must not report the whole send as
+failed. The response says which of the two went (`{ ok, copySent }`), and the
+confirmation only promises a copy when one was actually delivered. Until a domain
+is verified the copy will fail for every address except the Resend account
+owner's.
+
+| Variable | |
+| --- | --- |
+| `RESEND_API_KEY` | The API key. `RESEND_API` is accepted too. |
+| `JOURNEY_ENQUIRY_TO` | Where enquiries land. Defaults to the studio's contact email. |
+| `JOURNEY_ENQUIRY_FROM` | The sender. Must be a domain verified with Resend. |
+
+Until a domain is verified at [resend.com/domains](https://resend.com/domains),
+Resend only delivers to the address that owns the account, and `from` must stay
+`onboarding@resend.dev`. With no key set the endpoint returns 503 and the form
+says email is not configured rather than failing silently.
+
 ## Content (Sanity)
 
 The studio is embedded at `/studio` and also hosted at
@@ -53,7 +126,7 @@ The studio is embedded at `/studio` and also hosted at
 | Studio section | Drives |
 | --- | --- |
 | Destinations | Homepage chapter rail, `/destinations` and `/destinations/[slug]` |
-| Journeys & tour plans | Homepage journeys, `/tours/[slug]` and its day-by-day timeline |
+| Journeys & tour plans | Homepage journeys, `/journeys`, `/tours/[slug]` and its day-by-day timeline |
 | Journal entries | `/blog` and `/blog/[slug]` |
 | Contact details | Footer and `/contact` (a singleton — one document) |
 

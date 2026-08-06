@@ -1990,3 +1990,957 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 @media (prefers-reduced-motion: reduce) {
   .hl-row.is-active { transform: none; }
 }
+
+/* ==========================================================================
+   Plan your journey — the planner at /journeys
+   ========================================================================== */
+
+.rc-plan-page {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 12px;
+  height: 100dvh;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 96px var(--gutter) 16px;
+}
+
+/* The planner's own wrapper steps out of the way so its panes are laid out by
+   the shell above, not nested one level deeper. */
+.rc-plan { display: contents; }
+
+.rc-plan-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+  align-items: end;
+  gap: clamp(20px, 3vw, 48px);
+}
+.rc-plan-bar .eyebrow { margin: 0 0 5px; font-size: 10px; }
+.rc-plan-bar h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+.rc-plan-bar h1 em { color: var(--gold); font-style: italic; }
+.rc-plan-bar-aside p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.65; }
+/* .text-link is built for centring under a section; in the bar it runs inline. */
+.rc-plan-bar .text-link { display: inline-flex; margin: 10px 0 0; font-size: 11.5px; }
+
+/* ——— The two ways in ——— */
+
+.rc-plan-modes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 280px));
+  gap: 8px;
+  margin: 0;
+}
+
+.rc-plan-modes button {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 13px;
+  text-align: left;
+  color: var(--muted);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  transition: box-shadow 400ms var(--ease), color 400ms var(--ease), transform 400ms var(--ease);
+}
+.rc-plan-modes button:hover { transform: translateY(-2px); }
+.rc-plan-modes button strong {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+.rc-plan-modes button span { font-size: 11px; }
+.rc-plan-modes button.is-active {
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+.rc-plan-modes button.is-active strong { color: var(--gold); }
+
+/* ——— The workspace: panes that scroll on their own, never the page ——— */
+
+.rc-plan-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 440px);
+  gap: 12px;
+  min-height: 0;
+}
+/* Building a route needs a third pane: places, the route, then the map. */
+.rc-plan-workspace.is-custom {
+  grid-template-columns: minmax(250px, 300px) minmax(0, 1fr) minmax(360px, 440px);
+}
+
+/*
+ * A pane is a fixed-height card with exactly one scrolling region inside it.
+ * `min-height: 0` is what lets a grid child shrink below its content and hand
+ * the overflow to that region — without it the pane grows and the page scrolls
+ * instead, which is the whole problem this layout exists to solve.
+ */
+.rc-plan-pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+
+.rc-plan-pane-head {
+  flex-shrink: 0;
+  padding: 14px 15px 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.rc-plan-pane-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  /* A pane that reaches its end must not start scrolling the page behind it. */
+  overscroll-behavior: contain;
+  padding: 12px 14px;
+}
+
+.rc-plan-pane-foot {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 1px solid var(--hairline);
+}
+
+/* Inside a pane these are already framed, so they drop their own card. */
+.rc-plan-pane-scroll .rc-plan-summary,
+.rc-plan-pane-scroll .rc-plan-results {
+  padding: 0;
+  border-radius: 0;
+  max-height: none;
+  overflow: visible;
+  background: none;
+  box-shadow: none;
+}
+
+/* The map pane: map pinned at the top, figures scrolling beneath it, send
+   button fixed at the bottom. The map itself never moves. */
+.rc-plan-pane-map { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; }
+.rc-plan-pane-map .rc-plan-pane-scroll { padding: 16px 16px 18px; }
+.rc-plan-pane-map .rc-plan-pane-foot { padding: 10px; }
+.rc-plan-pane-map .rc-plan-finalise { width: 100%; }
+
+/* ——— Length filter ——— */
+
+.rc-plan-bands { display: flex; flex-wrap: wrap; gap: 6px; }
+.rc-plan-bands button {
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 12.5px;
+  transition: color 300ms var(--ease), box-shadow 300ms var(--ease), background-color 300ms var(--ease);
+}
+.rc-plan-bands button:hover { color: var(--ink); }
+.rc-plan-bands button.is-active {
+  color: var(--deep);
+  background: var(--gold);
+  box-shadow: none;
+}
+html.dark .rc-plan-bands button.is-active { color: var(--deep); }
+
+/* ——— Ready-made journeys ——— */
+
+.rc-plan-packages { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+
+.rc-plan-package {
+  display: grid;
+  grid-template-columns: 152px minmax(0, 1fr);
+  gap: 20px;
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 18px;
+  text-align: left;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  transition: box-shadow 400ms var(--ease), transform 400ms var(--ease);
+}
+.rc-plan-package:hover { transform: translateY(-2px); }
+.rc-plan-package.is-active { box-shadow: inset 0 0 0 2px var(--gold); }
+
+.rc-plan-package-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+}
+.rc-plan-package-media img { object-fit: cover; }
+.rc-plan-package-media em {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: var(--deep);
+  background: var(--light-gold);
+  font-size: 10.5px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.rc-plan-package-copy { display: flex; flex-direction: column; gap: 5px; padding: 6px 8px 6px 0; }
+.rc-plan-package-copy strong {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+.rc-plan-package-copy small { color: var(--gold); font-size: 11.5px; letter-spacing: .04em; }
+.rc-plan-package-copy > span { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.rc-plan-package-copy b { margin-top: auto; font-size: 13px; font-weight: 600; }
+
+.rc-plan-secondary {
+  display: inline-flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 13px;
+  transition: box-shadow 300ms var(--ease), color 300ms var(--ease);
+}
+.rc-plan-secondary:hover { color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+
+.rc-plan-inline-link {
+  border: 0;
+  padding: 0;
+  color: var(--gold);
+  background: none;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ——— Design your own ——— */
+
+.rc-plan-picker header, .rc-plan-itinerary header { margin-bottom: 12px; }
+.rc-plan-picker h2, .rc-plan-itinerary h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.8vw, 25px);
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+.rc-plan-picker header p, .rc-plan-itinerary header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.rc-plan-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  height: 50px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  transition: box-shadow 400ms var(--ease);
+}
+.rc-plan-search:focus-within { box-shadow: inset 0 0 0 1px var(--gold); }
+.rc-plan-search > span { color: var(--gold); font-size: 17px; }
+.rc-plan-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 13.5px;
+}
+
+.rc-plan-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 10px 0 0; }
+.rc-plan-filters .rc-plan-select { flex-direction: column; align-items: stretch; gap: 4px; }
+.rc-plan-filters .rc-plan-select > span { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.rc-plan-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.rc-plan-chips button {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  font-size: 11.5px;
+  transition: color 300ms var(--ease), background-color 300ms var(--ease);
+}
+.rc-plan-chips button:hover { color: var(--ink); }
+.rc-plan-chips button.is-active { color: var(--deep); background: var(--gold); }
+
+.rc-plan-select { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); }
+.rc-plan-select select {
+  flex: 1;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 12.5px;
+}
+
+.rc-plan-results {
+  margin: 0;
+  padding: 4px;
+  max-height: 460px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.rc-plan-results-empty { padding: 22px 14px; color: var(--muted); font-size: 13px; text-align: center; }
+
+.rc-plan-results li + li { border-top: 1px solid var(--hairline); }
+.rc-plan-results button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 12px;
+  text-align: left;
+  color: var(--ink);
+  background: transparent;
+  transition: background-color 250ms var(--ease);
+}
+.rc-plan-results button:hover:not(:disabled) { background: color-mix(in srgb, var(--gold) 12%, transparent); }
+.rc-plan-results button span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rc-plan-results button strong { font-size: 13.5px; font-weight: 600; }
+.rc-plan-results button small { color: var(--muted); font-size: 11.5px; }
+.rc-plan-results button i {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+  font-size: 14px;
+  font-style: normal;
+}
+.rc-plan-results button.is-added { opacity: .5; cursor: default; }
+.rc-plan-results button.is-added i { color: var(--muted); background: color-mix(in srgb, var(--ink) 8%, transparent); }
+
+/* ——— The itinerary you drag into shape ——— */
+
+.rc-plan-itinerary header { display: flex; align-items: start; justify-content: space-between; gap: 14px; }
+.rc-plan-itinerary-tools { display: flex; flex-shrink: 0; gap: 6px; }
+.rc-plan-itinerary-tools button {
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 11.5px;
+  transition: color 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+.rc-plan-itinerary-tools button:hover:not(:disabled) { color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.rc-plan-itinerary-tools button:disabled { opacity: .4; cursor: default; }
+.rc-plan-itinerary-tools .rc-plan-clear:hover { color: #c65d45; box-shadow: inset 0 0 0 1px #c65d45; }
+
+.rc-plan-itinerary-empty {
+  margin: 0;
+  padding: 26px 20px;
+  border-radius: 16px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 4%, transparent);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.rc-plan-stops { margin: 0; padding: 0; list-style: none; }
+
+.rc-plan-leg-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 5px 0 5px 22px;
+  color: var(--muted);
+  font-size: 11.5px;
+}
+.rc-plan-leg-inline i { color: var(--gold); font-style: normal; }
+
+.rc-plan-stop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  cursor: grab;
+  transition: box-shadow 250ms var(--ease), opacity 250ms var(--ease), transform 250ms var(--ease);
+}
+.rc-plan-stop:active { cursor: grabbing; }
+.rc-plan-stop.is-dragging { opacity: .4; }
+.rc-plan-stop.is-over { box-shadow: inset 0 0 0 2px var(--gold); transform: translateY(1px); }
+
+.rc-plan-stop-grip { color: var(--muted); font-size: 14px; line-height: 1; opacity: .6; }
+.rc-plan-stop-index {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: var(--deep);
+  background: var(--light-gold);
+  font-size: 11px;
+  font-weight: 700;
+}
+.rc-plan-stop-name { flex: 1; min-width: 0; font-size: 13.5px; font-weight: 600; }
+.rc-plan-stop-controls { display: flex; flex-shrink: 0; gap: 3px; }
+.rc-plan-stop-controls button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 13px;
+  transition: color 250ms var(--ease), background-color 250ms var(--ease);
+}
+.rc-plan-stop-controls button:hover:not(:disabled) { color: var(--ink); background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.rc-plan-stop-controls button:disabled { opacity: .3; cursor: default; }
+.rc-plan-stop-remove:hover:not(:disabled) { color: #c65d45 !important; }
+
+/* ——— The map ——— */
+
+.rc-plan-map-holder {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--hairline);
+  background: var(--surface);
+}
+
+.rc-journey-map { width: 100%; height: clamp(230px, 30vh, 340px); background: var(--sand); }
+.rc-journey-map-loading {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.rc-plan-map-caption {
+  margin: 0;
+  padding: 11px 16px;
+  border-top: 1px solid var(--hairline);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Leaflet's own furniture, brought into the brand. */
+.leaflet-container { font-family: var(--font-interface), system-ui, sans-serif; }
+.leaflet-control-attribution {
+  color: var(--muted) !important;
+  background: color-mix(in srgb, var(--surface) 88%, transparent) !important;
+  font-size: 9.5px !important;
+}
+.leaflet-control-attribution a { color: var(--muted) !important; }
+.leaflet-bar a {
+  color: var(--ink) !important;
+  background: var(--surface) !important;
+  border-bottom-color: var(--hairline) !important;
+}
+.leaflet-bar a:hover { background: var(--sand) !important; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: 0 10px 34px rgba(7, 39, 31, .18);
+}
+.leaflet-popup-content { margin: 12px 16px; font-size: 12.5px; line-height: 1.6; }
+
+/* Dark mode has no dark tile set behind it, so the tiles themselves are dimmed. */
+html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.05); }
+
+.rc-map-pin {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #07271f;
+  background: #c49a3a;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .92), 0 4px 12px rgba(7, 39, 31, .35);
+  transition: transform 250ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.rc-map-pin i { font-size: 12px; font-style: normal; font-weight: 700; }
+.rc-map-pin:hover, .rc-map-pin.is-active { transform: scale(1.16); }
+
+/* A stop the traveller found themselves, in teal against the gold atlas pins. */
+.rc-map-pin.is-custom { color: #fff; background: #1fa6b6; }
+/* Airport transfers, in forest — arrival and departure, not a place you visit. */
+.rc-map-pin.is-transfer { color: #fff; background: #0d3b2e; }
+
+/* ——— The numbers ——— */
+
+.rc-plan-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.rc-plan-summary-empty { gap: 6px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.rc-plan-summary-empty p { margin: 0; }
+
+.rc-plan-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; }
+.rc-plan-stats div { display: flex; flex-direction: column; gap: 3px; }
+.rc-plan-stats dt { color: var(--muted); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
+.rc-plan-stats dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 27px);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.rc-plan-estimate { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
+.rc-plan-summary h3 {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.rc-plan-legs ol { margin: 0; padding: 0; list-style: none; }
+.rc-plan-legs li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--hairline);
+}
+.rc-plan-legs li:first-child { border-top: 0; }
+.rc-plan-leg-route { display: flex; align-items: center; gap: 7px; min-width: 0; font-size: 12.5px; }
+.rc-plan-leg-route strong { font-weight: 600; }
+.rc-plan-leg-route i { color: var(--gold); font-style: normal; }
+.rc-plan-leg-figures { display: flex; gap: 12px; font-size: 12.5px; white-space: nowrap; }
+.rc-plan-leg-figures b:last-child { color: var(--gold); }
+.rc-plan-leg-terrain { grid-column: 1 / -1; color: var(--muted); font-size: 11px; }
+
+.rc-plan-covered ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.rc-plan-covered li { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.rc-plan-covered i {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  font-size: 10.5px;
+  font-style: normal;
+  font-weight: 700;
+}
+.rc-plan-covered a { transition: color 250ms var(--ease); }
+.rc-plan-covered a:hover { color: var(--gold); }
+
+.rc-plan-nearby > p { margin: -6px 0 10px; color: var(--muted); font-size: 11.5px; }
+.rc-plan-nearby ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.rc-plan-nearby li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.rc-plan-nearby li span { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.rc-plan-nearby strong { font-size: 12.5px; font-weight: 600; }
+.rc-plan-nearby small { color: var(--muted); font-size: 11px; }
+.rc-plan-nearby button {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+  font-size: 11px;
+  font-weight: 600;
+  transition: color 250ms var(--ease), background-color 250ms var(--ease);
+}
+.rc-plan-nearby button:hover { color: var(--deep); background: var(--gold); }
+
+/* ——— Finalise ——— */
+
+.rc-plan-finalise {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 17px 24px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--deep);
+  background: var(--gold);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  transition: background-color 300ms var(--ease), transform 300ms var(--ease);
+}
+.rc-plan-finalise:hover { background: var(--light-gold); transform: translateY(-2px); }
+
+.rc-plan-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(7, 39, 31, .62);
+  backdrop-filter: blur(6px);
+  animation: rc-plan-fade 300ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes rc-plan-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.rc-plan-enquiry {
+  width: min(560px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 22px;
+  background: var(--ivory);
+  box-shadow: 0 30px 80px rgba(7, 39, 31, .4);
+}
+
+.rc-plan-enquiry > header { display: flex; align-items: start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.rc-plan-enquiry header span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gold);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.rc-plan-enquiry h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+}
+.rc-plan-enquiry-close {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  font-size: 19px;
+  line-height: 1;
+  transition: color 250ms var(--ease), background-color 250ms var(--ease);
+}
+.rc-plan-enquiry-close:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 14%, transparent); }
+
+.rc-plan-enquiry-recap {
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--gold) 11%, transparent);
+}
+.rc-plan-enquiry-recap strong { display: block; margin-bottom: 4px; font-size: 14px; font-weight: 600; }
+.rc-plan-enquiry-recap p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.rc-plan-enquiry-stops { margin-top: 8px !important; font-size: 11.5px !important; opacity: .9; }
+
+.rc-plan-enquiry form { display: grid; gap: 14px; }
+.rc-plan-enquiry label { display: flex; flex-direction: column; gap: 7px; color: var(--muted); font-size: 11.5px; letter-spacing: .04em; }
+.rc-plan-enquiry input, .rc-plan-enquiry select, .rc-plan-enquiry textarea {
+  padding: 13px 15px;
+  border: 0;
+  border-radius: 12px;
+  color: var(--ink);
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 13.5px;
+  transition: box-shadow 300ms var(--ease);
+}
+.rc-plan-enquiry input:focus, .rc-plan-enquiry select:focus, .rc-plan-enquiry textarea:focus {
+  outline: 0;
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+.rc-plan-enquiry textarea { min-height: 96px; resize: vertical; }
+.rc-plan-enquiry form > button {
+  margin-top: 4px;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--deep);
+  background: var(--gold);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background-color 300ms var(--ease);
+}
+.rc-plan-enquiry form > button:hover:not(:disabled) { background: var(--light-gold); }
+.rc-plan-enquiry form > button:disabled { opacity: .6; cursor: default; }
+.rc-plan-enquiry-error { margin: 0; color: #c65d45; font-size: 12.5px; }
+.rc-plan-enquiry-fineprint { margin: 0; color: var(--muted); font-size: 11px; text-align: center; opacity: .85; }
+
+.rc-plan-enquiry-sent { text-align: center; }
+.rc-plan-enquiry-sent span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gold);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.rc-plan-enquiry-sent h2 { margin: 0 0 12px; }
+.rc-plan-enquiry-sent p { margin: 0 0 22px; color: var(--muted); font-size: 13.5px; line-height: 1.7; }
+.rc-plan-enquiry-sent button {
+  padding: 13px 26px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  font-size: 13px;
+  transition: color 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+.rc-plan-enquiry-sent button:hover { color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+
+/* ——— Somewhere else: OpenStreetMap search ——— */
+
+.rc-plan-anywhere {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline);
+}
+.rc-plan-anywhere h3 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.rc-plan-anywhere > p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.rc-plan-anywhere .rc-plan-search > em {
+  color: var(--gold);
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: .12em;
+}
+.rc-plan-anywhere-note { margin: 10px 0 0; color: var(--muted); font-size: 12px; }
+.rc-plan-results-found { margin-top: 10px; max-height: 260px; }
+.rc-plan-anywhere-credit { margin: 10px 0 0; color: var(--muted); font-size: 10.5px; opacity: .8; }
+.rc-plan-anywhere-credit a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* The badge that marks a stop as the traveller's own, not one of ours. */
+.rc-plan-stop-name { display: flex; align-items: center; gap: 8px; }
+.rc-plan-stop-name em, .rc-plan-own {
+  flex-shrink: 0;
+  padding: 2px 7px;
+  border-radius: 999px;
+  color: var(--ocean);
+  background: color-mix(in srgb, var(--ocean) 15%, transparent);
+  font-size: 9.5px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.rc-plan-covered li > span { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.rc-plan-transfer-tag { color: var(--forest) !important; background: color-mix(in srgb, var(--forest) 14%, transparent) !important; }
+html.dark .rc-plan-transfer-tag { color: var(--light-gold) !important; background: color-mix(in srgb, var(--light-gold) 16%, transparent) !important; }
+
+/* ——— Airport pickup and drop-off ——— */
+
+.rc-plan-transfer {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--hairline);
+  cursor: pointer;
+  transition: background-color 250ms var(--ease);
+}
+.rc-plan-transfer:hover { background: color-mix(in srgb, var(--gold) 7%, transparent); }
+.rc-plan-transfer input {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.rc-plan-transfer span { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.rc-plan-transfer strong { font-size: 12.5px; font-weight: 600; }
+.rc-plan-transfer small { color: var(--muted); font-size: 11px; }
+
+/* Vehicle and budget, side by side — both optional. */
+.rc-plan-enquiry-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.rc-plan-enquiry label i {
+  margin-left: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .75;
+}
+
+/* The planner fills the viewport; a 900px marketing footer under it breaks the
+   app it is trying to be. It returns with the flow layout below. */
+@media (min-width: 1101px) {
+  body:has(.rc-plan-page) .footer { display: none; }
+}
+
+/*
+ * Below this the app shell stops making sense: there is no room for three panes
+ * side by side, and a fixed-height workspace inside a phone's scrolling page is
+ * worse than the page itself. Everything reverts to normal document flow, with
+ * the map moved to the top and stuck there so it still stays in view while the
+ * route is being built.
+ */
+@media (max-width: 1100px) {
+  .rc-plan-page {
+    display: block;
+    height: auto;
+    padding: 104px var(--gutter) clamp(70px, 8vw, 110px);
+  }
+  .rc-plan { display: block; }
+
+  .rc-plan-bar { grid-template-columns: 1fr; align-items: start; gap: 6px; margin-bottom: 14px; }
+  .rc-plan-bar h1 { font-size: clamp(1.45rem, 5.2vw, 2rem); }
+  .rc-plan-bar-aside p { font-size: 12px; }
+
+  .rc-plan-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 12px; }
+
+  .rc-plan-workspace,
+  .rc-plan-workspace.is-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+  }
+
+  .rc-plan-pane { overflow: visible; }
+  .rc-plan-pane-head { position: static; }
+  .rc-plan-pane-scroll { overflow: visible; padding: 12px 14px; }
+
+  /*
+   * The map lifts out of its pane entirely. A sticky element can only travel
+   * inside its own containing block, so while the map sat in its card it stopped
+   * following as soon as that card ended — which on a phone is immediately, and
+   * the map was gone for the whole length of the places list.
+   *
+   * `display: contents` drops the pane's box and hands its three children
+   * straight to the workspace column, so the map's containing block becomes the
+   * whole planner and it stays pinned under the navigation from the first place
+   * to the last. The children keep their own order: map first, figures and the
+   * send button last.
+   */
+  .rc-plan-pane-map { display: contents; }
+
+  .rc-plan-pane-map .rc-plan-map-holder {
+    order: -2;
+    position: sticky;
+    top: 92px;
+    z-index: 6;
+    border-bottom: 0;
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 1px var(--hairline), 0 22px 40px -26px rgba(7, 39, 31, .55);
+  }
+
+  /* No longer inside a card, so it becomes one. */
+  .rc-plan-pane-map .rc-plan-pane-scroll {
+    order: 10;
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+  }
+
+  .rc-plan-pane-map .rc-plan-pane-foot { order: 11; padding: 0; border-top: 0; }
+
+  .rc-plan-transfer {
+    order: -1;
+    border: 0;
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+  }
+
+  .rc-plan-results { max-height: 420px; overflow-y: auto; }
+}
+
+@media (max-width: 767px) {
+  .rc-plan-page { padding: 88px 16px 70px; }
+
+  /* Header down to a title and one link: the map and the list are the page. */
+  .rc-plan-bar { margin-bottom: 12px; }
+  .rc-plan-bar-aside p { display: none; }
+  .rc-plan-bar .text-link { display: inline-flex; margin: 8px 0 0; }
+
+  /* Tabs stay side by side rather than stacking — two rows of chrome above a
+     sticky map leaves too little room for anything else. */
+  .rc-plan-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .rc-plan-modes button { padding: 9px 12px; border-radius: 11px; }
+  .rc-plan-modes button strong { font-size: 13px; }
+  .rc-plan-modes button span { display: none; }
+  .rc-plan-package { grid-template-columns: 104px minmax(0, 1fr); gap: 14px; }
+  .rc-plan-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .rc-journey-map { height: 200px; }
+  .rc-plan-pane-map .rc-plan-map-holder { top: 74px; }
+  .rc-plan-enquiry { padding: 22px 18px; border-radius: 18px; }
+  .rc-plan-enquiry-pair { grid-template-columns: 1fr; }
+  .rc-plan-itinerary header { flex-direction: column; }
+}
+
+/* A drag needs its transitions; everything else here can stop moving. */
+@media (prefers-reduced-motion: reduce) {
+  .rc-plan-modes button:hover,
+  .rc-plan-package:hover,
+  .rc-plan-finalise:hover { transform: none; }
+  .rc-plan-modal { animation: none; }
+}

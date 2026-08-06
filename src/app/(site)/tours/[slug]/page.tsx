@@ -23,7 +23,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
       <section className="page-hero">
         <Image src={tour.image} alt={tour.imageAlt} fill priority sizes="100vw" />
         <div className="page-hero-content">
-          <span>{tour.days} · Private journey · {tour.price}</span>
+          <span>{tour.days} · Private journey · Airport to airport</span>
           <h1>{tour.title}</h1>
           <p>{tour.route}. A considered journey balancing cultural depth, open landscapes and enough unscripted time to make it yours.</p>
         </div>

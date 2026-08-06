@@ -81,6 +81,18 @@
       "namedRegex": "^/about(?:/)?$"
     },
     {
+      "page": "/api/journey-enquiry",
+      "regex": "^/api/journey\\-enquiry(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/journey\\-enquiry(?:/)?$"
+    },
+    {
+      "page": "/api/places/search",
+      "regex": "^/api/places/search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/places/search(?:/)?$"
+    },
+    {
       "page": "/api/revalidate",
       "regex": "^/api/revalidate(?:/)?$",
       "routeKeys": {},
@@ -103,6 +115,12 @@
       "regex": "^/destinations(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/destinations(?:/)?$"
+    },
+    {
+      "page": "/journeys",
+      "regex": "^/journeys(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/journeys(?:/)?$"
     }
   ],
   "dataRoutes": [],

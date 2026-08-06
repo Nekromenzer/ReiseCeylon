@@ -8,7 +8,7 @@ import { ThemeToggle } from './ThemeToggle';
 const links = [
   ['Destinations', '/destinations'],
   ['Experiences', '/#experiences'],
-  ['Journeys', '/#journeys'],
+  ['Plan your journey', '/journeys'],
   ['About', '/about'],
   ['Journal', '/blog'],
   ['Contact', '/contact']

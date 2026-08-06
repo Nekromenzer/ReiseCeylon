@@ -210,7 +210,7 @@ export function HomePage({
                 leopard territory and the old ports of the south — led by the people who live there.
               </p>
               <div className="rc-hero-actions">
-                <Link href="/contact" className="rc-pill rc-pill-gold group">
+                <Link href="/journeys" className="rc-pill rc-pill-gold group">
                   Plan my journey
                   <span>↗</span>
                 </Link>
@@ -488,15 +488,15 @@ export function HomePage({
                   <h3>{tour.title}</h3>
                   <p>{tour.note}</p>
                   <div className="rc-journey-foot">
-                    <strong>{tour.price}</strong>
+                    <strong>{tour.days}</strong>
                     <i>↗</i>
                   </div>
                 </div>
               </div>
             </Link>
           ))}
-          <Link href="/contact" className="rc-link" data-reveal="0">
-            Or start from a blank page <span>↗</span>
+          <Link href="/journeys" className="rc-link" data-reveal="0">
+            Plan your journey — or draw your own route <span>↗</span>
           </Link>
         </div>
       </section>

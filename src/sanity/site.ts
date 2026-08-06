@@ -8,11 +8,9 @@
  */
 import type { Image } from 'sanity';
 import { defineQuery } from 'next-sanity';
-import {
-  art,
-  journeyNotes as staticJourneyNotes,
-  tours as staticTours
-} from '@/lib/content';
+import { art } from '@/lib/content';
+import { buildRoute, formatDuration, formatKm, splitIntoDays, waypointsFor } from '@/lib/journey';
+import { journeyPackages, packageDurations, packageStops, parseDays } from '@/lib/packages';
 import {
   contactDefaults,
   defaultHighlights,
@@ -72,6 +70,8 @@ export type Tour = {
   slug: string;
   title: string;
   days: string;
+  /** The number behind `days` — what the duration filter on /journeys reads. */
+  durationDays: number;
   route: string;
   price: string;
   image: string;
@@ -82,6 +82,8 @@ export type Tour = {
   itinerary: Stage[];
   includedHeading: string;
   includedCopy: string;
+  /** Atlas slugs in travel order — the route drawn on the map. */
+  stops: string[];
 };
 
 export type SocialLink = { label: string; url: string };
@@ -130,11 +132,35 @@ function destinationFromPlace(place: Place): Destination {
 
 const fallbackDestinations: Destination[] = places.map(destinationFromPlace);
 
-const fallbackTours: Tour[] = staticTours.map((journey) => ({
+/**
+ * A day trip has no business showing the twelve-day timeline in `defaultStages`,
+ * so a package that has never been written up in the studio describes itself
+ * from its own stops instead: the route split across its days, with the real
+ * driving figure for each one. Honest, and specific to the journey.
+ */
+function itineraryFromStops(slugs: string[], days: number): Stage[] {
+  const stops = waypointsFor(slugs, places);
+  if (stops.length === 0) return defaultStages;
+
+  return splitIntoDays(stops, days).map((group, index, all) => {
+    const leadIn = index > 0 ? all[index - 1][all[index - 1].length - 1] : null;
+    const driving = buildRoute(leadIn ? [leadIn, ...group] : group);
+
+    return {
+      period: all.length === 1 ? 'One day' : `Day ${index + 1}`,
+      title: group.map((stop) => stop.name).join(' · '),
+      copy:
+        driving.legs.length > 0
+          ? `${formatKm(driving.roadKm)} on the road, around ${formatDuration(driving.minutes)} of it driving.`
+          : `A full day at ${group[0].name}, at your own pace.`
+    };
+  });
+}
+
+const fallbackTours: Tour[] = journeyPackages.map((journey) => ({
   ...journey,
   imageAlt: journey.title,
-  note: staticJourneyNotes[journey.slug] ?? '',
-  itinerary: defaultStages,
+  itinerary: itineraryFromStops(journey.stops, journey.durationDays),
   ...tourDefaults
 }));
 
@@ -170,10 +196,11 @@ const featuredDestinationsQuery = defineQuery(`
 
 const toursQuery = defineQuery(`
   *[_type == "tour" && defined(slug.current)] | order(order asc, title asc) {
-    "slug": slug.current, title, days, route, price, image, note,
+    "slug": slug.current, title, days, durationDays, route, price, image, note,
     introHeading, introCopy,
     "itinerary": coalesce(itinerary[]{period, title, copy}, []),
-    includedHeading, includedCopy
+    includedHeading, includedCopy,
+    "stops": coalesce(stops, [])
   }
 `);
 
@@ -306,17 +333,44 @@ export async function getDestination(slug: string): Promise<Destination | null> 
   return destinations.find((place) => place.slug === slug) ?? null;
 }
 
-export async function getTours(): Promise<Tour[]> {
-  const rows = await fetchSite<Array<Omit<Tour, 'image' | 'imageAlt'> & { image: RawImage }>>(
-    toursQuery,
-    []
-  );
-  if (rows.length === 0) return fallbackTours;
-  return rows.map((row) => ({
+/**
+ * A journey written before the studio had a stops field still needs a route to
+ * draw, and a length the duration filter can read. Both fall back to the
+ * package definition of the same slug, and the length falls back once more to
+ * the number an editor already typed into “Length” — “12 days” is a 12.
+ */
+type TourRow = Omit<Tour, 'image' | 'imageAlt' | 'durationDays' | 'stops'> & {
+  image: RawImage;
+  durationDays: number | null;
+  stops: string[] | null;
+};
+
+function resolveTour(row: TourRow): Tour {
+  return {
     ...row,
     image: urlForImage(row.image, 1600, 1100),
-    imageAlt: row.image.alt ?? row.title
-  }));
+    imageAlt: row.image.alt ?? row.title,
+    durationDays: row.durationDays ?? packageDurations[row.slug] ?? parseDays(row.days) ?? 1,
+    stops: row.stops?.length ? row.stops : (packageStops[row.slug] ?? [])
+  };
+}
+
+/**
+ * Studio first, packages second — the same merge `getDestinations` does. A
+ * journey written in the studio wins outright; every package the studio has
+ * never heard of is offered alongside it, so the shelf on /journeys still holds
+ * the day trips and long weekends whether or not anyone has recreated them as
+ * documents yet. Sorted by length, since that is what the filter above them
+ * sorts by.
+ */
+export async function getTours(): Promise<Tour[]> {
+  const rows = await fetchSite<TourRow[]>(toursQuery, []);
+  if (rows.length === 0) return fallbackTours;
+
+  const known = new Set(rows.map((row) => row.slug));
+  return [...rows.map(resolveTour), ...fallbackTours.filter((journey) => !known.has(journey.slug))].sort(
+    (a, b) => a.durationDays - b.durationDays
+  );
 }
 
 export async function getContactDetails(): Promise<ContactDetails> {
