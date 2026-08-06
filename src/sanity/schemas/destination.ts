@@ -1,14 +1,29 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { placeCategories, provinces } from '../../lib/places';
 
+/**
+ * A destination is one place on the island — a beach, a ruin, a waterfall, a hill
+ * station. The document has two halves:
+ *
+ *   Story    — what an editor writes: the note, the intro, the highlights.
+ *   Location — the factual record, kept in step with public/json by
+ *              `npm run sync:destinations`. Editors can correct it, but a re-sync
+ *              will restore whatever the atlas says.
+ */
 export const destination = defineType({
   name: 'destination',
   title: 'Destination',
   type: 'document',
+  groups: [
+    { name: 'story', title: 'Story', default: true },
+    { name: 'location', title: 'Location' }
+  ],
   fields: [
     defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
+      group: 'story',
       validation: (rule) => rule.required()
     }),
     defineField({
@@ -17,36 +32,48 @@ export const destination = defineType({
       type: 'slug',
       description: 'The url: /destinations/your-slug',
       options: { source: 'name', maxLength: 96 },
+      group: 'story',
       validation: (rule) => rule.required()
     }),
     defineField({
       name: 'region',
       title: 'Region',
       type: 'string',
-      description: 'Cultural Triangle, Hill Country, Southern Coast…',
-      validation: (rule) => rule.required()
+      description: 'Cultural Triangle, Hill Country, Southern Coast… Falls back to the province.',
+      group: 'story'
     }),
     defineField({
       name: 'note',
       title: 'Short note',
       type: 'string',
-      description: 'One line under the name on the homepage, e.g. “Ancient stone, jungle horizons”.',
-      validation: (rule) => rule.required().max(90)
+      description: 'One line under the name on a card, e.g. “Ancient stone, jungle horizons”.',
+      group: 'story',
+      validation: (rule) => rule.max(90)
     }),
     defineField({
       name: 'image',
       title: 'Photograph',
       type: 'image',
+      description: 'Leave empty to use the sample plate at /images/destination/<slug>.jpg.',
       options: { hotspot: true },
       fields: [defineField({ name: 'alt', title: 'Alternative text', type: 'string' })],
-      validation: (rule) => rule.required()
+      group: 'story'
+    }),
+    defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      description: 'Featured destinations lead the homepage and the top of /destinations.',
+      initialValue: false,
+      group: 'story'
     }),
     defineField({
       name: 'order',
       title: 'Order',
       type: 'number',
-      description: 'Lowest first, on the homepage and everywhere else.',
-      initialValue: 100
+      description: 'Lowest first, among featured destinations.',
+      initialValue: 100,
+      group: 'story'
     }),
     defineField({
       name: 'introHeading',
@@ -54,20 +81,21 @@ export const destination = defineType({
       type: 'text',
       rows: 2,
       description: 'The large quote near the top of the destination page. Line breaks are kept.',
-      validation: (rule) => rule.required()
+      group: 'story'
     }),
     defineField({
       name: 'introCopy',
       title: 'Intro copy',
       type: 'text',
       rows: 4,
-      validation: (rule) => rule.required()
+      group: 'story'
     }),
     defineField({
       name: 'highlights',
       title: 'Highlights',
       type: 'array',
       description: 'The numbered cards. Three works best with the layout.',
+      group: 'story',
       of: [
         defineArrayMember({
           type: 'object',
@@ -86,15 +114,103 @@ export const destination = defineType({
       title: 'Good to know — heading',
       type: 'text',
       rows: 2,
-      description: 'e.g. “Best from December to April, beautiful in every season.”'
+      description: 'e.g. “Best from December to April, beautiful in every season.”',
+      group: 'story'
     }),
     defineField({
       name: 'goodToKnowCopy',
       title: 'Good to know — copy',
       type: 'text',
-      rows: 4
+      rows: 4,
+      group: 'story'
+    }),
+
+    /* ---------------------------------------------------------------- location */
+
+    defineField({
+      name: 'categoryId',
+      title: 'Category',
+      type: 'string',
+      group: 'location',
+      options: {
+        list: placeCategories.map(({ id, name }) => ({ title: name, value: id }))
+      },
+      validation: (rule) => rule.required()
+    }),
+    defineField({
+      name: 'province',
+      title: 'Province',
+      type: 'string',
+      group: 'location',
+      options: { list: provinces },
+      validation: (rule) => rule.required()
+    }),
+    defineField({ name: 'district', title: 'District', type: 'string', group: 'location' }),
+    defineField({ name: 'city', title: 'Nearest town', type: 'string', group: 'location' }),
+    defineField({
+      name: 'location',
+      title: 'Coordinates',
+      type: 'geopoint',
+      description: 'WGS84. Drives the map, the distance list and the directions links.',
+      group: 'location'
+    }),
+    defineField({
+      name: 'precision',
+      title: 'Point precision',
+      type: 'string',
+      group: 'location',
+      initialValue: 'exact',
+      options: {
+        list: [
+          { title: 'Exact — a mapped entrance or landmark', value: 'exact' },
+          { title: 'Representative — the usual meeting point', value: 'representative' },
+          { title: 'Area centroid — the middle of a large area', value: 'area-centroid' }
+        ]
+      }
+    }),
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      group: 'location',
+      initialValue: 'published',
+      options: {
+        list: [
+          { title: 'Published', value: 'published' },
+          { title: 'Hidden', value: 'hidden' }
+        ],
+        layout: 'radio'
+      }
+    }),
+    defineField({
+      name: 'atlasId',
+      title: 'Atlas id',
+      type: 'string',
+      description: 'Set by the sync script. Identifies the record in public/json.',
+      group: 'location',
+      readOnly: true
     })
   ],
-  orderings: [{ title: 'Display order', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] }],
-  preview: { select: { title: 'name', subtitle: 'region', media: 'image' } }
+  orderings: [
+    { title: 'Display order', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] },
+    { title: 'Name', name: 'nameAsc', by: [{ field: 'name', direction: 'asc' }] },
+    {
+      title: 'Province',
+      name: 'provinceAsc',
+      by: [
+        { field: 'province', direction: 'asc' },
+        { field: 'name', direction: 'asc' }
+      ]
+    }
+  ],
+  preview: {
+    select: { title: 'name', province: 'province', categoryId: 'categoryId', media: 'image' },
+    prepare: ({ title, province, categoryId, media }) => ({
+      title,
+      subtitle: [placeCategories.find((entry) => entry.id === categoryId)?.name, province]
+        .filter(Boolean)
+        .join(' · '),
+      media
+    })
+  }
 });

@@ -14,7 +14,8 @@ Open the local URL printed by Next.js. Use `npm run lint` for TypeScript validat
 ## Routes
 
 - `/` — destination-led homepage
-- `/destinations/[slug]` — destination stories
+- `/destinations` — the atlas: every mapped place, filterable by landscape and province
+- `/destinations/[slug]` — destination story, location record, map and what is nearby
 - `/tours/[slug]` — private journey details
 - `/about` — brand story
 - `/blog` — travel journal (Sanity)
@@ -24,6 +25,26 @@ Open the local URL printed by Next.js. Use `npm run lint` for TypeScript validat
 
 Brand source files live in `design.md`; optimized web assets are stored under `public/brand/` and `public/images/`.
 
+## The atlas
+
+`public/json/sri-lanka-tourist-places-map.json` is the factual record for every
+destination — 174 places across 13 landscapes and 9 provinces, with coordinates,
+district, nearest town and point precision. `sri-lanka-tourist-places.geojson`
+is the same data as a FeatureCollection, for mapping tools.
+
+[src/lib/places.ts](src/lib/places.ts) reads it and is the single source for
+categories, provinces, distances and map links.
+
+Photography lives at `public/images/destination/<slug>.jpg`, one file per place.
+Four are real photographs; the rest are generated sample plates:
+
+```bash
+npm run images:destinations          # rebuild the sample plates (deterministic)
+```
+
+Replacing a placeholder is a one-file drop — put the real photograph at the same
+path, or upload it in the studio, which takes precedence.
+
 ## Content (Sanity)
 
 The studio is embedded at `/studio` and also hosted at
@@ -31,7 +52,7 @@ The studio is embedded at `/studio` and also hosted at
 
 | Studio section | Drives |
 | --- | --- |
-| Destinations | Homepage chapter rail and `/destinations/[slug]` |
+| Destinations | Homepage chapter rail, `/destinations` and `/destinations/[slug]` |
 | Journeys & tour plans | Homepage journeys, `/tours/[slug]` and its day-by-day timeline |
 | Journal entries | `/blog` and `/blog/[slug]` |
 | Contact details | Footer and `/contact` (a singleton — one document) |
@@ -67,12 +88,29 @@ Publishing an entry: **Journal entries → Create**, fill in title, slug (genera
 Schemas live in `src/sanity/schemas/`. Journal queries are in `src/sanity/queries.ts`,
 everything else in `src/sanity/site.ts`.
 
-### Seed scripts
+A destination document has two halves. **Story** — note, intro, highlights,
+good to know — belongs to the editor. **Location** — landscape, province,
+district, town, coordinates, precision — belongs to the atlas and is overwritten
+on every sync. Setting a destination to **Hidden** removes it from the site
+without deleting anything.
 
-Both need a token with write access and are run once, not as part of a build.
-Re-running overwrites studio edits with the original copy.
+### Seed and sync scripts
+
+All need a token with write access and are run by hand, not as part of a build.
 
 ```bash
-SANITY_API_TOKEN=sk... npm run seed:site      # destinations, journeys, contact details
-SANITY_API_TOKEN=sk... npm run seed:journal   # one sample journal entry
+SANITY_API_TOKEN=sk... npm run sync:destinations   # the 174 atlas places
+SANITY_API_TOKEN=sk... npm run seed:site           # journeys, contact details
+SANITY_API_TOKEN=sk... npm run seed:journal        # one sample journal entry
 ```
+
+`sync:destinations` is the one that is safe to re-run: it creates what is
+missing, refreshes the location half of what exists, and never touches copy an
+editor has written. `--dry-run` prints the plan; `--with-images` also uploads
+each sample plate to Sanity (174 uploads, and only for documents with no image
+yet). The two seed scripts do overwrite studio edits — run them once, at
+migration time.
+
+Until the sync has run, `/destinations` still lists every atlas place: Sanity
+documents come first, and anything the studio has never heard of is filled in
+from `public/json`.

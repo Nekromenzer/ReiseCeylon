@@ -361,6 +361,12 @@ export function HomePage({
           <i><b style={{ width: `${((activeDestination + 1) / destinations.length) * 100}%` }} /></i>
           <span>0{destinations.length}</span>
         </div>
+
+        <div className="rc-chapters-foot" data-reveal="0">
+          <Link href="/destinations" className="rc-link rc-link-light">
+            Open the full atlas <span>↗</span>
+          </Link>
+        </div>
       </section>
 
       {/* ——— Experiences, stacked ——— */}

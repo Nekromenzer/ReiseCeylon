@@ -1,0 +1,243 @@
+/**
+ * Syncs public/json/sri-lanka-tourist-places-map.json into Sanity, one
+ * `destination` document per place.
+ *
+ *   SANITY_API_TOKEN=sk... npm run sync:destinations
+ *
+ * Safe to re-run, and designed to be. A destination has two halves:
+ *
+ *   Location — category, province, district, town, coordinates, precision.
+ *              Overwritten on every run, so the atlas stays the source of truth.
+ *   Story    — the note, intro copy, highlights, good-to-know.
+ *              Written once, when the document is created, then never touched.
+ *              Editors keep whatever they wrote in the studio.
+ *
+ * Flags:
+ *   --with-images   also upload public/images/destination/<slug>.jpg as the
+ *                   document photograph (slow: 174 uploads). Skipped for
+ *                   documents that already carry an image.
+ *   --dry-run       print what would change, write nothing.
+ */
+import { createReadStream } from 'node:fs';
+import { access, readFile } from 'node:fs/promises';
+import path from 'node:path';
+import process from 'node:process';
+import { fileURLToPath } from 'node:url';
+import { createClient } from '@sanity/client';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const withImages = process.argv.includes('--with-images');
+const dryRun = process.argv.includes('--dry-run');
+
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? process.env.SANITY_STUDIO_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production';
+const token = process.env.SANITY_API_TOKEN;
+
+if (!projectId) throw new Error('Missing NEXT_PUBLIC_SANITY_PROJECT_ID');
+if (!token && !dryRun) throw new Error('Missing SANITY_API_TOKEN (needs write access)');
+
+const client = createClient({
+  projectId,
+  dataset,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION ?? '2024-10-01',
+  token,
+  useCdn: false
+});
+
+/** The five that lead the homepage rail — mirrors defaultFeaturedSlugs in src/lib/places.ts. */
+const featuredSlugs = [
+  'sigiriya-rock-fortress',
+  'ella',
+  'hikkaduwa-marine-sanctuary',
+  'yala-national-park',
+  'kandy'
+];
+
+/** Documents from before the atlas, and the atlas record that replaces each. */
+const legacyAliases = {
+  sigiriya: 'sigiriya-rock-fortress',
+  hikkaduwa: 'hikkaduwa-marine-sanctuary',
+  yala: 'yala-national-park'
+};
+
+const regionNames = {
+  Central: 'Central Highlands',
+  Eastern: 'East Coast',
+  Northern: 'Northern Province',
+  'North Central': 'Cultural Triangle',
+  'North Western': 'North West Coast',
+  Sabaragamuwa: 'Sabaragamuwa',
+  Southern: 'Southern Coast',
+  Uva: 'Uva Highlands',
+  Western: 'Western Province'
+};
+
+const categoryNotes = {
+  beaches: 'Warm water, long sand and unhurried mornings',
+  'ancient-cities-and-ruins': 'Stone, inscription and the weight of centuries',
+  temples: 'Drums at dusk and a rhythm kept for generations',
+  waterfalls: 'Cold spray, deep green and the sound of falling water',
+  'natural-pools': 'River-fed water worn smooth into rock',
+  'national-parks-and-wildlife': 'Where the wild still sets the pace',
+  'mountains-and-hiking': 'Long climbs that end above the cloud line',
+  'lakes-and-reservoirs': 'Still water, old engineering and evening light',
+  'scenic-viewpoints': 'A long look across the island',
+  'scenic-train-destinations': 'Blue trains, open doors and slow country',
+  islands: 'A short crossing to somewhere quieter',
+  'botanical-gardens-and-parks': 'Planted avenues and a century of shade',
+  'marine-and-coastal-attractions': 'The coast read from the water side'
+};
+
+/* The copy a new document opens with — the same defaults the site renders. */
+const story = (place) => ({
+  region: regionNames[place.province] ?? place.province,
+  note: categoryNotes[place.categoryId] ?? `${place.city || place.district}, Sri Lanka`,
+  introHeading: 'Come for the landscape.\nStay for its quieter stories.',
+  introCopy: `${place.name} is more than a point on a map. We pair its essential landmarks with time to wander, meet people and notice the details that make a place memorable.`,
+  highlights: [
+    { title: 'The essential view', copy: 'Arrive before the day gathers pace and see the landscape in its softest light.' },
+    { title: 'A local table', copy: 'Share seasonal food and conversation in a setting selected for character, not spectacle.' },
+    { title: 'Room to wander', copy: 'A generous afternoon with a thoughtful route and no obligation to hurry.' }
+  ].map((item, index) => ({ _type: 'highlight', _key: `${index}`, ...item })),
+  goodToKnowHeading: 'Best from December to April, beautiful in every season.',
+  goodToKnowCopy:
+    'We plan around weather, local festivals and your preferred pace. Private transfers, handpicked stays, trusted guides and 24/7 in-country support can all be woven into your journey.'
+});
+
+/* Overwritten on every run — the atlas owns these. */
+const location = (place, index) => ({
+  name: place.name,
+  slug: { _type: 'slug', current: place.slug },
+  atlasId: place.id,
+  categoryId: place.categoryId,
+  province: place.province,
+  district: place.district,
+  city: place.city,
+  precision: place.location.precision,
+  status: place.status === 'published' ? 'published' : 'hidden',
+  location: {
+    _type: 'geopoint',
+    lat: place.location.latitude,
+    lng: place.location.longitude
+  },
+  featured: featuredSlugs.includes(place.slug),
+  order: featuredSlugs.includes(place.slug) ? (featuredSlugs.indexOf(place.slug) + 1) * 10 : 100 + index
+});
+
+const exists = (file) =>
+  access(file).then(
+    () => true,
+    () => false
+  );
+
+async function uploadPhotograph(slug, name) {
+  const file = path.join(root, 'public/images/destination', `${slug}.jpg`);
+  if (!(await exists(file))) return null;
+  const asset = await client.assets.upload('image', createReadStream(file), { filename: `${slug}.jpg` });
+  return { _type: 'image', asset: { _type: 'reference', _ref: asset._id }, alt: name };
+}
+
+async function main() {
+  const atlas = JSON.parse(
+    await readFile(path.join(root, 'public/json/sri-lanka-tourist-places-map.json'), 'utf8')
+  );
+
+  console.log(`${dryRun ? 'Dry run against' : 'Syncing to'} ${projectId}/${dataset}`);
+  console.log(`${atlas.places.length} places in the atlas\n`);
+
+  /* One read tells us which documents already exist and which carry an image. */
+  const existing = await client.fetch(
+    '*[_type == "destination"]{ _id, "slug": slug.current, "hasImage": defined(image.asset) }'
+  );
+  const known = new Map(existing.map((row) => [row.slug, row]));
+
+  let created = 0;
+  let updated = 0;
+  let images = 0;
+
+  for (const [index, place] of atlas.places.entries()) {
+    const knownRecord = known.get(place.slug);
+    /* Reuse whatever id the document already has, so a re-slugged doc is updated, not cloned. */
+    const id = knownRecord?._id ?? `destination-${place.slug}`;
+
+    if (dryRun) {
+      console.log(`  ${knownRecord ? 'update' : 'create'}  ${id}`);
+      if (knownRecord) updated += 1;
+      else created += 1;
+      continue;
+    }
+
+    const facts = location(place, index);
+
+    if (!knownRecord) {
+      await client.createIfNotExists({ _id: id, _type: 'destination', ...story(place), ...facts });
+      created += 1;
+    } else {
+      await client.patch(id).set(facts).commit();
+      updated += 1;
+    }
+
+    if (withImages && !knownRecord?.hasImage) {
+      const image = await uploadPhotograph(place.slug, place.name);
+      if (image) {
+        await client.patch(id).set({ image }).commit();
+        images += 1;
+      }
+    }
+
+    if ((index + 1) % 25 === 0) console.log(`  ${index + 1} / ${atlas.places.length}`);
+  }
+
+  /* Fold the pre-atlas documents into the records that replaced them. */
+  const merged = [];
+  for (const [legacy, target] of Object.entries(legacyAliases)) {
+    if (!known.has(legacy) || dryRun) continue;
+    const source = await client.fetch('*[_type == "destination" && slug.current == $slug][0]', {
+      slug: legacy
+    });
+    if (!source) continue;
+
+    await client
+      .patch(known.get(target)?._id ?? `destination-${target}`)
+      .set({
+        introHeading: source.introHeading,
+        introCopy: source.introCopy,
+        goodToKnowHeading: source.goodToKnowHeading,
+        goodToKnowCopy: source.goodToKnowCopy,
+        ...(source.highlights?.length ? { highlights: source.highlights } : {}),
+        ...(source.note ? { note: source.note } : {}),
+        ...(source.region ? { region: source.region } : {}),
+        ...(source.image ? { image: source.image } : {})
+      })
+      .commit();
+
+    /* Hidden rather than deleted — nothing an editor wrote is thrown away. */
+    await client.patch(source._id).set({ status: 'hidden', featured: false }).commit();
+    merged.push(`${legacy} → ${target}`);
+  }
+
+  const tense = dryRun ? 'would be' : '';
+  console.log(
+    `\n${created} ${tense} created, ${updated} ${tense} updated${withImages && !dryRun ? `, ${images} photographs uploaded` : ''}.`
+  );
+
+  const pending = Object.entries(legacyAliases).filter(([legacy]) => known.has(legacy));
+  if (dryRun && pending.length > 0) {
+    console.log(
+      `Pre-atlas documents that would be merged and hidden: ${pending
+        .map(([legacy, target]) => `${legacy} → ${target}`)
+        .join(', ')}.`
+    );
+  }
+  if (merged.length > 0) {
+    console.log(`Merged and hid the pre-atlas documents: ${merged.join(', ')}.`);
+  }
+  if (!withImages) {
+    console.log('Photographs left local — re-run with --with-images to upload them to Sanity.');
+  }
+}
+
+main().catch((error) => {
+  console.error(error.message ?? error);
+  process.exit(1);
+});

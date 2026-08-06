@@ -8,9 +8,9 @@ export function SearchJourney() {
   const router = useRouter();
   const routes: Record<string, string> = {
     'Ella & the hill country': 'ella',
-    'Sigiriya & ancient cities': 'sigiriya',
-    'Mirissa & the south coast': 'mirissa',
-    'Yala & the wild south': 'yala'
+    'Sigiriya & ancient cities': 'sigiriya-rock-fortress',
+    'Mirissa & the south coast': 'mirissa-beach',
+    'Yala & the wild south': 'yala-national-park'
   };
 
   return (

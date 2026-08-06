@@ -4,6 +4,9 @@
  *
  *   SANITY_API_TOKEN=sk... node --experimental-strip-types --env-file=.env scripts/seed-site.mjs
  *
+ * Journeys and contact details only — destinations come from the atlas in
+ * public/json and are owned by `npm run sync:destinations`.
+ *
  * Safe to re-run: document ids are derived from the slugs and replaced, not
  * duplicated. Re-running DOES overwrite studio edits with the original copy —
  * run it once, at migration time.
@@ -12,14 +15,8 @@ import { createReadStream } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import { createClient } from '@sanity/client';
-import { destinations, journeyNotes, tours } from '../src/lib/content.ts';
-import {
-  contactDefaults,
-  defaultHighlights,
-  defaultStages,
-  destinationDefaults,
-  tourDefaults
-} from '../src/lib/defaults.ts';
+import { journeyNotes, tours } from '../src/lib/content.ts';
+import { contactDefaults, defaultStages, tourDefaults } from '../src/lib/defaults.ts';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production';
@@ -65,24 +62,6 @@ async function main() {
   console.log(`Seeding ${projectId}/${dataset}`);
   console.log('Images:');
 
-  const destinationDocs = await Promise.all(
-    destinations.map(async (place, index) => ({
-      _id: `destination-${place.slug}`,
-      _type: 'destination',
-      name: place.name,
-      slug: { _type: 'slug', current: place.slug },
-      region: place.region,
-      note: place.note,
-      image: await imageField(place.image, place.name),
-      order: (index + 1) * 10,
-      introHeading: destinationDefaults.introHeading,
-      introCopy: destinationDefaults.introCopy(place.name),
-      highlights: withKeys(defaultHighlights.map((item) => ({ _type: 'highlight', ...item }))),
-      goodToKnowHeading: destinationDefaults.goodToKnowHeading,
-      goodToKnowCopy: destinationDefaults.goodToKnowCopy
-    }))
-  );
-
   const tourDocs = await Promise.all(
     tours.map(async (journey, index) => ({
       _id: `tour-${journey.slug}`,
@@ -110,15 +89,14 @@ async function main() {
 
   console.log('Documents:');
   const transaction = client.transaction();
-  for (const doc of [...destinationDocs, ...tourDocs, settings]) {
+  for (const doc of [...tourDocs, settings]) {
     console.log(`  ${doc._id}`);
     transaction.createOrReplace(doc);
   }
   await transaction.commit();
 
-  console.log(
-    `Done — ${destinationDocs.length} destinations, ${tourDocs.length} journeys, contact details.`
-  );
+  console.log(`Done — ${tourDocs.length} journeys, contact details.`);
+  console.log('Destinations: run `npm run sync:destinations` to load the atlas.');
 }
 
 main().catch((error) => {

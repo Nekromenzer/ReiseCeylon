@@ -19,7 +19,7 @@ export async function Footer() {
           <div className="footer-brand">Reise<span>Ceylon</span></div>
           <p>Where Memories Find Home.</p>
         </div>
-        <div><strong>Explore</strong><Link href="/#destinations">Destinations</Link><Link href="/#experiences">Experiences</Link><Link href="/#journeys">Journeys</Link></div>
+        <div><strong>Explore</strong><Link href="/destinations">Destinations</Link><Link href="/#experiences">Experiences</Link><Link href="/#journeys">Journeys</Link></div>
         <div><strong>Company</strong><Link href="/about">Our story</Link><Link href="/blog">Journal</Link><Link href="/contact">Contact</Link></div>
         <div>
           <strong>Say hello</strong>

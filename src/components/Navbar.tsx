@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
 const links = [
-  ['Destinations', '/#destinations'],
+  ['Destinations', '/destinations'],
   ['Experiences', '/#experiences'],
   ['Journeys', '/#journeys'],
   ['About', '/about'],

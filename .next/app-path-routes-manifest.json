@@ -4,6 +4,7 @@
   "/(site)/blog/page": "/blog",
   "/(site)/contact/page": "/contact",
   "/(site)/destinations/[slug]/page": "/destinations/[slug]",
+  "/(site)/destinations/page": "/destinations",
   "/(site)/page": "/",
   "/(site)/tours/[slug]/page": "/tours/[slug]",
   "/(studio)/studio/[[...tool]]/page": "/studio/[[...tool]]",
