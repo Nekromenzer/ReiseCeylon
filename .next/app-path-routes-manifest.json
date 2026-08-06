@@ -1,10 +1,13 @@
 {
+  "/(site)/about/page": "/about",
+  "/(site)/blog/[slug]/page": "/blog/[slug]",
+  "/(site)/blog/page": "/blog",
+  "/(site)/contact/page": "/contact",
+  "/(site)/destinations/[slug]/page": "/destinations/[slug]",
+  "/(site)/page": "/",
+  "/(site)/tours/[slug]/page": "/tours/[slug]",
+  "/(studio)/studio/[[...tool]]/page": "/studio/[[...tool]]",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/about/page": "/about",
-  "/blog/page": "/blog",
-  "/contact/page": "/contact",
-  "/destinations/[slug]/page": "/destinations/[slug]",
-  "/page": "/",
-  "/tours/[slug]/page": "/tours/[slug]"
+  "/api/revalidate/route": "/api/revalidate"
 }

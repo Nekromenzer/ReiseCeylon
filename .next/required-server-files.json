@@ -64,7 +64,12 @@
           "search": ""
         }
       ],
-      "remotePatterns": [],
+      "remotePatterns": [
+        {
+          "protocol": "https",
+          "hostname": "cdn.sanity.io"
+        }
+      ],
       "qualities": [
         75
       ],

@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/tours/island-in-slow-motion":{},"/tours/wild-ceylon":{},"/tours/heritage-and-horizon":{},"/destinations/sigiriya":{},"/destinations/ella":{},"/destinations/mirissa":{},"/destinations/yala":{},"/destinations/kandy":{}},"dynamicRoutes":{"/tours/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/tours/[slug]","routeRegex":"^\\/tours\\/([^/]+?)(?:\\/)?$","allowHeader":[]},"/destinations/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/destinations/[slug]","routeRegex":"^\\/destinations\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"12c7d34a5b3784db0e67962897560e82","previewModeSigningKey":"0811ee6e0152adfea031616502f18a43fcaae162c0b13e1c6f1b823824051e2b","previewModeEncryptionKey":"46306851520adb6c3fec06e087ea7ef160b8f10e7930d9f57f6f4d13c80911ef"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "670627ba68263becc77987525571805e",
+    "previewModeSigningKey": "83c4ec9e0eb6ea322baca9b29ef6378e5c7ef9619ff519ddd68dd2b06414aebe",
+    "previewModeEncryptionKey": "5d4309ec1f20801265324c29e5ca1a36990d035d4901eafab9c87a84f64b8512"
+  }
+}

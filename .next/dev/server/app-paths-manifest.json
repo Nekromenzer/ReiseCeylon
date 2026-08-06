@@ -1,8 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/destinations/[slug]/page": "app/destinations/[slug]/page.js",
-  "/page": "app/page.js",
-  "/tours/[slug]/page": "app/tours/[slug]/page.js"
+  "/(site)/blog/page": "app/(site)/blog/page.js",
+  "/(studio)/studio/[[...tool]]/page": "app/(studio)/studio/[[...tool]]/page.js"
 }

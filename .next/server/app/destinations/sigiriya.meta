@@ -2,14 +2,15 @@
   "headers": {
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
-    "x-next-cache-tags": "_N_T_/layout,_N_T_/destinations/layout,_N_T_/destinations/[slug]/layout,_N_T_/destinations/[slug]/page,_N_T_/destinations/sigiriya"
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/destinations/layout,_N_T_/(site)/destinations/[slug]/layout,_N_T_/(site)/destinations/[slug]/page,_N_T_/destinations/sigiriya"
   },
   "segmentPaths": [
     "/_tree",
     "/_full",
-    "/destinations/$d$slug/__PAGE__",
-    "/destinations/$d$slug",
-    "/destinations",
+    "/!KHNpdGUp/destinations/$d$slug/__PAGE__",
+    "/!KHNpdGUp/destinations/$d$slug",
+    "/!KHNpdGUp/destinations",
+    "/!KHNpdGUp",
     "/_index",
     "/_head"
   ]

@@ -64,7 +64,12 @@ self.__SERVER_FILES_MANIFEST={
           "search": ""
         }
       ],
-      "remotePatterns": [],
+      "remotePatterns": [
+        {
+          "protocol": "https",
+          "hostname": "cdn.sanity.io"
+        }
+      ],
       "qualities": [
         75
       ],

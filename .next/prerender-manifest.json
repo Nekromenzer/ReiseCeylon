@@ -110,7 +110,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/blog",
       "dataRoute": "/blog.rsc",
       "allowHeader": [
@@ -340,6 +341,34 @@
     }
   },
   "dynamicRoutes": {
+    "/blog/[slug]": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "routeRegex": "^/blog/([^/]+?)(?:/)?$",
+      "dataRoute": "/blog/[slug].rsc",
+      "fallback": null,
+      "fallbackRootParams": [],
+      "fallbackRouteParams": [],
+      "dataRouteRegex": "^/blog/([^/]+?)\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/destinations/[slug]": {
       "experimentalBypassFor": [
         {
@@ -358,6 +387,34 @@
       "fallbackRootParams": [],
       "fallbackRouteParams": [],
       "dataRouteRegex": "^/destinations/([^/]+?)\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/studio/[[...tool]]": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "routeRegex": "^/studio(?:/(.+?))?(?:/)?$",
+      "dataRoute": "/studio/[[...tool]].rsc",
+      "fallback": null,
+      "fallbackRootParams": [],
+      "fallbackRouteParams": [],
+      "dataRouteRegex": "^/studio(?:/(.+?))?\\.rsc$",
       "prefetchDataRoute": null,
       "allowHeader": [
         "host",
@@ -399,8 +456,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "ed05a95b8e14f735650f7e3dc71fbef7",
-    "previewModeSigningKey": "e31210c2f7d31a6def9d97c14b183cb4bc5425b2eb033398c8353a89f2850d8e",
-    "previewModeEncryptionKey": "627ca3c1c9b5cc262c04752b731022101e264464096248be8abe32eef8c49e03"
+    "previewModeId": "e8dc276155461ec388efc34cb74671e5",
+    "previewModeSigningKey": "f96d3fe6425b2f012b55037aba0bba085c2ed4eb10b8232450caf7d48942a023",
+    "previewModeEncryptionKey": "f207008c970c82b5158703bd173e0660f35b17caf10acce35f00fdbaad308340"
   }
 }
