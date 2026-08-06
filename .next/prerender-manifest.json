@@ -13,7 +13,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/",
       "dataRoute": "/index.rsc",
       "allowHeader": [
@@ -86,7 +87,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/about",
       "dataRoute": "/about.rsc",
       "allowHeader": [
@@ -160,7 +162,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/contact",
       "dataRoute": "/contact.rsc",
       "allowHeader": [
@@ -184,9 +187,35 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/destinations/[slug]",
       "dataRoute": "/destinations/ella.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/destinations/hikkaduwa": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
+      "srcRoute": "/destinations/[slug]",
+      "dataRoute": "/destinations/hikkaduwa.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -208,33 +237,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/destinations/[slug]",
       "dataRoute": "/destinations/kandy.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/destinations/mirissa": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/destinations/[slug]",
-      "dataRoute": "/destinations/mirissa.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -256,7 +262,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/destinations/[slug]",
       "dataRoute": "/destinations/sigiriya.rsc",
       "allowHeader": [
@@ -280,7 +287,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/destinations/[slug]",
       "dataRoute": "/destinations/yala.rsc",
       "allowHeader": [
@@ -304,7 +312,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/tours/[slug]",
       "dataRoute": "/tours/heritage-and-horizon.rsc",
       "allowHeader": [
@@ -328,7 +337,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/tours/[slug]",
       "dataRoute": "/tours/island-in-slow-motion.rsc",
       "allowHeader": [
@@ -352,7 +362,8 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "initialRevalidateSeconds": false,
+      "initialRevalidateSeconds": 3600,
+      "initialExpireSeconds": 31536000,
       "srcRoute": "/tours/[slug]",
       "dataRoute": "/tours/wild-ceylon.rsc",
       "allowHeader": [
@@ -481,8 +492,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "e8dc276155461ec388efc34cb74671e5",
-    "previewModeSigningKey": "f96d3fe6425b2f012b55037aba0bba085c2ed4eb10b8232450caf7d48942a023",
-    "previewModeEncryptionKey": "f207008c970c82b5158703bd173e0660f35b17caf10acce35f00fdbaad308340"
+    "previewModeId": "4fb78e1bce862e291ec8c324f1e4f7ae",
+    "previewModeSigningKey": "a23dba90f2b34406fbc6a7789cf83f0dd0c88b5b93c2e698b6aabed81d1a251a",
+    "previewModeEncryptionKey": "cca147ad4f23fb7b799dc415f9894f233fe28fded70bb1969b353a1c1bbd526d"
   }
 }

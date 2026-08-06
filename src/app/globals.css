@@ -1410,3 +1410,12 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   .article-meta { grid-template-columns: 1fr 1fr; gap: 20px 30px; }
   .article-body { font-size: 16px; }
 }
+
+/* Editor-entered line breaks in Sanity headings are preserved. */
+.detail-intro blockquote { white-space: pre-line; }
+
+/* Contact details block on the enquiry page */
+.contact-details { display: grid; gap: 10px; margin-top: 38px; padding-top: 30px; border-top: 1px solid var(--hairline); }
+.contact-details a { width: fit-content; padding-bottom: 3px; border-bottom: 1px solid var(--hairline); font-size: 14px; font-weight: 600; transition: border-color 400ms var(--ease); }
+.contact-details a:hover { border-color: var(--gold); }
+.contact-details span { color: var(--muted); font-size: 13px; line-height: 1.7; white-space: pre-line; }

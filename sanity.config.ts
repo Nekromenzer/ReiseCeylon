@@ -17,15 +17,33 @@ export default defineConfig({
   projectId,
   dataset,
   schema: { types: schemaTypes },
+  document: {
+    /* Contact details is a singleton — it must not be created or deleted from the studio. */
+    newDocumentOptions: (previous) =>
+      previous.filter((item) => item.templateId !== 'siteSettings'),
+    actions: (previous, { schemaType }) =>
+      schemaType === 'siteSettings'
+        ? previous.filter(({ action }) => action !== 'delete' && action !== 'duplicate' && action !== 'unpublish')
+        : previous
+  },
   plugins: [
     structureTool({
       structure: (S) =>
         S.list()
           .title('Content')
           .items([
+            S.documentTypeListItem('destination').title('Destinations'),
+            S.documentTypeListItem('tour').title('Journeys & tour plans'),
+            S.divider(),
             S.documentTypeListItem('post').title('Journal entries'),
             S.documentTypeListItem('category').title('Categories'),
-            S.documentTypeListItem('author').title('Authors')
+            S.documentTypeListItem('author').title('Authors'),
+            S.divider(),
+            /* Singleton: one fixed document, opened directly rather than as a list. */
+            S.listItem()
+              .title('Contact details')
+              .id('siteSettings')
+              .child(S.document().schemaType('siteSettings').documentId('siteSettings'))
           ])
     }),
     visionTool({ defaultApiVersion: apiVersion })

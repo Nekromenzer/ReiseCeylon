@@ -10,23 +10,27 @@ import Lenis from 'lenis';
 import {
   art,
   attractionCategories,
-  destinations,
   experienceDetail,
   heroPlates,
-  journeyNotes,
   manifestoStats,
   ticker,
-  tours,
   touristAttractions,
   voices,
   type AttractionCategory
 } from '@/lib/content';
+import type { Destination, Tour } from '@/sanity/site';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const manifestoLead = 'We plan the way a local would — slowly, and with one person in mind.';
 
-export function HomePage() {
+export function HomePage({
+  destinations,
+  tours
+}: {
+  destinations: Destination[];
+  tours: Tour[];
+}) {
   const root = useRef<HTMLElement>(null);
   const [plate, setPlate] = useState(0);
   const [activeDestination, setActiveDestination] = useState(0);
@@ -476,7 +480,7 @@ export function HomePage() {
                 <div className="rc-journey-copy">
                   <span>{tour.days} · {tour.route}</span>
                   <h3>{tour.title}</h3>
-                  <p>{journeyNotes[tour.slug]}</p>
+                  <p>{tour.note}</p>
                   <div className="rc-journey-foot">
                     <strong>{tour.price}</strong>
                     <i>↗</i>

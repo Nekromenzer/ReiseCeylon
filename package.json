@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "tsc --noEmit",
     "sanity": "sanity",
-    "seed:journal": "node --env-file=.env scripts/seed-journal.mjs"
+    "seed:journal": "node --env-file=.env scripts/seed-journal.mjs",
+    "seed:site": "node --experimental-strip-types --env-file=.env scripts/seed-site.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

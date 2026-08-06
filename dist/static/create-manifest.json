@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-08-06T18:31:33.524Z",
+  "createdAt": "2026-08-06T19:16:15.301Z",
   "studioVersion": "6.9.1",
   "version": 3,
   "workspaces": [
@@ -13,7 +13,7 @@
       },
       "name": "reiseceylon",
       "projectId": "fghpp67g",
-      "schema": "b3b71e1d.create-schema.json",
+      "schema": "e1586a24.create-schema.json",
       "title": "ReiseCeylon Journal",
       "tools": "ef87c8fe.create-tools.json"
     }
