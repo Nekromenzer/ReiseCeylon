@@ -6,16 +6,24 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "sanity": "sanity"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@portabletext/react": "^7.0.1",
+    "@portabletext/types": "^4.0.2",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.9.1",
     "framer-motion": "^12.23.12",
     "gsap": "^3.15.0",
     "lenis": "^1.3.25",
     "next": "^16.2.12",
+    "next-sanity": "^13.3.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "sanity": "^6.9.1",
+    "styled-components": "^6.5.0"
   },
   "devDependencies": {
     "@types/node": "^22.17.1",

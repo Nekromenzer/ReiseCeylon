@@ -1,36 +1,36 @@
 {
   "app": {
-    "[project]/src/app/_not-found/page": [
+    "[project]/src/app/(site)/about/page": [
       "static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2",
       "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
       "static/media/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2"
     ],
-    "[project]/src/app/about/page": [
+    "[project]/src/app/(site)/blog/[slug]/page": [
       "static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2",
       "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
       "static/media/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2"
     ],
-    "[project]/src/app/blog/page": [
+    "[project]/src/app/(site)/blog/page": [
       "static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2",
       "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
       "static/media/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2"
     ],
-    "[project]/src/app/contact/page": [
+    "[project]/src/app/(site)/contact/page": [
       "static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2",
       "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
       "static/media/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2"
     ],
-    "[project]/src/app/destinations/[slug]/page": [
+    "[project]/src/app/(site)/destinations/[slug]/page": [
       "static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2",
       "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
       "static/media/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2"
     ],
-    "[project]/src/app/page": [
+    "[project]/src/app/(site)/page": [
       "static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2",
       "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
       "static/media/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2"
     ],
-    "[project]/src/app/tours/[slug]/page": [
+    "[project]/src/app/(site)/tours/[slug]/page": [
       "static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2",
       "static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2",
       "static/media/a343f882a40d2cc9-s.p.1sj6eobyi31rd.woff2"
