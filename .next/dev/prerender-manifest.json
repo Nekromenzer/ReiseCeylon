@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "670627ba68263becc77987525571805e",
-    "previewModeSigningKey": "83c4ec9e0eb6ea322baca9b29ef6378e5c7ef9619ff519ddd68dd2b06414aebe",
-    "previewModeEncryptionKey": "5d4309ec1f20801265324c29e5ca1a36990d035d4901eafab9c87a84f64b8512"
-  }
-}
+{"version":4,"routes":{"/blog/first-light-over-an-ancient-kingdom":{}},"dynamicRoutes":{"/blog/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/blog/[slug]","routeRegex":"^\\/blog\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"de0521c651eb8c5eeadbb7664bd2683e","previewModeSigningKey":"12cae6be8c594e1092b4ac4086d7556a725e1ab71042cc534a326d56c66cea4d","previewModeEncryptionKey":"c963e10e501c61050316d69a05542aeefecf34f3b4768bb27bf8581788305518"}}

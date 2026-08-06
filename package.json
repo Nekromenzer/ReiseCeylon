@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "sanity": "sanity"
+    "sanity": "sanity",
+    "seed:journal": "node --env-file=.env scripts/seed-journal.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@portabletext/react": "^7.0.1",
     "@portabletext/types": "^4.0.2",
+    "@sanity/client": "^7.26.2",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.9.1",
     "framer-motion": "^12.23.12",

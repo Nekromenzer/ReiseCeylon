@@ -1,4 +1,6 @@
 {
+  "/(site)/blog/[slug]/page": "app/(site)/blog/[slug]/page.js",
   "/(site)/blog/page": "app/(site)/blog/page.js",
+  "/(site)/page": "app/(site)/page.js",
   "/(studio)/studio/[[...tool]]/page": "app/(studio)/studio/[[...tool]]/page.js"
 }

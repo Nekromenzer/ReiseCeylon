@@ -11,8 +11,12 @@ export const viewport = { width: 'device-width', initialScale: 1, viewportFit: '
 
 export default function StudioRootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body style={{ margin: 0 }}>{children}</body>
+    /* Security and password extensions inject attributes into html/body before
+       React hydrates, which React otherwise reports as a mismatch. */
+    <html lang="en" suppressHydrationWarning>
+      <body style={{ margin: 0 }} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

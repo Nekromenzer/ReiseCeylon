@@ -1,7 +1,7 @@
 [
   {
     "route": "/studio/[[...tool]]",
-    "firstLoadUncompressedJsBytes": 5693273,
+    "firstLoadUncompressedJsBytes": 5693509,
     "firstLoadChunkPaths": [
       ".next/static/chunks/2yl1jv4w6po1z.js",
       ".next/static/chunks/1ntn7efqc-iiw.js",
@@ -33,7 +33,7 @@
       ".next/static/chunks/0orqz5251ka5q.js",
       ".next/static/chunks/0xanq4oxmhxee.js",
       ".next/static/chunks/0oa5ryukuckw3.js",
-      ".next/static/chunks/2_4qudw10ty8h.js",
+      ".next/static/chunks/458bcdub6vx1i.js",
       ".next/static/chunks/0zvebenefsb6f.js",
       ".next/static/chunks/1ekhfsxb4sjwt.js",
       ".next/static/chunks/2ejk_26znfoeu.js",
