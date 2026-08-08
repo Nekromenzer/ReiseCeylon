@@ -26,6 +26,13 @@ import { getContactDetails } from '@/sanity/site';
 const apiKey = process.env.RESEND_API_KEY ?? process.env.RESEND_API;
 const from = process.env.JOURNEY_ENQUIRY_FROM ?? 'ReiseCeylon <onboarding@resend.dev>';
 
+/**
+ * Node, not edge — the Resend SDK is a Node client, and an edge deployment would
+ * fail every send with an opaque runtime error rather than the API's own message.
+ */
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 type Leg = { from: string; to: string; km: number; minutes: number };
 
 type Enquiry = {
@@ -276,6 +283,60 @@ function renderText(enquiry: Enquiry, audience: Audience = {}) {
   ].join('\n');
 }
 
+/**
+ * Resend's own failures, translated into something the server log can be read
+ * for. The two that actually happen in this project:
+ *
+ *   restricted   the shared onboarding@resend.dev sender only ever delivers to
+ *                the address that owns the Resend account. Every other recipient
+ *                — including the traveller — is refused until a domain is
+ *                verified at resend.com/domains and JOURNEY_ENQUIRY_FROM points
+ *                at it.
+ *   unverified   JOURNEY_ENQUIRY_FROM names a domain Resend does not hold.
+ */
+function describeSendFailure(error: unknown) {
+  const message = String((error as { message?: unknown })?.message ?? error ?? '');
+  if (/only send testing emails|your own email address/i.test(message)) {
+    return `${message} — verify a domain at resend.com/domains and set JOURNEY_ENQUIRY_FROM to an address on it.`;
+  }
+  if (/domain is not verified|not verified/i.test(message)) {
+    return `${message} — JOURNEY_ENQUIRY_FROM is "${from}", which Resend will not send as.`;
+  }
+  return message || 'Resend returned no reason.';
+}
+
+/**
+ * One send, which never throws. Each recipient's fate is decided on its own:
+ * previously an admin failure returned early and the traveller's copy was never
+ * attempted, so a single misconfiguration silently cost both emails.
+ */
+async function send(
+  resend: Resend,
+  label: 'admin' | 'traveller',
+  payload: Parameters<Resend['emails']['send']>[0]
+) {
+  try {
+    const { data, error } = await resend.emails.send(payload);
+    if (error) {
+      console.error(`[journey-enquiry] ${label} email refused`, {
+        to: payload.to,
+        from: payload.from,
+        reason: describeSendFailure(error)
+      });
+      return false;
+    }
+    console.info(`[journey-enquiry] ${label} email sent`, { to: payload.to, id: data?.id });
+    return true;
+  } catch (cause) {
+    console.error(`[journey-enquiry] ${label} email failed`, {
+      to: payload.to,
+      from: payload.from,
+      reason: describeSendFailure(cause)
+    });
+    return false;
+  }
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -306,50 +367,52 @@ export async function POST(request: Request) {
   const contact = await getContactDetails();
   const to = process.env.JOURNEY_ENQUIRY_TO ?? contact.email;
 
-  try {
-    const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
+  if (!isEmail(to)) {
+    console.error('[journey-enquiry] no usable destination address', {
+      JOURNEY_ENQUIRY_TO: process.env.JOURNEY_ENQUIRY_TO ?? null,
+      contactEmail: contact.email
+    });
+    return NextResponse.json(
+      { error: 'Email is not configured on this site yet. Please write to us directly.' },
+      { status: 503 }
+    );
+  }
+
+  const resend = new Resend(apiKey);
+
+  /*
+   * Both sends are attempted, always, and neither can cancel the other. The
+   * enquiry reaching ReiseCeylon is what decides the response — a traveller's
+   * copy that bounces must not tell them their journey was lost — but a refused
+   * enquiry no longer swallows their copy either.
+   */
+  const [adminSent, copySent] = await Promise.all([
+    send(resend, 'admin', {
       from,
       to,
       replyTo: enquiry.email,
       subject: `${enquiry.journey.kind === 'custom' ? 'Custom journey' : 'Journey'} — ${enquiry.journey.title} (${enquiry.name})`,
       html: renderHtml(enquiry),
       text: renderText(enquiry)
-    });
+    }),
+    send(resend, 'traveller', {
+      from,
+      to: enquiry.email,
+      replyTo: to,
+      subject: `Your Sri Lanka journey — ${enquiry.journey.title}`,
+      html: renderHtml(enquiry, { forTraveller: true }),
+      text: renderText(enquiry, { forTraveller: true })
+    })
+  ]);
 
-    if (error) {
-      console.error('[journey-enquiry] resend rejected the message', error);
-      return NextResponse.json({ error: 'That did not send. Please try again.' }, { status: 502 });
-    }
-
+  if (!adminSent) {
     /*
-     * The traveller's own copy. Deliberately after the enquiry and deliberately
-     * not awaited into the result: their itinerary reaching us is the thing that
-     * matters, and a bounced copy must not tell them the whole send failed.
-     *
-     * Until a domain is verified with Resend this one will fail every time — a
-     * test-mode key may only deliver to the account owner — which is exactly why
-     * it is isolated.
+     * The itinerary did not reach us. The traveller is told plainly rather than
+     * shown a success screen for an enquiry nobody will ever read — the reason
+     * is in the server log, addressed to whoever holds the Resend account.
      */
-    const copy = await resend.emails
-      .send({
-        from,
-        to: enquiry.email,
-        replyTo: to,
-        subject: `Your Sri Lanka journey — ${enquiry.journey.title}`,
-        html: renderHtml(enquiry, { forTraveller: true }),
-        text: renderText(enquiry, { forTraveller: true })
-      })
-      .catch((cause) => ({ error: cause }));
-
-    if (copy.error) {
-      console.error('[journey-enquiry] traveller copy not delivered', copy.error);
-      return NextResponse.json({ ok: true, copySent: false });
-    }
-
-    return NextResponse.json({ ok: true, copySent: true });
-  } catch (cause) {
-    console.error('[journey-enquiry] send failed', cause);
     return NextResponse.json({ error: 'That did not send. Please try again.' }, { status: 502 });
   }
+
+  return NextResponse.json({ ok: true, copySent });
 }
