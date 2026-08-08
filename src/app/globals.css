@@ -2624,7 +2624,11 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
 .rc-plan-modal {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  /* Leaflet numbers its own panes from 400 and its control corners up to 1000,
+     and none of them sit in a stacking context this dialog could out-rank at
+     50 — the map painted straight over the form and swallowed the clicks meant
+     for it. 1100 clears Leaflet's ceiling. */
+  z-index: 1100;
   display: grid;
   place-items: center;
   padding: 20px;
@@ -2744,6 +2748,37 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
   transition: color 300ms var(--ease), box-shadow 300ms var(--ease);
 }
 .rc-plan-enquiry-sent button:hover { color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+
+/* Taking the itinerary away is the primary action on the sent screen; going
+   back to planning is the quieter one beside it. */
+.rc-plan-enquiry-done { display: flex; flex-direction: column; gap: 10px; align-items: stretch; }
+.rc-plan-enquiry-sent button.rc-plan-enquiry-download {
+  color: var(--deep);
+  background: var(--gold);
+  box-shadow: none;
+  font-weight: 600;
+}
+.rc-plan-enquiry-sent button.rc-plan-enquiry-download:hover { color: var(--deep); background: var(--light-gold); }
+
+/* The print document lives in a frame that must stay rendered — a display:none
+   or zero-size frame is skipped by the print engine in several browsers. */
+.rc-print-frame {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
+}
+
+/* Dialling code beside the number: the code sizes to its content, the number
+   takes the rest. A typed-in code slots between them when “Elsewhere” is picked. */
+.rc-plan-enquiry-phone { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 10px; }
+.rc-plan-enquiry-phone:has(.rc-plan-enquiry-dial) {
+  grid-template-columns: minmax(0, 1.15fr) 84px minmax(0, 1fr);
+}
+.rc-plan-enquiry-phone select { min-width: 0; }
 
 /* ——— Somewhere else: OpenStreetMap search ——— */
 
@@ -2934,6 +2969,9 @@ html.dark .rc-plan-transfer-tag { color: var(--light-gold) !important; backgroun
   .rc-plan-pane-map .rc-plan-map-holder { top: 74px; }
   .rc-plan-enquiry { padding: 22px 18px; border-radius: 18px; }
   .rc-plan-enquiry-pair { grid-template-columns: 1fr; }
+  /* The country list needs the full width on a phone; the number goes beneath it. */
+  .rc-plan-enquiry-phone,
+  .rc-plan-enquiry-phone:has(.rc-plan-enquiry-dial) { grid-template-columns: 1fr; }
   .rc-plan-itinerary header { flex-direction: column; }
 }
 

@@ -1,7 +1,7 @@
 [
   {
     "route": "/studio/[[...tool]]",
-    "firstLoadUncompressedJsBytes": 5812798,
+    "firstLoadUncompressedJsBytes": 5812827,
     "firstLoadChunkPaths": [
       ".next/static/chunks/2yl1jv4w6po1z.js",
       ".next/static/chunks/1ntn7efqc-iiw.js",
@@ -19,7 +19,7 @@
       ".next/static/chunks/01axzkwb-dc24.js",
       ".next/static/chunks/0g1zy4uf20jrc.js",
       ".next/static/chunks/0c70-jta9nwnb.js",
-      ".next/static/chunks/1vugv238uxn-o.js",
+      ".next/static/chunks/40np48t3zhkmy.js",
       ".next/static/chunks/1-pa3330ez8o8.js",
       ".next/static/chunks/37w71igqitwn1.js",
       ".next/static/chunks/1et63kc650z44.js",
@@ -163,12 +163,13 @@
   },
   {
     "route": "/journeys",
-    "firstLoadUncompressedJsBytes": 570529,
+    "firstLoadUncompressedJsBytes": 579653,
     "firstLoadChunkPaths": [
       ".next/static/chunks/2yl1jv4w6po1z.js",
       ".next/static/chunks/1ntn7efqc-iiw.js",
       ".next/static/chunks/1mcv9gb-iwgyc.js",
-      ".next/static/chunks/0w6z4mmp8l3u0.js",
+      ".next/static/chunks/3riu-c1zx100t.js",
+      ".next/static/chunks/2eoub8jvfz0o1.js",
       ".next/static/chunks/0_fwg-x3zjntx.js",
       ".next/static/chunks/1ekhfsxb4sjwt.js",
       ".next/static/chunks/2ejk_26znfoeu.js",

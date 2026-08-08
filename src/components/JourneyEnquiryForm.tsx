@@ -9,10 +9,20 @@
  * looking at are posted with the form, and `/api/journey-enquiry` formats
  * exactly those into the email — so what lands in the inbox is what was on the
  * screen.
+ *
+ * The same itinerary is kept here after the send, so the traveller can take a
+ * printable copy away whether or not their emailed one arrives.
  */
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { formatDuration, formatKm, type RouteTotals, type Waypoint } from '@/lib/journey';
+import {
+  DEFAULT_DIAL_CODE,
+  LEADING_DIAL_CODES,
+  OTHER_DIAL_CODE,
+  OTHER_DIAL_CODES
+} from '@/lib/dial-codes';
+import { itineraryFileName, renderItineraryPrintable, type Itinerary } from '@/lib/itinerary';
 
 /** Both optional — a traveller who has not thought about either can still send. */
 export const VEHICLE_OPTIONS = [
@@ -33,28 +43,7 @@ export const BUDGET_OPTIONS = [
   'Tell me what this route costs'
 ];
 
-export type EnquiryPayload = {
-  name: string;
-  email: string;
-  dates: string;
-  travellers: string;
-  vehicle: string;
-  budget: string;
-  message: string;
-  journey: {
-    kind: 'package' | 'custom';
-    title: string;
-    stops: Array<{ name: string; slug: string }>;
-    roadKm: number;
-    minutes: number;
-    suggestedDays: number;
-    /** A ready-made journey's own stated length, which beats the estimate. */
-    declaredDays?: string;
-    /** Whether the route is quoted airport to airport. */
-    airportTransfers: boolean;
-    legs: Array<{ from: string; to: string; km: number; minutes: number }>;
-  };
-};
+export type EnquiryPayload = Itinerary;
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -88,15 +77,33 @@ export function JourneyEnquiryForm({
   const [sent, setSent] = useState<Sent>({ copySent: false });
   const [error, setError] = useState('');
 
+  /* `other` swaps the country list for a free prefix — see dial-codes.ts. */
+  const [dialCode, setDialCode] = useState<string>(DEFAULT_DIAL_CODE);
+
+  /**
+   * What was actually sent, kept for the printable copy. Re-reading the form
+   * would not do: it is unmounted by the time the download button exists.
+   */
+  const [submitted, setSubmitted] = useState<Itinerary | null>(null);
+
+  /* The print document is rendered into an iframe rather than a popup, which no
+     blocker intercepts and which leaves the planner untouched behind it. */
+  const printFrame = useRef<HTMLIFrameElement | null>(null);
+
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     setStatus('sending');
     setError('');
 
-    const payload: EnquiryPayload = {
+    /* Country code and number are collected apart and travel as one string. */
+    const prefix = dialCode === OTHER_DIAL_CODE ? String(form.get('dialCode') ?? '').trim() : dialCode;
+    const number = String(form.get('phone') ?? '').trim();
+
+    const payload: Itinerary = {
       name: String(form.get('name') ?? ''),
       email: String(form.get('email') ?? ''),
+      phone: `${prefix} ${number}`.trim(),
       dates: String(form.get('dates') ?? ''),
       travellers: String(form.get('travellers') ?? ''),
       vehicle: String(form.get('vehicle') ?? ''),
@@ -130,12 +137,36 @@ export function JourneyEnquiryForm({
       const body = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(body.error || 'That did not send. Please try again.');
 
+      setSubmitted(payload);
       setSent({ copySent: body.copySent === true });
       setStatus('sent');
     } catch (cause) {
       setStatus('error');
       setError(cause instanceof Error ? cause.message : 'That did not send. Please try again.');
     }
+  }
+
+  /**
+   * The itinerary as paper. The browser's own print dialogue is what writes the
+   * PDF — every one of them can, none of them needs a library shipped to the
+   * traveller to do it, and the result stays selectable text.
+   */
+  function downloadPdf() {
+    if (!submitted) return;
+
+    const frame = printFrame.current;
+    const view = frame?.contentWindow;
+    if (!frame || !view) return;
+
+    /* The document title becomes the suggested filename in the print dialogue. */
+    view.document.open();
+    view.document.write(renderItineraryPrintable(submitted));
+    view.document.close();
+    view.document.title = itineraryFileName(submitted.journey);
+
+    /* Safari needs the frame focused before it will accept print(). */
+    view.focus();
+    view.print();
   }
 
   if (status === 'sent') {
@@ -148,9 +179,18 @@ export function JourneyEnquiryForm({
           road.{sent.copySent ? ' A copy is on its way to your inbox.' : ''} A ReiseCeylon travel
           designer will write back within one working day.
         </p>
-        <button type="button" onClick={onClose}>
-          Back to planning
-        </button>
+
+        <div className="rc-plan-enquiry-done">
+          <button type="button" className="rc-plan-enquiry-download" onClick={downloadPdf}>
+            Download your plan (PDF) ↓
+          </button>
+          <button type="button" onClick={onClose}>
+            Back to planning
+          </button>
+        </div>
+
+        {/* Off-screen rather than hidden: a display:none frame will not print. */}
+        <iframe ref={printFrame} title="Printable itinerary" aria-hidden className="rc-print-frame" />
       </div>
     );
   }
@@ -185,6 +225,53 @@ export function JourneyEnquiryForm({
           Email address
           <input name="email" type="email" required placeholder="you@example.com" />
         </label>
+
+        {/* Country code and number, so what reaches us can actually be dialled. */}
+        <label>
+          Mobile number
+          <div className="rc-plan-enquiry-phone">
+            <select
+              name="dialCountry"
+              value={dialCode}
+              onChange={(event) => setDialCode(event.target.value)}
+              aria-label="Country dialling code"
+            >
+              {LEADING_DIAL_CODES.map((entry) => (
+                <option key={entry.country} value={entry.code}>
+                  {entry.code} · {entry.country}
+                </option>
+              ))}
+              <optgroup label="More countries">
+                {OTHER_DIAL_CODES.map((entry) => (
+                  <option key={entry.country} value={entry.code}>
+                    {entry.code} · {entry.country}
+                  </option>
+                ))}
+              </optgroup>
+              <option value={OTHER_DIAL_CODE}>Elsewhere — type the code</option>
+            </select>
+            {dialCode === OTHER_DIAL_CODE ? (
+              <input
+                name="dialCode"
+                required
+                inputMode="tel"
+                pattern="\+?\d{1,4}"
+                placeholder="+00"
+                aria-label="Country dialling code"
+                className="rc-plan-enquiry-dial"
+              />
+            ) : null}
+            <input
+              name="phone"
+              type="tel"
+              required
+              inputMode="tel"
+              autoComplete="tel-national"
+              placeholder="77 123 4567"
+            />
+          </div>
+        </label>
+
         <label>
           When are you thinking?
           <input name="dates" placeholder="Month or approximate dates" />
@@ -234,7 +321,7 @@ export function JourneyEnquiryForm({
           {status === 'sending' ? 'Sending…' : 'Send this journey ↗'}
         </button>
         <p className="rc-plan-enquiry-fineprint">
-          We will email you a copy of this itinerary at the address above.
+          We will email you a copy of this itinerary, and you can download it as a PDF straight after.
         </p>
       </form>
     </div>
