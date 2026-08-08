@@ -23,6 +23,19 @@
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
   --gutter: max(4vw, 20px);
   --measure: 1560px;
+
+  /* --------------------------------------------------------------------------
+     Ink accents — the accent hues at a lightness that can carry text.
+     --gold, --ocean and the terracotta are picked for *fills*: on ivory they
+     land at 2.2–2.9:1, below even the 3:1 large-text floor, so they may never
+     colour a glyph or a focus ring on a light surface. These are the same three
+     hues darkened until they clear 4.5:1 on white, ivory AND sand, and they
+     flip to the light end of the ramp under html.dark. Rule of thumb: fills and
+     washes use --gold/--ocean, anything a reader has to *read* uses --*-ink.
+     -------------------------------------------------------------------------- */
+  --gold-ink: #816322;
+  --ocean-ink: #16727e;
+  --danger-ink: #ac4b35;
 }
 
 html.dark {
@@ -32,6 +45,11 @@ html.dark {
   --ink: #fafaf8;
   --muted: #c3cec8;
   --hairline: rgba(250, 250, 248, 0.16);
+
+  /* Same roles, other end of each ramp — 5.4:1 or better on all three darks. */
+  --gold-ink: #f6d888;
+  --ocean-ink: #7ddbe6;
+  --danger-ink: #f2b09c;
 }
 
 * { box-sizing: border-box; }
@@ -63,14 +81,14 @@ button { cursor: pointer; }
 ::selection { background: var(--gold); color: var(--deep); }
 
 :focus-visible {
-  outline: 2px solid var(--ocean);
+  outline: 2px solid var(--ocean-ink);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 .eyebrow {
   margin: 0 0 24px;
-  color: var(--gold);
+  color: var(--gold-ink);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.22em;
@@ -117,7 +135,16 @@ button { cursor: pointer; }
 .brand-mark { width: 42px; height: 42px; border-radius: 50%; overflow: hidden; background: #fff; }
 .brand-mark img { width: 72px; height: 72px; max-width: none; transform: translate(-15px, -11px); object-fit: cover; }
 .brand-type { font-family: var(--font-display); font-size: 25px; font-weight: 700; line-height: 1; letter-spacing: -.04em; }
-.brand-type span, .footer-brand span { color: var(--gold); }
+/* The footer is always deep forest, in either theme, so the fill gold reads
+   there (6.1:1) while the ink gold would go dark-on-dark. */
+.footer-brand span { color: var(--gold); }
+
+/* The wordmark's accent follows whichever skin the nav island is wearing:
+   light-gold over the dark glass that floats on an inner page's hero, ink gold
+   once it turns opaque (scrolled, or anywhere on the landing page). */
+.brand-type span { color: var(--light-gold); }
+.nav-scrolled .brand-type span,
+body:has(.rc-home) .brand-type span { color: var(--gold-ink); }
 .nav-links { display: flex; align-items: center; gap: 2px; }
 .nav-links a { position: relative; padding: 11px 13px; font-size: 12px; font-weight: 600; opacity: .82; transition: opacity 400ms var(--ease); }
 
@@ -214,7 +241,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 }
 
 .rc-eyebrow-ink {
-  color: var(--gold);
+  color: var(--gold-ink);
   background: color-mix(in srgb, var(--gold) 10%, transparent);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 32%, transparent);
 }
@@ -271,7 +298,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   transition: border-color 600ms var(--ease), gap 600ms var(--ease);
 }
 
-.rc-link span { color: var(--gold); transition: transform 600ms var(--ease); }
+.rc-link span { color: var(--gold-ink); transition: transform 600ms var(--ease); }
 .rc-link:hover { gap: 20px; border-color: var(--gold); }
 .rc-link:hover span { transform: translate(2px, -2px); }
 .rc-link-light { color: #fafaf8; border-color: rgba(255, 255, 255, .28); }
@@ -485,7 +512,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 
 /* Each word animates on its own, so it keeps its trailing space */
 .rc-word { display: inline-block; white-space: pre; }
-.rc-manifesto-line em { color: var(--gold); }
+.rc-manifesto-line em { color: var(--gold-ink); }
 .rc-signature { display: flex; align-items: center; gap: 16px; margin-top: clamp(48px, 6vw, 76px); }
 .rc-signature-face { position: relative; width: 60px; height: 60px; overflow: hidden; border-radius: 50%; background: var(--forest); box-shadow: inset 0 0 0 1px var(--hairline); }
 .rc-signature-face img { object-fit: cover; }
@@ -497,7 +524,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 
 .rc-stats { margin: 44px 0 40px; display: flex; flex-direction: column; }
 .rc-stats > div { display: flex; align-items: baseline; gap: 22px; padding: 18px 0; border-top: 1px solid var(--hairline); }
-.rc-stats dt { min-width: 74px; margin: 0; color: var(--gold); font-family: var(--font-display); font-size: 38px; font-weight: 600; line-height: 1; }
+.rc-stats dt { min-width: 74px; margin: 0; color: var(--gold-ink); font-family: var(--font-display); font-size: 38px; font-weight: 600; line-height: 1; }
 .rc-stats dd { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
 
 /* --- Destination chapters --- */
@@ -782,7 +809,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   letter-spacing: -.035em;
 }
 
-.rc-atlas-map h2 em { color: var(--gold); font-style: italic; }
+.rc-atlas-map h2 em { color: var(--gold-ink); font-style: italic; }
 
 .rc-atlas-intro {
   max-width: 470px;
@@ -973,7 +1000,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .rc-journey-media img { object-fit: cover; transition: transform 1.2s var(--ease); }
 .rc-journey:hover .rc-journey-media img { transform: scale(1.06); }
 .rc-journey-copy { display: flex; flex-direction: column; padding: clamp(24px, 2.4vw, 36px); }
-.rc-journey-copy > span { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.rc-journey-copy > span { color: var(--gold-ink); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 
 .rc-journey-copy h3 {
   margin: 14px 0 10px;
@@ -1121,7 +1148,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .page-hero-content > p { max-width: 620px; margin: 0; font-size: 15px; line-height: 1.7; opacity: .75; }
 
 .detail-intro { max-width: 1400px; margin: auto; padding: 130px var(--gutter); display: grid; grid-template-columns: .7fr 1.3fr; gap: 12vw; }
-.detail-intro > div:first-child { color: var(--gold); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+.detail-intro > div:first-child { color: var(--gold-ink); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
 .detail-intro blockquote { margin: 0; font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 5.2rem); line-height: 1; }
 .detail-intro p { max-width: 650px; color: var(--muted); font-size: 15px; line-height: 1.9; }
 
@@ -1130,13 +1157,13 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 
 .highlight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 1400px; margin: auto; }
 .highlight-card { min-height: 300px; padding: 34px; border-radius: 28px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--hairline); }
-.highlight-card span { color: var(--gold); font-family: var(--font-display); font-size: 28px; }
+.highlight-card span { color: var(--gold-ink); font-family: var(--font-display); font-size: 28px; }
 .highlight-card h3 { margin: 85px 0 12px; font-family: var(--font-display); font-size: 32px; }
 .highlight-card p { color: var(--muted); font-size: 13px; line-height: 1.8; }
 
 .timeline { max-width: 1100px; margin: auto; }
 .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 35px; padding: 50px 0; border-bottom: 1px solid var(--hairline); }
-.timeline-item > span { color: var(--gold); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+.timeline-item > span { color: var(--gold-ink); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
 .timeline-item h3 { margin: 0 0 10px; font-family: var(--font-display); font-size: 37px; }
 .timeline-item p { color: var(--muted); line-height: 1.8; }
 
@@ -1157,7 +1184,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .destination-card:hover i { transform: translate(3px, -3px); }
 
 .text-link { display: flex; align-items: center; gap: 12px; width: fit-content; margin: 45px auto 0; padding-bottom: 6px; border-bottom: 1px solid currentColor; font-size: 12px; font-weight: 700; }
-.text-link span { color: var(--gold); }
+.text-link span { color: var(--gold-ink); }
 .dark-cta { padding: 8px 8px 8px 20px; color: var(--deep); background: var(--light-gold); }
 
 .search-card { display: grid; grid-template-columns: 1.2fr 1fr .8fr auto; gap: 4px; padding: 7px; border-radius: 22px; color: var(--ink); background: rgba(250, 250, 248, .94); box-shadow: 0 30px 90px rgba(0, 0, 0, .22), inset 0 0 0 1px rgba(255, 255, 255, .65); }
@@ -1177,7 +1204,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .contact-form textarea { min-height: 90px; resize: vertical; }
 .contact-form button { width: 100%; padding: 17px; border: 0; border-radius: 999px; color: #fff; background: var(--forest); font-weight: 700; }
 .contact-success { min-height: 610px; display: flex; flex-direction: column; justify-content: center; padding: 45px; border-radius: 27px; background: var(--surface); text-align: center; }
-.contact-success span { color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.contact-success span { color: var(--gold-ink); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .contact-success h2 { margin: 22px 0 14px; font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5rem); font-weight: 600; line-height: .9; }
 .contact-success p { max-width: 440px; margin: 0 auto 35px; color: var(--muted); font-size: 13px; line-height: 1.8; }
 
@@ -1196,7 +1223,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .footer-grid > div { display: flex; flex-direction: column; gap: 12px; color: rgba(255, 255, 255, .62); font-size: 11px; }
 .footer-grid strong { margin-bottom: 8px; color: #fff; font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
 .footer-brand { color: #fff; font-family: var(--font-display); font-size: 37px; font-weight: 600; }
-.footer-bottom { max-width: 1440px; margin: auto; display: flex; justify-content: space-between; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, .12); color: rgba(255, 255, 255, .38); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+.footer-bottom { max-width: 1440px; margin: auto; display: flex; justify-content: space-between; padding-top: 25px; border-top: 1px solid rgba(255, 255, 255, .12); color: rgba(255, 255, 255, .5); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
 
 /* ==========================================================================
    Responsive
@@ -1343,7 +1370,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .article-meta { position: sticky; top: 130px; display: grid; gap: 26px; }
 .article-meta > div { display: grid; gap: 4px; }
 .article-meta strong {
-  color: var(--gold);
+  color: var(--gold-ink);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .18em;
@@ -1380,11 +1407,13 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 .article-link {
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: var(--gold);
+  /* This underline is the only thing marking a link inside body copy, so it has
+     to be visible against the page, not just decorative. */
+  text-decoration-color: var(--gold-ink);
   text-underline-offset: 4px;
   transition: color 300ms var(--ease);
 }
-.article-link:hover { color: var(--gold); }
+.article-link:hover { color: var(--gold-ink); }
 
 .article-figure { margin: 55px 0; }
 .article-figure img {
@@ -1527,8 +1556,8 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   box-shadow: inset 0 0 0 1px var(--hairline);
   transition: box-shadow 400ms var(--ease);
 }
-.atlas-search:focus-within { box-shadow: inset 0 0 0 1px var(--gold); }
-.atlas-search > span { color: var(--gold); font-size: 18px; }
+.atlas-search:focus-within { box-shadow: inset 0 0 0 1px var(--gold-ink); }
+.atlas-search > span { color: var(--gold-ink); font-size: 18px; }
 .atlas-search input {
   flex: 1;
   min-width: 0;
@@ -1572,7 +1601,9 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   font-weight: 600;
   transition: color 350ms var(--ease), background-color 350ms var(--ease), box-shadow 350ms var(--ease);
 }
-.atlas-chips button i { font-size: 9px; font-style: normal; opacity: .55; }
+/* These carry the result count, so they are read, not decoration — the 9px size
+   already makes them secondary without dimming them below legibility. */
+.atlas-chips button i { font-size: 9px; font-style: normal; }
 .atlas-chips button:hover { color: var(--ink); box-shadow: inset 0 0 0 1px var(--gold); }
 .atlas-chips button.is-active { color: var(--deep); background: var(--light-gold); box-shadow: none; }
 .atlas-chips button.is-active i { opacity: .7; }
@@ -1673,7 +1704,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   letter-spacing: .12em;
   text-transform: uppercase;
 }
-.atlas-card-meta i { color: var(--gold); font-style: normal; transition: transform 400ms var(--ease); }
+.atlas-card-meta i { color: var(--gold-ink); font-style: normal; transition: transform 400ms var(--ease); }
 .atlas-card:hover .atlas-card-meta i { transform: translate(3px, -3px); }
 
 .atlas-more { display: grid; justify-items: center; gap: 12px; padding-top: clamp(42px, 5vw, 70px); }
@@ -1713,7 +1744,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 }
 
 .detail-facts dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 26px 32px; margin: 0; }
-.detail-facts dt { margin-bottom: 7px; color: var(--gold); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.detail-facts dt { margin-bottom: 7px; color: var(--gold-ink); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
 .detail-facts dd { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.4; }
 
 .detail-fact-links { display: flex; flex-wrap: wrap; gap: 22px; }
@@ -1780,7 +1811,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   font-weight: 600;
   transition: box-shadow 350ms var(--ease), transform 350ms var(--ease);
 }
-.detail-related-links a i { color: var(--gold); font-style: normal; }
+.detail-related-links a i { color: var(--gold-ink); font-style: normal; }
 .detail-related-links a:hover { box-shadow: inset 0 0 0 1px var(--gold); transform: translateY(-2px); }
 
 @media (max-width: 1100px) {
@@ -2024,7 +2055,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   line-height: 1;
   letter-spacing: -.035em;
 }
-.rc-plan-bar h1 em { color: var(--gold); font-style: italic; }
+.rc-plan-bar h1 em { color: var(--gold-ink); font-style: italic; }
 .rc-plan-bar-aside p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.65; }
 /* .text-link is built for centring under a section; in the bar it runs inline. */
 .rc-plan-bar .text-link { display: inline-flex; margin: 10px 0 0; font-size: 11.5px; }
@@ -2063,7 +2094,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   color: var(--ink);
   box-shadow: inset 0 0 0 2px var(--gold);
 }
-.rc-plan-modes button.is-active strong { color: var(--gold); }
+.rc-plan-modes button.is-active strong { color: var(--gold-ink); }
 
 /* ——— The workspace: panes that scroll on their own, never the page ——— */
 
@@ -2206,7 +2237,7 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
   font-weight: 600;
   letter-spacing: -.02em;
 }
-.rc-plan-package-copy small { color: var(--gold); font-size: 11.5px; letter-spacing: .04em; }
+.rc-plan-package-copy small { color: var(--gold-ink); font-size: 11.5px; letter-spacing: .04em; }
 .rc-plan-package-copy > span { color: var(--muted); font-size: 13px; line-height: 1.6; }
 .rc-plan-package-copy b { margin-top: auto; font-size: 13px; font-weight: 600; }
 
@@ -2225,12 +2256,12 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
   font-size: 13px;
   transition: box-shadow 300ms var(--ease), color 300ms var(--ease);
 }
-.rc-plan-secondary:hover { color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.rc-plan-secondary:hover { color: var(--gold-ink); box-shadow: inset 0 0 0 1px var(--gold); }
 
 .rc-plan-inline-link {
   border: 0;
   padding: 0;
-  color: var(--gold);
+  color: var(--gold-ink);
   background: none;
   font: inherit;
   text-decoration: underline;
@@ -2265,8 +2296,8 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
   box-shadow: inset 0 0 0 1px var(--hairline);
   transition: box-shadow 400ms var(--ease);
 }
-.rc-plan-search:focus-within { box-shadow: inset 0 0 0 1px var(--gold); }
-.rc-plan-search > span { color: var(--gold); font-size: 17px; }
+.rc-plan-search:focus-within { box-shadow: inset 0 0 0 1px var(--gold-ink); }
+.rc-plan-search > span { color: var(--gold-ink); font-size: 17px; }
 .rc-plan-search input {
   flex: 1;
   min-width: 0;
@@ -2344,7 +2375,7 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  color: var(--gold);
+  color: var(--gold-ink);
   background: color-mix(in srgb, var(--gold) 16%, transparent);
   font-size: 14px;
   font-style: normal;
@@ -2366,9 +2397,9 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
   font-size: 11.5px;
   transition: color 300ms var(--ease), box-shadow 300ms var(--ease);
 }
-.rc-plan-itinerary-tools button:hover:not(:disabled) { color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.rc-plan-itinerary-tools button:hover:not(:disabled) { color: var(--gold-ink); box-shadow: inset 0 0 0 1px var(--gold); }
 .rc-plan-itinerary-tools button:disabled { opacity: .4; cursor: default; }
-.rc-plan-itinerary-tools .rc-plan-clear:hover { color: #c65d45; box-shadow: inset 0 0 0 1px #c65d45; }
+.rc-plan-itinerary-tools .rc-plan-clear:hover { color: var(--danger-ink); box-shadow: inset 0 0 0 1px var(--danger-ink); }
 
 .rc-plan-itinerary-empty {
   margin: 0;
@@ -2391,7 +2422,7 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
   color: var(--muted);
   font-size: 11.5px;
 }
-.rc-plan-leg-inline i { color: var(--gold); font-style: normal; }
+.rc-plan-leg-inline i { color: var(--gold-ink); font-style: normal; }
 
 .rc-plan-stop {
   display: flex;
@@ -2408,7 +2439,7 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
 .rc-plan-stop.is-dragging { opacity: .4; }
 .rc-plan-stop.is-over { box-shadow: inset 0 0 0 2px var(--gold); transform: translateY(1px); }
 
-.rc-plan-stop-grip { color: var(--muted); font-size: 14px; line-height: 1; opacity: .6; }
+.rc-plan-stop-grip { color: var(--muted); font-size: 14px; line-height: 1; opacity: .75; }
 .rc-plan-stop-index {
   display: grid;
   place-items: center;
@@ -2437,7 +2468,7 @@ html.dark .rc-plan-bands button.is-active { color: var(--deep); }
 }
 .rc-plan-stop-controls button:hover:not(:disabled) { color: var(--ink); background: color-mix(in srgb, var(--ink) 8%, transparent); }
 .rc-plan-stop-controls button:disabled { opacity: .3; cursor: default; }
-.rc-plan-stop-remove:hover:not(:disabled) { color: #c65d45 !important; }
+.rc-plan-stop-remove:hover:not(:disabled) { color: var(--danger-ink) !important; }
 
 /* ——— The map ——— */
 
@@ -2537,7 +2568,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
 
 .rc-plan-summary h3 {
   margin: 0 0 10px;
-  color: var(--gold);
+  color: var(--gold-ink);
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: .16em;
@@ -2555,9 +2586,9 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
 .rc-plan-legs li:first-child { border-top: 0; }
 .rc-plan-leg-route { display: flex; align-items: center; gap: 7px; min-width: 0; font-size: 12.5px; }
 .rc-plan-leg-route strong { font-weight: 600; }
-.rc-plan-leg-route i { color: var(--gold); font-style: normal; }
+.rc-plan-leg-route i { color: var(--gold-ink); font-style: normal; }
 .rc-plan-leg-figures { display: flex; gap: 12px; font-size: 12.5px; white-space: nowrap; }
-.rc-plan-leg-figures b:last-child { color: var(--gold); }
+.rc-plan-leg-figures b:last-child { color: var(--gold-ink); }
 .rc-plan-leg-terrain { grid-column: 1 / -1; color: var(--muted); font-size: 11px; }
 
 .rc-plan-covered ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
@@ -2576,7 +2607,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
   font-weight: 700;
 }
 .rc-plan-covered a { transition: color 250ms var(--ease); }
-.rc-plan-covered a:hover { color: var(--gold); }
+.rc-plan-covered a:hover { color: var(--gold-ink); }
 
 .rc-plan-nearby > p { margin: -6px 0 10px; color: var(--muted); font-size: 11.5px; }
 .rc-plan-nearby ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
@@ -2594,7 +2625,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
   padding: 5px 12px;
   border: 0;
   border-radius: 999px;
-  color: var(--gold);
+  color: var(--gold-ink);
   background: color-mix(in srgb, var(--gold) 14%, transparent);
   font-size: 11px;
   font-weight: 600;
@@ -2654,7 +2685,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
 .rc-plan-enquiry header span {
   display: block;
   margin-bottom: 6px;
-  color: var(--gold);
+  color: var(--gold-ink);
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: .18em;
@@ -2690,7 +2721,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
 }
 .rc-plan-enquiry-recap strong { display: block; margin-bottom: 4px; font-size: 14px; font-weight: 600; }
 .rc-plan-enquiry-recap p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
-.rc-plan-enquiry-stops { margin-top: 8px !important; font-size: 11.5px !important; opacity: .9; }
+.rc-plan-enquiry-stops { margin-top: 8px !important; font-size: 11.5px !important; }
 
 .rc-plan-enquiry form { display: grid; gap: 14px; }
 .rc-plan-enquiry label { display: flex; flex-direction: column; gap: 7px; color: var(--muted); font-size: 11.5px; letter-spacing: .04em; }
@@ -2706,7 +2737,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
 }
 .rc-plan-enquiry input:focus, .rc-plan-enquiry select:focus, .rc-plan-enquiry textarea:focus {
   outline: 0;
-  box-shadow: inset 0 0 0 2px var(--gold);
+  box-shadow: inset 0 0 0 2px var(--gold-ink);
 }
 .rc-plan-enquiry textarea { min-height: 96px; resize: vertical; }
 .rc-plan-enquiry form > button {
@@ -2722,14 +2753,14 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
 }
 .rc-plan-enquiry form > button:hover:not(:disabled) { background: var(--light-gold); }
 .rc-plan-enquiry form > button:disabled { opacity: .6; cursor: default; }
-.rc-plan-enquiry-error { margin: 0; color: #c65d45; font-size: 12.5px; }
-.rc-plan-enquiry-fineprint { margin: 0; color: var(--muted); font-size: 11px; text-align: center; opacity: .85; }
+.rc-plan-enquiry-error { margin: 0; color: var(--danger-ink); font-size: 12.5px; }
+.rc-plan-enquiry-fineprint { margin: 0; color: var(--muted); font-size: 11px; text-align: center; }
 
 .rc-plan-enquiry-sent { text-align: center; }
 .rc-plan-enquiry-sent span {
   display: block;
   margin-bottom: 10px;
-  color: var(--gold);
+  color: var(--gold-ink);
   font-size: 10.5px;
   font-weight: 700;
   letter-spacing: .18em;
@@ -2747,7 +2778,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
   font-size: 13px;
   transition: color 300ms var(--ease), box-shadow 300ms var(--ease);
 }
-.rc-plan-enquiry-sent button:hover { color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.rc-plan-enquiry-sent button:hover { color: var(--gold-ink); box-shadow: inset 0 0 0 1px var(--gold); }
 
 /* Taking the itinerary away is the primary action on the sent screen; going
    back to planning is the quieter one beside it. */
@@ -2801,14 +2832,14 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
   line-height: 1.6;
 }
 .rc-plan-anywhere .rc-plan-search > em {
-  color: var(--gold);
+  color: var(--gold-ink);
   font-style: normal;
   font-size: 15px;
   letter-spacing: .12em;
 }
 .rc-plan-anywhere-note { margin: 10px 0 0; color: var(--muted); font-size: 12px; }
 .rc-plan-results-found { margin-top: 10px; max-height: 260px; }
-.rc-plan-anywhere-credit { margin: 10px 0 0; color: var(--muted); font-size: 10.5px; opacity: .8; }
+.rc-plan-anywhere-credit { margin: 10px 0 0; color: var(--muted); font-size: 10.5px; }
 .rc-plan-anywhere-credit a { text-decoration: underline; text-underline-offset: 2px; }
 
 /* The badge that marks a stop as the traveller's own, not one of ours. */
@@ -2817,7 +2848,7 @@ html.dark .leaflet-tile-pane { filter: brightness(.78) saturate(.8) contrast(1.0
   flex-shrink: 0;
   padding: 2px 7px;
   border-radius: 999px;
-  color: var(--ocean);
+  color: var(--ocean-ink);
   background: color-mix(in srgb, var(--ocean) 15%, transparent);
   font-size: 9.5px;
   font-style: normal;
@@ -2861,7 +2892,6 @@ html.dark .rc-plan-transfer-tag { color: var(--light-gold) !important; backgroun
   font-style: normal;
   letter-spacing: .1em;
   text-transform: uppercase;
-  opacity: .75;
 }
 
 /* The planner fills the viewport; a 900px marketing footer under it breaks the
@@ -2997,7 +3027,7 @@ html.dark .rc-plan-transfer-tag { color: var(--light-gold) !important; backgroun
   font-weight: 600;
   transition: color 250ms var(--ease), background-color 250ms var(--ease), transform 250ms var(--ease);
 }
-.rc-plan-expand:hover { color: var(--gold); transform: translateY(-1px); }
+.rc-plan-expand:hover { color: var(--gold-ink); transform: translateY(-1px); }
 .rc-plan-expand span { font-size: 13px; line-height: 1; }
 .rc-plan-expand em { font-style: normal; letter-spacing: .04em; }
 

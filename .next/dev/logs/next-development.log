@@ -5,3 +5,21 @@
 {"timestamp":"00:00:37.657","source":"Server","level":"INFO","message":"[journey-enquiry] admin email sent {}"}
 {"timestamp":"00:00:37.673","source":"Server","level":"ERROR","message":"[Resend API Error]: {}"}
 {"timestamp":"00:00:37.682","source":"Server","level":"ERROR","message":"[journey-enquiry] traveller email refused {}"}
+{"timestamp":"00:06:16.491","source":"Server","level":"LOG","message":"✓ Compiled in 438ms"}
+{"timestamp":"00:06:38.613","source":"Server","level":"LOG","message":"✓ Compiled in 303ms"}
+{"timestamp":"00:07:23.240","source":"Server","level":"LOG","message":"✓ Compiled in 175ms"}
+{"timestamp":"00:07:36.256","source":"Server","level":"LOG","message":"✓ Compiled in 281ms"}
+{"timestamp":"00:07:38.383","source":"Server","level":"LOG","message":"✓ Compiled in 261ms"}
+{"timestamp":"00:07:40.346","source":"Server","level":"LOG","message":"✓ Compiled in 238ms"}
+{"timestamp":"00:07:41.757","source":"Server","level":"LOG","message":"✓ Compiled in 118ms"}
+{"timestamp":"00:07:43.441","source":"Server","level":"LOG","message":"✓ Compiled in 211ms"}
+{"timestamp":"00:08:07.414","source":"Server","level":"LOG","message":"✓ Compiled in 324ms"}
+{"timestamp":"00:08:12.011","source":"Server","level":"LOG","message":"✓ Compiled in 262ms"}
+{"timestamp":"00:08:14.695","source":"Server","level":"LOG","message":"✓ Compiled in 127ms"}
+{"timestamp":"00:08:16.193","source":"Server","level":"LOG","message":"✓ Compiled in 222ms"}
+{"timestamp":"00:08:18.326","source":"Server","level":"LOG","message":"✓ Compiled in 227ms"}
+{"timestamp":"00:08:19.643","source":"Server","level":"LOG","message":"✓ Compiled in 210ms"}
+{"timestamp":"00:08:44.688","source":"Server","level":"LOG","message":"✓ Compiled in 221ms"}
+{"timestamp":"00:08:46.827","source":"Server","level":"LOG","message":"✓ Compiled in 130ms"}
+{"timestamp":"00:09:54.950","source":"Server","level":"LOG","message":"✓ Compiled in 174ms"}
+{"timestamp":"00:10:23.587","source":"Server","level":"LOG","message":"✓ Compiled in 246ms"}
