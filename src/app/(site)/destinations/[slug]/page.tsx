@@ -32,14 +32,23 @@ export async function generateMetadata({
   const destination = await getDestination(slug);
   if (!destination) return { title: 'Destination — ReiseCeylon' };
 
-  const where = [destination.category, destination.district, destination.province]
-    .filter(Boolean)
-    .join(', ');
-
   return {
-    title: `${destination.name} — ReiseCeylon`,
-    description: `${destination.note}. ${where ? `${where}, ` : ''}Sri Lanka.`,
-    openGraph: { images: [{ url: destination.image }] }
+    title: { absolute: destination.seoTitle },
+    description: destination.seoDescription,
+    alternates: { canonical: `/destinations/${destination.slug}` },
+    openGraph: {
+      title: destination.seoTitle,
+      description: destination.seoDescription,
+      url: `/destinations/${destination.slug}`,
+      type: 'website',
+      images: [{ url: destination.image, alt: destination.imageAlt }]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: destination.seoTitle,
+      description: destination.seoDescription,
+      images: [destination.image]
+    }
   };
 }
 

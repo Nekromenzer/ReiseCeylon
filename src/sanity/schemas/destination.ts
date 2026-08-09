@@ -16,6 +16,7 @@ export const destination = defineType({
   type: 'document',
   groups: [
     { name: 'story', title: 'Story', default: true },
+    { name: 'seo', title: 'SEO' },
     { name: 'location', title: 'Location' }
   ],
   fields: [
@@ -123,6 +124,26 @@ export const destination = defineType({
       type: 'text',
       rows: 4,
       group: 'story'
+    }),
+
+    /* --------------------------------------------------------------------- SEO */
+
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO title',
+      type: 'string',
+      description: 'Search-result title. Keep it specific and at or below 60 characters.',
+      group: 'seo',
+      validation: (rule) => rule.max(60)
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO description',
+      type: 'text',
+      rows: 3,
+      description: 'Search-result summary. Aim for 120–160 characters and describe this place honestly.',
+      group: 'seo',
+      validation: (rule) => rule.max(160)
     }),
 
     /* ---------------------------------------------------------------- location */

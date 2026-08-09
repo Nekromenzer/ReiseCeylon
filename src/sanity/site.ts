@@ -43,6 +43,8 @@ export type { Highlight, Stage };
 export type Destination = {
   slug: string;
   name: string;
+  seoTitle: string;
+  seoDescription: string;
   region: string;
   note: string;
   image: string;
@@ -107,6 +109,8 @@ function destinationFromPlace(place: Place): Destination {
   return {
     slug: place.slug,
     name: place.name,
+    seoTitle: fallbackSeoTitle(place.name),
+    seoDescription: fallbackSeoDescription(place.name, place.district),
     region: regionFor(place.province),
     note: noteFor(place),
     image: place.image,
@@ -172,8 +176,29 @@ const fallbackContact: ContactDetails = {
   social: []
 };
 
+function truncateSeo(value: string, max: number) {
+  if (value.length <= max) return value;
+  const cut = value.slice(0, max - 1).replace(/\s+\S*$/, '').replace(/[,:;—-]+$/, '');
+  return `${cut}.`;
+}
+
+function fallbackSeoTitle(name: string) {
+  return (
+    [`${name}, Sri Lanka | Travel Guide`, `Visit ${name} | Sri Lanka Guide`, `${name} | Sri Lanka`].find(
+      (title) => title.length <= 60
+    ) ?? truncateSeo(name, 60)
+  );
+}
+
+function fallbackSeoDescription(name: string, area: string) {
+  return truncateSeo(
+    `Discover ${name} in ${area}, Sri Lanka, with key highlights, nearby places and practical details for planning your visit.`,
+    160
+  );
+}
+
 const destinationFields = /* groq */ `
-  "slug": slug.current, name, region, note, image,
+  "slug": slug.current, name, seoTitle, seoDescription, region, note, image,
   introHeading, introCopy,
   "highlights": coalesce(highlights[]{title, copy}, []),
   goodToKnowHeading, goodToKnowCopy,
@@ -259,6 +284,8 @@ function resolveDestination(row: DestinationRow): Destination {
     ...row,
     image,
     imageAlt: row.image?.alt ?? row.name,
+    seoTitle: row.seoTitle || fallbackSeoTitle(row.name),
+    seoDescription: row.seoDescription || fallbackSeoDescription(row.name, district || province),
     categoryId,
     category: categoryFor(categoryId)?.name ?? '',
     province,

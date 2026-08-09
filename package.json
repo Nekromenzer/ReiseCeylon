@@ -11,6 +11,7 @@
     "seed:journal": "node --env-file=.env scripts/seed-journal.mjs",
     "seed:site": "node --experimental-strip-types --env-file=.env scripts/seed-site.mjs",
     "sync:destinations": "node --env-file=.env scripts/sync-destinations.mjs",
+    "audit:destinations": "node scripts/audit-destination-content.mjs",
     "images:destinations": "node scripts/generate-destination-images.mjs"
   },
   "dependencies": {

@@ -1,4 +1,6 @@
 {
-  "/(site)/journeys/page": "app/(site)/journeys/page.js",
-  "/api/journey-enquiry/route": "app/api/journey-enquiry/route.js"
+  "/(site)/destinations/[slug]/page": "app/(site)/destinations/[slug]/page.js",
+  "/(site)/destinations/page": "app/(site)/destinations/page.js",
+  "/(site)/page": "app/(site)/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

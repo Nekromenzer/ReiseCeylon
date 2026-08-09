@@ -13,6 +13,8 @@
  *              Editors keep whatever they wrote in the studio.
  *
  * Flags:
+ *   --with-content  refresh SEO fields and editorial copy for every atlas place.
+ *                   Existing photographs are never changed.
  *   --with-images   also upload public/images/destination/<slug>.jpg as the
  *                   document photograph (slow: 174 uploads). Skipped for
  *                   documents that already carry an image.
@@ -24,9 +26,11 @@ import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { createClient } from '@sanity/client';
+import { buildDestinationContent } from './destination-content.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const withImages = process.argv.includes('--with-images');
+const withContent = process.argv.includes('--with-content');
 const dryRun = process.argv.includes('--dry-run');
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? process.env.SANITY_STUDIO_PROJECT_ID;
@@ -41,7 +45,11 @@ const client = createClient({
   dataset,
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION ?? '2024-10-01',
   token,
-  useCdn: false
+  useCdn: false,
+  // A write token otherwise defaults to the raw perspective and can mistake an
+  // unpublished draft for a live document. The atlas sync only updates what the
+  // website can actually read.
+  perspective: 'published'
 });
 
 /** The five that lead the homepage rail — mirrors defaultFeaturedSlugs in src/lib/places.ts. */
@@ -60,49 +68,8 @@ const legacyAliases = {
   yala: 'yala-national-park'
 };
 
-const regionNames = {
-  Central: 'Central Highlands',
-  Eastern: 'East Coast',
-  Northern: 'Northern Province',
-  'North Central': 'Cultural Triangle',
-  'North Western': 'North West Coast',
-  Sabaragamuwa: 'Sabaragamuwa',
-  Southern: 'Southern Coast',
-  Uva: 'Uva Highlands',
-  Western: 'Western Province'
-};
-
-const categoryNotes = {
-  beaches: 'Warm water, long sand and unhurried mornings',
-  'ancient-cities-and-ruins': 'Stone, inscription and the weight of centuries',
-  temples: 'Drums at dusk and a rhythm kept for generations',
-  waterfalls: 'Cold spray, deep green and the sound of falling water',
-  'natural-pools': 'River-fed water worn smooth into rock',
-  'national-parks-and-wildlife': 'Where the wild still sets the pace',
-  'mountains-and-hiking': 'Long climbs that end above the cloud line',
-  'lakes-and-reservoirs': 'Still water, old engineering and evening light',
-  'scenic-viewpoints': 'A long look across the island',
-  'scenic-train-destinations': 'Blue trains, open doors and slow country',
-  islands: 'A short crossing to somewhere quieter',
-  'botanical-gardens-and-parks': 'Planted avenues and a century of shade',
-  'marine-and-coastal-attractions': 'The coast read from the water side'
-};
-
-/* The copy a new document opens with — the same defaults the site renders. */
-const story = (place) => ({
-  region: regionNames[place.province] ?? place.province,
-  note: categoryNotes[place.categoryId] ?? `${place.city || place.district}, Sri Lanka`,
-  introHeading: 'Come for the landscape.\nStay for its quieter stories.',
-  introCopy: `${place.name} is more than a point on a map. We pair its essential landmarks with time to wander, meet people and notice the details that make a place memorable.`,
-  highlights: [
-    { title: 'The essential view', copy: 'Arrive before the day gathers pace and see the landscape in its softest light.' },
-    { title: 'A local table', copy: 'Share seasonal food and conversation in a setting selected for character, not spectacle.' },
-    { title: 'Room to wander', copy: 'A generous afternoon with a thoughtful route and no obligation to hurry.' }
-  ].map((item, index) => ({ _type: 'highlight', _key: `${index}`, ...item })),
-  goodToKnowHeading: 'Best from December to April, beautiful in every season.',
-  goodToKnowCopy:
-    'We plan around weather, local festivals and your preferred pace. Private transfers, handpicked stays, trusted guides and 24/7 in-country support can all be woven into your journey.'
-});
+/* New documents start complete; --with-content deliberately refreshes existing ones too. */
+const story = (place) => buildDestinationContent(place);
 
 /* Overwritten on every run — the atlas owns these. */
 const location = (place, index) => ({
@@ -151,6 +118,19 @@ async function main() {
   );
   const known = new Map(existing.map((row) => [row.slug, row]));
 
+  if (token) {
+    const drafts = await client
+      .withConfig({ perspective: 'raw' })
+      .fetch('*[_type == "destination" && _id in path("drafts.**")]{ _id, "slug": slug.current }');
+    if (drafts.length > 0) {
+      throw new Error(
+        `Destination drafts must be published or discarded before syncing, so editor work is not bypassed: ${drafts
+          .map((row) => row.slug)
+          .join(', ')}`
+      );
+    }
+  }
+
   let created = 0;
   let updated = 0;
   let images = 0;
@@ -173,7 +153,7 @@ async function main() {
       await client.createIfNotExists({ _id: id, _type: 'destination', ...story(place), ...facts });
       created += 1;
     } else {
-      await client.patch(id).set(facts).commit();
+      await client.patch(id).set({ ...facts, ...(withContent ? story(place) : {}) }).commit();
       updated += 1;
     }
 
@@ -197,19 +177,22 @@ async function main() {
     });
     if (!source) continue;
 
-    await client
-      .patch(known.get(target)?._id ?? `destination-${target}`)
-      .set({
-        introHeading: source.introHeading,
-        introCopy: source.introCopy,
-        goodToKnowHeading: source.goodToKnowHeading,
-        goodToKnowCopy: source.goodToKnowCopy,
-        ...(source.highlights?.length ? { highlights: source.highlights } : {}),
-        ...(source.note ? { note: source.note } : {}),
-        ...(source.region ? { region: source.region } : {}),
-        ...(source.image ? { image: source.image } : {})
-      })
-      .commit();
+    const legacyStory = withContent
+      ? { ...(source.image ? { image: source.image } : {}) }
+      : {
+          introHeading: source.introHeading,
+          introCopy: source.introCopy,
+          goodToKnowHeading: source.goodToKnowHeading,
+          goodToKnowCopy: source.goodToKnowCopy,
+          ...(source.highlights?.length ? { highlights: source.highlights } : {}),
+          ...(source.note ? { note: source.note } : {}),
+          ...(source.region ? { region: source.region } : {}),
+          ...(source.image ? { image: source.image } : {})
+        };
+
+    if (Object.keys(legacyStory).length > 0) {
+      await client.patch(known.get(target)?._id ?? `destination-${target}`).set(legacyStory).commit();
+    }
 
     /* Hidden rather than deleted — nothing an editor wrote is thrown away. */
     await client.patch(source._id).set({ status: 'hidden', featured: false }).commit();
@@ -233,7 +216,7 @@ async function main() {
     console.log(`Merged and hid the pre-atlas documents: ${merged.join(', ')}.`);
   }
   if (!withImages) {
-    console.log('Photographs left local — re-run with --with-images to upload them to Sanity.');
+    console.log('Photographs were not changed.');
   }
 }
 

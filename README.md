@@ -168,8 +168,9 @@ Publishing an entry: **Journal entries → Create**, fill in title, slug (genera
 Schemas live in `src/sanity/schemas/`. Journal queries are in `src/sanity/queries.ts`,
 everything else in `src/sanity/site.ts`.
 
-A destination document has two halves. **Story** — note, intro, highlights,
-good to know — belongs to the editor. **Location** — landscape, province,
+A destination document has three sections. **Story** — note, intro, highlights,
+good to know — belongs to the editor. **SEO** — search title and description —
+feeds the page metadata. **Location** — landscape, province,
 district, town, coordinates, precision — belongs to the atlas and is overwritten
 on every sync. Setting a destination to **Hidden** removes it from the site
 without deleting anything.
@@ -180,13 +181,16 @@ All need a token with write access and are run by hand, not as part of a build.
 
 ```bash
 SANITY_API_TOKEN=sk... npm run sync:destinations   # the 174 atlas places
+SANITY_API_TOKEN=sk... npm run sync:destinations -- --with-content # refresh SEO and story copy
 SANITY_API_TOKEN=sk... npm run seed:site           # journeys, contact details
 SANITY_API_TOKEN=sk... npm run seed:journal        # one sample journal entry
+npm run audit:destinations                         # validate generated destination content
 ```
 
 `sync:destinations` is the one that is safe to re-run: it creates what is
-missing, refreshes the location half of what exists, and never touches copy an
-editor has written. `--dry-run` prints the plan; `--with-images` also uploads
+missing, refreshes the location half of what exists, and normally never touches copy an
+editor has written. `--with-content` deliberately refreshes each place's SEO and
+story fields; it still does not touch images. `--dry-run` prints the plan; `--with-images` also uploads
 each sample plate to Sanity (174 uploads, and only for documents with no image
 yet). The two seed scripts do overwrite studio edits — run them once, at
 migration time.
