@@ -1,0 +1,783 @@
+{
+  "nav": {
+    "ariaMain": "Hoofdnavigatie",
+    "ariaHome": "ReiseCeylon startpagina",
+    "destinations": "Bestemmingen",
+    "experiences": "Ervaringen",
+    "planJourney": "Plan uw reis",
+    "about": "Over ons",
+    "journal": "Journaal",
+    "contact": "Contact",
+    "cta": "Begin met plannen",
+    "toggleMenu": "Menu openen",
+    "themeLight": "Licht thema gebruiken",
+    "themeDark": "Donker thema gebruiken",
+    "language": "Taal",
+    "changeLanguage": "Taal wijzigen"
+  },
+  "footer": {
+    "lead": "Hier begint uw verhaal.",
+    "headingLine1": "Laat Sri Lanka",
+    "headingLine2": "u verrassen.",
+    "cta": "Mijn reis ontwerpen",
+    "tagline": "Waar herinneringen een thuis vinden.",
+    "explore": "Ontdekken",
+    "company": "Over ons",
+    "sayHello": "Zeg hallo",
+    "destinations": "Bestemmingen",
+    "experiences": "Ervaringen",
+    "planJourney": "Plan uw reis",
+    "ourStory": "Ons verhaal",
+    "journal": "Journaal",
+    "contact": "Contact",
+    "whatsapp": "WhatsApp",
+    "copyright": "© {year} ReiseCeylon",
+    "madeIn": "Met zorg gemaakt in Sri Lanka"
+  },
+  "meta": {
+    "siteTitle": "ReiseCeylon — Waar herinneringen een thuis vinden",
+    "siteDescription": "Privéreizen door Sri Lanka, gevormd door lokale kennis, zorgvuldig gekozen verblijven en het ritme van het eiland.",
+    "ogTitle": "ReiseCeylon — Ontdek de ziel van Sri Lanka",
+    "ogDescription": "Langzame, persoonlijke reizen door Sri Lanka.",
+    "aboutTitle": "Ons verhaal",
+    "contactTitle": "Plan uw reis",
+    "blogTitle": "Veldnotities",
+    "destinationsTitle": "Bestemmingen — ReiseCeylon",
+    "destinationsDescription": "Elk strand, elke ruïne, waterval, park en bergdorp waar we langs reizen, in kaart gebracht per provincie en categorie in heel Sri Lanka.",
+    "journeysTitle": "Plan uw reis — ReiseCeylon",
+    "journeysDescription": "Kies een kant-en-klare reis door Sri Lanka of ontwerp uw eigen route. Bekijk de route op de kaart, met afstanden, rijtijden en elke plek onderweg.",
+    "destinationFallbackTitle": "Bestemming — ReiseCeylon"
+  },
+  "home": {
+    "heroAriaPlates": "Uitgelichte plaatsen",
+    "heroEyebrow": "Sri Lanka · Privéreizen sinds 2017",
+    "heroTitleLine1": "Een eiland dat",
+    "heroTitleEm": "zich u herinnert",
+    "heroTitleRest": ".",
+    "heroSub": "Twaalf klimaten op één klein eiland. Wij tekenen rustige routes door theestreken, luipaardgebied en de oude havens van het zuiden — geleid door de mensen die er wonen.",
+    "heroPlanCta": "Mijn reis plannen",
+    "heroRoutesCta": "Bekijk de routes",
+    "railClock": "Colombo, op dit moment",
+    "railWindow": "Beste periode",
+    "railWindowValue": "Dec — Apr, zuiden",
+    "railCollection": "In de collectie",
+    "railCollectionValue": "24 routes",
+    "railPlanner": "Voor u samengesteld door",
+    "railPlannerValue": "Één persoon",
+    "manifestoEyebrow": "Onze manier van werken",
+    "manifestoLead": "Wij plannen zoals een local dat zou doen — langzaam, en met één mens voor ogen.",
+    "manifestoLeadEmphasis": "langzaam,",
+    "signatureTitle": "Een reisontwerper, geen callcenter",
+    "signatureMeta": "Colombo · ma — za",
+    "manifestoSide": "Geen twee reizigers willen hetzelfde eiland. Een reisontwerper in Colombo ontvangt uw eerste bericht en blijft bij u tot de laatste nacht — en herschrijft de route rond het weer, de festivals en alles waar u op dag drie verliefd op werd.",
+    "manifestoLink": "Ontmoet de mensen erachter",
+    "chaptersHeadingPre": "Vijf manieren om",
+    "chaptersHeadingPost": "Sri Lanka binnen te gaan.",
+    "chaptersIntro": "Kies het landschap dat u aantrekt. Elk hoofdstuk opent een ander ritme van het eiland, van oude steen tot warm water in het zuiden.",
+    "chaptersHint": "Beweeg door de landschappen om te ontdekken",
+    "chapterExplore": "Ontdekken",
+    "chapterExploreAria": "Ontdek {name}, {region}",
+    "chaptersFullAtlas": "Open de volledige atlas",
+    "experiencesEyebrow": "Ervaringen",
+    "experiencesHeading": "Manieren om hier een dag door te brengen",
+    "experiencesIntro": "Elke reis is opgebouwd uit dagen als deze — nooit meer dan twee achter elkaar.",
+    "experiencesCta": "Zo’n dag samenstellen",
+    "atlasEyebrow": "Signature-reizen",
+    "atlasHeadingLine1": "Het eiland,",
+    "atlasHeadingEm": "langzaam getekend.",
+    "atlasIntro": "Een route is meer dan een lijn tussen hotels. Wij vormen elke route rond hoogte, moesson, licht en de mensen voor wie het de moeite waard is te stoppen.",
+    "atlasMapAlt": "Gedetailleerde toeristische kaart van Sri Lanka met wegen, spoorlijnen, rivieren, parken, steden en bezienswaardigheden",
+    "atlasExploreWhole": "Ontdek het hele eiland",
+    "atlasPlacesWorth": "{count} plaatsen die de omweg waard zijn",
+    "atlasFilterAria": "Bezienswaardigheden filteren",
+    "atlasTourListTitle": "Reizen die de punten verbinden",
+    "atlasPlanLink": "Plan uw reis — of teken uw eigen route",
+    "voicesEyebrow": "Notities van reizigers",
+    "voicesPrev": "Vorige notitie",
+    "voicesNext": "Volgende notitie",
+    "inviteEyebrow": "Hier begint uw verhaal",
+    "inviteHeadingLine1": "Waar herinneringen",
+    "inviteHeadingLine2": "een thuis vinden.",
+    "inviteCopy": "Vertel ons wanneer u kunt reizen en wat u niet wilt missen. U hoort van een reisontwerper in Colombo — niet van een formulier.",
+    "inviteCta": "Begin met plannen",
+    "inviteMeta1": "Colombo · Sri Lanka",
+    "inviteMeta2": "Antwoord binnen één werkdag",
+    "inviteMeta3": "Geen aanbetaling tot de route klopt"
+  },
+  "content": {
+    "ticker": [
+      "Theestreek",
+      "Luipaardgebied",
+      "Oude Hollandse havens",
+      "Nevelwoud",
+      "Walviskust",
+      "Rotsvestingen",
+      "Palmwijntappers",
+      "Blauwe treinen",
+      "Moessonrijst",
+      "Tempeltrommels"
+    ],
+    "heroPlates": {
+      "hikkaduwa": {
+        "region": "Zuidkust",
+        "meta": "05° 56′ N — Indische Oceaan"
+      },
+      "ella": {
+        "region": "Heuvelland",
+        "meta": "1.868 m boven zeeniveau"
+      },
+      "sigiriya": {
+        "region": "Culturele Driehoek",
+        "meta": "Gebouwd in de 5e eeuw"
+      }
+    },
+    "manifestoStats": [
+      {
+        "value": "11",
+        "label": "Jaar routes uitzetten op het eiland"
+      },
+      {
+        "value": "24",
+        "label": "Privéreizen in de collectie"
+      },
+      {
+        "value": "1:1",
+        "label": "Eén reisontwerper van eerste bericht tot laatste nacht"
+      }
+    ],
+    "experiences": [
+      {
+        "hours": "Vanaf 05:20",
+        "title": "Ontmoetingen in het wild",
+        "copy": "Vertrek voordat de parkpoorten opengaan. Onze natuurgidsen lezen de sporen, de alarmroepen en het licht — en wachten dan, stil, op de juiste plek."
+      },
+      {
+        "hours": "Vanaf 07:00",
+        "title": "Theestreek",
+        "copy": "Loop over een plantage met de mensen die plukken, zie de droogzolders vollopen en drink de eerste oogst voordat die ooit een kist bereikt."
+      },
+      {
+        "hours": "Vanaf 16:30",
+        "title": "Rituelen aan zee",
+        "copy": "Een naamloze baai, een gedekte tafel in het zand en het lange blauwe uur dat de zuidkust voor zichzelf houdt."
+      },
+      {
+        "hours": "Vanaf 06:10",
+        "title": "Levend erfgoed",
+        "copy": "Oude steden voordat de bussen komen, tempeltrommels in de schemering en werkplaatsen waar het ambacht al generaties niet van hand is veranderd."
+      }
+    ],
+    "voices": [
+      {
+        "quote": "Ze gaven ons geen kant-en-klaar reisschema. Ze vroegen wat we mooi vonden en bouwden er vervolgens stilletjes drie dagen van om terwijl wij door een moesson heen sliepen.",
+        "name": "Marte & Idris",
+        "trip": "The Island in Slow Motion — 12 dagen"
+      },
+      {
+        "quote": "Onze gids groeide twee valleien verderop op van de plantage waar we liepen. Dat is het hele verschil, en je voelt het op de tweede ochtend.",
+        "name": "Hannah Weiss",
+        "trip": "Heritage & Horizon — 10 dagen"
+      },
+      {
+        "quote": "We zaten veertig minuten in volledige stilte bij een spoorzoeker voordat de luipaard naar beneden kwam. Niemand haastte ons. Dat heeft ook niemand ooit gedaan.",
+        "name": "Familie Okonkwo",
+        "trip": "Wild Ceylon — 8 dagen"
+      }
+    ],
+    "attractionCategories": {
+      "All": "Alle",
+      "Heritage": "Erfgoed",
+      "Wildlife": "Dierenwereld",
+      "Coast": "Kust",
+      "Hill country": "Heuvelland",
+      "Nature": "Natuur",
+      "City": "Stad"
+    },
+    "attractionRegions": {
+      "Northern Islands": "Noordelijke eilanden",
+      "North Central": "Noord-Centraal",
+      "North West": "Noordwest",
+      "Cultural Triangle": "Culturele Driehoek",
+      "Central East": "Centraal-Oost",
+      "North East": "Noordoost",
+      "East Coast": "Oostkust",
+      "Central Province": "Centrale Provincie",
+      "Central Highlands": "Centraal Hoogland",
+      "Eastern Province": "Oostelijke Provincie",
+      "South East": "Zuidoost",
+      "Southern Province": "Zuidelijke Provincie",
+      "South West": "Zuidwest",
+      "Southern Coast": "Zuidkust",
+      "West Coast": "Westkust",
+      "Western Province": "Westelijke Provincie",
+      "Northern Province": "Noordelijke Provincie",
+      "Hill Country": "Heuvelland"
+    }
+  },
+  "about": {
+    "heroAlt": "Een pad door het Sri Lankaanse bos",
+    "eyebrow": "Ons verhaal",
+    "headingLine1": "Geboren uit",
+    "headingLine2": "verbondenheid.",
+    "intro": "We begonnen ReiseCeylon om Sri Lanka te delen met de zorg, nuance en menselijkheid die het verdient.",
+    "whyWeExist": "Waarom we bestaan",
+    "quote": "De mooiste reizen laten een plek niet verbruikt achter. Ze laten die begrepen achter.",
+    "copy": "Ons team brengt lokale reisontwerpers, gastheren, natuurgidsen en verhalenvertellers samen. We werken met onafhankelijke verblijven en verantwoorde partners, en kiezen diepgang boven volume en duurzame relaties boven snelle transacties.",
+    "card1Title": "Altijd lokaal",
+    "card1Copy": "Beslissingen vallen hier, met kennis gevormd door seizoenen en geleefde ervaring.",
+    "card2Title": "Minder, maar beter",
+    "card2Copy": "We bevelen minder plaatsen aan en kennen ze des te beter.",
+    "card3Title": "Zorg die meereist",
+    "card3Copy": "Uw reis hoort ten goede te komen aan de mensen en landschappen die haar mogelijk maken."
+  },
+  "contact": {
+    "eyebrow": "Plan uw reis",
+    "headingLine1": "Vertel ons wat",
+    "headingLine2": "u raakt.",
+    "intro": "Vertel ons iets over de reis die u voor ogen hebt. Een reisontwerper voor Sri Lanka antwoordt {responseTime} met doordachte eerste ideeën.",
+    "whatsapp": "Bericht via WhatsApp"
+  },
+  "contactForm": {
+    "successEyebrow": "Dank u wel",
+    "successHeading": "Uw reis is begonnen.",
+    "successCopy": "Een reisontwerper van ReiseCeylon neemt binnen één werkdag contact met u op.",
+    "sendAnother": "Nog een aanvraag versturen",
+    "name": "Uw naam",
+    "namePlaceholder": "Hoe mogen we u aanspreken?",
+    "email": "E-mailadres",
+    "emailPlaceholder": "u@voorbeeld.nl",
+    "dates": "Aan welke periode denkt u?",
+    "datesPlaceholder": "Maand of bij benadering",
+    "interest": "Waar wordt u door aangetrokken?",
+    "interestPlaceholder": "Kies een gevoel",
+    "interestNature": "Natuur en dierenwereld",
+    "interestCulture": "Cultuur en eten",
+    "interestCoast": "Kust en rust",
+    "interestEverything": "Van alles wat",
+    "message": "Vertel ons meer",
+    "messagePlaceholder": "Wie er meereist, uw tempo, en de momenten die u hoopt te vinden...",
+    "submit": "Begin het gesprek ↗"
+  },
+  "destinations": {
+    "heroEyebrow": "De atlas · {count} plaatsen",
+    "heroTitle": "Bestemmingen",
+    "heroIntro": "Elke plek waar we langs reizen, van de rand van het rif tot de wolkengrens. Filter op landschap of provincie en open er een om te zien waar die ligt, wat er in de buurt is en hoe we er graag aankomen.",
+    "summaryPlaces": "Gekarteerde plaatsen",
+    "summaryLandscapes": "Landschappen",
+    "summaryProvinces": "Provincies",
+    "summaryPlanner": "Eén reisontwerper, van eerste bericht tot laatste nacht",
+    "featuredEyebrow": "Begin hier",
+    "featuredHeading": "De vijf waar we steeds naar terugkeren."
+  },
+  "atlas": {
+    "eyebrow": "Blader over het eiland",
+    "heading": "Vind uw landschap.",
+    "searchPlaceholder": "Zoek een plaats, stad of district",
+    "searchAria": "Bestemmingen zoeken",
+    "filterLandscapeAria": "Filteren op landschap",
+    "all": "Alle",
+    "province": "Provincie",
+    "allProvinces": "Alle provincies",
+    "noMatch": "Geen plaatsen komen overeen met deze filters",
+    "placeCount": "{count, plural, one {# plaats} other {# plaatsen}}",
+    "filtered": "gefilterd",
+    "clearFilters": "Filters wissen",
+    "emptyTitle": "Hier is nog niets.",
+    "emptyCopyPre": "Probeer een breder landschap, een andere provincie, of",
+    "emptyCopyLink": "vraag ons de route te bouwen",
+    "featured": "Uitgelicht",
+    "showMore": "Meer tonen",
+    "shownOf": "{shown} van {total}"
+  },
+  "destination": {
+    "breadcrumbAria": "Kruimelpad",
+    "breadcrumbRoot": "Bestemmingen",
+    "heroCopy": "{note}. Een plek die je het best langzaam begrijpt, in het vroege licht, door verhalen van hier en de paden tussen de bezienswaardigheden.",
+    "provinceSuffix": "Provincie {province}",
+    "factLandscape": "Landschap",
+    "factProvince": "Provincie",
+    "factDistrict": "District",
+    "factNearestTown": "Dichtstbijzijnde stad",
+    "factCoordinates": "Coördinaten",
+    "factDecimal": "Decimaal",
+    "googleMaps": "Google Maps",
+    "directions": "Route",
+    "openStreetMap": "OpenStreetMap",
+    "whyGo": "Waarom erheen",
+    "highlightsHeading": "Wat we in {name} niet zouden missen.",
+    "whereItSits": "Waar het ligt",
+    "mapTitle": "Kaart van {name}",
+    "withinReach": "Binnen bereik",
+    "whatIsClose": "Wat er in de buurt is.",
+    "kmAway": "{km} km verderop",
+    "underKm": "<1 km",
+    "moreOf": "Meer {category}",
+    "goodToKnow": "Goed om te weten",
+    "seeJourney": "Bekijk een reis die hierlangs gaat"
+  },
+  "highlights": {
+    "eyebrow": "Hoogtepunten",
+    "heading": "Wat we niet zouden missen."
+  },
+  "journeys": {
+    "eyebrow": "Plan uw reis",
+    "headingPre": "Neem er een van ons,",
+    "headingEm": "of teken uw eigen route.",
+    "aside": "Gemeten over het echte wegennet — hoe ver, hoe lang achter het stuur en alles wat de route passeert. Als het goed voelt, stuur het ons.",
+    "talkLink": "Of bespreek het met ons"
+  },
+  "planner": {
+    "modesAria": "Hoe te plannen",
+    "tabPackages": "Kant-en-klare reizen",
+    "tabPackagesSub": "Kies er een die we al aanbieden",
+    "tabCustom": "Ontwerp uw eigen reis",
+    "tabCustomSub": "Kies plaatsen en sleep ze in de gewenste volgorde",
+    "filterLengthAria": "Filteren op duur",
+    "noneOfLengthPre": "Nog niets van die duur —",
+    "noneOfLengthLink": "stel er zelf een samen",
+    "fullItinerary": "Volledig reisschema",
+    "customiseThis": "Deze aanpassen",
+    "mapLoading": "Kaart wordt geladen…",
+    "mapClose": "Volledig scherm sluiten",
+    "mapExpand": "Kaart op volledig scherm tonen",
+    "close": "Sluiten",
+    "expand": "Vergroten",
+    "mapCaption": "{stops, plural, one {# stop} other {# stops}} · {km} · {duration} rijden",
+    "transferTitle": "Ophalen en wegbrengen luchthaven",
+    "transferOn": "Start en einde op de luchthaven van Colombo (CMB)",
+    "transferOff": "Route gemeten tussen uw eigen eerste en laatste stop",
+    "finalise": "Afronden en deze reis versturen",
+    "sendDialogAria": "Deze reis versturen",
+    "aJourney": "Een reis",
+    "yourOwnJourney": "Uw eigen reis"
+  },
+  "builder": {
+    "pickerHeading": "Kies uw plaatsen",
+    "pickerIntro": "Doorzoek de atlas en voeg ze in willekeurige volgorde toe.",
+    "searchPlaceholder": "Zoek een plaats, stad of district",
+    "searchAria": "Plaatsen zoeken om toe te voegen",
+    "landscape": "Landschap",
+    "allLandscapes": "Alle landschappen",
+    "province": "Provincie",
+    "allProvinces": "Alle provincies",
+    "noMatch": "Geen plaatsen komen overeen met deze filters.",
+    "alreadyAdded": "{name} zit al in uw reis",
+    "addPlace": "{name} toevoegen",
+    "anywhereHeading": "Ergens anders?",
+    "anywhereCopy": "Uw hotel, uw luchthaven, de plaats waar u vertrekt — zoek overal in Sri Lanka en voeg het toe als stop.",
+    "anywherePlaceholder": "Negombo, luchthaven Bandaranaike, een dorp…",
+    "anywhereAria": "Overal in Sri Lanka zoeken",
+    "searchUnavailable": "Zoeken is momenteel niet beschikbaar.",
+    "nothingFound": "Daarvoor is niets gevonden in Sri Lanka.",
+    "creditPre": "Plaatszoeken door",
+    "routeHeading": "Uw route",
+    "nothingAdded": "Nog niets toegevoegd.",
+    "stopsInOrder": "{count, plural, one {# stop} other {# stops}}, in deze volgorde. Sleep om te herschikken.",
+    "shortestOrder": "Kortste volgorde",
+    "clear": "Wissen",
+    "pickFirst": "Kies een eerste plaats uit de lijst. Afstanden, rijtijden en de route op de kaart verschijnen zodra er twee zijn.",
+    "driveTo": "Rit naar {name}",
+    "legInline": "{km} · {duration} rijden",
+    "ownStop": "eigen stop",
+    "ownStopTitle": "Toegevoegd vanuit OpenStreetMap, niet uit onze atlas",
+    "moveEarlier": "{name} eerder plaatsen",
+    "moveLater": "{name} later plaatsen",
+    "remove": "{name} verwijderen"
+  },
+  "summary": {
+    "emptyTitle": "Nog geen stops.",
+    "emptyCopy": "Voeg een plaats toe en de afstand, rijtijd en route verschijnen hier.",
+    "stops": "Stops",
+    "roadDistance": "Wegafstand",
+    "timeOnRoad": "Tijd onderweg",
+    "length": "Duur",
+    "suggestedLength": "Voorgestelde duur",
+    "days": "{count, plural, one {# dag} other {# dagen}}",
+    "estimate": "Geschat op basis van het wegennet, niet op live verkeersgegevens — {km} op Sri Lankaanse reissnelheden, in totaal ongeveer {duration} achter het stuur.",
+    "longestLeg": "De langste rit in één keer is {from} naar {to}, {duration}.",
+    "legByLeg": "Etappe voor etappe",
+    "covers": "Wat deze reis omvat",
+    "transferTag": "transfer",
+    "ownStop": "uw eigen stop",
+    "alsoOnRoad": "Ook aan deze route",
+    "alsoOnRoadCopy": "Plaatsen waar de route al dicht langs komt.",
+    "offRoute": "{km} van de route",
+    "add": "Toevoegen",
+    "addAria": "{name} aan uw reis toevoegen"
+  },
+  "enquiry": {
+    "sentEyebrow": "Onderweg",
+    "sentHeading": "We hebben uw reis.",
+    "sentCopy": "{title} — {stops, plural, one {# stop} other {# stops}}, {km} weg.",
+    "sentCopySuffix": "Een reisontwerper van ReiseCeylon antwoordt binnen één werkdag.",
+    "copyOnItsWay": "Een kopie is onderweg naar uw inbox.",
+    "downloadPdf": "Uw plan downloaden (PDF) ↓",
+    "backToPlanning": "Terug naar plannen",
+    "printableTitle": "Afdrukbaar reisschema",
+    "eyebrow": "Afronden",
+    "heading": "Stuur ons deze reis.",
+    "close": "Sluiten",
+    "recap": "{stops, plural, one {# stop} other {# stops}} · {km} · {duration} rijden · {length}",
+    "aboutDays": "ongeveer {count, plural, one {# dag} other {# dagen}}",
+    "name": "Uw naam",
+    "namePlaceholder": "Hoe mogen we u aanspreken?",
+    "email": "E-mailadres",
+    "emailPlaceholder": "u@voorbeeld.nl",
+    "mobile": "Mobiel nummer",
+    "dialCodeAria": "Landnummer",
+    "moreCountries": "Meer landen",
+    "elsewhere": "Elders — typ het landnummer",
+    "phonePlaceholder": "77 123 4567",
+    "dates": "Aan welke periode denkt u?",
+    "datesPlaceholder": "Maand of bij benadering",
+    "travellers": "Reizigers",
+    "travellersSolo": "Alleenreizend",
+    "travellers2": "2 reizigers",
+    "travellers35": "3–5 reizigers",
+    "travellers6": "6+ reizigers",
+    "vehicle": "Voertuig",
+    "budget": "Budget",
+    "optional": "optioneel",
+    "message": "Nog iets toe te voegen?",
+    "messagePlaceholder": "Uw tempo, wat u aan deze route zou veranderen, alles wat u liever niet mist...",
+    "sending": "Versturen…",
+    "submit": "Deze reis versturen ↗",
+    "fineprint": "We mailen u een kopie van dit reisschema, en u kunt het daarna meteen als PDF downloaden.",
+    "sendFailed": "Dat is niet verstuurd. Probeer het opnieuw.",
+    "vehicleOptions": [
+      "Geen voorkeur",
+      "Auto — tot 3 reizigers",
+      "Bus — tot 6 reizigers",
+      "Minibus — 7 of meer",
+      "4x4 — voor de parken en ruwe paden",
+      "Zelf rijden"
+    ],
+    "budgetOptions": [
+      "Nog niet zeker",
+      "Onder $100 per persoon per dag",
+      "$100–200 per persoon per dag",
+      "$200–350 per persoon per dag",
+      "$350+ per persoon per dag",
+      "Vertel me wat deze route kost"
+    ]
+  },
+  "map": {
+    "airportTransfer": "Luchthaventransfer",
+    "ownStop": "Uw eigen stop",
+    "stopOf": "Stop {index} van {total}"
+  },
+  "blog": {
+    "eyebrow": "Veldnotities",
+    "headingLine1": "Verhalen voor de",
+    "headingLine2": "nieuwsgierige reiziger.",
+    "intro": "Lokaal perspectief, ongehaaste gidsen en ideeën om Sri Lanka met meer diepgang te zien.",
+    "comingSoon": "Binnenkort",
+    "minRead": "{minutes} min lezen",
+    "published": "Gepubliceerd",
+    "writtenBy": "Geschreven door",
+    "filedUnder": "Ingedeeld onder",
+    "allNotes": "Alle veldnotities",
+    "placeholders": [
+      {
+        "title": "Een langzame gids voor de zuidrand van Sri Lanka",
+        "category": "Kust"
+      },
+      {
+        "title": "De handen achter een perfecte kop Ceylon-thee",
+        "category": "Eten & cultuur"
+      },
+      {
+        "title": "Waarom de stilste safari vaak de beste is",
+        "category": "Dierenwereld"
+      },
+      {
+        "title": "Eerste licht boven een oud koninkrijk",
+        "category": "Erfgoed"
+      },
+      {
+        "title": "Stilte vinden in het heuvelland",
+        "category": "Welzijn"
+      }
+    ]
+  },
+  "tour": {
+    "heroMeta": "{days} · Privéreis · Van luchthaven tot luchthaven",
+    "heroCopy": "{route}. Een doordachte reis die culturele diepgang, weidse landschappen en genoeg ongeplande tijd in balans brengt om haar de uwe te maken.",
+    "theJourney": "De reis",
+    "howStoryUnfolds": "Hoe het verhaal zich ontvouwt.",
+    "included": "Inbegrepen",
+    "tailor": "Deze reis op maat maken"
+  },
+  "places": {
+    "regions": {
+      "Central": "Centraal Hoogland",
+      "Eastern": "Oostkust",
+      "Northern": "Noordelijke Provincie",
+      "North Central": "Culturele Driehoek",
+      "North Western": "Noordwestkust",
+      "Sabaragamuwa": "Sabaragamuwa",
+      "Southern": "Zuidkust",
+      "Uva": "Uva-hoogland",
+      "Western": "Westelijke Provincie"
+    },
+    "provinces": {
+      "Central": "Centraal",
+      "Eastern": "Oost",
+      "North Central": "Noord-Centraal",
+      "North Western": "Noordwest",
+      "Northern": "Noord",
+      "Sabaragamuwa": "Sabaragamuwa",
+      "Southern": "Zuid",
+      "Uva": "Uva",
+      "Western": "West"
+    },
+    "categories": {
+      "beaches": "Stranden",
+      "ancient-cities-and-ruins": "Oude steden en archeologische sites",
+      "temples": "Tempels en heilige plaatsen",
+      "waterfalls": "Watervallen",
+      "natural-pools": "Natuurlijke baden en rivierpoelen",
+      "national-parks-and-wildlife": "Nationale parken en dierenwereld",
+      "mountains-and-hiking": "Bergen en wandelen",
+      "lakes-and-reservoirs": "Meren en stuwmeren",
+      "scenic-viewpoints": "Uitzichtpunten",
+      "scenic-train-destinations": "Bestemmingen van de panoramatrein",
+      "islands": "Eilanden",
+      "botanical-gardens-and-parks": "Botanische tuinen en parken",
+      "marine-and-coastal-attractions": "Zee- en kustattracties"
+    },
+    "categoryNotes": {
+      "beaches": "Warm water, lang zand en ongehaaste ochtenden",
+      "ancient-cities-and-ruins": "Steen, inscriptie en het gewicht van eeuwen",
+      "temples": "Trommels in de schemering en een ritme dat generaties standhoudt",
+      "waterfalls": "Koude nevel, diep groen en het geluid van vallend water",
+      "natural-pools": "Rivierwater, glad geslepen in de rots",
+      "national-parks-and-wildlife": "Waar het wild nog het tempo bepaalt",
+      "mountains-and-hiking": "Lange klimmen die boven de wolkengrens eindigen",
+      "lakes-and-reservoirs": "Stil water, oude waterbouwkunde en avondlicht",
+      "scenic-viewpoints": "Een weidse blik over het eiland",
+      "scenic-train-destinations": "Blauwe treinen, open deuren en traag land",
+      "islands": "Een korte overtocht naar iets stillers",
+      "botanical-gardens-and-parks": "Aangeplante lanen en een eeuw schaduw",
+      "marine-and-coastal-attractions": "De kust gelezen vanaf het water"
+    },
+    "noteFallback": "{area}, Sri Lanka",
+    "precision": {
+      "exact": "Specifiek gekarteerde bezienswaardigheid of toegangspunt.",
+      "representative": "Representatief punt voor een bezienswaardigheid waarvan de grens, het pad of het toegangspunt varieert.",
+      "area-centroid": "Bij benadering het midden van een groot park, reservaat, gebergte, riviersysteem of eiland."
+    }
+  },
+  "journey": {
+    "bandAll": "Elke duur",
+    "bandDay": "Dagtochten",
+    "bandShort": "2–4 dagen",
+    "bandWeek": "5–9 dagen",
+    "bandLong": "10 dagen +",
+    "terrainMountain": "De hele weg bergweg",
+    "terrainClimbs": "Klimt de heuvels in",
+    "terrainLowlandClimb": "Laagland, met een klim aan het eind",
+    "terrainLowland": "Laaglandwegen",
+    "oneDay": "Eén dag",
+    "dayNumber": "Dag {number}",
+    "roadAndDriving": "{km} onderweg, waarvan ongeveer {duration} rijden.",
+    "fullDayAt": "Een hele dag in {name}, in uw eigen tempo.",
+    "airportPickup": "Luchthaven Colombo (CMB) — ophalen",
+    "airportDropoff": "Luchthaven Colombo (CMB) — wegbrengen"
+  },
+  "defaults": {
+    "highlights": [
+      {
+        "title": "Het essentiële uitzicht",
+        "copy": "Kom aan voordat de dag op gang komt en zie het landschap in zijn zachtste licht."
+      },
+      {
+        "title": "Een tafel van hier",
+        "copy": "Deel seizoensgebonden eten en gesprek op een plek die gekozen is om haar karakter, niet om het spektakel."
+      },
+      {
+        "title": "Ruimte om te dwalen",
+        "copy": "Een royale middag met een doordachte route en geen enkele verplichting om te haasten."
+      }
+    ],
+    "stages": [
+      {
+        "period": "Dag 1–3",
+        "title": "Begin in de oude koninkrijken",
+        "copy": "Kom rustig aan, kom tot rust op het eiland en volg oude paden door bos en steen."
+      },
+      {
+        "period": "Dag 4–7",
+        "title": "Meebewegen met de heuvels",
+        "copy": "Neem de langzame trein de theestreek in, loop over de plantages en dineer bij het vuur terwijl de mist opkomt."
+      },
+      {
+        "period": "Dag 8–10",
+        "title": "Volg de weg naar het zuiden",
+        "copy": "Ruil berglucht in voor de kust, met stops bij makers, markten en een afgelegen verblijf aan zee."
+      },
+      {
+        "period": "Dag 11–12",
+        "title": "Eindig zonder haast",
+        "copy": "Houd de laatste dagen open voor zout water, lange lunches en één laatste Sri Lankaanse zonsondergang."
+      }
+    ],
+    "destinationIntroHeading": "Kom voor het landschap.\nBlijf voor de stillere verhalen.",
+    "destinationIntroCopy": "{name} is meer dan een punt op de kaart. We combineren de wezenlijke bezienswaardigheden met tijd om te dwalen, mensen te ontmoeten en de details op te merken die een plek onvergetelijk maken.",
+    "destinationGoodToKnowHeading": "Op zijn mooist van december tot april, prachtig in elk seizoen.",
+    "destinationGoodToKnowCopy": "We plannen rond het weer, lokale festivals en uw voorkeurstempo. Privétransfers, zorgvuldig gekozen verblijven, vertrouwde gidsen en 24/7 ondersteuning ter plaatse kunnen allemaal in uw reis worden verweven.",
+    "tourIntroHeading": "Een route met richting,\nnooit een strak schema.",
+    "tourIntroCopy": "Elk verblijf, elke transfer en elke ontmoeting is geregeld. Het ritme blijft ruim, en elk detail kan worden aangepast aan uw interesses.",
+    "tourIncludedHeading": "Privé van opzet.\nDe hele reis begeleid.",
+    "tourIncludedCopy": "Zorgvuldig gekozen accommodatie, dagelijks ontbijt, privévervoer, gespecialiseerde gastheren, geselecteerde ervaringen en 24/7 lokale hulp zijn inbegrepen. Internationale vluchten en reisverzekering zijn uitgesloten.",
+    "contactLocation": "Colombo, Sri Lanka",
+    "contactResponseTime": "binnen één werkdag",
+    "seoTitle": "{name}, Sri Lanka | Reisgids",
+    "seoTitleShort": "{name} bezoeken | Sri Lanka",
+    "seoTitleShortest": "{name} | Sri Lanka",
+    "seoDescription": "Ontdek {name} in {area}, Sri Lanka, met de belangrijkste hoogtepunten, plaatsen in de buurt en praktische informatie voor uw bezoek."
+  },
+  "packages": {
+    "sigiriya-day-out": {
+      "title": "Sigiriya op één dag",
+      "route": "Luchthaven CMB → Dambulla → Sigiriya → CMB",
+      "note": "Voor vijven de stad uit, de rots op voor de hitte, en voor donker weer terug."
+    },
+    "kandy-day-out": {
+      "title": "Kandy & de tempelweg",
+      "route": "Luchthaven CMB → Peradeniya → Kandy → CMB",
+      "note": "De oude hoofdstad, haar tuinen en de avondtrommels bij de Tempel van de Tand."
+    },
+    "southern-shore-day": {
+      "title": "De zuidelijke kust",
+      "route": "Luchthaven CMB → Bentota → Hikkaduwa → Unawatuna",
+      "note": "Schildpadden bij Kosgoda, rif bij Hikkaduwa en een lange lunch boven de baai van Unawatuna."
+    },
+    "cultural-triangle-short": {
+      "title": "De Culturele Driehoek",
+      "route": "Luchthaven CMB → Dambulla → Sigiriya → Polonnaruwa",
+      "note": "Drie dagen tussen rotstempels, vervallen hoofdsteden en de olifanten van Minneriya."
+    },
+    "hill-country-short": {
+      "title": "Het heuvelland in",
+      "route": "Kandy → Nuwara Eliya → Ella",
+      "note": "De blauwe trein, thee boven de wolkengrens en twee ochtenden in de kloof van Ella."
+    },
+    "wild-south-short": {
+      "title": "Het wilde zuiden",
+      "route": "Udawalawe → Yala → Tangalle",
+      "note": "Twee parken, één luipaard als het licht meezit, en de kust om bij te komen."
+    },
+    "island-in-slow-motion": {
+      "title": "Het eiland in slow motion",
+      "route": "Colombo → Theestreek → Zuidkust",
+      "note": "Theepaden, stille plantages en ochtenden boven de wolkengrens."
+    },
+    "wild-ceylon": {
+      "title": "Wild Ceylon",
+      "route": "Sigiriya → Gal Oya → Yala",
+      "note": "Wilde landschappen, gevormd rond geduldige, respectvolle ontmoetingen."
+    },
+    "heritage-and-horizon": {
+      "title": "Erfgoed & Horizon",
+      "route": "Kandy → Galle → Mirissa",
+      "note": "Oude steden, zuidelijke vestingmuren en lange avonden aan zee."
+    }
+  },
+  "durations": {
+    "day": "{count, plural, one {# dag} other {# dagen}}"
+  },
+  "dialCodes": {
+    "Sri Lanka": "Sri Lanka",
+    "Germany": "Duitsland",
+    "United Kingdom": "Verenigd Koninkrijk",
+    "India": "India",
+    "United States / Canada": "Verenigde Staten / Canada",
+    "Australia": "Australië",
+    "France": "Frankrijk",
+    "Netherlands": "Nederland",
+    "Austria": "Oostenrijk",
+    "Belgium": "België",
+    "Brazil": "Brazilië",
+    "China": "China",
+    "Czechia": "Tsjechië",
+    "Denmark": "Denemarken",
+    "Egypt": "Egypte",
+    "Finland": "Finland",
+    "Greece": "Griekenland",
+    "Hong Kong": "Hongkong",
+    "Hungary": "Hongarije",
+    "Indonesia": "Indonesië",
+    "Ireland": "Ierland",
+    "Israel": "Israël",
+    "Italy": "Italië",
+    "Japan": "Japan",
+    "Kenya": "Kenia",
+    "Malaysia": "Maleisië",
+    "Maldives": "Malediven",
+    "Mexico": "Mexico",
+    "New Zealand": "Nieuw-Zeeland",
+    "Norway": "Noorwegen",
+    "Pakistan": "Pakistan",
+    "Philippines": "Filipijnen",
+    "Poland": "Polen",
+    "Portugal": "Portugal",
+    "Qatar": "Qatar",
+    "Russia / Kazakhstan": "Rusland / Kazachstan",
+    "Saudi Arabia": "Saoedi-Arabië",
+    "Singapore": "Singapore",
+    "South Africa": "Zuid-Afrika",
+    "South Korea": "Zuid-Korea",
+    "Spain": "Spanje",
+    "Sweden": "Zweden",
+    "Switzerland": "Zwitserland",
+    "Taiwan": "Taiwan",
+    "Thailand": "Thailand",
+    "Türkiye": "Turkije",
+    "United Arab Emirates": "Verenigde Arabische Emiraten",
+    "Vietnam": "Vietnam"
+  },
+  "itinerary": {
+    "yourJourney": "Uw reis",
+    "customJourney": "Reis op maat",
+    "readyMadeJourney": "Kant-en-klare reis",
+    "designedJourney": "Een reis die u zelf ontwierp",
+    "thanks": "Dank u wel, {name} — hier is de reis die u hebt samengesteld, precies zoals u haar achterliet. Een van onze reisontwerpers leest haar nu en antwoordt binnen één werkdag.",
+    "thanksText": "Dank u wel, {name} — hier is de reis die u hebt samengesteld. Een reisontwerper antwoordt binnen één werkdag.",
+    "stops": "Stops",
+    "roadDistance": "Wegafstand",
+    "timeOnRoad": "Tijd onderweg",
+    "length": "Duur",
+    "suggestedLength": "Voorgestelde duur",
+    "transfers": "Transfers",
+    "transfersOn": "Ophalen en wegbrengen luchthaven (CMB)",
+    "transfersOff": "Geen — eigen start en einde",
+    "theRoute": "De route",
+    "legByLeg": "Etappe voor etappe",
+    "whatYouToldUs": "Wat u ons vertelde",
+    "theTraveller": "De reiziger",
+    "yourNote": "Uw notitie",
+    "theirNote": "Hun notitie",
+    "name": "Naam",
+    "email": "E-mail",
+    "mobile": "Mobiel",
+    "dates": "Data",
+    "travellers": "Reizigers",
+    "vehicle": "Voertuig",
+    "budget": "Budget",
+    "when": "Wanneer",
+    "preparedFor": "Opgesteld voor",
+    "yourDetails": "Uw gegevens",
+    "theirOwnStop": "eigen stop",
+    "yourOwnStop": "Uw eigen stop",
+    "footerTraveller": "Afstanden en rijtijden zijn schattingen voor een privévoertuig op Sri Lankaanse reissnelheden. Uw reisontwerper bevestigt de werkelijke tijden. Beantwoord deze e-mail om iets te wijzigen.",
+    "footerInternal": "Verzonden vanuit de reisplanner op /journeys. Afstanden en rijtijden zijn schattingen van de planner, geen routeringsdienst.",
+    "printFooter": "Afstanden en rijtijden zijn schattingen voor een privévoertuig op Sri Lankaanse reissnelheden, geen routeringsdienst — uw reisontwerper bevestigt de werkelijke tijden.",
+    "preparedBy": "Opgesteld door ReiseCeylon",
+    "preparedByFor": "Opgesteld door ReiseCeylon voor {name}",
+    "saveAsPdf": "Opslaan als PDF",
+    "days": "{count, plural, one {# dag} other {# dagen}}",
+    "emailSubjectInternal": "Nieuwe reisaanvraag — {title}",
+    "emailSubjectTraveller": "Uw ReiseCeylon-reis — {title}"
+  }
+}

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { Highlight } from '@/sanity/site';
 
 /**
@@ -18,15 +19,17 @@ export function DestinationHighlights({
   highlights,
   image,
   imageAlt,
-  eyebrow = 'Highlights',
-  heading = 'What we would not miss.'
+  eyebrow,
+  heading
 }: {
   highlights: Highlight[];
   image: string;
   imageAlt: string;
+  /** Both default to the generic translated headings when not supplied. */
   eyebrow?: string;
   heading?: string;
 }) {
+  const t = useTranslations('highlights');
   const [active, setActive] = useState(0);
   const reduced = useReducedMotion();
 
@@ -65,8 +68,8 @@ export function DestinationHighlights({
 
         <div className="hl-main">
           <header className="hl-head">
-            <p className="eyebrow">{eyebrow}</p>
-            <h2>{heading}</h2>
+            <p className="eyebrow">{eyebrow ?? t('eyebrow')}</p>
+            <h2>{heading ?? t('heading')}</h2>
             <span className="hl-count">
               {index(0)} — {index(highlights.length - 1)}
             </span>

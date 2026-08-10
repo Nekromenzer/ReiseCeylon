@@ -1,0 +1,783 @@
+{
+  "nav": {
+    "ariaMain": "Navigation principale",
+    "ariaHome": "Accueil ReiseCeylon",
+    "destinations": "Destinations",
+    "experiences": "Expériences",
+    "planJourney": "Planifier votre voyage",
+    "about": "À propos",
+    "journal": "Journal",
+    "contact": "Contact",
+    "cta": "Commencer à planifier",
+    "toggleMenu": "Ouvrir le menu",
+    "themeLight": "Utiliser le thème clair",
+    "themeDark": "Utiliser le thème sombre",
+    "language": "Langue",
+    "changeLanguage": "Changer de langue"
+  },
+  "footer": {
+    "lead": "Votre histoire commence ici.",
+    "headingLine1": "Laissez le Sri Lanka",
+    "headingLine2": "vous surprendre.",
+    "cta": "Composer mon voyage",
+    "tagline": "Là où les souvenirs trouvent un foyer.",
+    "explore": "Explorer",
+    "company": "La maison",
+    "sayHello": "Dites bonjour",
+    "destinations": "Destinations",
+    "experiences": "Expériences",
+    "planJourney": "Planifier votre voyage",
+    "ourStory": "Notre histoire",
+    "journal": "Journal",
+    "contact": "Contact",
+    "whatsapp": "WhatsApp",
+    "copyright": "© {year} ReiseCeylon",
+    "madeIn": "Conçu avec soin au Sri Lanka"
+  },
+  "meta": {
+    "siteTitle": "ReiseCeylon — Là où les souvenirs trouvent un foyer",
+    "siteDescription": "Des voyages privés au Sri Lanka façonnés par la connaissance locale, des hébergements choisis et le rythme de l’île.",
+    "ogTitle": "ReiseCeylon — Découvrez l’âme du Sri Lanka",
+    "ogDescription": "Des voyages lents et personnels à travers le Sri Lanka.",
+    "aboutTitle": "Notre histoire",
+    "contactTitle": "Planifier votre voyage",
+    "blogTitle": "Carnets de terrain",
+    "destinationsTitle": "Destinations — ReiseCeylon",
+    "destinationsDescription": "Chaque plage, ruine, cascade, parc et station de montagne par lesquels nous passons, cartographiés par province et par catégorie à travers le Sri Lanka.",
+    "journeysTitle": "Planifier votre voyage — ReiseCeylon",
+    "journeysDescription": "Choisissez un voyage tout tracé au Sri Lanka ou composez le vôtre. Visualisez la route sur la carte, avec les distances, les temps de conduite et chaque lieu traversé.",
+    "destinationFallbackTitle": "Destination — ReiseCeylon"
+  },
+  "home": {
+    "heroAriaPlates": "Lieux à la une",
+    "heroEyebrow": "Sri Lanka · Voyages privés depuis 2017",
+    "heroTitleLine1": "Une île qui",
+    "heroTitleEm": "se souvient",
+    "heroTitleRest": "de vous.",
+    "heroSub": "Douze climats sur une seule petite île. Nous traçons des routes sans hâte à travers le pays du thé, les territoires du léopard et les vieux ports du sud — guidés par ceux qui y vivent.",
+    "heroPlanCta": "Planifier mon voyage",
+    "heroRoutesCta": "Voir les itinéraires",
+    "railClock": "Colombo, en ce moment",
+    "railWindow": "Meilleure période",
+    "railWindowValue": "Déc — Avr, sud",
+    "railCollection": "Dans la collection",
+    "railCollectionValue": "24 itinéraires",
+    "railPlanner": "Composé pour vous par",
+    "railPlannerValue": "Une seule personne",
+    "manifestoEyebrow": "Notre façon de travailler",
+    "manifestoLead": "Nous planifions comme le ferait un habitant — lentement, et pour une personne à la fois.",
+    "manifestoLeadEmphasis": "lentement,",
+    "signatureTitle": "Un concepteur de voyages, pas un centre d’appels",
+    "signatureMeta": "Colombo · Lun — Sam",
+    "manifestoSide": "Deux voyageurs ne cherchent jamais la même île. Un concepteur à Colombo reçoit votre premier message et vous accompagne jusqu’à la dernière nuit — en retravaillant la route autour de la météo, des fêtes et de ce qui vous a séduit le troisième jour.",
+    "manifestoLink": "Rencontrez celles et ceux qui sont derrière",
+    "chaptersHeadingPre": "Cinq façons d’entrer au",
+    "chaptersHeadingPost": "Sri Lanka.",
+    "chaptersIntro": "Choisissez le paysage qui vous attire. Chaque chapitre ouvre un rythme différent de l’île, de la pierre ancienne aux eaux tièdes du sud.",
+    "chaptersHint": "Parcourez les paysages pour explorer",
+    "chapterExplore": "Explorer",
+    "chapterExploreAria": "Explorer {name}, {region}",
+    "chaptersFullAtlas": "Ouvrir l’atlas complet",
+    "experiencesEyebrow": "Expériences",
+    "experiencesHeading": "Des façons de passer une journée ici",
+    "experiencesIntro": "Chaque voyage se construit avec des journées comme celles-ci — jamais plus de deux d’affilée.",
+    "experiencesCta": "Composer une journée comme celle-ci",
+    "atlasEyebrow": "Voyages signature",
+    "atlasHeadingLine1": "L’île,",
+    "atlasHeadingEm": "dessinée lentement.",
+    "atlasIntro": "Une route est plus qu’une ligne entre des hôtels. Nous façonnons chacune autour de l’altitude, de la mousson, de la lumière et des personnes pour lesquelles il vaut la peine de s’arrêter.",
+    "atlasMapAlt": "Carte touristique détaillée du Sri Lanka montrant routes, voies ferrées, rivières, parcs, villes et sites à visiter",
+    "atlasExploreWhole": "Explorer toute l’île",
+    "atlasPlacesWorth": "{count} lieux qui valent le détour",
+    "atlasFilterAria": "Filtrer les sites",
+    "atlasTourListTitle": "Des voyages qui relient les points",
+    "atlasPlanLink": "Planifiez votre voyage — ou tracez votre propre route",
+    "voicesEyebrow": "Notes de voyageurs",
+    "voicesPrev": "Note précédente",
+    "voicesNext": "Note suivante",
+    "inviteEyebrow": "Votre histoire commence ici",
+    "inviteHeadingLine1": "Là où les souvenirs",
+    "inviteHeadingLine2": "trouvent un foyer.",
+    "inviteCopy": "Dites-nous quand vous pouvez partir et ce que vous ne voulez pas manquer. Vous recevrez la réponse d’un concepteur à Colombo — pas d’un formulaire.",
+    "inviteCta": "Commencer à planifier",
+    "inviteMeta1": "Colombo · Sri Lanka",
+    "inviteMeta2": "Réponse sous un jour ouvré",
+    "inviteMeta3": "Aucun acompte tant que la route n’est pas la bonne"
+  },
+  "content": {
+    "ticker": [
+      "Pays du thé",
+      "Territoire du léopard",
+      "Vieux ports hollandais",
+      "Forêt de nuages",
+      "Côte des baleines",
+      "Forteresses de roche",
+      "Récolteurs de vin de palme",
+      "Trains bleus",
+      "Riz de mousson",
+      "Tambours de temple"
+    ],
+    "heroPlates": {
+      "hikkaduwa": {
+        "region": "Côte sud",
+        "meta": "05° 56′ N — océan Indien"
+      },
+      "ella": {
+        "region": "Pays des collines",
+        "meta": "1 868 m au-dessus de la mer"
+      },
+      "sigiriya": {
+        "region": "Triangle culturel",
+        "meta": "Bâtie au Ve siècle"
+      }
+    },
+    "manifestoStats": [
+      {
+        "value": "11",
+        "label": "Années à tracer les routes de l’île"
+      },
+      {
+        "value": "24",
+        "label": "Voyages privés dans la collection"
+      },
+      {
+        "value": "1:1",
+        "label": "Un concepteur du premier message à la dernière nuit"
+      }
+    ],
+    "experiences": [
+      {
+        "hours": "Dès 05:20",
+        "title": "Rencontres sauvages",
+        "copy": "Partir avant l’ouverture des portes du parc. Nos naturalistes lisent les traces, les cris d’alarme et la lumière — puis attendent, en silence, au bon endroit."
+      },
+      {
+        "hours": "Dès 07:00",
+        "title": "Pays du thé",
+        "copy": "Parcourez une plantation avec celles qui la cueillent, regardez se remplir les séchoirs et buvez la première récolte avant qu’elle n’atteigne la moindre caisse."
+      },
+      {
+        "hours": "Dès 16:30",
+        "title": "Rituels de l’océan",
+        "copy": "Une crique sans nom, une table dressée dans le sable et la longue heure bleue que la côte sud garde pour elle."
+      },
+      {
+        "hours": "Dès 06:10",
+        "title": "Patrimoine vivant",
+        "copy": "Des cités anciennes avant l’arrivée des bus, des tambours de temple au crépuscule et des ateliers où les métiers n’ont pas changé de mains depuis des générations."
+      }
+    ],
+    "voices": [
+      {
+        "quote": "Ils ne nous ont pas tendu un itinéraire. Ils ont demandé ce que nous aimions, puis ont discrètement reconstruit trois jours pendant que nous dormions sous la mousson.",
+        "name": "Marte & Idris",
+        "trip": "The Island in Slow Motion — 12 jours"
+      },
+      {
+        "quote": "Notre guide a grandi à deux vallées de la plantation que nous avons parcourue. Toute la différence est là, et on la sent dès le deuxième matin.",
+        "name": "Hannah Weiss",
+        "trip": "Heritage & Horizon — 10 jours"
+      },
+      {
+        "quote": "Nous sommes restés quarante minutes en silence complet auprès d’un pisteur avant que le léopard ne descende. Personne ne nous a pressés. Personne ne l’a jamais fait.",
+        "name": "La famille Okonkwo",
+        "trip": "Wild Ceylon — 8 jours"
+      }
+    ],
+    "attractionCategories": {
+      "All": "Tout",
+      "Heritage": "Patrimoine",
+      "Wildlife": "Faune",
+      "Coast": "Côte",
+      "Hill country": "Collines",
+      "Nature": "Nature",
+      "City": "Ville"
+    },
+    "attractionRegions": {
+      "Northern Islands": "Îles du Nord",
+      "North Central": "Centre-Nord",
+      "North West": "Nord-Ouest",
+      "Cultural Triangle": "Triangle culturel",
+      "Central East": "Centre-Est",
+      "North East": "Nord-Est",
+      "East Coast": "Côte est",
+      "Central Province": "Province centrale",
+      "Central Highlands": "Hauts plateaux du centre",
+      "Eastern Province": "Province de l’Est",
+      "South East": "Sud-Est",
+      "Southern Province": "Province du Sud",
+      "South West": "Sud-Ouest",
+      "Southern Coast": "Côte sud",
+      "West Coast": "Côte ouest",
+      "Western Province": "Province de l’Ouest",
+      "Northern Province": "Province du Nord",
+      "Hill Country": "Pays des collines"
+    }
+  },
+  "about": {
+    "heroAlt": "Un sentier à travers la forêt sri-lankaise",
+    "eyebrow": "Notre histoire",
+    "headingLine1": "Née d’un",
+    "headingLine2": "attachement.",
+    "intro": "Nous avons créé ReiseCeylon pour partager le Sri Lanka avec le soin, la nuance et l’humanité qu’il mérite.",
+    "whyWeExist": "Pourquoi nous existons",
+    "quote": "Les plus beaux voyages ne donnent pas l’impression qu’un lieu a été consommé. Ils donnent l’impression qu’il a été compris.",
+    "copy": "Notre équipe réunit des concepteurs de voyages locaux, des hôtes, des naturalistes et des conteurs. Nous travaillons avec des hébergements indépendants et des partenaires responsables, en choisissant la profondeur plutôt que le volume et les relations durables plutôt que les transactions rapides.",
+    "card1Title": "Local, toujours",
+    "card1Copy": "Les décisions se prennent ici, avec un savoir façonné par les saisons et l’expérience vécue.",
+    "card2Title": "Moins, mais mieux",
+    "card2Copy": "Nous recommandons moins de lieux et les connaissons plus profondément.",
+    "card3Title": "Un soin qui voyage",
+    "card3Copy": "Votre voyage doit bénéficier aux personnes et aux paysages qui le rendent possible."
+  },
+  "contact": {
+    "eyebrow": "Planifier votre voyage",
+    "headingLine1": "Dites-nous ce",
+    "headingLine2": "qui vous émeut.",
+    "intro": "Parlez-nous un peu du voyage que vous avez en tête. Un concepteur de voyages au Sri Lanka vous répondra {responseTime} avec de premières idées réfléchies.",
+    "whatsapp": "Écrire sur WhatsApp"
+  },
+  "contactForm": {
+    "successEyebrow": "Merci",
+    "successHeading": "Votre voyage a commencé.",
+    "successCopy": "Un concepteur de voyages ReiseCeylon vous contactera sous un jour ouvré.",
+    "sendAnother": "Envoyer une autre demande",
+    "name": "Votre nom",
+    "namePlaceholder": "Comment devons-nous vous appeler ?",
+    "email": "Adresse e-mail",
+    "emailPlaceholder": "vous@exemple.fr",
+    "dates": "À quelle période pensez-vous ?",
+    "datesPlaceholder": "Mois ou dates approximatives",
+    "interest": "Qu’est-ce qui vous attire ?",
+    "interestPlaceholder": "Choisissez une envie",
+    "interestNature": "Nature et faune",
+    "interestCulture": "Culture et cuisine",
+    "interestCoast": "Côte et tranquillité",
+    "interestEverything": "Un peu de tout",
+    "message": "Dites-nous en plus",
+    "messagePlaceholder": "Qui voyage, à quel rythme, et les moments que vous espérez trouver...",
+    "submit": "Commencer la conversation ↗"
+  },
+  "destinations": {
+    "heroEyebrow": "L’atlas · {count} lieux",
+    "heroTitle": "Destinations",
+    "heroIntro": "Chaque lieu par lequel nous passons, du bord du récif à la ligne des nuages. Filtrez par paysage ou par province, puis ouvrez une fiche pour voir où il se situe, ce qui l’entoure et comment nous aimons y arriver.",
+    "summaryPlaces": "Lieux cartographiés",
+    "summaryLandscapes": "Paysages",
+    "summaryProvinces": "Provinces",
+    "summaryPlanner": "Un concepteur, du premier message à la dernière nuit",
+    "featuredEyebrow": "Commencez ici",
+    "featuredHeading": "Les cinq où nous revenons toujours."
+  },
+  "atlas": {
+    "eyebrow": "Parcourir l’île",
+    "heading": "Trouvez votre paysage.",
+    "searchPlaceholder": "Rechercher un lieu, une ville ou un district",
+    "searchAria": "Rechercher des destinations",
+    "filterLandscapeAria": "Filtrer par paysage",
+    "all": "Tout",
+    "province": "Province",
+    "allProvinces": "Toutes les provinces",
+    "noMatch": "Aucun lieu ne correspond à ces filtres",
+    "placeCount": "{count, plural, one {# lieu} other {# lieux}}",
+    "filtered": "filtré",
+    "clearFilters": "Réinitialiser les filtres",
+    "emptyTitle": "Rien ici pour l’instant.",
+    "emptyCopyPre": "Essayez un paysage plus large, une autre province, ou",
+    "emptyCopyLink": "demandez-nous de construire la route",
+    "featured": "À la une",
+    "showMore": "Afficher plus",
+    "shownOf": "{shown} sur {total}"
+  },
+  "destination": {
+    "breadcrumbAria": "Fil d’Ariane",
+    "breadcrumbRoot": "Destinations",
+    "heroCopy": "{note}. Un lieu qui se comprend mieux lentement, à la lumière du petit matin, à travers les récits d’ici et les chemins entre les sites.",
+    "provinceSuffix": "Province {province}",
+    "factLandscape": "Paysage",
+    "factProvince": "Province",
+    "factDistrict": "District",
+    "factNearestTown": "Ville la plus proche",
+    "factCoordinates": "Coordonnées",
+    "factDecimal": "Décimal",
+    "googleMaps": "Google Maps",
+    "directions": "Itinéraire",
+    "openStreetMap": "OpenStreetMap",
+    "whyGo": "Pourquoi y aller",
+    "highlightsHeading": "Ce que nous ne manquerions pas à {name}.",
+    "whereItSits": "Où cela se situe",
+    "mapTitle": "Carte de {name}",
+    "withinReach": "À portée",
+    "whatIsClose": "Ce qui se trouve à proximité.",
+    "kmAway": "à {km} km",
+    "underKm": "<1 km",
+    "moreOf": "Plus de {category}",
+    "goodToKnow": "Bon à savoir",
+    "seeJourney": "Voir un voyage qui passe par ici"
+  },
+  "highlights": {
+    "eyebrow": "Temps forts",
+    "heading": "Ce que nous ne manquerions pas."
+  },
+  "journeys": {
+    "eyebrow": "Planifier votre voyage",
+    "headingPre": "Prenez l’un des nôtres,",
+    "headingEm": "ou tracez le vôtre.",
+    "aside": "Mesuré sur le réseau routier réel — la distance, le temps au volant et tout ce que la route traverse. Quand cela vous convient, envoyez-le-nous.",
+    "talkLink": "Ou en parler avec nous"
+  },
+  "planner": {
+    "modesAria": "Comment planifier",
+    "tabPackages": "Voyages tout tracés",
+    "tabPackagesSub": "Choisissez-en un que nous proposons déjà",
+    "tabCustom": "Composez le vôtre",
+    "tabCustomSub": "Choisissez des lieux et glissez-les dans l’ordre voulu",
+    "filterLengthAria": "Filtrer par durée",
+    "noneOfLengthPre": "Rien de cette durée pour l’instant —",
+    "noneOfLengthLink": "composez-en un à la place",
+    "fullItinerary": "Itinéraire complet",
+    "customiseThis": "Personnaliser",
+    "mapLoading": "Chargement de la carte…",
+    "mapClose": "Fermer la carte plein écran",
+    "mapExpand": "Agrandir la carte en plein écran",
+    "close": "Fermer",
+    "expand": "Agrandir",
+    "mapCaption": "{stops, plural, one {# étape} other {# étapes}} · {km} · {duration} de conduite",
+    "transferTitle": "Transfert aéroport aller et retour",
+    "transferOn": "Départ et arrivée à l’aéroport de Colombo (CMB)",
+    "transferOff": "Route mesurée entre votre première et votre dernière étape",
+    "finalise": "Finaliser et envoyer ce voyage",
+    "sendDialogAria": "Envoyer ce voyage",
+    "aJourney": "Un voyage",
+    "yourOwnJourney": "Votre propre voyage"
+  },
+  "builder": {
+    "pickerHeading": "Choisissez vos lieux",
+    "pickerIntro": "Parcourez l’atlas, puis ajoutez-les dans l’ordre que vous voulez.",
+    "searchPlaceholder": "Rechercher un lieu, une ville ou un district",
+    "searchAria": "Rechercher des lieux à ajouter",
+    "landscape": "Paysage",
+    "allLandscapes": "Tous les paysages",
+    "province": "Province",
+    "allProvinces": "Toutes les provinces",
+    "noMatch": "Aucun lieu ne correspond à ces filtres.",
+    "alreadyAdded": "{name} est déjà dans votre voyage",
+    "addPlace": "Ajouter {name}",
+    "anywhereHeading": "Ailleurs ?",
+    "anywhereCopy": "Votre hôtel, votre aéroport, la ville d’où vous partez — cherchez n’importe où au Sri Lanka et ajoutez-le comme étape.",
+    "anywherePlaceholder": "Negombo, aéroport Bandaranaike, un village…",
+    "anywhereAria": "Rechercher partout au Sri Lanka",
+    "searchUnavailable": "La recherche est indisponible pour le moment.",
+    "nothingFound": "Rien trouvé au Sri Lanka pour cette recherche.",
+    "creditPre": "Recherche de lieux par",
+    "routeHeading": "Votre route",
+    "nothingAdded": "Rien d’ajouté pour l’instant.",
+    "stopsInOrder": "{count, plural, one {# étape} other {# étapes}}, dans cet ordre. Glissez pour réorganiser.",
+    "shortestOrder": "Ordre le plus court",
+    "clear": "Effacer",
+    "pickFirst": "Choisissez un premier lieu dans la liste. Les distances, les temps de conduite et la route sur la carte apparaissent dès qu’il y en a deux.",
+    "driveTo": "Route vers {name}",
+    "legInline": "{km} · {duration} de conduite",
+    "ownStop": "étape perso",
+    "ownStopTitle": "Ajouté depuis OpenStreetMap, pas depuis notre atlas",
+    "moveEarlier": "Déplacer {name} plus tôt",
+    "moveLater": "Déplacer {name} plus tard",
+    "remove": "Retirer {name}"
+  },
+  "summary": {
+    "emptyTitle": "Aucune étape pour l’instant.",
+    "emptyCopy": "Ajoutez un lieu et la distance, le temps de conduite et la route apparaîtront ici.",
+    "stops": "Étapes",
+    "roadDistance": "Distance routière",
+    "timeOnRoad": "Temps sur la route",
+    "length": "Durée",
+    "suggestedLength": "Durée suggérée",
+    "days": "{count, plural, one {# jour} other {# jours}}",
+    "estimate": "Estimé d’après le réseau routier, non d’après le trafic en temps réel — {km} aux vitesses de circulation sri-lankaises, soit environ {duration} au volant au total.",
+    "longestLeg": "Le trajet le plus long est {from} – {to}, {duration}.",
+    "legByLeg": "Étape par étape",
+    "covers": "Ce que ce voyage couvre",
+    "transferTag": "transfert",
+    "ownStop": "votre propre étape",
+    "alsoOnRoad": "Également sur cette route",
+    "alsoOnRoadCopy": "Des lieux dont la route passe déjà tout près.",
+    "offRoute": "à {km} de la route",
+    "add": "Ajouter",
+    "addAria": "Ajouter {name} à votre voyage"
+  },
+  "enquiry": {
+    "sentEyebrow": "En route",
+    "sentHeading": "Nous avons votre voyage.",
+    "sentCopy": "{title} — {stops, plural, one {# étape} other {# étapes}}, {km} de route.",
+    "sentCopySuffix": "Un concepteur de voyages ReiseCeylon vous répondra sous un jour ouvré.",
+    "copyOnItsWay": "Une copie est en route vers votre boîte mail.",
+    "downloadPdf": "Télécharger votre plan (PDF) ↓",
+    "backToPlanning": "Retour à la planification",
+    "printableTitle": "Itinéraire imprimable",
+    "eyebrow": "Finaliser",
+    "heading": "Envoyez-nous ce voyage.",
+    "close": "Fermer",
+    "recap": "{stops, plural, one {# étape} other {# étapes}} · {km} · {duration} de conduite · {length}",
+    "aboutDays": "environ {count, plural, one {# jour} other {# jours}}",
+    "name": "Votre nom",
+    "namePlaceholder": "Comment devons-nous vous appeler ?",
+    "email": "Adresse e-mail",
+    "emailPlaceholder": "vous@exemple.fr",
+    "mobile": "Numéro de mobile",
+    "dialCodeAria": "Indicatif téléphonique du pays",
+    "moreCountries": "Autres pays",
+    "elsewhere": "Ailleurs — saisir l’indicatif",
+    "phonePlaceholder": "77 123 4567",
+    "dates": "À quelle période pensez-vous ?",
+    "datesPlaceholder": "Mois ou dates approximatives",
+    "travellers": "Voyageurs",
+    "travellersSolo": "Voyageur seul",
+    "travellers2": "2 voyageurs",
+    "travellers35": "3–5 voyageurs",
+    "travellers6": "6+ voyageurs",
+    "vehicle": "Véhicule",
+    "budget": "Budget",
+    "optional": "facultatif",
+    "message": "Quelque chose à ajouter ?",
+    "messagePlaceholder": "Votre rythme, ce que vous changeriez à cette route, ce que vous préféreriez ne pas manquer...",
+    "sending": "Envoi…",
+    "submit": "Envoyer ce voyage ↗",
+    "fineprint": "Nous vous enverrons une copie de cet itinéraire par e-mail, et vous pourrez le télécharger en PDF juste après.",
+    "sendFailed": "L’envoi a échoué. Merci de réessayer.",
+    "vehicleOptions": [
+      "Sans préférence",
+      "Voiture — jusqu’à 3 voyageurs",
+      "Van — jusqu’à 6 voyageurs",
+      "Minibus — 7 et plus",
+      "4x4 — pour les parcs et les pistes",
+      "Conduite personnelle"
+    ],
+    "budgetOptions": [
+      "Pas encore décidé",
+      "Moins de 100 $ par personne et par jour",
+      "100–200 $ par personne et par jour",
+      "200–350 $ par personne et par jour",
+      "350 $+ par personne et par jour",
+      "Dites-moi ce que coûte cette route"
+    ]
+  },
+  "map": {
+    "airportTransfer": "Transfert aéroport",
+    "ownStop": "Votre propre étape",
+    "stopOf": "Étape {index} sur {total}"
+  },
+  "blog": {
+    "eyebrow": "Carnets de terrain",
+    "headingLine1": "Des histoires pour le",
+    "headingLine2": "voyageur curieux.",
+    "intro": "Regards locaux, guides sans hâte et idées pour voir le Sri Lanka avec plus de profondeur.",
+    "comingSoon": "Bientôt",
+    "minRead": "{minutes} min de lecture",
+    "published": "Publié",
+    "writtenBy": "Écrit par",
+    "filedUnder": "Classé sous",
+    "allNotes": "Tous les carnets",
+    "placeholders": [
+      {
+        "title": "Un guide lent de la bordure sud du Sri Lanka",
+        "category": "Côte"
+      },
+      {
+        "title": "Les mains derrière une tasse parfaite de thé de Ceylan",
+        "category": "Cuisine & culture"
+      },
+      {
+        "title": "Pourquoi le safari le plus silencieux est souvent le meilleur",
+        "category": "Faune"
+      },
+      {
+        "title": "Première lumière sur un royaume ancien",
+        "category": "Patrimoine"
+      },
+      {
+        "title": "Trouver le calme dans le pays des collines",
+        "category": "Bien-être"
+      }
+    ]
+  },
+  "tour": {
+    "heroMeta": "{days} · Voyage privé · D’aéroport à aéroport",
+    "heroCopy": "{route}. Un voyage réfléchi qui équilibre profondeur culturelle, grands paysages et assez de temps libre pour qu’il devienne le vôtre.",
+    "theJourney": "Le voyage",
+    "howStoryUnfolds": "Comment l’histoire se déroule.",
+    "included": "Inclus",
+    "tailor": "Adapter ce voyage"
+  },
+  "places": {
+    "regions": {
+      "Central": "Hauts plateaux du centre",
+      "Eastern": "Côte est",
+      "Northern": "Province du Nord",
+      "North Central": "Triangle culturel",
+      "North Western": "Côte nord-ouest",
+      "Sabaragamuwa": "Sabaragamuwa",
+      "Southern": "Côte sud",
+      "Uva": "Hauts plateaux d’Uva",
+      "Western": "Province de l’Ouest"
+    },
+    "provinces": {
+      "Central": "Centre",
+      "Eastern": "Est",
+      "North Central": "Centre-Nord",
+      "North Western": "Nord-Ouest",
+      "Northern": "Nord",
+      "Sabaragamuwa": "Sabaragamuwa",
+      "Southern": "Sud",
+      "Uva": "Uva",
+      "Western": "Ouest"
+    },
+    "categories": {
+      "beaches": "Plages",
+      "ancient-cities-and-ruins": "Cités anciennes et sites archéologiques",
+      "temples": "Temples et lieux sacrés",
+      "waterfalls": "Cascades",
+      "natural-pools": "Bassins naturels et bains de rivière",
+      "national-parks-and-wildlife": "Parcs nationaux et faune",
+      "mountains-and-hiking": "Montagnes et randonnée",
+      "lakes-and-reservoirs": "Lacs et réservoirs",
+      "scenic-viewpoints": "Points de vue",
+      "scenic-train-destinations": "Destinations du train panoramique",
+      "islands": "Îles",
+      "botanical-gardens-and-parks": "Jardins botaniques et parcs",
+      "marine-and-coastal-attractions": "Sites marins et côtiers"
+    },
+    "categoryNotes": {
+      "beaches": "Eau tiède, longue plage et matins sans hâte",
+      "ancient-cities-and-ruins": "La pierre, l’inscription et le poids des siècles",
+      "temples": "Des tambours au crépuscule et un rythme tenu depuis des générations",
+      "waterfalls": "Embruns froids, vert profond et le bruit de l’eau qui tombe",
+      "natural-pools": "Une eau de rivière polie à même la roche",
+      "national-parks-and-wildlife": "Là où le sauvage donne encore le tempo",
+      "mountains-and-hiking": "De longues montées qui finissent au-dessus des nuages",
+      "lakes-and-reservoirs": "Eau calme, vieille ingénierie et lumière du soir",
+      "scenic-viewpoints": "Un long regard sur l’île",
+      "scenic-train-destinations": "Trains bleus, portes ouvertes et campagne lente",
+      "islands": "Une courte traversée vers plus tranquille",
+      "botanical-gardens-and-parks": "Des allées plantées et un siècle d’ombre",
+      "marine-and-coastal-attractions": "La côte lue depuis la mer"
+    },
+    "noteFallback": "{area}, Sri Lanka",
+    "precision": {
+      "exact": "Site ou point d’entrée précisément cartographié.",
+      "representative": "Point représentatif d’un site dont la limite, le sentier ou le point d’accès varie.",
+      "area-centroid": "Centre approximatif d’un grand parc, d’une réserve, d’un massif, d’un réseau fluvial ou d’une île."
+    }
+  },
+  "journey": {
+    "bandAll": "Toutes durées",
+    "bandDay": "Excursions d’une journée",
+    "bandShort": "2–4 jours",
+    "bandWeek": "5–9 jours",
+    "bandLong": "10 jours +",
+    "terrainMountain": "Route de montagne sur tout le trajet",
+    "terrainClimbs": "Monte vers les collines",
+    "terrainLowlandClimb": "Plaine, avec une montée à la fin",
+    "terrainLowland": "Routes de plaine",
+    "oneDay": "Une journée",
+    "dayNumber": "Jour {number}",
+    "roadAndDriving": "{km} de route, dont environ {duration} au volant.",
+    "fullDayAt": "Une journée entière à {name}, à votre rythme.",
+    "airportPickup": "Aéroport de Colombo (CMB) — prise en charge",
+    "airportDropoff": "Aéroport de Colombo (CMB) — retour"
+  },
+  "defaults": {
+    "highlights": [
+      {
+        "title": "La vue essentielle",
+        "copy": "Arrivez avant que la journée ne s’emballe et voyez le paysage dans sa lumière la plus douce."
+      },
+      {
+        "title": "Une table d’ici",
+        "copy": "Partagez une cuisine de saison et une conversation dans un lieu choisi pour son caractère, non pour le spectacle."
+      },
+      {
+        "title": "De la place pour flâner",
+        "copy": "Un après-midi généreux, un itinéraire réfléchi et aucune obligation de se presser."
+      }
+    ],
+    "stages": [
+      {
+        "period": "Jours 1–3",
+        "title": "Commencer dans les anciens royaumes",
+        "copy": "Arrivez en douceur, installez-vous sur l’île et suivez d’anciens chemins à travers forêt et pierre."
+      },
+      {
+        "period": "Jours 4–7",
+        "title": "Avancer avec les collines",
+        "copy": "Prenez le train lent vers le pays du thé, parcourez les plantations et dînez près du feu quand la brume monte."
+      },
+      {
+        "period": "Jours 8–10",
+        "title": "Suivre la route vers le sud",
+        "copy": "Échangez l’air des montagnes contre la côte, avec des haltes chez les artisans, sur les marchés et dans un refuge isolé au bord de la mer."
+      },
+      {
+        "period": "Jours 11–12",
+        "title": "Finir sans se presser",
+        "copy": "Laissez les derniers jours ouverts à l’eau salée, aux longs déjeuners et à un dernier coucher de soleil sri-lankais."
+      }
+    ],
+    "destinationIntroHeading": "Venez pour le paysage.\nRestez pour ses histoires plus discrètes.",
+    "destinationIntroCopy": "{name} est plus qu’un point sur une carte. Nous associons ses sites essentiels au temps de flâner, de rencontrer et de remarquer les détails qui rendent un lieu mémorable.",
+    "destinationGoodToKnowHeading": "Idéal de décembre à avril, beau en toute saison.",
+    "destinationGoodToKnowCopy": "Nous planifions autour de la météo, des fêtes locales et du rythme que vous préférez. Transferts privés, hébergements choisis, guides de confiance et assistance sur place 24h/24 peuvent tous s’intégrer à votre voyage.",
+    "tourIntroHeading": "Une route avec une direction,\njamais un programme rigide.",
+    "tourIntroCopy": "Chaque hébergement, transfert et rencontre est pris en charge. Le rythme reste ample, et chaque détail peut être modifié selon vos envies.",
+    "tourIncludedHeading": "Privé par nature.\nAccompagné du début à la fin.",
+    "tourIncludedCopy": "Hébergements choisis, petit-déjeuner quotidien, transport privé, hôtes spécialisés, expériences sélectionnées et assistance locale 24h/24 sont inclus. Les vols internationaux et l’assurance voyage sont exclus.",
+    "contactLocation": "Colombo, Sri Lanka",
+    "contactResponseTime": "sous un jour ouvré",
+    "seoTitle": "{name}, Sri Lanka | Guide de voyage",
+    "seoTitleShort": "Visiter {name} | Guide Sri Lanka",
+    "seoTitleShortest": "{name} | Sri Lanka",
+    "seoDescription": "Découvrez {name} dans la région de {area}, Sri Lanka : les temps forts, les lieux à proximité et les informations pratiques pour préparer votre visite."
+  },
+  "packages": {
+    "sigiriya-day-out": {
+      "title": "Sigiriya en une journée",
+      "route": "Aéroport CMB → Dambulla → Sigiriya → CMB",
+      "note": "Quitter la ville avant cinq heures, gravir le rocher avant la chaleur et rentrer à la nuit."
+    },
+    "kandy-day-out": {
+      "title": "Kandy & la route des temples",
+      "route": "Aéroport CMB → Peradeniya → Kandy → CMB",
+      "note": "L’ancienne capitale, ses jardins et les tambours du soir au Temple de la Dent."
+    },
+    "southern-shore-day": {
+      "title": "Le rivage sud",
+      "route": "Aéroport CMB → Bentota → Hikkaduwa → Unawatuna",
+      "note": "Les tortues de Kosgoda, le récif de Hikkaduwa et un long déjeuner au-dessus de la baie d’Unawatuna."
+    },
+    "cultural-triangle-short": {
+      "title": "Le Triangle culturel",
+      "route": "Aéroport CMB → Dambulla → Sigiriya → Polonnaruwa",
+      "note": "Trois jours parmi les temples rupestres, les capitales en ruine et les éléphants de Minneriya."
+    },
+    "hill-country-short": {
+      "title": "Au cœur du pays des collines",
+      "route": "Kandy → Nuwara Eliya → Ella",
+      "note": "Le train bleu, le thé au-dessus des nuages et deux matins dans la trouée d’Ella."
+    },
+    "wild-south-short": {
+      "title": "Le Sud sauvage",
+      "route": "Udawalawe → Yala → Tangalle",
+      "note": "Deux parcs, un léopard si la lumière est clémente, et la côte pour s’en remettre."
+    },
+    "island-in-slow-motion": {
+      "title": "L’île au ralenti",
+      "route": "Colombo → Pays du thé → Côte sud",
+      "note": "Sentiers du thé, plantations tranquilles et matins au-dessus des nuages."
+    },
+    "wild-ceylon": {
+      "title": "Ceylan sauvage",
+      "route": "Sigiriya → Gal Oya → Yala",
+      "note": "Des paysages sauvages façonnés autour de rencontres patientes et respectueuses."
+    },
+    "heritage-and-horizon": {
+      "title": "Patrimoine & Horizon",
+      "route": "Kandy → Galle → Mirissa",
+      "note": "Cités anciennes, remparts du sud et longues soirées au bord de la mer."
+    }
+  },
+  "durations": {
+    "day": "{count, plural, one {# jour} other {# jours}}"
+  },
+  "dialCodes": {
+    "Sri Lanka": "Sri Lanka",
+    "Germany": "Allemagne",
+    "United Kingdom": "Royaume-Uni",
+    "India": "Inde",
+    "United States / Canada": "États-Unis / Canada",
+    "Australia": "Australie",
+    "France": "France",
+    "Netherlands": "Pays-Bas",
+    "Austria": "Autriche",
+    "Belgium": "Belgique",
+    "Brazil": "Brésil",
+    "China": "Chine",
+    "Czechia": "Tchéquie",
+    "Denmark": "Danemark",
+    "Egypt": "Égypte",
+    "Finland": "Finlande",
+    "Greece": "Grèce",
+    "Hong Kong": "Hong Kong",
+    "Hungary": "Hongrie",
+    "Indonesia": "Indonésie",
+    "Ireland": "Irlande",
+    "Israel": "Israël",
+    "Italy": "Italie",
+    "Japan": "Japon",
+    "Kenya": "Kenya",
+    "Malaysia": "Malaisie",
+    "Maldives": "Maldives",
+    "Mexico": "Mexique",
+    "New Zealand": "Nouvelle-Zélande",
+    "Norway": "Norvège",
+    "Pakistan": "Pakistan",
+    "Philippines": "Philippines",
+    "Poland": "Pologne",
+    "Portugal": "Portugal",
+    "Qatar": "Qatar",
+    "Russia / Kazakhstan": "Russie / Kazakhstan",
+    "Saudi Arabia": "Arabie saoudite",
+    "Singapore": "Singapour",
+    "South Africa": "Afrique du Sud",
+    "South Korea": "Corée du Sud",
+    "Spain": "Espagne",
+    "Sweden": "Suède",
+    "Switzerland": "Suisse",
+    "Taiwan": "Taïwan",
+    "Thailand": "Thaïlande",
+    "Türkiye": "Turquie",
+    "United Arab Emirates": "Émirats arabes unis",
+    "Vietnam": "Vietnam"
+  },
+  "itinerary": {
+    "yourJourney": "Votre voyage",
+    "customJourney": "Voyage sur mesure",
+    "readyMadeJourney": "Voyage tout tracé",
+    "designedJourney": "Un voyage que vous avez composé",
+    "thanks": "Merci, {name} — voici le voyage que vous avez composé, exactement tel que vous l’avez laissé. L’un de nos concepteurs de voyages le lit en ce moment et vous répondra sous un jour ouvré.",
+    "thanksText": "Merci, {name} — voici le voyage que vous avez composé. Un concepteur de voyages vous répondra sous un jour ouvré.",
+    "stops": "Étapes",
+    "roadDistance": "Distance routière",
+    "timeOnRoad": "Temps sur la route",
+    "length": "Durée",
+    "suggestedLength": "Durée suggérée",
+    "transfers": "Transferts",
+    "transfersOn": "Transfert aéroport aller et retour (CMB)",
+    "transfersOff": "Aucun — départ et arrivée personnels",
+    "theRoute": "La route",
+    "legByLeg": "Étape par étape",
+    "whatYouToldUs": "Ce que vous nous avez dit",
+    "theTraveller": "Le voyageur",
+    "yourNote": "Votre note",
+    "theirNote": "Sa note",
+    "name": "Nom",
+    "email": "E-mail",
+    "mobile": "Mobile",
+    "dates": "Dates",
+    "travellers": "Voyageurs",
+    "vehicle": "Véhicule",
+    "budget": "Budget",
+    "when": "Quand",
+    "preparedFor": "Préparé pour",
+    "yourDetails": "Vos informations",
+    "theirOwnStop": "étape personnelle",
+    "yourOwnStop": "Votre propre étape",
+    "footerTraveller": "Les distances et les temps de conduite sont des estimations pour un véhicule privé aux vitesses de circulation sri-lankaises. Votre concepteur de voyages confirmera les horaires réels. Répondez simplement à cet e-mail pour modifier quoi que ce soit.",
+    "footerInternal": "Envoyé depuis le planificateur de voyage sur /journeys. Les distances et les temps de conduite sont les estimations du planificateur, pas celles d’un service de routage.",
+    "printFooter": "Les distances et les temps de conduite sont des estimations pour un véhicule privé aux vitesses de circulation sri-lankaises, non un service de routage — votre concepteur de voyages confirmera les horaires réels.",
+    "preparedBy": "Préparé par ReiseCeylon",
+    "preparedByFor": "Préparé par ReiseCeylon pour {name}",
+    "saveAsPdf": "Enregistrer en PDF",
+    "days": "{count, plural, one {# jour} other {# jours}}",
+    "emailSubjectInternal": "Nouvelle demande de voyage — {title}",
+    "emailSubjectTraveller": "Votre voyage ReiseCeylon — {title}"
+  }
+}

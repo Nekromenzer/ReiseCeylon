@@ -31,22 +31,21 @@ export const siteSettings = defineType({
     defineField({
       name: 'location',
       title: 'Location',
-      type: 'string',
+      type: 'localeString',
       description: 'e.g. “Colombo, Sri Lanka”.',
       validation: (rule) => rule.required()
     }),
     defineField({
       name: 'address',
       title: 'Full address',
-      type: 'text',
-      rows: 3,
+      type: 'localeTextOptional',
       description: 'Optional. Shown on the contact page when set.'
     }),
     defineField({
       name: 'responseTime',
       title: 'Response promise',
-      type: 'string',
-      description: 'e.g. “within one working day”. Used in the contact page copy.'
+      type: 'localeStringOptional',
+      description: 'e.g. “within one working day”. Reads inside a sentence, so translate it.'
     }),
     defineField({
       name: 'social',
@@ -60,7 +59,7 @@ export const siteSettings = defineType({
             defineField({
               name: 'label',
               title: 'Label',
-              type: 'string',
+              type: 'localeString',
               description: 'Instagram, Facebook, YouTube…',
               validation: (rule) => rule.required()
             }),
@@ -71,7 +70,7 @@ export const siteSettings = defineType({
               validation: (rule) => rule.required()
             })
           ],
-          preview: { select: { title: 'label', subtitle: 'url' } }
+          preview: { select: { title: 'label.en', subtitle: 'url' } }
         })
       ]
     })

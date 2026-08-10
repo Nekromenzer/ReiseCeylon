@@ -9,7 +9,8 @@
  * figures are comparable between the two.
  */
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import {
   formatDuration,
   formatKm,
@@ -37,11 +38,14 @@ export function JourneySummary({
   declaredDays?: string;
   onAdd?: (slug: string) => void;
 }) {
+  const t = useTranslations('summary');
+  const terrain = useTranslations('journey');
+
   if (stops.length === 0) {
     return (
       <div className="rc-plan-summary rc-plan-summary-empty">
-        <p>No stops yet.</p>
-        <p>Add a place and the distance, drive time and route appear here.</p>
+        <p>{t('emptyTitle')}</p>
+        <p>{t('emptyCopy')}</p>
       </div>
     );
   }
@@ -52,40 +56,43 @@ export function JourneySummary({
     <div className="rc-plan-summary">
       <dl className="rc-plan-stats">
         <div>
-          <dt>Stops</dt>
+          <dt>{t('stops')}</dt>
           <dd>{stops.length}</dd>
         </div>
         <div>
-          <dt>Road distance</dt>
+          <dt>{t('roadDistance')}</dt>
           <dd>{formatKm(route.roadKm)}</dd>
         </div>
         <div>
-          <dt>Time on the road</dt>
+          <dt>{t('timeOnRoad')}</dt>
           <dd>{formatDuration(route.minutes)}</dd>
         </div>
         <div>
-          <dt>{declaredDays ? 'Length' : 'Suggested length'}</dt>
-          <dd>
-            {declaredDays ?? `${route.suggestedDays} ${route.suggestedDays === 1 ? 'day' : 'days'}`}
-          </dd>
+          <dt>{declaredDays ? t('length') : t('suggestedLength')}</dt>
+          <dd>{declaredDays ?? t('days', { count: route.suggestedDays })}</dd>
         </div>
       </dl>
 
       <p className="rc-plan-estimate">
-        Estimated from the road network, not a live traffic feed — {formatKm(route.roadKm)} at Sri
-        Lankan touring speeds, about {formatDuration(route.minutes)} behind the wheel in total.
+        {t('estimate', {
+          km: formatKm(route.roadKm),
+          duration: formatDuration(route.minutes)
+        })}
         {route.longestLeg && driving > 0 ? (
           <>
             {' '}
-            The longest single drive is {route.longestLeg.from.name} to {route.longestLeg.to.name},{' '}
-            {formatDuration(route.longestLeg.minutes)}.
+            {t('longestLeg', {
+              from: route.longestLeg.from.name,
+              to: route.longestLeg.to.name,
+              duration: formatDuration(route.longestLeg.minutes)
+            })}
           </>
         ) : null}
       </p>
 
       {route.legs.length > 0 ? (
         <div className="rc-plan-legs">
-          <h3>Leg by leg</h3>
+          <h3>{t('legByLeg')}</h3>
           <ol>
             {route.legs.map((leg, index) => (
               <li key={`${leg.from.slug}-${leg.to.slug}-${index}`}>
@@ -98,7 +105,7 @@ export function JourneySummary({
                   <b>{formatKm(leg.roadKm)}</b>
                   <b>{formatDuration(leg.minutes)}</b>
                 </span>
-                <span className="rc-plan-leg-terrain">{terrainNote(leg.highlandFraction)}</span>
+                <span className="rc-plan-leg-terrain">{terrain(terrainNote(leg.highlandFraction))}</span>
               </li>
             ))}
           </ol>
@@ -106,7 +113,7 @@ export function JourneySummary({
       ) : null}
 
       <div className="rc-plan-covered">
-        <h3>What this journey covers</h3>
+        <h3>{t('covers')}</h3>
         <ol>
           {stops.map((stop, index) => (
             <li key={`${stop.slug}-${index}`}>
@@ -115,11 +122,11 @@ export function JourneySummary({
                   themselves has a destination page to link to. */}
               {stop.transfer ? (
                 <span>
-                  {stop.name} <em className="rc-plan-own rc-plan-transfer-tag">transfer</em>
+                  {stop.name} <em className="rc-plan-own rc-plan-transfer-tag">{t('transferTag')}</em>
                 </span>
               ) : stop.custom ? (
                 <span>
-                  {stop.name} <em className="rc-plan-own">your own stop</em>
+                  {stop.name} <em className="rc-plan-own">{t('ownStop')}</em>
                 </span>
               ) : (
                 <Link href={`/destinations/${stop.slug}`}>{stop.name}</Link>
@@ -131,20 +138,24 @@ export function JourneySummary({
 
       {nearby.length > 0 ? (
         <div className="rc-plan-nearby">
-          <h3>Also on this road</h3>
-          <p>Places the route already passes close to.</p>
+          <h3>{t('alsoOnRoad')}</h3>
+          <p>{t('alsoOnRoadCopy')}</p>
           <ul>
             {nearby.map(({ place, km }) => (
               <li key={place.slug}>
                 <span>
                   <strong>{place.name}</strong>
                   <small>
-                    {place.category} · {formatKm(km)} off the route
+                    {place.category} · {t('offRoute', { km: formatKm(km) })}
                   </small>
                 </span>
                 {onAdd ? (
-                  <button type="button" onClick={() => onAdd(place.slug)} aria-label={`Add ${place.name} to your journey`}>
-                    Add
+                  <button
+                    type="button"
+                    onClick={() => onAdd(place.slug)}
+                    aria-label={t('addAria', { name: place.name })}
+                  >
+                    {t('add')}
                   </button>
                 ) : null}
               </li>

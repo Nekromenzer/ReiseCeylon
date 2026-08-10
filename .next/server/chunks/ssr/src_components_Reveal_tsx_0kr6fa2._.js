@@ -1,3 +1,0 @@
-module.exports=[800349,a=>{"use strict";var b=a.i(187924),c=a.i(346271);a.s(["Reveal",0,function({children:a,className:d="",delay:e=0}){return(0,b.jsx)(c.motion.div,{className:d,initial:{opacity:0,y:42,filter:"blur(8px)"},whileInView:{opacity:1,y:0,filter:"blur(0px)"},viewport:{once:!0,margin:"-80px"},transition:{duration:.9,delay:e,ease:[.32,.72,0,1]},children:a})}])}];
-
-//# sourceMappingURL=src_components_Reveal_tsx_0kr6fa2._.js.map

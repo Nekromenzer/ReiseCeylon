@@ -14,6 +14,24 @@
  */
 import { CUSTOM_PREFIX, formatDuration } from './journey';
 
+/**
+ * The labels for these three documents, supplied by the caller.
+ *
+ * This module runs on both sides of the client boundary — the API route renders
+ * the emails, the browser renders the printable sheet — so it cannot reach for
+ * next-intl itself. Both callers pass a translator bound to the `itinerary`
+ * namespace and the traveller's language instead, which is what makes the email
+ * that lands in an inbox match the page the route was planned on.
+ */
+export type Translate = (key: string, values?: Record<string, string | number>) => string;
+
+export type ItineraryCopy = { t: Translate; locale: string };
+
+/** Convenience for the browser, where the translator has next-intl's signature. */
+export function printableCopy(t: Translate, locale: string): ItineraryCopy {
+  return { t, locale };
+}
+
 export type ItineraryLeg = { from: string; to: string; km: number; minutes: number };
 
 export type ItineraryStop = { name: string; slug: string };
@@ -33,6 +51,8 @@ export type ItineraryJourney = {
 };
 
 export type Itinerary = {
+  /** The language the traveller planned in. Drives the emails and the PDF. */
+  locale: string;
   name: string;
   email: string;
   /** Dialling code and number, already joined — empty if the field was skipped. */
@@ -72,19 +92,24 @@ export function customPoint(slug: string) {
 }
 
 /** The length as it should be stated: what the package declares beats our estimate. */
-function statedLength(journey: ItineraryJourney) {
+function statedLength(journey: ItineraryJourney, t: Translate) {
   if (journey.declaredDays) return journey.declaredDays;
-  return `${journey.suggestedDays} ${journey.suggestedDays === 1 ? 'day' : 'days'}`;
+  return t('days', { count: journey.suggestedDays });
 }
 
-function transfersLine(journey: ItineraryJourney) {
-  return journey.airportTransfers ? 'Airport pickup and drop-off (CMB)' : 'None — own start and end';
+function transfersLine(journey: ItineraryJourney, t: Translate) {
+  return journey.airportTransfers ? t('transfersOn') : t('transfersOff');
 }
 
 type Audience = { forTraveller?: boolean };
 
-export function renderItineraryEmailHtml(enquiry: Itinerary, audience: Audience = {}) {
+export function renderItineraryEmailHtml(
+  enquiry: Itinerary,
+  copy: ItineraryCopy,
+  audience: Audience = {}
+) {
   const { journey } = enquiry;
+  const { t, locale } = copy;
   const e = escapeHtml;
   const mine = audience.forTraveller === true;
 
@@ -93,7 +118,7 @@ export function renderItineraryEmailHtml(enquiry: Itinerary, audience: Audience 
       const point = customPoint(stop.slug);
       const note = point
         ? ` <a href="https://www.google.com/maps/search/?api=1&amp;query=${point.latitude},${point.longitude}"
-             style="color:#8a8172;font-size:12px">their own stop — ${point.latitude}, ${point.longitude}</a>`
+             style="color:#8a8172;font-size:12px">${e(t('theirOwnStop'))} — ${point.latitude}, ${point.longitude}</a>`
         : '';
       return `<li><strong>${index + 1}.</strong> ${e(stop.name)}${note}</li>`;
     })
@@ -107,67 +132,65 @@ export function renderItineraryEmailHtml(enquiry: Itinerary, audience: Audience 
     .join('');
 
   return `<!doctype html>
-<html><body style="margin:0;padding:24px;background:#f6f4ef;font-family:Georgia,'Times New Roman',serif;color:#1d2a24">
+<html lang="${e(locale)}"><body style="margin:0;padding:24px;background:#f6f4ef;font-family:Georgia,'Times New Roman',serif;color:#1d2a24">
   <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #e3ded2;padding:32px">
     <p style="margin:0 0 4px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8a8172">
-      ${mine ? 'Your journey' : journey.kind === 'custom' ? 'Custom journey' : 'Ready-made journey'}
+      ${e(mine ? t('yourJourney') : journey.kind === 'custom' ? t('customJourney') : t('readyMadeJourney'))}
     </p>
     <h1 style="margin:0 0 ${mine ? '14' : '20'}px;font-size:26px;font-weight:400">${e(journey.title)}</h1>
     ${
       mine
-        ? `<p style="margin:0 0 22px;font-size:15px;line-height:1.7">Thank you, ${e(enquiry.name.split(' ')[0])} — here is the journey you put together, exactly as you left it. One of our travel designers is reading it now and will write back within one working day.</p>`
+        ? `<p style="margin:0 0 22px;font-size:15px;line-height:1.7">${e(t('thanks', { name: enquiry.name.split(' ')[0] }))}</p>`
         : ''
     }
 
     <table width="100%" style="border-collapse:collapse;margin:0 0 24px;font-size:14px">
-      <tr><td style="padding:6px 0;color:#8a8172">Stops</td><td align="right">${journey.stops.length}</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Road distance</td><td align="right">${journey.roadKm} km</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Time on the road</td><td align="right">${formatDuration(journey.minutes)}</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">${journey.declaredDays ? 'Length' : 'Suggested length'}</td><td align="right">${e(statedLength(journey))}</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Transfers</td><td align="right">${transfersLine(journey)}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('stops'))}</td><td align="right">${journey.stops.length}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('roadDistance'))}</td><td align="right">${journey.roadKm} km</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('timeOnRoad'))}</td><td align="right">${formatDuration(journey.minutes)}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(journey.declaredDays ? t('length') : t('suggestedLength'))}</td><td align="right">${e(statedLength(journey, t))}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('transfers'))}</td><td align="right">${e(transfersLine(journey, t))}</td></tr>
     </table>
 
-    <h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:0 0 8px">The route</h2>
+    <h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:0 0 8px">${e(t('theRoute'))}</h2>
     <ol style="margin:0 0 24px;padding:0 0 0 4px;list-style:none;font-size:15px;line-height:1.9">${stops}</ol>
 
     ${
       legs.length > 0
-        ? `<h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:0 0 8px">Leg by leg</h2>
+        ? `<h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:0 0 8px">${e(t('legByLeg'))}</h2>
     <table width="100%" style="border-collapse:collapse;margin:0 0 24px;font-size:13px">${legs}</table>`
         : ''
     }
 
-    <h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:0 0 8px">${mine ? 'What you told us' : 'The traveller'}</h2>
+    <h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:0 0 8px">${e(mine ? t('whatYouToldUs') : t('theTraveller'))}</h2>
     <table width="100%" style="border-collapse:collapse;font-size:14px">
       ${
         mine
           ? ''
-          : `<tr><td style="padding:6px 0;color:#8a8172;width:130px">Name</td><td>${e(enquiry.name)}</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Email</td><td><a href="mailto:${e(enquiry.email)}">${e(enquiry.email)}</a></td></tr>`
+          : `<tr><td style="padding:6px 0;color:#8a8172;width:130px">${e(t('name'))}</td><td>${e(enquiry.name)}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('email'))}</td><td><a href="mailto:${e(enquiry.email)}">${e(enquiry.email)}</a></td></tr>`
       }
-      <tr><td style="padding:6px 0;color:#8a8172;width:130px">Mobile</td><td>${
+      <tr><td style="padding:6px 0;color:#8a8172;width:130px">${e(t('mobile'))}</td><td>${
         enquiry.phone
           ? `<a href="tel:${e(enquiry.phone.replace(/[^\d+]/g, ''))}">${e(enquiry.phone)}</a>`
           : '—'
       }</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Dates</td><td>${e(enquiry.dates) || '—'}</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Travellers</td><td>${e(enquiry.travellers) || '—'}</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Vehicle</td><td>${e(enquiry.vehicle) || '—'}</td></tr>
-      <tr><td style="padding:6px 0;color:#8a8172">Budget</td><td>${e(enquiry.budget) || '—'}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('dates'))}</td><td>${e(enquiry.dates) || '—'}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('travellers'))}</td><td>${e(enquiry.travellers) || '—'}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('vehicle'))}</td><td>${e(enquiry.vehicle) || '—'}</td></tr>
+      <tr><td style="padding:6px 0;color:#8a8172">${e(t('budget'))}</td><td>${e(enquiry.budget) || '—'}</td></tr>
     </table>
 
     ${
       enquiry.message
-        ? `<h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:24px 0 8px">${mine ? 'Your note' : 'Their note'}</h2>
+        ? `<h2 style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8a8172;margin:24px 0 8px">${e(mine ? t('yourNote') : t('theirNote'))}</h2>
     <p style="margin:0;font-size:15px;line-height:1.7;white-space:pre-wrap">${e(enquiry.message)}</p>`
         : ''
     }
 
     <p style="margin:28px 0 0;padding-top:16px;border-top:1px solid #e3ded2;font-size:12px;color:#8a8172">
       ${
-        mine
-          ? 'Distances and drive times are estimates for a private vehicle at Sri Lankan touring speeds. Your travel designer will confirm the real timings. Simply reply to this email to change anything.'
-          : "Sent from the journey planner at /journeys. Distances and drive times are the planner's estimates, not a routing service."
+        e(mine ? t('footerTraveller') : t('footerInternal'))
       }
     </p>
   </div>
@@ -175,44 +198,51 @@ export function renderItineraryEmailHtml(enquiry: Itinerary, audience: Audience 
 }
 
 /** The same content as text, for clients that will not render the HTML part. */
-export function renderItineraryEmailText(enquiry: Itinerary, audience: Audience = {}) {
+export function renderItineraryEmailText(
+  enquiry: Itinerary,
+  copy: ItineraryCopy,
+  audience: Audience = {}
+) {
   const { journey } = enquiry;
+  const { t, locale } = copy;
   const mine = audience.forTraveller === true;
+  const upper = (value: string) => value.toLocaleUpperCase(locale);
+
   return [
-    `${mine ? 'YOUR JOURNEY' : journey.kind === 'custom' ? 'CUSTOM JOURNEY' : 'READY-MADE JOURNEY'}: ${journey.title}`,
-    ...(mine
-      ? ['', `Thank you, ${enquiry.name.split(' ')[0]} — here is the journey you put together. A travel designer will write back within one working day.`]
-      : []),
+    `${upper(mine ? t('yourJourney') : journey.kind === 'custom' ? t('customJourney') : t('readyMadeJourney'))}: ${journey.title}`,
+    ...(mine ? ['', t('thanksText', { name: enquiry.name.split(' ')[0] })] : []),
     '',
-    `Stops: ${journey.stops.length}`,
-    `Road distance: ${journey.roadKm} km`,
-    `Time on the road: ${formatDuration(journey.minutes)}`,
-    journey.declaredDays ? `Length: ${journey.declaredDays}` : `Suggested length: ${statedLength(journey)}`,
-    `Transfers: ${transfersLine(journey)}`,
+    `${t('stops')}: ${journey.stops.length}`,
+    `${t('roadDistance')}: ${journey.roadKm} km`,
+    `${t('timeOnRoad')}: ${formatDuration(journey.minutes)}`,
+    journey.declaredDays
+      ? `${t('length')}: ${journey.declaredDays}`
+      : `${t('suggestedLength')}: ${statedLength(journey, t)}`,
+    `${t('transfers')}: ${transfersLine(journey, t)}`,
     '',
-    'THE ROUTE',
+    upper(t('theRoute')),
     ...journey.stops.map((stop, index) => {
       const point = customPoint(stop.slug);
-      return `  ${index + 1}. ${stop.name}${point ? ` (their own stop — ${point.latitude}, ${point.longitude})` : ''}`;
+      return `  ${index + 1}. ${stop.name}${point ? ` (${t('theirOwnStop')} — ${point.latitude}, ${point.longitude})` : ''}`;
     }),
     '',
     ...(journey.legs.length > 0
       ? [
-          'LEG BY LEG',
+          upper(t('legByLeg')),
           ...journey.legs.map(
             (leg) => `  ${leg.from} -> ${leg.to}: ${leg.km} km, ${formatDuration(leg.minutes)}`
           ),
           ''
         ]
       : []),
-    mine ? 'WHAT YOU TOLD US' : 'THE TRAVELLER',
-    ...(mine ? [] : [`  Name: ${enquiry.name}`, `  Email: ${enquiry.email}`]),
-    `  Mobile: ${enquiry.phone || '—'}`,
-    `  Dates: ${enquiry.dates || '—'}`,
-    `  Travellers: ${enquiry.travellers || '—'}`,
-    `  Vehicle: ${enquiry.vehicle || '—'}`,
-    `  Budget: ${enquiry.budget || '—'}`,
-    ...(enquiry.message ? ['', mine ? 'YOUR NOTE' : 'THEIR NOTE', enquiry.message] : [])
+    upper(mine ? t('whatYouToldUs') : t('theTraveller')),
+    ...(mine ? [] : [`  ${t('name')}: ${enquiry.name}`, `  ${t('email')}: ${enquiry.email}`]),
+    `  ${t('mobile')}: ${enquiry.phone || '—'}`,
+    `  ${t('dates')}: ${enquiry.dates || '—'}`,
+    `  ${t('travellers')}: ${enquiry.travellers || '—'}`,
+    `  ${t('vehicle')}: ${enquiry.vehicle || '—'}`,
+    `  ${t('budget')}: ${enquiry.budget || '—'}`,
+    ...(enquiry.message ? ['', upper(mine ? t('yourNote') : t('theirNote')), enquiry.message] : [])
   ].join('\n');
 }
 
@@ -226,11 +256,16 @@ export function renderItineraryEmailText(enquiry: Itinerary, audience: Audience 
  * offline once saved, and keeps the itinerary as selectable text rather than an
  * image of it.
  */
-export function renderItineraryPrintable(enquiry: Itinerary, printedOn = new Date()) {
+export function renderItineraryPrintable(
+  enquiry: Itinerary,
+  copy: ItineraryCopy,
+  printedOn = new Date()
+) {
   const { journey } = enquiry;
+  const { t, locale } = copy;
   const e = escapeHtml;
 
-  const date = printedOn.toLocaleDateString('en-GB', {
+  const date = printedOn.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
@@ -240,7 +275,7 @@ export function renderItineraryPrintable(enquiry: Itinerary, printedOn = new Dat
     .map((stop, index) => {
       const point = customPoint(stop.slug);
       const note = point
-        ? `<small>Your own stop — ${point.latitude}, ${point.longitude}</small>`
+        ? `<small>${e(t('yourOwnStop'))} — ${point.latitude}, ${point.longitude}</small>`
         : '';
       return `<li><span class="n">${String(index + 1).padStart(2, '0')}</span><div><strong>${e(stop.name)}</strong>${note}</div></li>`;
     })
@@ -255,20 +290,20 @@ export function renderItineraryPrintable(enquiry: Itinerary, printedOn = new Dat
 
   /* Only the fields the traveller actually filled in are worth a row on paper. */
   const details = [
-    ['Prepared for', enquiry.name],
-    ['Mobile', enquiry.phone],
-    ['Email', enquiry.email],
-    ['When', enquiry.dates],
-    ['Travellers', enquiry.travellers],
-    ['Vehicle', enquiry.vehicle],
-    ['Budget', enquiry.budget]
+    [t('preparedFor'), enquiry.name],
+    [t('mobile'), enquiry.phone],
+    [t('email'), enquiry.email],
+    [t('when'), enquiry.dates],
+    [t('travellers'), enquiry.travellers],
+    [t('vehicle'), enquiry.vehicle],
+    [t('budget'), enquiry.budget]
   ]
     .filter(([, value]) => Boolean(value))
     .map(([label, value]) => `<tr><th>${e(label)}</th><td>${e(value)}</td></tr>`)
     .join('');
 
   return `<!doctype html>
-<html lang="en">
+<html lang="${e(locale)}">
 <head>
 <meta charset="utf-8">
 <title>${e(journey.title)} — ReiseCeylon</title>
@@ -321,32 +356,34 @@ export function renderItineraryPrintable(enquiry: Itinerary, printedOn = new Dat
 </style>
 </head>
 <body>
-  <div class="actions"><button type="button" onclick="window.print()">Save as PDF</button></div>
+  <div class="actions"><button type="button" onclick="window.print()">${e(t('saveAsPdf'))}</button></div>
   <div class="sheet">
-    <p class="eyebrow">${journey.kind === 'custom' ? 'A journey you designed' : 'Ready-made journey'}</p>
+    <p class="eyebrow">${e(journey.kind === 'custom' ? t('designedJourney') : t('readyMadeJourney'))}</p>
     <h1>${e(journey.title)}</h1>
-    <p class="lede">Prepared by ReiseCeylon${enquiry.name ? ` for ${e(enquiry.name)}` : ''} · ${e(date)}</p>
+    <p class="lede">${e(
+      enquiry.name ? t('preparedByFor', { name: enquiry.name }) : t('preparedBy')
+    )} · ${e(date)}</p>
 
     <section>
       <dl class="facts">
-        <div><dt>Stops</dt><dd>${journey.stops.length}</dd></div>
-        <div><dt>Road distance</dt><dd>${journey.roadKm} km</dd></div>
-        <div><dt>Time on the road</dt><dd>${formatDuration(journey.minutes)}</dd></div>
-        <div><dt>${journey.declaredDays ? 'Length' : 'Suggested length'}</dt><dd>${e(statedLength(journey))}</dd></div>
-        <div><dt>Transfers</dt><dd>${transfersLine(journey)}</dd></div>
-        <div><dt>Travellers</dt><dd>${e(enquiry.travellers) || '—'}</dd></div>
+        <div><dt>${e(t('stops'))}</dt><dd>${journey.stops.length}</dd></div>
+        <div><dt>${e(t('roadDistance'))}</dt><dd>${journey.roadKm} km</dd></div>
+        <div><dt>${e(t('timeOnRoad'))}</dt><dd>${formatDuration(journey.minutes)}</dd></div>
+        <div><dt>${e(journey.declaredDays ? t('length') : t('suggestedLength'))}</dt><dd>${e(statedLength(journey, t))}</dd></div>
+        <div><dt>${e(t('transfers'))}</dt><dd>${e(transfersLine(journey, t))}</dd></div>
+        <div><dt>${e(t('travellers'))}</dt><dd>${e(enquiry.travellers) || '—'}</dd></div>
       </dl>
     </section>
 
     <section>
-      <h2>The route</h2>
+      <h2>${e(t('theRoute'))}</h2>
       <ol>${stops}</ol>
     </section>
 
     ${
       legs.length > 0
         ? `<section>
-      <h2>Leg by leg</h2>
+      <h2>${e(t('legByLeg'))}</h2>
       <table>${legs}</table>
     </section>`
         : ''
@@ -355,7 +392,7 @@ export function renderItineraryPrintable(enquiry: Itinerary, printedOn = new Dat
     ${
       details.length > 0
         ? `<section>
-      <h2>Your details</h2>
+      <h2>${e(t('yourDetails'))}</h2>
       <table>${details}</table>
     </section>`
         : ''
@@ -364,15 +401,14 @@ export function renderItineraryPrintable(enquiry: Itinerary, printedOn = new Dat
     ${
       enquiry.message
         ? `<section>
-      <h2>Your note</h2>
+      <h2>${e(t('yourNote'))}</h2>
       <p class="note">${e(enquiry.message)}</p>
     </section>`
         : ''
     }
 
     <footer>
-      Distances and drive times are estimates for a private vehicle at Sri Lankan touring speeds, not a
-      routing service — your travel designer will confirm the real timings.<br>
+      ${e(t('printFooter'))}<br>
       ReiseCeylon · journeys@reiseceylon.com · reiseceylon.com
     </footer>
   </div>

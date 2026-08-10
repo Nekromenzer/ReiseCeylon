@@ -11,6 +11,7 @@
     "seed:journal": "node --env-file=.env scripts/seed-journal.mjs",
     "seed:site": "node --experimental-strip-types --env-file=.env scripts/seed-site.mjs",
     "sync:destinations": "node --env-file=.env scripts/sync-destinations.mjs",
+    "migrate:locales": "node --env-file=.env scripts/migrate-locale-fields.mjs",
     "audit:destinations": "node scripts/audit-destination-content.mjs",
     "images:destinations": "node scripts/generate-destination-images.mjs"
   },
@@ -26,6 +27,7 @@
     "leaflet": "^1.9.4",
     "lenis": "^1.3.25",
     "next": "^16.2.12",
+    "next-intl": "^4.13.6",
     "next-sanity": "^13.3.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

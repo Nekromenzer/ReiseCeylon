@@ -40,29 +40,23 @@ export const tours = [
 
 /* Landing page content — the field-journal narrative */
 
+/**
+ * The three plates behind the hero. `key` is what the region and the strapline
+ * are looked up under in `content.heroPlates` — the place names themselves are
+ * proper nouns and stay as they are in every language.
+ */
 export const heroPlates = [
-  { image: art.coast, place: 'Hikkaduwa', region: 'Southern Coast', meta: '05° 56′ N — Indian Ocean', rotate: '-4deg' },
-  { image: art.highland, place: 'Ella', region: 'Hill Country', meta: '1,868 m above the sea', rotate: '3deg' },
-  { image: art.fortress, place: 'Sigiriya', region: 'Cultural Triangle', meta: 'Built in the 5th century', rotate: '-2deg' }
-];
+  { key: 'hikkaduwa', image: art.coast, place: 'Hikkaduwa', rotate: '-4deg' },
+  { key: 'ella', image: art.highland, place: 'Ella', rotate: '3deg' },
+  { key: 'sigiriya', image: art.fortress, place: 'Sigiriya', rotate: '-2deg' }
+] as const;
 
-export const ticker = [
-  'Tea country', 'Leopard territory', 'Old Dutch ports', 'Cloud forest', 'Whale coast',
-  'Rock fortresses', 'Toddy tappers', 'Blue trains', 'Monsoon rice', 'Temple drums'
-];
-
-export const manifestoStats = [
-  { value: '11', label: 'Years of routing the island' },
-  { value: '24', label: 'Private journeys in the collection' },
-  { value: '1:1', label: 'One planner from first note to last night' }
-];
-
-export const experienceDetail = [
-  { hours: 'From 05:20', title: 'Wild encounters', copy: 'Leave before the park gates open. Our naturalists read the tracks, the alarm calls and the light — then wait, quietly, in the right place.', image: art.jungle },
-  { hours: 'From 07:00', title: 'Tea country', copy: 'Walk an estate with the people who pick it, watch the withering lofts fill, and drink the first flush before it ever reaches a crate.', image: art.highland },
-  { hours: 'From 16:30', title: 'Ocean rituals', copy: 'A cove with no name, a table set in the sand, and the long blue hour the south coast keeps to itself.', image: art.coast },
-  { hours: 'From 06:10', title: 'Living heritage', copy: 'Ancient cities before the buses arrive, temple drums at dusk, and workshops where crafts have not changed hands in generations.', image: art.fortress }
-];
+/**
+ * The photography behind the four experience cards, in the order the translated
+ * `content.experiences` list runs. The words live in the message catalogues; only
+ * the pictures are here.
+ */
+export const experienceArt = [art.jungle, art.highland, art.coast, art.fortress];
 
 export const routeLine =
   'M294 314C302 360 263 378 258 416C252 455 303 470 306 510C310 552 353 566 352 612C351 655 274 675 208 690';

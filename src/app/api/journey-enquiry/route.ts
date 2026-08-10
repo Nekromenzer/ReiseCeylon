@@ -24,11 +24,14 @@
  */
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { getTranslations } from 'next-intl/server';
+import { defaultLocale, isLocale } from '@/i18n/routing';
 import { getContactDetails } from '@/sanity/site';
 import {
   renderItineraryEmailHtml,
   renderItineraryEmailText,
   type Itinerary,
+  type ItineraryCopy,
   type ItineraryLeg
 } from '@/lib/itinerary';
 
@@ -86,7 +89,12 @@ function parse(body: unknown): Itinerary | null {
     };
   });
 
+  /* Unknown or absent languages fall back rather than being rejected — the
+     itinerary matters more than the language tag that came with it. */
+  const requested = String(raw.locale ?? '');
+
   return {
+    locale: isLocale(requested) ? requested : defaultLocale,
     name,
     email,
     phone: phone.slice(0, 32),
@@ -193,7 +201,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const contact = await getContactDetails();
+  const contact = await getContactDetails(enquiry.locale);
   const to = process.env.JOURNEY_ENQUIRY_TO ?? contact.email;
 
   if (!isEmail(to)) {
@@ -210,6 +218,25 @@ export async function POST(request: Request) {
   const resend = new Resend(apiKey);
 
   /*
+   * Two languages, deliberately. The traveller is answered in the language they
+   * planned in; the copy that lands in the ReiseCeylon inbox stays English, so
+   * whoever reads enquiries reads them all in one language.
+   */
+  const [travellerT, internalT] = await Promise.all([
+    getTranslations({ locale: enquiry.locale, namespace: 'itinerary' }),
+    getTranslations({ locale: defaultLocale, namespace: 'itinerary' })
+  ]);
+
+  const travellerCopy: ItineraryCopy = {
+    t: (key, values) => travellerT(key, values),
+    locale: enquiry.locale
+  };
+  const internalCopy: ItineraryCopy = {
+    t: (key, values) => internalT(key, values),
+    locale: defaultLocale
+  };
+
+  /*
    * Both sends are attempted, always, and neither can cancel the other. The
    * enquiry reaching ReiseCeylon is what decides the response — a traveller's
    * copy that bounces must not tell them their journey was lost — but a refused
@@ -220,17 +247,17 @@ export async function POST(request: Request) {
       from,
       to,
       replyTo: enquiry.email,
-      subject: `${enquiry.journey.kind === 'custom' ? 'Custom journey' : 'Journey'} — ${enquiry.journey.title} (${enquiry.name})`,
-      html: renderItineraryEmailHtml(enquiry),
-      text: renderItineraryEmailText(enquiry)
+      subject: `${internalT('emailSubjectInternal', { title: enquiry.journey.title })} (${enquiry.name}) [${enquiry.locale.toUpperCase()}]`,
+      html: renderItineraryEmailHtml(enquiry, internalCopy),
+      text: renderItineraryEmailText(enquiry, internalCopy)
     }),
     send(resend, 'traveller', {
       from,
       to: enquiry.email,
       replyTo: to,
-      subject: `Your Sri Lanka journey — ${enquiry.journey.title}`,
-      html: renderItineraryEmailHtml(enquiry, { forTraveller: true }),
-      text: renderItineraryEmailText(enquiry, { forTraveller: true })
+      subject: travellerT('emailSubjectTraveller', { title: enquiry.journey.title }),
+      html: renderItineraryEmailHtml(enquiry, travellerCopy, { forTraveller: true }),
+      text: renderItineraryEmailText(enquiry, travellerCopy, { forTraveller: true })
     })
   ]);
 

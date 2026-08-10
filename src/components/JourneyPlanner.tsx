@@ -21,8 +21,9 @@
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import {
   buildRoute,
   matchesDurationBand,
@@ -42,8 +43,14 @@ import { JourneySummary } from './JourneySummary';
 /* Leaflet reads `window` on import, so the map may only ever load in the browser. */
 const JourneyMap = dynamic(() => import('./JourneyMap'), {
   ssr: false,
-  loading: () => <div className="rc-journey-map rc-journey-map-loading">Loading the map…</div>
+  loading: () => <MapLoading />
 });
+
+/** Its own component so the loading state can reach the catalogue too. */
+function MapLoading() {
+  const t = useTranslations('planner');
+  return <div className="rc-journey-map rc-journey-map-loading">{t('mapLoading')}</div>;
+}
 
 export type PlannerPackage = {
   slug: string;
@@ -60,6 +67,7 @@ export type PlannerPackage = {
 
 type Band = { id: string; label: string };
 type Filter = { id: string; name: string };
+type Province = { value: string; label: string };
 
 type Mode = 'packages' | 'custom';
 
@@ -74,8 +82,9 @@ export function JourneyPlanner({
   bands: Band[];
   catalogue: PlannerPlace[];
   categories: Filter[];
-  provinces: string[];
+  provinces: Province[];
 }) {
+  const t = useTranslations('planner');
   const [mode, setMode] = useState<Mode>('packages');
   const [band, setBand] = useState('all');
   const [selected, setSelected] = useState(packages[0]?.slug ?? '');
@@ -142,7 +151,8 @@ export function JourneyPlanner({
   const route = useMemo(() => buildRoute(stops), [stops]);
   const nearby = useMemo(() => placesAlongRoute(stops, catalogue, 18, 8), [stops, catalogue]);
 
-  const title = mode === 'packages' ? (activePackage?.title ?? 'A journey') : 'Your own journey';
+  const title =
+    mode === 'packages' ? (activePackage?.title ?? t('aJourney')) : t('yourOwnJourney');
 
   /** Adds an atlas place. The same place cannot be added to a route twice. */
   const add = useCallback(
@@ -184,7 +194,7 @@ export function JourneyPlanner({
 
   return (
     <div className="rc-plan">
-      <div className="rc-plan-modes" role="tablist" aria-label="How to plan">
+      <div className="rc-plan-modes" role="tablist" aria-label={t('modesAria')}>
         <button
           type="button"
           role="tab"
@@ -194,8 +204,8 @@ export function JourneyPlanner({
           className={mode === 'packages' ? 'is-active' : ''}
           onClick={() => setMode('packages')}
         >
-          <strong>Ready-made journeys</strong>
-          <span>Pick one we already run</span>
+          <strong>{t('tabPackages')}</strong>
+          <span>{t('tabPackagesSub')}</span>
         </button>
         <button
           type="button"
@@ -206,8 +216,8 @@ export function JourneyPlanner({
           className={mode === 'custom' ? 'is-active' : ''}
           onClick={() => setMode('custom')}
         >
-          <strong>Design your own</strong>
-          <span>Choose places and drag them into order</span>
+          <strong>{t('tabCustom')}</strong>
+          <span>{t('tabCustomSub')}</span>
         </button>
       </div>
 
@@ -220,7 +230,7 @@ export function JourneyPlanner({
             aria-labelledby="rc-tab-packages"
           >
             <div className="rc-plan-pane-head">
-              <div className="rc-plan-bands" role="group" aria-label="Filter by length">
+              <div className="rc-plan-bands" role="group" aria-label={t('filterLengthAria')}>
                 {bands.map((entry) => (
                   <button
                     key={entry.id}
@@ -238,9 +248,9 @@ export function JourneyPlanner({
             <div className="rc-plan-pane-scroll">
               {byBand.length === 0 ? (
                 <p className="rc-plan-itinerary-empty">
-                  Nothing of that length yet —{' '}
+                  {t('noneOfLengthPre')}{' '}
                   <button type="button" className="rc-plan-inline-link" onClick={() => setMode('custom')}>
-                    build one instead
+                    {t('noneOfLengthLink')}
                   </button>
                   .
                 </p>
@@ -281,10 +291,10 @@ export function JourneyPlanner({
             {activePackage ? (
               <div className="rc-plan-pane-foot">
                 <Link href={`/tours/${activePackage.slug}`} className="rc-plan-secondary">
-                  Full itinerary <span aria-hidden="true">↗</span>
+                  {t('fullItinerary')} <span aria-hidden="true">↗</span>
                 </Link>
                 <button type="button" onClick={customise} className="rc-plan-secondary">
-                  Customise this <span aria-hidden="true">↗</span>
+                  {t('customiseThis')} <span aria-hidden="true">↗</span>
                 </button>
               </div>
             ) : null}
@@ -317,16 +327,19 @@ export function JourneyPlanner({
               type="button"
               className="rc-plan-expand"
               aria-expanded={expanded}
-              aria-label={expanded ? 'Close the full-screen map' : 'Expand the map to full screen'}
+              aria-label={expanded ? t('mapClose') : t('mapExpand')}
               onClick={() => setExpanded((open) => !open)}
             >
               <span aria-hidden="true">{expanded ? '✕' : '⤢'}</span>
-              <em>{expanded ? 'Close' : 'Expand'}</em>
+              <em>{expanded ? t('close') : t('expand')}</em>
             </button>
             {stops.length > 0 ? (
               <p className="rc-plan-map-caption">
-                {stops.length} {stops.length === 1 ? 'stop' : 'stops'} · {formatKm(route.roadKm)} ·{' '}
-                {formatDuration(route.minutes)} driving
+                {t('mapCaption', {
+                  stops: stops.length,
+                  km: formatKm(route.roadKm),
+                  duration: formatDuration(route.minutes)
+                })}
               </p>
             ) : null}
           </div>
@@ -338,12 +351,8 @@ export function JourneyPlanner({
               onChange={(event) => setAirportTransfers(event.target.checked)}
             />
             <span>
-              <strong>Airport pickup and drop-off</strong>
-              <small>
-                {airportTransfers
-                  ? 'Starting and finishing at Colombo airport (CMB)'
-                  : 'Route measured between your own first and last stop'}
-              </small>
+              <strong>{t('transferTitle')}</strong>
+              <small>{airportTransfers ? t('transferOn') : t('transferOff')}</small>
             </span>
           </label>
 
@@ -360,7 +369,7 @@ export function JourneyPlanner({
           {stops.length > 0 ? (
             <div className="rc-plan-pane-foot">
               <button type="button" className="rc-plan-finalise" onClick={() => setFinalising(true)}>
-                Finalise and send this journey <span aria-hidden="true">↗</span>
+                {t('finalise')} <span aria-hidden="true">↗</span>
               </button>
             </div>
           ) : null}
@@ -372,7 +381,7 @@ export function JourneyPlanner({
           className="rc-plan-modal"
           role="dialog"
           aria-modal="true"
-          aria-label="Send this journey"
+          aria-label={t('sendDialogAria')}
           onClick={(event) => {
             if (event.target === event.currentTarget) setFinalising(false);
           }}

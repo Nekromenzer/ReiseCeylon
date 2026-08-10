@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 export type AtlasEntry = {
   slug: string;
@@ -13,6 +14,8 @@ export type AtlasEntry = {
   categoryId: string;
   category: string;
   province: string;
+  /** The province name as the reader sees it; `province` stays the raw key. */
+  provinceLabel: string;
   district: string;
   city: string;
   region: string;
@@ -22,12 +25,25 @@ export type AtlasEntry = {
 };
 
 type AtlasCategory = { id: string; name: string; count: number };
+type AtlasProvince = { value: string; label: string };
 
 const PAGE = 24;
 
-/** One searchable string per place, so a query can match a town or a district too. */
+/**
+ * One searchable string per place. Both the translated labels and the raw
+ * province key go in, so a German reader can type "Strände" and an English one
+ * can still type "Southern" and both find the same card.
+ */
 function haystack(entry: AtlasEntry) {
-  return [entry.name, entry.category, entry.city, entry.district, entry.province, entry.region]
+  return [
+    entry.name,
+    entry.category,
+    entry.city,
+    entry.district,
+    entry.province,
+    entry.provinceLabel,
+    entry.region
+  ]
     .join(' ')
     .toLowerCase();
 }
@@ -39,8 +55,9 @@ export function DestinationAtlas({
 }: {
   destinations: AtlasEntry[];
   categories: AtlasCategory[];
-  provinces: string[];
+  provinces: AtlasProvince[];
 }) {
+  const t = useTranslations('atlas');
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('all');
   const [province, setProvince] = useState('all');
@@ -94,8 +111,8 @@ export function DestinationAtlas({
     <section className="atlas" id="atlas">
       <header className="atlas-head">
         <div>
-          <p className="eyebrow">Browse the island</p>
-          <h2>Find your landscape.</h2>
+          <p className="eyebrow">{t('eyebrow')}</p>
+          <h2>{t('heading')}</h2>
         </div>
         <div className="atlas-search">
           <span aria-hidden="true">⌕</span>
@@ -104,22 +121,22 @@ export function DestinationAtlas({
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search a place, town or district"
-            aria-label="Search destinations"
+            placeholder={t('searchPlaceholder')}
+            aria-label={t('searchAria')}
           />
           <kbd aria-hidden="true">/</kbd>
         </div>
       </header>
 
       <div className="atlas-controls">
-        <div className="atlas-chips" role="group" aria-label="Filter by landscape">
+        <div className="atlas-chips" role="group" aria-label={t('filterLandscapeAria')}>
           <button
             type="button"
             className={category === 'all' ? 'is-active' : ''}
             aria-pressed={category === 'all'}
             onClick={() => setCategory('all')}
           >
-            All <i>{destinations.length}</i>
+            {t('all')} <i>{destinations.length}</i>
           </button>
           {categories.map((entry) => (
             <button
@@ -135,12 +152,12 @@ export function DestinationAtlas({
         </div>
 
         <label className="atlas-select">
-          <span>Province</span>
+          <span>{t('province')}</span>
           <select value={province} onChange={(event) => setProvince(event.target.value)}>
-            <option value="all">All provinces</option>
-            {provinces.map((name) => (
-              <option key={name} value={name}>
-                {name}
+            <option value="all">{t('allProvinces')}</option>
+            {provinces.map((entry) => (
+              <option key={entry.value} value={entry.value}>
+                {entry.label}
               </option>
             ))}
           </select>
@@ -149,25 +166,23 @@ export function DestinationAtlas({
 
       <div className="atlas-status" aria-live="polite">
         <p>
-          {results.length === 0
-            ? 'No places match those filters'
-            : `${results.length} ${results.length === 1 ? 'place' : 'places'}`}
-          {filtered ? <span> · filtered</span> : null}
+          {results.length === 0 ? t('noMatch') : t('placeCount', { count: results.length })}
+          {filtered ? <span> · {t('filtered')}</span> : null}
         </p>
         {filtered ? (
           <button type="button" onClick={reset} className="atlas-reset">
-            Clear filters
+            {t('clearFilters')}
           </button>
         ) : null}
       </div>
 
       {results.length === 0 ? (
         <div className="atlas-empty">
-          <p>Nothing here yet.</p>
+          <p>{t('emptyTitle')}</p>
           <p>
-            Try a wider landscape, another province, or{' '}
+            {t('emptyCopyPre')}{' '}
             <Link href="/contact" className="text-link">
-              ask us to build the route <span>↗</span>
+              {t('emptyCopyLink')} <span>↗</span>
             </Link>
           </p>
         </div>
@@ -185,7 +200,7 @@ export function DestinationAtlas({
                     sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 23vw"
                   />
                   <em>{entry.category}</em>
-                  {entry.featured ? <b>Featured</b> : null}
+                  {entry.featured ? <b>{t('featured')}</b> : null}
                 </span>
                 <span className="atlas-card-copy">
                   <strong>{entry.name}</strong>
@@ -204,11 +219,9 @@ export function DestinationAtlas({
       {visible < results.length ? (
         <div className="atlas-more">
           <button type="button" onClick={() => setVisible((count) => count + PAGE)}>
-            Show more <span aria-hidden="true">↓</span>
+            {t('showMore')} <span aria-hidden="true">↓</span>
           </button>
-          <p>
-            {shown.length} of {results.length}
-          </p>
+          <p>{t('shownOf', { shown: shown.length, total: results.length })}</p>
         </div>
       ) : null}
     </section>
