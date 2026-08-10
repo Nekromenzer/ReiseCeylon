@@ -37,6 +37,27 @@ export function pickLocale(value: MaybeLocalised, locale: string): string {
   return '';
 }
 
+/**
+ * The requested language only — no English fallback.
+ *
+ * Used for every field that has a professionally translated default behind it
+ * (the intro, the highlights, the good-to-know, the SEO pair). On a German page
+ * a German default beats an English sentence from the studio: it is the right
+ * language, and the English one was generated rather than hand-written in the
+ * first place. Anything an editor actually translates wins over both.
+ *
+ * A legacy plain string counts as English, so it is not returned here either —
+ * which is what makes an un-migrated dataset render fully translated rather than
+ * half and half.
+ */
+export function pickExact(value: MaybeLocalised, locale: string): string {
+  if (value && typeof value === 'object') {
+    const chosen = (value as Record<string, unknown>)[locale];
+    if (typeof chosen === 'string') return chosen;
+  }
+  return '';
+}
+
 /** As above, but keeps null distinguishable from empty for optional fields. */
 export function pickLocaleOrNull(value: MaybeLocalised, locale: string): string | null {
   const resolved = pickLocale(value, locale);

@@ -2,17 +2,29 @@
  * Destinations, journeys and contact details, read from Sanity — in whichever
  * language the page is being rendered in.
  *
- * Every getter takes a locale and falls back, field by field, in this order:
+ * Every getter takes a locale and resolves each field on its own. Which fallback
+ * chain a field uses depends on whether we ship a translation for it:
  *
- *   1. the studio document, in the requested language
- *   2. the studio document, in English  (see `pickLocale`)
- *   3. the atlas record in `public/json`, for anything factual
- *   4. the translated default copy in `@/lib/localised`
+ *   Fields with a translated default — the intro, the highlights, the
+ *   good-to-know, the SEO pair, the region and the note:
+ *     1. the studio document, in the requested language   (`pickExact`)
+ *     2. the atlas record, for anything factual
+ *     3. the translated default in `@/lib/localised`
+ *   English from the studio is deliberately *not* in that chain: on a German
+ *   page a German default beats an English sentence, and those English sentences
+ *   were generated from the same defaults in the first place.
  *
- * That ordering is what lets the site be completely translated on day one while
- * an editor has translated nothing: the fallbacks carry all four languages, and
- * a studio translation simply wins over one when it exists. Images are resolved
- * to plain url strings here so the page components stay unaware of Sanity.
+ *   Fields with no translation to fall back on — the name, the image alt text,
+ *   the stated length, the journal:
+ *     1. the studio document, in the requested language
+ *     2. the studio document, in English                  (`pickLocale`)
+ *   Here English is better than a blank, and a place name is a proper noun that
+ *   was never meant to change with the language.
+ *
+ * Either way a studio translation wins the moment an editor writes one, and the
+ * site is completely translated before anyone has written any. Images are
+ * resolved to plain url strings here so the page components stay unaware of
+ * Sanity.
  */
 import type { Image } from 'sanity';
 import { defineQuery } from 'next-sanity';
@@ -35,7 +47,7 @@ import {
 import { getClient } from './client';
 import { isSanityConfigured } from './env';
 import { urlForImage } from './image';
-import { pickLocale, pickLocaleOrNull, type MaybeLocalised } from './locale-field';
+import { pickExact, pickLocale, pickLocaleOrNull, type MaybeLocalised } from './locale-field';
 
 export type { Highlight, Stage };
 
@@ -171,6 +183,9 @@ function fallbackToursFor(copy: StaticCopy): Tour[] {
     return {
       ...journey,
       title: translated?.title || journey.title,
+      /* “3 days” is prose, not a number — it is stated in the reader's language
+         rather than carried over from the English package definition. */
+      days: copy.days(journey.durationDays),
       route: translated?.route || journey.route,
       note: translated?.note || journey.note,
       imageAlt: translated?.title || journey.title,
@@ -296,21 +311,24 @@ function resolveDestination(row: DestinationRow, copy: StaticCopy): Destination 
       ? imageForSlug(row.slug)
       : (atlas?.image ?? art.fortress);
 
-  const highlights = row.highlights
-    .map((highlight) => ({
-      title: pickLocale(highlight.title, locale),
-      copy: pickLocale(highlight.copy, locale)
-    }))
-    .filter((highlight) => highlight.title.length > 0);
+  /* All or nothing: a half-translated highlight list reads worse than the
+     translated defaults, so a set with any untranslated entry is discarded. */
+  const translatedHighlights = row.highlights.map((highlight) => ({
+    title: pickExact(highlight.title, locale),
+    copy: pickExact(highlight.copy, locale)
+  }));
+  const highlights = translatedHighlights.every((highlight) => highlight.title.length > 0)
+    ? translatedHighlights
+    : [];
 
   return {
     slug: row.slug,
     name,
     image,
     imageAlt: pickLocale(row.image?.alt, locale) || name,
-    seoTitle: pickLocale(row.seoTitle, locale) || copy.seoTitle(name),
+    seoTitle: pickExact(row.seoTitle, locale) || copy.seoTitle(name),
     seoDescription:
-      pickLocale(row.seoDescription, locale) || copy.seoDescription(name, district || province),
+      pickExact(row.seoDescription, locale) || copy.seoDescription(name, district || province),
     categoryId,
     category: copy.categoryName(categoryId) || atlas?.category || '',
     province,
@@ -319,14 +337,14 @@ function resolveDestination(row: DestinationRow, copy: StaticCopy): Destination 
     city,
     latitude,
     longitude,
-    region: pickLocale(row.region, locale) || copy.region(province),
-    note: pickLocale(row.note, locale) || copy.note({ categoryId, city, district }),
-    introHeading: pickLocale(row.introHeading, locale) || copy.destination.introHeading,
-    introCopy: pickLocale(row.introCopy, locale) || copy.destination.introCopy(name),
+    region: pickExact(row.region, locale) || copy.region(province),
+    note: pickExact(row.note, locale) || copy.note({ categoryId, city, district }),
+    introHeading: pickExact(row.introHeading, locale) || copy.destination.introHeading,
+    introCopy: pickExact(row.introCopy, locale) || copy.destination.introCopy(name),
     highlights: highlights.length > 0 ? highlights : copy.highlights,
     goodToKnowHeading:
-      pickLocale(row.goodToKnowHeading, locale) || copy.destination.goodToKnowHeading,
-    goodToKnowCopy: pickLocale(row.goodToKnowCopy, locale) || copy.destination.goodToKnowCopy,
+      pickExact(row.goodToKnowHeading, locale) || copy.destination.goodToKnowHeading,
+    goodToKnowCopy: pickExact(row.goodToKnowCopy, locale) || copy.destination.goodToKnowCopy,
     precision,
     precisionNote: copy.precision(precision),
     featured: row.featured,
@@ -418,16 +436,20 @@ type TourRow = {
 function resolveTour(row: TourRow, copy: StaticCopy): Tour {
   const { locale } = copy;
   const packaged = copy.packageCopy(row.slug);
-  const title = pickLocale(row.title, locale) || packaged?.title || row.slug;
-  const days = pickLocale(row.days, locale);
+  /* Translated studio copy, then the translated package copy for a slug we ship,
+     then whatever English the studio holds — never nothing. */
+  const title =
+    pickExact(row.title, locale) || packaged?.title || pickLocale(row.title, locale) || row.slug;
+  const days = pickExact(row.days, locale) || copy.days(row.durationDays ?? packageDurations[row.slug] ?? 1);
 
-  const itinerary = row.itinerary
-    .map((stage) => ({
-      period: pickLocale(stage.period, locale),
-      title: pickLocale(stage.title, locale),
-      copy: pickLocale(stage.copy, locale)
-    }))
-    .filter((stage) => stage.title.length > 0 || stage.copy.length > 0);
+  const translatedStages = row.itinerary.map((stage) => ({
+    period: pickExact(stage.period, locale),
+    title: pickExact(stage.title, locale),
+    copy: pickExact(stage.copy, locale)
+  }));
+  const itinerary = translatedStages.every((stage) => stage.title.length > 0)
+    ? translatedStages
+    : [];
 
   const durationDays = row.durationDays ?? packageDurations[row.slug] ?? parseDays(days) ?? 1;
   const stops = row.stops?.length ? row.stops : (packageStops[row.slug] ?? []);
@@ -437,16 +459,16 @@ function resolveTour(row: TourRow, copy: StaticCopy): Tour {
     title,
     days,
     durationDays,
-    route: pickLocale(row.route, locale) || packaged?.route || '',
+    route: pickExact(row.route, locale) || packaged?.route || pickLocale(row.route, locale) || '',
     price: pickLocale(row.price, locale),
     image: urlForImage(row.image as Image, 1600, 1100),
     imageAlt: pickLocale(row.image?.alt, locale) || title,
-    note: pickLocale(row.note, locale) || packaged?.note || '',
-    introHeading: pickLocale(row.introHeading, locale) || copy.tour.introHeading,
-    introCopy: pickLocale(row.introCopy, locale) || copy.tour.introCopy,
+    note: pickExact(row.note, locale) || packaged?.note || pickLocale(row.note, locale) || '',
+    introHeading: pickExact(row.introHeading, locale) || copy.tour.introHeading,
+    introCopy: pickExact(row.introCopy, locale) || copy.tour.introCopy,
     itinerary: itinerary.length > 0 ? itinerary : itineraryFromStops(stops, durationDays, copy),
-    includedHeading: pickLocale(row.includedHeading, locale) || copy.tour.includedHeading,
-    includedCopy: pickLocale(row.includedCopy, locale) || copy.tour.includedCopy,
+    includedHeading: pickExact(row.includedHeading, locale) || copy.tour.includedHeading,
+    includedCopy: pickExact(row.includedCopy, locale) || copy.tour.includedCopy,
     stops
   };
 }
@@ -502,9 +524,10 @@ export async function getContactDetails(locale: string): Promise<ContactDetails>
     email: row.email,
     phone: row.phone ?? null,
     whatsapp: row.whatsapp ?? null,
-    location: pickLocale(row.location, locale) || fallback.location,
+    location: pickExact(row.location, locale) || fallback.location,
     address: pickLocaleOrNull(row.address, locale),
-    responseTime: pickLocale(row.responseTime, locale) || fallback.responseTime,
+    /* Reads inside a sentence, so an untranslated one would break the grammar. */
+    responseTime: pickExact(row.responseTime, locale) || fallback.responseTime,
     social: (row.social ?? [])
       .map((link) => ({ label: pickLocale(link.label, locale), url: link.url }))
       .filter((link) => link.label.length > 0 && Boolean(link.url))

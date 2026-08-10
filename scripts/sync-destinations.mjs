@@ -68,12 +68,38 @@ const legacyAliases = {
   yala: 'yala-national-park'
 };
 
+/**
+ * Localised fields are objects keyed by language. The generated content is
+ * English, so it is written as the English translation; the site falls back to
+ * its own translated defaults in the other three languages until an editor fills
+ * them in from the studio.
+ */
+const en = (value) => (value === undefined || value === null || value === '' ? undefined : { en: value });
+
 /* New documents start complete; --with-content deliberately refreshes existing ones too. */
-const story = (place) => buildDestinationContent(place);
+const story = (place) => {
+  const content = buildDestinationContent(place);
+  return {
+    seoTitle: en(content.seoTitle),
+    seoDescription: en(content.seoDescription),
+    region: en(content.region),
+    note: en(content.note),
+    introHeading: en(content.introHeading),
+    introCopy: en(content.introCopy),
+    goodToKnowHeading: en(content.goodToKnowHeading),
+    goodToKnowCopy: en(content.goodToKnowCopy),
+    highlights: content.highlights?.map((highlight, index) => ({
+      ...highlight,
+      _key: highlight._key ?? `${index}`,
+      title: en(highlight.title),
+      copy: en(highlight.copy)
+    }))
+  };
+};
 
 /* Overwritten on every run — the atlas owns these. */
 const location = (place, index) => ({
-  name: place.name,
+  name: en(place.name),
   slug: { _type: 'slug', current: place.slug },
   atlasId: place.id,
   categoryId: place.categoryId,
@@ -101,7 +127,7 @@ async function uploadPhotograph(slug, name) {
   const file = path.join(root, 'public/images/destination', `${slug}.jpg`);
   if (!(await exists(file))) return null;
   const asset = await client.assets.upload('image', createReadStream(file), { filename: `${slug}.jpg` });
-  return { _type: 'image', asset: { _type: 'reference', _ref: asset._id }, alt: name };
+  return { _type: 'image', asset: { _type: 'reference', _ref: asset._id }, alt: en(name) };
 }
 
 async function main() {

@@ -42,9 +42,9 @@
     "aboutTitle": "Unsere Geschichte",
     "contactTitle": "Ihre Reise planen",
     "blogTitle": "Feldnotizen",
-    "destinationsTitle": "Reiseziele — ReiseCeylon",
+    "destinationsTitle": "Reiseziele",
     "destinationsDescription": "Jeder Strand, jede Ruine, jeder Wasserfall, jeder Nationalpark und jeder Bergort, den wir ansteuern — nach Provinz und Kategorie kartiert.",
-    "journeysTitle": "Reise planen — ReiseCeylon",
+    "journeysTitle": "Reise planen",
     "journeysDescription": "Wählen Sie eine fertige Sri-Lanka-Reise oder gestalten Sie Ihre eigene. Sehen Sie die Route auf der Karte, mit Entfernungen, Fahrzeiten und jedem Ort unterwegs.",
     "destinationFallbackTitle": "Reiseziel — ReiseCeylon"
   },
@@ -779,5 +779,20 @@
     "days": "{count, plural, one {# Tag} other {# Tage}}",
     "emailSubjectInternal": "Neue Reiseanfrage — {title}",
     "emailSubjectTraveller": "Ihre ReiseCeylon-Reise — {title}"
+  },
+  "search": {
+    "whereTo": "Wohin?",
+    "when": "Wann?",
+    "travellers": "Reisende",
+    "seasonPlaceholder": "Wählen Sie Ihre Jahreszeit",
+    "explore": "Entdecken",
+    "hill": "Ella & das Bergland",
+    "ancient": "Sigiriya & die alten Städte",
+    "south": "Mirissa & die Südküste",
+    "wild": "Yala & der wilde Süden",
+    "solo": "Alleinreisend",
+    "two": "2 Reisende",
+    "few": "3–5 Reisende",
+    "many": "6+ Reisende"
   }
 }

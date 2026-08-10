@@ -42,9 +42,9 @@
     "aboutTitle": "Our Story",
     "contactTitle": "Plan Your Journey",
     "blogTitle": "Field Notes",
-    "destinationsTitle": "Destinations — ReiseCeylon",
+    "destinationsTitle": "Destinations",
     "destinationsDescription": "Every beach, ruin, waterfall, park and hill station we route through, mapped by province and category across Sri Lanka.",
-    "journeysTitle": "Plan your journey — ReiseCeylon",
+    "journeysTitle": "Plan your journey",
     "journeysDescription": "Choose a ready-made Sri Lankan journey or design your own. See the route on the map, with distances, drive times and every place it covers.",
     "destinationFallbackTitle": "Destination — ReiseCeylon"
   },
@@ -53,7 +53,7 @@
     "heroEyebrow": "Sri Lanka · Private journeys since 2017",
     "heroTitleLine1": "An island that",
     "heroTitleEm": "remembers",
-    "heroTitleRest": "you.",
+    "heroTitleRest": " you.",
     "heroSub": "Twelve climates on one small island. We draw unhurried routes through tea country, leopard territory and the old ports of the south — led by the people who live there.",
     "heroPlanCta": "Plan my journey",
     "heroRoutesCta": "See the routes",
@@ -779,5 +779,20 @@
     "days": "{count, plural, one {# day} other {# days}}",
     "emailSubjectInternal": "New journey enquiry — {title}",
     "emailSubjectTraveller": "Your ReiseCeylon journey — {title}"
+  },
+  "search": {
+    "whereTo": "Where to?",
+    "when": "When?",
+    "travellers": "Travellers",
+    "seasonPlaceholder": "Choose your season",
+    "explore": "Explore",
+    "hill": "Ella & the hill country",
+    "ancient": "Sigiriya & ancient cities",
+    "south": "Mirissa & the south coast",
+    "wild": "Yala & the wild south",
+    "solo": "Solo traveller",
+    "two": "2 travellers",
+    "few": "3–5 travellers",
+    "many": "6+ travellers"
   }
 }

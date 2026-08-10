@@ -63,10 +63,7 @@ export function JourneyEnquiryForm({
   const budgetOptions = t.raw('budgetOptions') as string[];
 
   /* Country names pass through untranslated if the catalogue has no entry. */
-  const country = (name: string) => {
-    const translated = dial(name);
-    return translated === `dialCodes.${name}` ? name : translated;
-  };
+  const country = (name: string) => (dial.has(name) ? dial(name) : name);
 
   const length = declaredDays ?? t('aboutDays', { count: route.suggestedDays });
 

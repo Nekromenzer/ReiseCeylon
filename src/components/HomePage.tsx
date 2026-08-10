@@ -170,10 +170,8 @@ export function HomePage({
    * are place names ("Jaffna", "Mannar") and must not. Anything the catalogue has
    * no entry for passes through as written.
    */
-  const attractionRegion = (region: string) => {
-    const translated = c(`attractionRegions.${region}`);
-    return translated === `content.attractionRegions.${region}` ? region : translated;
-  };
+  const attractionRegion = (region: string) =>
+    c.has(`attractionRegions.${region}`) ? c(`attractionRegions.${region}`) : region;
 
   const live = heroPlates[plate];
   const manifestoLead = t('manifestoLead');
@@ -227,7 +225,10 @@ export function HomePage({
               <span className="rc-eyebrow">{t('heroEyebrow')}</span>
               <h1>
                 <span className="rc-line"><i>{t('heroTitleLine1')}</i></span>
-                <span className="rc-line"><i><em>{t('heroTitleEm')}</em> {t('heroTitleRest')}</i></span>
+                {/* No space between the two: `heroTitleRest` carries its own
+                    leading space where the language needs one, and carries none
+                    where it is only a full stop. */}
+                <span className="rc-line"><i><em>{t('heroTitleEm')}</em>{t('heroTitleRest')}</i></span>
               </h1>
               <p className="rc-hero-sub">{t('heroSub')}</p>
               <div className="rc-hero-actions">

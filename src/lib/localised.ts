@@ -46,6 +46,8 @@ export type StaticCopy = {
   seoDescription: (name: string, area: string) => string;
   /** Title, route and note for a ready-made journey, by slug. */
   packageCopy: (slug: string) => { title: string; route: string; note: string } | null;
+  /** “12 days” / “12 Tage” — the stated length of a journey. */
+  days: (count: number) => string;
   contact: { location: string; responseTime: string };
   stage: {
     oneDay: string;
@@ -74,22 +76,23 @@ export async function staticCopy(locale: string): Promise<StaticCopy> {
     getTranslations({ locale, namespace: 'defaults' }),
     getTranslations({ locale, namespace: 'packages' })
   ]);
-  const journey = await getTranslations({ locale, namespace: 'journey' });
+  const [journey, durations] = await Promise.all([
+    getTranslations({ locale, namespace: 'journey' }),
+    getTranslations({ locale, namespace: 'durations' })
+  ]);
 
   /**
    * A translated label if the catalogue holds one, the original string if not.
    * District and town names are proper nouns and must survive untranslated.
+   *
+   * `has` is checked rather than comparing against the fallback string, so an
+   * intentional pass-through does not trip the missing-message reporter.
    */
-  const orOriginal = (
-    translate: (key: string) => string,
-    namespace: string,
-    key: string,
-    original: string
-  ) => {
+  type Namespaced = ((key: string) => string) & { has: (key: string) => boolean };
+
+  const orOriginal = (translate: Namespaced, key: string, original: string) => {
     if (!key) return original;
-    const value = translate(key);
-    /* getMessageFallback renders a missing key as "namespace.key". */
-    return value === `${namespace}.${key}` ? original : value;
+    return translate.has(key) ? translate(key) : original;
   };
 
   const highlights = defaults.raw('highlights') as Highlight[];
@@ -104,14 +107,14 @@ export async function staticCopy(locale: string): Promise<StaticCopy> {
 
   return {
     locale,
-    region: (province) => orOriginal(places, 'places', `regions.${province}`, province),
-    province: (province) => orOriginal(places, 'places', `provinces.${province}`, province),
+    region: (province) => orOriginal(places, `regions.${province}`, province),
+    province: (province) => orOriginal(places, `provinces.${province}`, province),
     note: (place) => {
-      const note = orOriginal(places, 'places', `categoryNotes.${place.categoryId}`, '');
+      const note = orOriginal(places, `categoryNotes.${place.categoryId}`, '');
       if (note) return note;
       return places('noteFallback', { area: place.city || place.district });
     },
-    categoryName: (categoryId) => orOriginal(places, 'places', `categories.${categoryId}`, ''),
+    categoryName: (categoryId) => orOriginal(places, `categories.${categoryId}`, ''),
     precision: (precision) => places(`precision.${precision}`),
     destination: {
       introHeading: defaults('destinationIntroHeading'),
@@ -138,6 +141,7 @@ export async function staticCopy(locale: string): Promise<StaticCopy> {
         note: packages(`${slug}.note`)
       };
     },
+    days: (count) => durations('day', { count }),
     contact: {
       location: defaults('contactLocation'),
       responseTime: defaults('contactResponseTime')

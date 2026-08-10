@@ -42,9 +42,9 @@
     "aboutTitle": "Ons verhaal",
     "contactTitle": "Plan uw reis",
     "blogTitle": "Veldnotities",
-    "destinationsTitle": "Bestemmingen — ReiseCeylon",
+    "destinationsTitle": "Bestemmingen",
     "destinationsDescription": "Elk strand, elke ruïne, waterval, park en bergdorp waar we langs reizen, in kaart gebracht per provincie en categorie in heel Sri Lanka.",
-    "journeysTitle": "Plan uw reis — ReiseCeylon",
+    "journeysTitle": "Plan uw reis",
     "journeysDescription": "Kies een kant-en-klare reis door Sri Lanka of ontwerp uw eigen route. Bekijk de route op de kaart, met afstanden, rijtijden en elke plek onderweg.",
     "destinationFallbackTitle": "Bestemming — ReiseCeylon"
   },
@@ -779,5 +779,20 @@
     "days": "{count, plural, one {# dag} other {# dagen}}",
     "emailSubjectInternal": "Nieuwe reisaanvraag — {title}",
     "emailSubjectTraveller": "Uw ReiseCeylon-reis — {title}"
+  },
+  "search": {
+    "whereTo": "Waarheen?",
+    "when": "Wanneer?",
+    "travellers": "Reizigers",
+    "seasonPlaceholder": "Kies uw seizoen",
+    "explore": "Ontdekken",
+    "hill": "Ella & het heuvelland",
+    "ancient": "Sigiriya & de oude steden",
+    "south": "Mirissa & de zuidkust",
+    "wild": "Yala & het wilde zuiden",
+    "solo": "Alleenreizend",
+    "two": "2 reizigers",
+    "few": "3–5 reizigers",
+    "many": "6+ reizigers"
   }
 }

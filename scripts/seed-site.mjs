@@ -52,11 +52,22 @@ async function uploadOnce(localPath) {
 const imageField = async (localPath, alt) => ({
   _type: 'image',
   asset: { _type: 'reference', _ref: await uploadOnce(localPath) },
-  alt
+  alt: en(alt)
 });
 
 const withKeys = (items) =>
   items.map((item, index) => ({ ...item, _key: `${index}` }));
+
+/**
+ * Localised fields are objects keyed by language. The seed writes English only —
+ * it is seeding from the English defaults — and the site falls back to its own
+ * translated defaults for the other three until an editor fills them in.
+ */
+const en = (value) => (value ? { en: value } : undefined);
+
+/** The same, over every string field of an object. */
+const enFields = (object, fields) =>
+  Object.fromEntries(fields.map((field) => [field, en(object[field])]));
 
 async function main() {
   console.log(`Seeding ${projectId}/${dataset}`);
@@ -66,16 +77,28 @@ async function main() {
     tours.map(async (journey, index) => ({
       _id: `tour-${journey.slug}`,
       _type: 'tour',
-      title: journey.title,
+      title: en(journey.title),
       slug: { _type: 'slug', current: journey.slug },
-      days: journey.days,
-      route: journey.route,
-      price: journey.price,
+      days: en(journey.days),
+      route: en(journey.route),
+      price: en(journey.price),
       image: await imageField(journey.image, journey.title),
       order: (index + 1) * 10,
-      note: journeyNotes[journey.slug] ?? '',
-      itinerary: withKeys(defaultStages.map((item) => ({ _type: 'stage', ...item }))),
-      ...tourDefaults
+      note: en(journeyNotes[journey.slug] ?? ''),
+      itinerary: withKeys(
+        defaultStages.map((item) => ({
+          _type: 'stage',
+          period: en(item.period),
+          title: en(item.title),
+          copy: en(item.copy)
+        }))
+      ),
+      ...enFields(tourDefaults, [
+        'introHeading',
+        'introCopy',
+        'includedHeading',
+        'includedCopy'
+      ])
     }))
   );
 
@@ -83,8 +106,8 @@ async function main() {
     _id: 'siteSettings',
     _type: 'siteSettings',
     email: contactDefaults.email,
-    location: contactDefaults.location,
-    responseTime: contactDefaults.responseTime
+    location: en(contactDefaults.location),
+    responseTime: en(contactDefaults.responseTime)
   };
 
   console.log('Documents:');

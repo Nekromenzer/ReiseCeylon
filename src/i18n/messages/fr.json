@@ -42,9 +42,9 @@
     "aboutTitle": "Notre histoire",
     "contactTitle": "Planifier votre voyage",
     "blogTitle": "Carnets de terrain",
-    "destinationsTitle": "Destinations — ReiseCeylon",
+    "destinationsTitle": "Destinations",
     "destinationsDescription": "Chaque plage, ruine, cascade, parc et station de montagne par lesquels nous passons, cartographiés par province et par catégorie à travers le Sri Lanka.",
-    "journeysTitle": "Planifier votre voyage — ReiseCeylon",
+    "journeysTitle": "Planifier votre voyage",
     "journeysDescription": "Choisissez un voyage tout tracé au Sri Lanka ou composez le vôtre. Visualisez la route sur la carte, avec les distances, les temps de conduite et chaque lieu traversé.",
     "destinationFallbackTitle": "Destination — ReiseCeylon"
   },
@@ -53,7 +53,7 @@
     "heroEyebrow": "Sri Lanka · Voyages privés depuis 2017",
     "heroTitleLine1": "Une île qui",
     "heroTitleEm": "se souvient",
-    "heroTitleRest": "de vous.",
+    "heroTitleRest": " de vous.",
     "heroSub": "Douze climats sur une seule petite île. Nous traçons des routes sans hâte à travers le pays du thé, les territoires du léopard et les vieux ports du sud — guidés par ceux qui y vivent.",
     "heroPlanCta": "Planifier mon voyage",
     "heroRoutesCta": "Voir les itinéraires",
@@ -779,5 +779,20 @@
     "days": "{count, plural, one {# jour} other {# jours}}",
     "emailSubjectInternal": "Nouvelle demande de voyage — {title}",
     "emailSubjectTraveller": "Votre voyage ReiseCeylon — {title}"
+  },
+  "search": {
+    "whereTo": "Où aller ?",
+    "when": "Quand ?",
+    "travellers": "Voyageurs",
+    "seasonPlaceholder": "Choisissez votre saison",
+    "explore": "Explorer",
+    "hill": "Ella & le pays des collines",
+    "ancient": "Sigiriya & les cités anciennes",
+    "south": "Mirissa & la côte sud",
+    "wild": "Yala & le sud sauvage",
+    "solo": "Voyageur seul",
+    "two": "2 voyageurs",
+    "few": "3–5 voyageurs",
+    "many": "6+ voyageurs"
   }
 }
