@@ -194,6 +194,70 @@ body:has(.rc-home) .brand-type span { color: var(--gold-ink); }
 .theme-dot { width: 15px; height: 15px; border-radius: 50%; background: var(--light-gold); box-shadow: -4px 0 0 1px rgba(7, 39, 31, .55); transition: transform 700ms var(--ease), box-shadow 700ms var(--ease); }
 .theme-dot-dark { transform: rotate(145deg) scale(.9); box-shadow: -6px 0 0 1px var(--forest); }
 
+/* --- Language switcher ---
+   A details/summary disclosure, so it opens and closes without state and stays
+   correct before hydration. The panel is anchored to the nav island. */
+
+.lang-switch { position: relative; }
+.lang-switch summary {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 38px;
+  padding: 0 11px;
+  border-radius: 999px;
+  color: inherit;
+  background: rgba(255, 255, 255, .1);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background-color 500ms var(--ease);
+}
+
+.lang-switch summary::-webkit-details-marker { display: none; }
+.lang-switch summary i { font-style: normal; font-size: 9px; transition: transform 400ms var(--ease); }
+.lang-switch[open] summary i { transform: rotate(180deg); }
+
+body:has(.rc-home) .lang-switch summary { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 40;
+  min-width: 178px;
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--hairline), 0 24px 60px rgba(7, 39, 31, .18);
+}
+
+.lang-menu a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: var(--ink);
+  font-size: 13px;
+  transition: background-color 300ms var(--ease);
+}
+
+.lang-menu a:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.lang-menu a.is-active { background: color-mix(in srgb, var(--gold) 22%, transparent); }
+.lang-menu b { font-size: 10px; letter-spacing: .1em; opacity: .55; }
+
+/* Inside the full-screen menu the switcher sits on the dark overlay instead. */
+.menu-lang { display: none; align-items: center; gap: 14px; width: min(86vw, 600px); margin-top: 32px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .16); }
+.menu-lang > span { color: rgba(255, 255, 255, .6); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+.menu-lang .lang-switch summary { color: #fff; background: rgba(255, 255, 255, .12); }
+.menu-lang .lang-menu { top: auto; bottom: calc(100% + 10px); right: auto; left: 0; }
+
 .menu-button { display: none; width: 42px; height: 42px; position: relative; border: 0; border-radius: 50%; background: var(--forest); }
 .menu-button i { position: absolute; left: 12px; width: 18px; height: 1px; background: #fff; transition: transform 600ms var(--ease); }
 .menu-button i:first-child { transform: translateY(-3px); }
@@ -1258,6 +1322,9 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   .brand-type { font-size: 21px; }
   .nav-cta { display: none; }
   .theme-toggle { width: 34px; height: 34px; }
+  /* On a phone the switcher moves into the full-screen menu, which has room. */
+  .nav-actions .lang-switch { display: none; }
+  .menu-lang { display: flex; }
 
   .rc-hero { padding: 88px 12px 0; }
   .rc-hero-frame { min-height: calc(100svh - 108px); padding: 24px 20px; border-radius: 20px; }

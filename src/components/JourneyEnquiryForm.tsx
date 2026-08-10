@@ -15,6 +15,7 @@
  */
 
 import { useRef, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { formatDuration, formatKm, type RouteTotals, type Waypoint } from '@/lib/journey';
 import {
   DEFAULT_DIAL_CODE,
@@ -22,26 +23,7 @@ import {
   OTHER_DIAL_CODE,
   OTHER_DIAL_CODES
 } from '@/lib/dial-codes';
-import { itineraryFileName, renderItineraryPrintable, type Itinerary } from '@/lib/itinerary';
-
-/** Both optional — a traveller who has not thought about either can still send. */
-export const VEHICLE_OPTIONS = [
-  'No preference',
-  'Car — up to 3 travellers',
-  'Van — up to 6 travellers',
-  'Minibus — 7 or more',
-  '4x4 — for the parks and rough tracks',
-  'Self-drive'
-];
-
-export const BUDGET_OPTIONS = [
-  'Not sure yet',
-  'Under $100 per person per day',
-  '$100–200 per person per day',
-  '$200–350 per person per day',
-  '$350+ per person per day',
-  'Tell me what this route costs'
-];
+import { itineraryFileName, printableCopy, renderItineraryPrintable, type Itinerary } from '@/lib/itinerary';
 
 export type EnquiryPayload = Itinerary;
 
@@ -71,7 +53,19 @@ export function JourneyEnquiryForm({
   airportTransfers: boolean;
   onClose: () => void;
 }) {
-  const length = declaredDays ?? `about ${route.suggestedDays} ${route.suggestedDays === 1 ? 'day' : 'days'}`;
+  const t = useTranslations('enquiry');
+  const sheet = useTranslations('itinerary');
+  const dial = useTranslations('dialCodes');
+  const locale = useLocale();
+
+  /* Both optional — a traveller who has not thought about either can still send. */
+  const vehicleOptions = t.raw('vehicleOptions') as string[];
+  const budgetOptions = t.raw('budgetOptions') as string[];
+
+  /* Country names pass through untranslated if the catalogue has no entry. */
+  const country = (name: string) => (dial.has(name) ? dial(name) : name);
+
+  const length = declaredDays ?? t('aboutDays', { count: route.suggestedDays });
 
   const [status, setStatus] = useState<Status>('idle');
   const [sent, setSent] = useState<Sent>({ copySent: false });
@@ -101,6 +95,8 @@ export function JourneyEnquiryForm({
     const number = String(form.get('phone') ?? '').trim();
 
     const payload: Itinerary = {
+      /* The language the traveller planned in — the email and PDF answer in it. */
+      locale,
       name: String(form.get('name') ?? ''),
       email: String(form.get('email') ?? ''),
       phone: `${prefix} ${number}`.trim(),
@@ -135,14 +131,14 @@ export function JourneyEnquiryForm({
       });
 
       const body = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(body.error || 'That did not send. Please try again.');
+      if (!response.ok) throw new Error(body.error || t('sendFailed'));
 
       setSubmitted(payload);
       setSent({ copySent: body.copySent === true });
       setStatus('sent');
     } catch (cause) {
       setStatus('error');
-      setError(cause instanceof Error ? cause.message : 'That did not send. Please try again.');
+      setError(cause instanceof Error ? cause.message : t('sendFailed'));
     }
   }
 
@@ -160,7 +156,9 @@ export function JourneyEnquiryForm({
 
     /* The document title becomes the suggested filename in the print dialogue. */
     view.document.open();
-    view.document.write(renderItineraryPrintable(submitted));
+    view.document.write(
+      renderItineraryPrintable(submitted, printableCopy((key) => sheet(key), locale))
+    );
     view.document.close();
     view.document.title = itineraryFileName(submitted.journey);
 
@@ -172,25 +170,24 @@ export function JourneyEnquiryForm({
   if (status === 'sent') {
     return (
       <div className="rc-plan-enquiry rc-plan-enquiry-sent" role="status">
-        <span>On its way</span>
-        <h2>We have your journey.</h2>
+        <span>{t('sentEyebrow')}</span>
+        <h2>{t('sentHeading')}</h2>
         <p>
-          {title} — {stops.length} {stops.length === 1 ? 'stop' : 'stops'}, {formatKm(route.roadKm)} of
-          road.{sent.copySent ? ' A copy is on its way to your inbox.' : ''} A ReiseCeylon travel
-          designer will write back within one working day.
+          {t('sentCopy', { title, stops: stops.length, km: formatKm(route.roadKm) })}
+          {sent.copySent ? ` ${t('copyOnItsWay')}` : ''} {t('sentCopySuffix')}
         </p>
 
         <div className="rc-plan-enquiry-done">
           <button type="button" className="rc-plan-enquiry-download" onClick={downloadPdf}>
-            Download your plan (PDF) ↓
+            {t('downloadPdf')}
           </button>
           <button type="button" onClick={onClose}>
-            Back to planning
+            {t('backToPlanning')}
           </button>
         </div>
 
         {/* Off-screen rather than hidden: a display:none frame will not print. */}
-        <iframe ref={printFrame} title="Printable itinerary" aria-hidden className="rc-print-frame" />
+        <iframe ref={printFrame} title={t('printableTitle')} aria-hidden className="rc-print-frame" />
       </div>
     );
   }
@@ -199,10 +196,10 @@ export function JourneyEnquiryForm({
     <div className="rc-plan-enquiry">
       <header>
         <div>
-          <span>Finalise</span>
-          <h2>Send us this journey.</h2>
+          <span>{t('eyebrow')}</span>
+          <h2>{t('heading')}</h2>
         </div>
-        <button type="button" onClick={onClose} className="rc-plan-enquiry-close" aria-label="Close">
+        <button type="button" onClick={onClose} className="rc-plan-enquiry-close" aria-label={t('close')}>
           ×
         </button>
       </header>
@@ -210,45 +207,49 @@ export function JourneyEnquiryForm({
       <div className="rc-plan-enquiry-recap">
         <strong>{title}</strong>
         <p>
-          {stops.length} {stops.length === 1 ? 'stop' : 'stops'} · {formatKm(route.roadKm)} ·{' '}
-          {formatDuration(route.minutes)} driving · {length}
+          {t('recap', {
+            stops: stops.length,
+            km: formatKm(route.roadKm),
+            duration: formatDuration(route.minutes),
+            length
+          })}
         </p>
         <p className="rc-plan-enquiry-stops">{stops.map((stop) => stop.name).join(' → ')}</p>
       </div>
 
       <form onSubmit={submit}>
         <label>
-          Your name
-          <input name="name" required placeholder="How should we address you?" />
+          {t('name')}
+          <input name="name" required placeholder={t('namePlaceholder')} />
         </label>
         <label>
-          Email address
-          <input name="email" type="email" required placeholder="you@example.com" />
+          {t('email')}
+          <input name="email" type="email" required placeholder={t('emailPlaceholder')} />
         </label>
 
         {/* Country code and number, so what reaches us can actually be dialled. */}
         <label>
-          Mobile number
+          {t('mobile')}
           <div className="rc-plan-enquiry-phone">
             <select
               name="dialCountry"
               value={dialCode}
               onChange={(event) => setDialCode(event.target.value)}
-              aria-label="Country dialling code"
+              aria-label={t('dialCodeAria')}
             >
               {LEADING_DIAL_CODES.map((entry) => (
                 <option key={entry.country} value={entry.code}>
-                  {entry.code} · {entry.country}
+                  {entry.code} · {country(entry.country)}
                 </option>
               ))}
-              <optgroup label="More countries">
+              <optgroup label={t('moreCountries')}>
                 {OTHER_DIAL_CODES.map((entry) => (
                   <option key={entry.country} value={entry.code}>
-                    {entry.code} · {entry.country}
+                    {entry.code} · {country(entry.country)}
                   </option>
                 ))}
               </optgroup>
-              <option value={OTHER_DIAL_CODE}>Elsewhere — type the code</option>
+              <option value={OTHER_DIAL_CODE}>{t('elsewhere')}</option>
             </select>
             {dialCode === OTHER_DIAL_CODE ? (
               <input
@@ -257,7 +258,7 @@ export function JourneyEnquiryForm({
                 inputMode="tel"
                 pattern="\+?\d{1,4}"
                 placeholder="+00"
-                aria-label="Country dialling code"
+                aria-label={t('dialCodeAria')}
                 className="rc-plan-enquiry-dial"
               />
             ) : null}
@@ -267,48 +268,45 @@ export function JourneyEnquiryForm({
               required
               inputMode="tel"
               autoComplete="tel-national"
-              placeholder="77 123 4567"
+              placeholder={t('phonePlaceholder')}
             />
           </div>
         </label>
 
         <label>
-          When are you thinking?
-          <input name="dates" placeholder="Month or approximate dates" />
+          {t('dates')}
+          <input name="dates" placeholder={t('datesPlaceholder')} />
         </label>
         <label>
-          Travellers
-          <select name="travellers" defaultValue="2 travellers">
-            <option>Solo traveller</option>
-            <option>2 travellers</option>
-            <option>3–5 travellers</option>
-            <option>6+ travellers</option>
+          {t('travellers')}
+          <select name="travellers" defaultValue={t('travellers2')}>
+            <option>{t('travellersSolo')}</option>
+            <option>{t('travellers2')}</option>
+            <option>{t('travellers35')}</option>
+            <option>{t('travellers6')}</option>
           </select>
         </label>
         <div className="rc-plan-enquiry-pair">
           <label>
-            Vehicle <i>optional</i>
-            <select name="vehicle" defaultValue={VEHICLE_OPTIONS[0]}>
-              {VEHICLE_OPTIONS.map((option) => (
+            {t('vehicle')} <i>{t('optional')}</i>
+            <select name="vehicle" defaultValue={vehicleOptions[0]}>
+              {vehicleOptions.map((option) => (
                 <option key={option}>{option}</option>
               ))}
             </select>
           </label>
           <label>
-            Budget <i>optional</i>
-            <select name="budget" defaultValue={BUDGET_OPTIONS[0]}>
-              {BUDGET_OPTIONS.map((option) => (
+            {t('budget')} <i>{t('optional')}</i>
+            <select name="budget" defaultValue={budgetOptions[0]}>
+              {budgetOptions.map((option) => (
                 <option key={option}>{option}</option>
               ))}
             </select>
           </label>
         </div>
         <label>
-          Anything to add?
-          <textarea
-            name="message"
-            placeholder="Your pace, what you would change about this route, anything you would rather not miss..."
-          />
+          {t('message')}
+          <textarea name="message" placeholder={t('messagePlaceholder')} />
         </label>
 
         {status === 'error' ? (
@@ -318,11 +316,9 @@ export function JourneyEnquiryForm({
         ) : null}
 
         <button type="submit" disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending…' : 'Send this journey ↗'}
+          {status === 'sending' ? t('sending') : t('submit')}
         </button>
-        <p className="rc-plan-enquiry-fineprint">
-          We will email you a copy of this itinerary, and you can download it as a PDF straight after.
-        </p>
+        <p className="rc-plan-enquiry-fineprint">{t('fineprint')}</p>
       </form>
     </div>
   );

@@ -23,7 +23,7 @@ export const destination = defineType({
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string',
+      type: 'localeString',
       group: 'story',
       validation: (rule) => rule.required()
     }),
@@ -32,24 +32,23 @@ export const destination = defineType({
       title: 'Slug',
       type: 'slug',
       description: 'The url: /destinations/your-slug',
-      options: { source: 'name', maxLength: 96 },
+      options: { source: 'name.en', maxLength: 96 },
       group: 'story',
       validation: (rule) => rule.required()
     }),
     defineField({
       name: 'region',
       title: 'Region',
-      type: 'string',
+      type: 'localeStringOptional',
       description: 'Cultural Triangle, Hill Country, Southern Coast… Falls back to the province.',
       group: 'story'
     }),
     defineField({
       name: 'note',
       title: 'Short note',
-      type: 'string',
+      type: 'localeStringOptional',
       description: 'One line under the name on a card, e.g. “Ancient stone, jungle horizons”.',
-      group: 'story',
-      validation: (rule) => rule.max(90)
+      group: 'story'
     }),
     defineField({
       name: 'image',
@@ -57,7 +56,7 @@ export const destination = defineType({
       type: 'image',
       description: 'Leave empty to use the sample plate at /images/destination/<slug>.jpg.',
       options: { hotspot: true },
-      fields: [defineField({ name: 'alt', title: 'Alternative text', type: 'string' })],
+      fields: [defineField({ name: 'alt', title: 'Alternative text', type: 'localeStringOptional' })],
       group: 'story'
     }),
     defineField({
@@ -79,16 +78,14 @@ export const destination = defineType({
     defineField({
       name: 'introHeading',
       title: 'Intro heading',
-      type: 'text',
-      rows: 2,
+      type: 'localeTextOptional',
       description: 'The large quote near the top of the destination page. Line breaks are kept.',
       group: 'story'
     }),
     defineField({
       name: 'introCopy',
       title: 'Intro copy',
-      type: 'text',
-      rows: 4,
+      type: 'localeTextOptional',
       group: 'story'
     }),
     defineField({
@@ -102,10 +99,10 @@ export const destination = defineType({
           type: 'object',
           name: 'highlight',
           fields: [
-            defineField({ name: 'title', title: 'Title', type: 'string', validation: (rule) => rule.required() }),
-            defineField({ name: 'copy', title: 'Copy', type: 'text', rows: 3, validation: (rule) => rule.required() })
+            defineField({ name: 'title', title: 'Title', type: 'localeString', validation: (rule) => rule.required() }),
+            defineField({ name: 'copy', title: 'Copy', type: 'localeText', validation: (rule) => rule.required() })
           ],
-          preview: { select: { title: 'title', subtitle: 'copy' } }
+          preview: { select: { title: 'title.en', subtitle: 'copy.en' } }
         })
       ],
       validation: (rule) => rule.max(6)
@@ -113,16 +110,14 @@ export const destination = defineType({
     defineField({
       name: 'goodToKnowHeading',
       title: 'Good to know — heading',
-      type: 'text',
-      rows: 2,
+      type: 'localeTextOptional',
       description: 'e.g. “Best from December to April, beautiful in every season.”',
       group: 'story'
     }),
     defineField({
       name: 'goodToKnowCopy',
       title: 'Good to know — copy',
-      type: 'text',
-      rows: 4,
+      type: 'localeTextOptional',
       group: 'story'
     }),
 
@@ -131,19 +126,16 @@ export const destination = defineType({
     defineField({
       name: 'seoTitle',
       title: 'SEO title',
-      type: 'string',
-      description: 'Search-result title. Keep it specific and at or below 60 characters.',
-      group: 'seo',
-      validation: (rule) => rule.max(60)
+      type: 'localeStringOptional',
+      description: 'Search-result title. Keep it specific and at or below 60 characters, in every language.',
+      group: 'seo'
     }),
     defineField({
       name: 'seoDescription',
       title: 'SEO description',
-      type: 'text',
-      rows: 3,
-      description: 'Search-result summary. Aim for 120–160 characters and describe this place honestly.',
-      group: 'seo',
-      validation: (rule) => rule.max(160)
+      type: 'localeTextOptional',
+      description: 'Search-result summary. Aim for 120–160 characters in every language, and describe this place honestly.',
+      group: 'seo'
     }),
 
     /* ---------------------------------------------------------------- location */
@@ -214,18 +206,18 @@ export const destination = defineType({
   ],
   orderings: [
     { title: 'Display order', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] },
-    { title: 'Name', name: 'nameAsc', by: [{ field: 'name', direction: 'asc' }] },
+    { title: 'Name', name: 'nameAsc', by: [{ field: 'name.en', direction: 'asc' }] },
     {
       title: 'Province',
       name: 'provinceAsc',
       by: [
         { field: 'province', direction: 'asc' },
-        { field: 'name', direction: 'asc' }
+        { field: 'name.en', direction: 'asc' }
       ]
     }
   ],
   preview: {
-    select: { title: 'name', province: 'province', categoryId: 'categoryId', media: 'image' },
+    select: { title: 'name.en', province: 'province', categoryId: 'categoryId', media: 'image' },
     prepare: ({ title, province, categoryId, media }) => ({
       title,
       subtitle: [placeCategories.find((entry) => entry.id === categoryId)?.name, province]

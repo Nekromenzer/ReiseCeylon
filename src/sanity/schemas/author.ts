@@ -20,7 +20,7 @@ export const author = defineType({
     defineField({
       name: 'role',
       title: 'Role',
-      type: 'string',
+      type: 'localeStringOptional',
       description: 'Shown under the byline, e.g. “Journey planner, Colombo”.'
     }),
     defineField({
@@ -32,9 +32,8 @@ export const author = defineType({
     defineField({
       name: 'bio',
       title: 'Short bio',
-      type: 'text',
-      rows: 3
+      type: 'localeTextOptional'
     })
   ],
-  preview: { select: { title: 'name', subtitle: 'role', media: 'image' } }
+  preview: { select: { title: 'name', subtitle: 'role.en', media: 'image' } }
 });

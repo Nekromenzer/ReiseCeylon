@@ -1,28 +1,30 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import Lenis from 'lenis';
+import { useLocale, useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import { localeTags } from '@/i18n/routing';
 import {
   art,
   attractionCategories,
-  experienceDetail,
+  experienceArt,
   heroPlates,
-  manifestoStats,
-  ticker,
   touristAttractions,
-  voices,
   type AttractionCategory
 } from '@/lib/content';
 import type { Destination, Tour } from '@/sanity/site';
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+/** The shapes the translated lists in `content.*` deserialise to. */
+type ExperienceCopy = { hours: string; title: string; copy: string };
+type StatCopy = { value: string; label: string };
+type VoiceCopy = { quote: string; name: string; trip: string };
 
-const manifestoLead = 'We plan the way a local would — slowly, and with one person in mind.';
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function HomePage({
   destinations,
@@ -31,6 +33,16 @@ export function HomePage({
   destinations: Destination[];
   tours: Tour[];
 }) {
+  const t = useTranslations('home');
+  const c = useTranslations('content');
+  const locale = useLocale();
+
+  /* The narrative lists — read once per render out of the active catalogue. */
+  const ticker = c.raw('ticker') as string[];
+  const experienceDetail = c.raw('experiences') as ExperienceCopy[];
+  const manifestoStats = c.raw('manifestoStats') as StatCopy[];
+  const voices = c.raw('voices') as VoiceCopy[];
+
   const root = useRef<HTMLElement>(null);
   const [plate, setPlate] = useState(0);
   const [activeDestination, setActiveDestination] = useState(0);
@@ -42,7 +54,7 @@ export function HomePage({
   useEffect(() => {
     const tick = () =>
       setClock(
-        new Intl.DateTimeFormat('en-GB', {
+        new Intl.DateTimeFormat(localeTags[locale as keyof typeof localeTags] ?? 'en-GB', {
           timeZone: 'Asia/Colombo',
           hour: '2-digit',
           minute: '2-digit'
@@ -52,7 +64,7 @@ export function HomePage({
     tick();
     const id = window.setInterval(tick, 20000);
     return () => window.clearInterval(id);
-  }, []);
+  }, [locale]);
 
   useGSAP(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -153,7 +165,17 @@ export function HomePage({
     };
   }, { scope: root });
 
+  /**
+   * Most attraction regions are descriptive ("East Coast") and translate; some
+   * are place names ("Jaffna", "Mannar") and must not. Anything the catalogue has
+   * no entry for passes through as written.
+   */
+  const attractionRegion = (region: string) =>
+    c.has(`attractionRegions.${region}`) ? c(`attractionRegions.${region}`) : region;
+
   const live = heroPlates[plate];
+  const manifestoLead = t('manifestoLead');
+  const manifestoEmphasis = t('manifestoLeadEmphasis');
   const visibleAttractions = touristAttractions.filter(
     (attraction) => attractionCategory === 'All' || attraction.category === attractionCategory
   );
@@ -164,10 +186,10 @@ export function HomePage({
         <div className="rc-shell">
           <div className="rc-hero-frame">
             {heroPlates.map((item, index) => (
-              <div className={`rc-hero-plate${index === plate ? ' is-live' : ''}`} key={item.image}>
+              <div className={`rc-hero-plate${index === plate ? ' is-live' : ''}`} key={item.key}>
                 <Image
                   src={item.image}
-                  alt={`${item.place}, ${item.region}`}
+                  alt={`${item.place}, ${c(`heroPlates.${item.key}.region`)}`}
                   fill
                   sizes="100vw"
                   priority={index === 0}
@@ -177,11 +199,11 @@ export function HomePage({
             ))}
             <div className="rc-hero-wash" />
 
-            <div className="rc-plate-picker" aria-label="Featured places">
+            <div className="rc-plate-picker" aria-label={t('heroAriaPlates')}>
               {heroPlates.map((item, index) => (
                 <button
                   type="button"
-                  key={item.place}
+                  key={item.key}
                   aria-pressed={index === plate}
                   className={`rc-chip${index === plate ? ' is-live' : ''}`}
                   style={{ '--r': item.rotate } as React.CSSProperties}
@@ -194,28 +216,28 @@ export function HomePage({
                 </button>
               ))}
               <p className="rc-plate-meta" aria-live="polite">
-                {live.region}
-                <em>{live.meta}</em>
+                {c(`heroPlates.${live.key}.region`)}
+                <em>{c(`heroPlates.${live.key}.meta`)}</em>
               </p>
             </div>
 
             <div className="rc-hero-body">
-              <span className="rc-eyebrow">Sri Lanka · Private journeys since 2017</span>
+              <span className="rc-eyebrow">{t('heroEyebrow')}</span>
               <h1>
-                <span className="rc-line"><i>An island that</i></span>
-                <span className="rc-line"><i><em>remembers</em> you.</i></span>
+                <span className="rc-line"><i>{t('heroTitleLine1')}</i></span>
+                {/* No space between the two: `heroTitleRest` carries its own
+                    leading space where the language needs one, and carries none
+                    where it is only a full stop. */}
+                <span className="rc-line"><i><em>{t('heroTitleEm')}</em>{t('heroTitleRest')}</i></span>
               </h1>
-              <p className="rc-hero-sub">
-                Twelve climates on one small island. We draw unhurried routes through tea country,
-                leopard territory and the old ports of the south — led by the people who live there.
-              </p>
+              <p className="rc-hero-sub">{t('heroSub')}</p>
               <div className="rc-hero-actions">
                 <Link href="/journeys" className="rc-pill rc-pill-gold group">
-                  Plan my journey
+                  {t('heroPlanCta')}
                   <span>↗</span>
                 </Link>
                 <Link href="#journeys" className="rc-pill rc-pill-glass group">
-                  See the routes
+                  {t('heroRoutesCta')}
                   <span>↓</span>
                 </Link>
               </div>
@@ -223,20 +245,20 @@ export function HomePage({
 
             <div className="rc-rail">
               <div className="rc-rail-cell">
-                <small>Colombo, right now</small>
+                <small>{t('railClock')}</small>
                 <strong>{clock}</strong>
               </div>
               <div className="rc-rail-cell">
-                <small>Best window</small>
-                <strong>Dec — Apr, south</strong>
+                <small>{t('railWindow')}</small>
+                <strong>{t('railWindowValue')}</strong>
               </div>
               <div className="rc-rail-cell">
-                <small>In the collection</small>
-                <strong>24 routes</strong>
+                <small>{t('railCollection')}</small>
+                <strong>{t('railCollectionValue')}</strong>
               </div>
               <div className="rc-rail-cell">
-                <small>Planned for you by</small>
-                <strong>One person</strong>
+                <small>{t('railPlanner')}</small>
+                <strong>{t('railPlannerValue')}</strong>
               </div>
             </div>
           </div>
@@ -262,11 +284,11 @@ export function HomePage({
       {/* ——— Manifesto ——— */}
       <section className="rc-manifesto">
         <div>
-          <span className="rc-eyebrow rc-eyebrow-ink" data-reveal="0">Our way of working</span>
+          <span className="rc-eyebrow rc-eyebrow-ink" data-reveal="0">{t('manifestoEyebrow')}</span>
           <p className="rc-manifesto-line">
             {manifestoLead.split(' ').map((word, index) => (
               <span className="rc-word" key={`${word}-${index}`}>
-                {word === 'slowly,' ? <em>{word}</em> : word}{' '}
+                {word === manifestoEmphasis ? <em>{word}</em> : word}{' '}
               </span>
             ))}
           </p>
@@ -275,17 +297,13 @@ export function HomePage({
               <Image src={art.highland} alt="" fill sizes="72px" />
             </div>
             <div>
-              <strong>A planner, not a call centre</strong>
-              <span>Colombo · Mon — Sat</span>
+              <strong>{t('signatureTitle')}</strong>
+              <span>{t('signatureMeta')}</span>
             </div>
           </div>
         </div>
         <div className="rc-manifesto-side">
-          <p data-reveal="0">
-            No two travellers want the same island. A planner in Colombo takes your first note and
-            stays with you until the last night — reworking the route around the weather, the
-            festivals and whatever you fell for on day three.
-          </p>
+          <p data-reveal="0">{t('manifestoSide')}</p>
           <dl className="rc-stats">
             {manifestoStats.map((stat, index) => (
               <div key={stat.label} data-reveal={String(index * 0.08)}>
@@ -295,7 +313,7 @@ export function HomePage({
             ))}
           </dl>
           <Link href="/about" className="rc-link" data-reveal="0">
-            Meet the people behind it <span>↗</span>
+            {t('manifestoLink')} <span>↗</span>
           </Link>
         </div>
       </section>
@@ -304,18 +322,15 @@ export function HomePage({
       <section className="rc-chapters" id="destinations">
         <header className="rc-chapters-head" data-reveal="0">
           <h2>
-            Five ways into{' '}
+            {t('chaptersHeadingPre')}{' '}
             <span className="rc-inline-landscape" aria-hidden="true">
               <Image src={art.coast} alt="" fill sizes="160px" />
             </span>
-            {' '}Sri Lanka.
+            {' '}{t('chaptersHeadingPost')}
           </h2>
           <div className="rc-chapters-intro">
-            <p>
-              Choose the landscape that pulls you in. Each chapter opens a different rhythm of the
-              island, from ancient stone to warm southern water.
-            </p>
-            <span>Move across the landscapes to explore</span>
+            <p>{t('chaptersIntro')}</p>
+            <span>{t('chaptersHint')}</span>
           </div>
         </header>
 
@@ -327,7 +342,7 @@ export function HomePage({
               key={place.slug}
               onMouseEnter={() => setActiveDestination(index)}
               onFocus={() => setActiveDestination(index)}
-              aria-label={`Explore ${place.name}, ${place.region}`}
+              aria-label={t('chapterExploreAria', { name: place.name, region: place.region })}
             >
               <Image
                 className="rc-chapter-image"
@@ -346,7 +361,7 @@ export function HomePage({
                 <span>{place.note}</span>
               </span>
               <span className="rc-chapter-action">
-                Explore <i>↗</i>
+                {t('chapterExplore')} <i>↗</i>
               </span>
               <div className="rc-chapter-closed" aria-hidden="true">
                 <strong>{place.name}</strong>
@@ -364,7 +379,7 @@ export function HomePage({
 
         <div className="rc-chapters-foot" data-reveal="0">
           <Link href="/destinations" className="rc-link rc-link-light">
-            Open the full atlas <span>↗</span>
+            {t('chaptersFullAtlas')} <span>↗</span>
           </Link>
         </div>
       </section>
@@ -373,10 +388,10 @@ export function HomePage({
       <section className="rc-stack" id="experiences">
         <header className="rc-head rc-head-light" data-reveal="0">
           <div>
-            <span className="rc-eyebrow">Experiences</span>
-            <h2>Ways to spend a day here</h2>
+            <span className="rc-eyebrow">{t('experiencesEyebrow')}</span>
+            <h2>{t('experiencesHeading')}</h2>
           </div>
-          <p>Every journey is built from days like these — never more than two in a row.</p>
+          <p>{t('experiencesIntro')}</p>
         </header>
 
         <div className="rc-stack-list">
@@ -388,7 +403,12 @@ export function HomePage({
             >
               <div className="rc-stack-inner">
                 <div className="rc-stack-media">
-                  <Image src={item.image} alt={item.title} fill sizes="(max-width: 767px) 92vw, 46vw" />
+                  <Image
+                    src={experienceArt[index]}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 767px) 92vw, 46vw"
+                  />
                   <span>{item.hours}</span>
                 </div>
                 <div className="rc-stack-copy">
@@ -396,7 +416,7 @@ export function HomePage({
                   <h3>{item.title}</h3>
                   <p>{item.copy}</p>
                   <Link href="/contact" className="rc-link rc-link-light">
-                    Build a day like this <span>↗</span>
+                    {t('experiencesCta')} <span>↗</span>
                   </Link>
                 </div>
               </div>
@@ -408,17 +428,14 @@ export function HomePage({
       {/* ——— Atlas ——— */}
       <section className="rc-atlas" id="journeys">
         <div className="rc-atlas-map" data-reveal="0">
-          <span className="rc-eyebrow rc-eyebrow-ink">Signature journeys</span>
-          <h2>The island,<br /><em>drawn slowly.</em></h2>
-          <p className="rc-atlas-intro">
-            A route is more than a line between hotels. We shape each one around altitude,
-            monsoon, light and the people worth stopping for.
-          </p>
+          <span className="rc-eyebrow rc-eyebrow-ink">{t('atlasEyebrow')}</span>
+          <h2>{t('atlasHeadingLine1')}<br /><em>{t('atlasHeadingEm')}</em></h2>
+          <p className="rc-atlas-intro">{t('atlasIntro')}</p>
           <div className="rc-map-holder">
             <Image
               className="rc-map-art"
               src="/images/maps/sri-lanka-tour-map.webp"
-              alt="Detailed Sri Lanka tourism map showing roads, railways, rivers, parks, cities and visitor attractions"
+              alt={t('atlasMapAlt')}
               fill
               sizes="(max-width: 767px) 92vw, (max-width: 1024px) 48vw, 34vw"
             />
@@ -429,12 +446,12 @@ export function HomePage({
           <div className="rc-attraction-panel" data-reveal="0">
             <div className="rc-attraction-head">
               <div>
-                <span>Explore the whole island</span>
-                <h3>{touristAttractions.length} places worth the detour</h3>
+                <span>{t('atlasExploreWhole')}</span>
+                <h3>{t('atlasPlacesWorth', { count: touristAttractions.length })}</h3>
               </div>
               <strong>{visibleAttractions.length}</strong>
             </div>
-            <div className="rc-attraction-filters" aria-label="Filter attractions">
+            <div className="rc-attraction-filters" aria-label={t('atlasFilterAria')}>
               {attractionCategories.map((category) => (
                 <button
                   type="button"
@@ -451,7 +468,7 @@ export function HomePage({
                     );
                   }}
                 >
-                  {category}
+                  {c(`attractionCategories.${category}`)}
                 </button>
               ))}
             </div>
@@ -468,15 +485,15 @@ export function HomePage({
                   <i className={`rc-index-dot rc-pin-${attraction.category.toLowerCase().replace(' ', '-')}`} />
                   <span>
                     <strong>{attraction.name}</strong>
-                    <small>{attraction.region}</small>
+                    <small>{attractionRegion(attraction.region)}</small>
                   </span>
-                  <em>{attraction.category}</em>
+                  <em>{c(`attractionCategories.${attraction.category}`)}</em>
                 </button>
               ))}
             </div>
           </div>
 
-          <h3 className="rc-tour-list-title">Journeys that connect the dots</h3>
+          <h3 className="rc-tour-list-title">{t('atlasTourListTitle')}</h3>
           {tours.map((tour, index) => (
             <Link href={`/tours/${tour.slug}`} className="rc-journey" key={tour.slug} data-reveal={String(index * 0.06)}>
               <div className="rc-journey-inner">
@@ -496,7 +513,7 @@ export function HomePage({
             </Link>
           ))}
           <Link href="/journeys" className="rc-link" data-reveal="0">
-            Plan your journey — or draw your own route <span>↗</span>
+            {t('atlasPlanLink')} <span>↗</span>
           </Link>
         </div>
       </section>
@@ -504,7 +521,7 @@ export function HomePage({
       {/* ——— Voices ——— */}
       <section className="rc-voices">
         <div className="rc-voices-inner" data-reveal="0">
-          <span className="rc-eyebrow rc-eyebrow-ink">Travellers&rsquo; notes</span>
+          <span className="rc-eyebrow rc-eyebrow-ink">{t('voicesEyebrow')}</span>
           <blockquote key={voice}>{voices[voice].quote}</blockquote>
           <div className="rc-voices-foot">
             <div>
@@ -514,14 +531,14 @@ export function HomePage({
             <div className="rc-voices-controls">
               <button
                 type="button"
-                aria-label="Previous note"
+                aria-label={t('voicesPrev')}
                 onClick={() => setVoice((voice - 1 + voices.length) % voices.length)}
               >
                 ←
               </button>
               <button
                 type="button"
-                aria-label="Next note"
+                aria-label={t('voicesNext')}
                 onClick={() => setVoice((voice + 1) % voices.length)}
               >
                 →
@@ -538,15 +555,12 @@ export function HomePage({
             <Image src={art.coast} alt="" fill sizes="100vw" />
             <div className="rc-invite-wash" />
             <div className="rc-invite-body">
-              <span className="rc-eyebrow">Your story starts here</span>
-              <h2>Where memories<br />find home.</h2>
-              <p>
-                Tell us when you can travel and what you cannot miss. You will hear back from a
-                planner in Colombo — not a form.
-              </p>
+              <span className="rc-eyebrow">{t('inviteEyebrow')}</span>
+              <h2>{t('inviteHeadingLine1')}<br />{t('inviteHeadingLine2')}</h2>
+              <p>{t('inviteCopy')}</p>
               <div className="rc-hero-actions">
                 <Link href="/contact" className="rc-pill rc-pill-gold group">
-                  Start planning
+                  {t('inviteCta')}
                   <span>↗</span>
                 </Link>
                 <a href="mailto:journeys@reiseceylon.com" className="rc-pill rc-pill-glass group">
@@ -556,9 +570,9 @@ export function HomePage({
               </div>
             </div>
             <div className="rc-invite-meta">
-              <span>Colombo · Sri Lanka</span>
-              <span>Replies within one working day</span>
-              <span>No deposit until the route is right</span>
+              <span>{t('inviteMeta1')}</span>
+              <span>{t('inviteMeta2')}</span>
+              <span>{t('inviteMeta3')}</span>
             </div>
           </div>
         </div>

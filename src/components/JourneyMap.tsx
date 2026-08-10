@@ -21,6 +21,7 @@
  * without the traveller having to hunt for it.
  */
 
+import { useTranslations } from 'next-intl';
 import { useEffect, useMemo } from 'react';
 import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -132,6 +133,7 @@ export default function JourneyMap({
   fitSignal?: string;
   onSelect?: (slug: string) => void;
 }) {
+  const t = useTranslations('map');
   const line = useMemo(
     () => stops.map((stop) => [stop.latitude, stop.longitude] as [number, number]),
     [stops]
@@ -169,16 +171,16 @@ export default function JourneyMap({
           <Popup>
             <strong>{stop.name}</strong>
             <br />
-            Stop {index + 1} of {stops.length}
+            {t('stopOf', { index: index + 1, total: stops.length })}
             {stop.transfer ? (
               <>
                 <br />
-                <em>Airport transfer</em>
+                <em>{t('airportTransfer')}</em>
               </>
             ) : stop.custom ? (
               <>
                 <br />
-                <em>Your own stop</em>
+                <em>{t('ownStop')}</em>
               </>
             ) : null}
           </Popup>

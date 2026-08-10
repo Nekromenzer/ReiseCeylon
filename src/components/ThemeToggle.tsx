@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function ThemeToggle() {
+  const t = useTranslations('nav');
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -20,7 +22,12 @@ export function ThemeToggle() {
   }
 
   return (
-    <button className="theme-toggle" type="button" onClick={toggle} aria-label={`Use ${dark ? 'light' : 'dark'} theme`}>
+    <button
+      className="theme-toggle"
+      type="button"
+      onClick={toggle}
+      aria-label={dark ? t('themeLight') : t('themeDark')}
+    >
       <span className={dark ? 'theme-dot theme-dot-dark' : 'theme-dot'} />
     </button>
   );

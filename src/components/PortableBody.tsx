@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { PortableText, type PortableTextComponents } from '@portabletext/react';
+import { Link } from '@/i18n/navigation';
 import type { PortableTextBlock } from '@portabletext/types';
 import type { SanityImage } from '@/sanity/queries';
 import { urlForImage } from '@/sanity/image';

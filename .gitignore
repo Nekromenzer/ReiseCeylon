@@ -2,8 +2,14 @@ node_modules/
 .env
 .env.local
 .env*.local
+
+# Build output — all of it regenerable
 .next/
-.npm-cache/
+dist/
+.sanity/
+tsconfig.tsbuildinfo
 coverage/
+
+.npm-cache/
 *.log
 .DS_Store

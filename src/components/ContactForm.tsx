@@ -1,18 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function ContactForm() {
+  const t = useTranslations('contactForm');
   const [sent, setSent] = useState(false);
 
   if (sent) {
     return (
       <div className="contact-form">
         <div className="contact-success">
-          <span>Thank you</span>
-          <h2>Your journey has begun.</h2>
-          <p>A ReiseCeylon travel designer will be in touch within one working day.</p>
-          <button type="button" onClick={() => setSent(false)}>Send another enquiry</button>
+          <span>{t('successEyebrow')}</span>
+          <h2>{t('successHeading')}</h2>
+          <p>{t('successCopy')}</p>
+          <button type="button" onClick={() => setSent(false)}>{t('sendAnother')}</button>
         </div>
       </div>
     );
@@ -21,17 +23,20 @@ export function ContactForm() {
   return (
     <div className="contact-form">
       <form onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
-        <label>Your name<input name="name" required placeholder="How should we address you?" /></label>
-        <label>Email address<input name="email" type="email" required placeholder="you@example.com" /></label>
-        <label>When are you thinking?<input name="dates" placeholder="Month or approximate dates" /></label>
-        <label>What are you drawn to?
+        <label>{t('name')}<input name="name" required placeholder={t('namePlaceholder')} /></label>
+        <label>{t('email')}<input name="email" type="email" required placeholder={t('emailPlaceholder')} /></label>
+        <label>{t('dates')}<input name="dates" placeholder={t('datesPlaceholder')} /></label>
+        <label>{t('interest')}
           <select name="interest" defaultValue="">
-            <option value="" disabled>Choose a feeling</option>
-            <option>Nature and wildlife</option><option>Culture and food</option><option>Coast and quiet</option><option>A little of everything</option>
+            <option value="" disabled>{t('interestPlaceholder')}</option>
+            <option>{t('interestNature')}</option>
+            <option>{t('interestCulture')}</option>
+            <option>{t('interestCoast')}</option>
+            <option>{t('interestEverything')}</option>
           </select>
         </label>
-        <label>Tell us more<textarea name="message" placeholder="Who is travelling, your pace, and the moments you hope to find..." /></label>
-        <button type="submit">Begin the conversation ↗</button>
+        <label>{t('message')}<textarea name="message" placeholder={t('messagePlaceholder')} /></label>
+        <button type="submit">{t('submit')}</button>
       </form>
     </div>
   );

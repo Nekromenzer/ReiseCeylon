@@ -310,12 +310,16 @@ export function formatKm(km: number) {
   return `${Math.round(km)} km`;
 }
 
-/** “Mostly hill roads” — the one-line reading of a leg's terrain. */
+/**
+ * The one-line reading of a leg's terrain, as a message key in the `journey`
+ * namespace rather than a sentence — this module is shared by the server and the
+ * browser and must not carry English of its own.
+ */
 export function terrainNote(fraction: number) {
-  if (fraction >= 0.8) return 'Mountain road throughout';
-  if (fraction >= 0.45) return 'Climbs into the hills';
-  if (fraction >= 0.15) return 'Lowland, with a climb at the end';
-  return 'Lowland roads';
+  if (fraction >= 0.8) return 'terrainMountain';
+  if (fraction >= 0.45) return 'terrainClimbs';
+  if (fraction >= 0.15) return 'terrainLowlandClimb';
+  return 'terrainLowland';
 }
 
 /** A waypoint from any positioned record — the atlas `Place` fits without a cast. */

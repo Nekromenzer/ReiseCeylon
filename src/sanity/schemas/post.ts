@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity';
 
 export const post = defineType({
   name: 'post',
@@ -8,24 +8,22 @@ export const post = defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'string',
-      validation: (rule) => rule.required().max(120)
+      type: 'localeString',
+      validation: (rule) => rule.required()
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
       description: 'The url this entry lives at: /blog/your-slug',
-      options: { source: 'title', maxLength: 96 },
+      options: { source: 'title.en', maxLength: 96 },
       validation: (rule) => rule.required()
     }),
     defineField({
       name: 'excerpt',
       title: 'Excerpt',
-      type: 'text',
-      rows: 3,
-      description: 'One or two sentences. Used on the journal index and for search results.',
-      validation: (rule) => rule.max(280)
+      type: 'localeTextOptional',
+      description: 'One or two sentences. Used on the journal index and for search results.'
     }),
     defineField({
       name: 'coverImage',
@@ -36,7 +34,7 @@ export const post = defineType({
         defineField({
           name: 'alt',
           title: 'Alternative text',
-          type: 'string',
+          type: 'localeStringOptional',
           description: 'Describe the photograph for screen readers.'
         })
       ],
@@ -78,63 +76,14 @@ export const post = defineType({
     defineField({
       name: 'body',
       title: 'Body',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'Heading', value: 'h2' },
-            { title: 'Subheading', value: 'h3' },
-            { title: 'Quote', value: 'blockquote' }
-          ],
-          lists: [
-            { title: 'Bullet', value: 'bullet' },
-            { title: 'Numbered', value: 'number' }
-          ],
-          marks: {
-            decorators: [
-              { title: 'Bold', value: 'strong' },
-              { title: 'Italic', value: 'em' }
-            ],
-            annotations: [
-              defineArrayMember({
-                name: 'link',
-                title: 'Link',
-                type: 'object',
-                fields: [
-                  defineField({
-                    name: 'href',
-                    title: 'Url',
-                    type: 'url',
-                    validation: (rule) =>
-                      rule.required().uri({ scheme: ['http', 'https', 'mailto', 'tel'] })
-                  })
-                ]
-              })
-            ]
-          }
-        }),
-        defineArrayMember({
-          name: 'inlineImage',
-          title: 'Image',
-          type: 'image',
-          options: { hotspot: true },
-          fields: [
-            defineField({ name: 'alt', title: 'Alternative text', type: 'string' }),
-            defineField({ name: 'caption', title: 'Caption', type: 'string' })
-          ]
-        })
-      ],
+      type: 'localeBlockContent',
       validation: (rule) => rule.required()
     }),
     defineField({
       name: 'seoDescription',
       title: 'SEO description',
-      type: 'text',
-      rows: 2,
-      description: 'Falls back to the excerpt when empty.',
-      validation: (rule) => rule.max(180)
+      type: 'localeTextOptional',
+      description: 'Falls back to the excerpt when empty.'
     })
   ],
   orderings: [
@@ -145,6 +94,6 @@ export const post = defineType({
     }
   ],
   preview: {
-    select: { title: 'title', subtitle: 'category.title', media: 'coverImage' }
+    select: { title: 'title.en', subtitle: 'category.title.en', media: 'coverImage' }
   }
 });

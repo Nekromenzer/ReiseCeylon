@@ -13,6 +13,7 @@
     "sync:destinations": "node --env-file=.env scripts/sync-destinations.mjs",
     "sync:destinations:auth": "sanity exec scripts/sync-destinations.mjs --with-user-token --",
     "generate:destination-editorial": "sanity exec scripts/generate-destination-editorial.mjs --with-user-token",
+    "migrate:locales": "node --env-file=.env scripts/migrate-locale-fields.mjs",
     "audit:destinations": "node scripts/audit-destination-content.mjs",
     "images:destinations": "node scripts/generate-destination-images.mjs"
   },
@@ -28,6 +29,7 @@
     "leaflet": "^1.9.4",
     "lenis": "^1.3.25",
     "next": "^16.2.12",
+    "next-intl": "^4.13.6",
     "next-sanity": "^13.3.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

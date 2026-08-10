@@ -19,7 +19,7 @@ export const tour = defineType({
     defineField({
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'localeString',
       validation: (rule) => rule.required()
     }),
     defineField({
@@ -27,14 +27,14 @@ export const tour = defineType({
       title: 'Slug',
       type: 'slug',
       description: 'The url: /tours/your-slug',
-      options: { source: 'title', maxLength: 96 },
+      options: { source: 'title.en', maxLength: 96 },
       validation: (rule) => rule.required()
     }),
     defineField({
       name: 'days',
       title: 'Length',
-      type: 'string',
-      description: 'Shown as written, e.g. “12 days”.',
+      type: 'localeString',
+      description: 'Shown as written, e.g. “12 days” / “12 Tage”. Translate it — it is printed on the page.',
       validation: (rule) => rule.required()
     }),
     defineField({
@@ -48,7 +48,7 @@ export const tour = defineType({
     defineField({
       name: 'route',
       title: 'Route',
-      type: 'string',
+      type: 'localeString',
       description: 'e.g. “Colombo → Tea Country → South Coast”.',
       validation: (rule) => rule.required()
     }),
@@ -69,17 +69,16 @@ export const tour = defineType({
     defineField({
       name: 'price',
       title: 'Price',
-      type: 'string',
+      type: 'localeStringOptional',
       description:
-        'Not shown on the site — journeys are quoted per enquiry. Kept for internal reference only.',
-      initialValue: ''
+        'Not shown on the site — journeys are quoted per enquiry. Kept for internal reference only.'
     }),
     defineField({
       name: 'image',
       title: 'Photograph',
       type: 'image',
       options: { hotspot: true },
-      fields: [defineField({ name: 'alt', title: 'Alternative text', type: 'string' })],
+      fields: [defineField({ name: 'alt', title: 'Alternative text', type: 'localeStringOptional' })],
       validation: (rule) => rule.required()
     }),
     defineField({
@@ -92,24 +91,21 @@ export const tour = defineType({
     defineField({
       name: 'note',
       title: 'Short note',
-      type: 'text',
-      rows: 2,
+      type: 'localeText',
       description: 'One line beneath the journey on the homepage.',
-      validation: (rule) => rule.required().max(140)
+      validation: (rule) => rule.required()
     }),
     defineField({
       name: 'introHeading',
       title: 'Intro heading',
-      type: 'text',
-      rows: 2,
+      type: 'localeText',
       description: 'Large quote near the top of the journey page. Line breaks are kept.',
       validation: (rule) => rule.required()
     }),
     defineField({
       name: 'introCopy',
       title: 'Intro copy',
-      type: 'text',
-      rows: 4,
+      type: 'localeText',
       validation: (rule) => rule.required()
     }),
     defineField({
@@ -125,14 +121,14 @@ export const tour = defineType({
             defineField({
               name: 'period',
               title: 'Days',
-              type: 'string',
-              description: 'e.g. “Days 1–3”.',
+              type: 'localeString',
+              description: 'e.g. “Days 1–3” / “Tage 1–3”.',
               validation: (rule) => rule.required()
             }),
-            defineField({ name: 'title', title: 'Title', type: 'string', validation: (rule) => rule.required() }),
-            defineField({ name: 'copy', title: 'Copy', type: 'text', rows: 3, validation: (rule) => rule.required() })
+            defineField({ name: 'title', title: 'Title', type: 'localeString', validation: (rule) => rule.required() }),
+            defineField({ name: 'copy', title: 'Copy', type: 'localeText', validation: (rule) => rule.required() })
           ],
-          preview: { select: { title: 'title', subtitle: 'period' } }
+          preview: { select: { title: 'title.en', subtitle: 'period.en' } }
         })
       ],
       validation: (rule) => rule.required().min(1)
@@ -140,18 +136,16 @@ export const tour = defineType({
     defineField({
       name: 'includedHeading',
       title: 'Included — heading',
-      type: 'text',
-      rows: 2,
+      type: 'localeTextOptional',
       description: 'e.g. “Private by design. Supported throughout.”'
     }),
     defineField({
       name: 'includedCopy',
       title: 'Included — copy',
-      type: 'text',
-      rows: 4,
+      type: 'localeTextOptional',
       description: 'What the price covers, and what it does not.'
     })
   ],
   orderings: [{ title: 'Display order', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] }],
-  preview: { select: { title: 'title', subtitle: 'route', media: 'image' } }
+  preview: { select: { title: 'title.en', subtitle: 'route.en', media: 'image' } }
 });

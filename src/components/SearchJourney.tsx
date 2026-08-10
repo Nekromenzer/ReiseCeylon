@@ -1,38 +1,57 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
+
+/** Destination options, keyed by the message they are labelled with. */
+const OPTIONS = [
+  { key: 'hill', slug: 'ella' },
+  { key: 'ancient', slug: 'sigiriya-rock-fortress' },
+  { key: 'south', slug: 'mirissa-beach' },
+  { key: 'wild', slug: 'yala-national-park' }
+] as const;
 
 export function SearchJourney() {
-  const [where, setWhere] = useState('Ella & the hill country');
+  const t = useTranslations('search');
+  const [where, setWhere] = useState<string>(OPTIONS[0].key);
   const router = useRouter();
-  const routes: Record<string, string> = {
-    'Ella & the hill country': 'ella',
-    'Sigiriya & ancient cities': 'sigiriya-rock-fortress',
-    'Mirissa & the south coast': 'mirissa-beach',
-    'Yala & the wild south': 'yala-national-park'
-  };
 
   return (
-    <form className="search-card" onSubmit={(event) => { event.preventDefault(); router.push(`/destinations/${routes[where]}`); }}>
+    <form
+      className="search-card"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const chosen = OPTIONS.find((option) => option.key === where) ?? OPTIONS[0];
+        router.push(`/destinations/${chosen.slug}`);
+      }}
+    >
       <label>
-        <span>Where to?</span>
+        <span>{t('whereTo')}</span>
         <select value={where} onChange={(event) => setWhere(event.target.value)}>
-          <option>Ella & the hill country</option>
-          <option>Sigiriya & ancient cities</option>
-          <option>Mirissa & the south coast</option>
-          <option>Yala & the wild south</option>
+          {OPTIONS.map((option) => (
+            <option key={option.key} value={option.key}>
+              {t(option.key)}
+            </option>
+          ))}
         </select>
       </label>
       <label>
-        <span>When?</span>
-        <input type="text" placeholder="Choose your season" />
+        <span>{t('when')}</span>
+        <input type="text" placeholder={t('seasonPlaceholder')} />
       </label>
       <label>
-        <span>Travellers</span>
-        <select defaultValue="2 travellers"><option>2 travellers</option><option>Solo traveller</option><option>3–5 travellers</option><option>6+ travellers</option></select>
+        <span>{t('travellers')}</span>
+        <select defaultValue="two">
+          <option value="two">{t('two')}</option>
+          <option value="solo">{t('solo')}</option>
+          <option value="few">{t('few')}</option>
+          <option value="many">{t('many')}</option>
+        </select>
       </label>
-      <button type="submit">Explore <span>↗</span></button>
+      <button type="submit">
+        {t('explore')} <span>↗</span>
+      </button>
     </form>
   );
 }

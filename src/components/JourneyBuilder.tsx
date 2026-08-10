@@ -12,6 +12,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { PlaceSearchResult } from '@/app/api/places/search/route';
 import {
   customWaypoint,
@@ -23,6 +24,7 @@ import {
 } from '@/lib/journey';
 
 type Filter = { id: string; name: string };
+type Province = { value: string; label: string };
 
 /** Long enough that typing a town name is one lookup, not eight. */
 const SEARCH_DEBOUNCE_MS = 450;
@@ -42,7 +44,7 @@ export function JourneyBuilder({
 }: {
   catalogue: PlannerPlace[];
   categories: Filter[];
-  provinces: string[];
+  provinces: Province[];
   stops: Waypoint[];
   legs: Leg[];
   onAdd: (slug: string) => void;
@@ -52,6 +54,7 @@ export function JourneyBuilder({
   onOptimise: () => void;
   onClear: () => void;
 }) {
+  const t = useTranslations('builder');
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('all');
   const [province, setProvince] = useState('all');
@@ -116,14 +119,14 @@ export function JourneyBuilder({
       } catch {
         if (seq !== searchSeq.current) return;
         setFound([]);
-        setSearchError('Search is unavailable right now.');
+        setSearchError(t('searchUnavailable'));
       } finally {
         if (seq === searchSeq.current) setSearching(false);
       }
     }, SEARCH_DEBOUNCE_MS);
 
     return () => window.clearTimeout(timer);
-  }, [anywhere]);
+  }, [anywhere, t]);
 
   const move = (from: number, to: number) => {
     if (to < 0 || to >= stops.length || from === to) return;
@@ -147,8 +150,8 @@ export function JourneyBuilder({
         {/* Search and filters stay put; only the list of places moves. */}
         <div className="rc-plan-pane-head">
           <header>
-            <h2 id="rc-picker-heading">Choose your places</h2>
-            <p>Search the atlas, then add them in any order.</p>
+            <h2 id="rc-picker-heading">{t('pickerHeading')}</h2>
+            <p>{t('pickerIntro')}</p>
           </header>
 
         <div className="rc-plan-search">
@@ -157,8 +160,8 @@ export function JourneyBuilder({
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search a place, town or district"
-            aria-label="Search places to add"
+            placeholder={t('searchPlaceholder')}
+            aria-label={t('searchAria')}
           />
         </div>
 
@@ -166,9 +169,9 @@ export function JourneyBuilder({
           {/* Selects, not chips: thirteen landscape chips wrap to eleven rows in
               a pane this narrow and push the places themselves off the screen. */}
           <label className="rc-plan-select">
-            <span>Landscape</span>
+            <span>{t('landscape')}</span>
             <select value={category} onChange={(event) => setCategory(event.target.value)}>
-              <option value="all">All landscapes</option>
+              <option value="all">{t('allLandscapes')}</option>
               {categories.map((entry) => (
                 <option key={entry.id} value={entry.id}>
                   {entry.name}
@@ -178,12 +181,12 @@ export function JourneyBuilder({
           </label>
 
           <label className="rc-plan-select">
-            <span>Province</span>
+            <span>{t('province')}</span>
             <select value={province} onChange={(event) => setProvince(event.target.value)}>
-              <option value="all">All provinces</option>
-              {provinces.map((name) => (
-                <option key={name} value={name}>
-                  {name}
+              <option value="all">{t('allProvinces')}</option>
+              {provinces.map((entry) => (
+                <option key={entry.value} value={entry.value}>
+                  {entry.label}
                 </option>
               ))}
             </select>
@@ -194,7 +197,7 @@ export function JourneyBuilder({
         <div className="rc-plan-pane-scroll">
         <ul className="rc-plan-results">
           {results.length === 0 ? (
-            <li className="rc-plan-results-empty">No places match those filters.</li>
+            <li className="rc-plan-results-empty">{t('noMatch')}</li>
           ) : (
             results.map((place) => {
               const added = chosen.has(place.slug);
@@ -205,7 +208,9 @@ export function JourneyBuilder({
                     className={added ? 'is-added' : ''}
                     onClick={() => (added ? undefined : onAdd(place.slug))}
                     disabled={added}
-                    aria-label={added ? `${place.name} is already in your journey` : `Add ${place.name}`}
+                    aria-label={
+                      added ? t('alreadyAdded', { name: place.name }) : t('addPlace', { name: place.name })
+                    }
                   >
                     <span>
                       <strong>{place.name}</strong>
@@ -222,11 +227,8 @@ export function JourneyBuilder({
         </ul>
 
         <div className="rc-plan-anywhere">
-          <h3>Somewhere else?</h3>
-          <p>
-            Your hotel, your airport, the town you are starting from — search anywhere in Sri Lanka
-            and add it as a stop.
-          </p>
+          <h3>{t('anywhereHeading')}</h3>
+          <p>{t('anywhereCopy')}</p>
 
           <div className="rc-plan-search">
             <span aria-hidden="true">⌕</span>
@@ -234,8 +236,8 @@ export function JourneyBuilder({
               type="search"
               value={anywhere}
               onChange={(event) => setAnywhere(event.target.value)}
-              placeholder="Negombo, Bandaranaike Airport, a village…"
-              aria-label="Search anywhere in Sri Lanka"
+              placeholder={t('anywherePlaceholder')}
+              aria-label={t('anywhereAria')}
             />
             {searching ? <em aria-hidden="true">…</em> : null}
           </div>
@@ -244,14 +246,18 @@ export function JourneyBuilder({
             {searchError ? <p className="rc-plan-anywhere-note">{searchError}</p> : null}
 
             {!searchError && anywhere.trim().length >= 3 && !searching && found.length === 0 ? (
-              <p className="rc-plan-anywhere-note">Nothing found in Sri Lanka for that.</p>
+              <p className="rc-plan-anywhere-note">{t('nothingFound')}</p>
             ) : null}
 
             {found.length > 0 ? (
               <ul className="rc-plan-results rc-plan-results-found">
                 {found.map((result) => (
                   <li key={result.id}>
-                    <button type="button" onClick={() => addFound(result)} aria-label={`Add ${result.name}`}>
+                    <button
+                      type="button"
+                      onClick={() => addFound(result)}
+                      aria-label={t('addPlace', { name: result.name })}
+                    >
                       <span>
                         <strong>{result.name}</strong>
                         <small>{[result.kind, result.context].filter(Boolean).join(' · ')}</small>
@@ -265,7 +271,7 @@ export function JourneyBuilder({
           </div>
 
           <p className="rc-plan-anywhere-credit">
-            Place search by{' '}
+            {t('creditPre')}{' '}
             <a href="https://openstreetmap.org/copyright" target="_blank" rel="noreferrer noopener">
               OpenStreetMap
             </a>
@@ -279,20 +285,20 @@ export function JourneyBuilder({
         <div className="rc-plan-pane-head">
         <header>
           <div>
-            <h2 id="rc-itinerary-heading">Your route</h2>
+            <h2 id="rc-itinerary-heading">{t('routeHeading')}</h2>
             <p>
               {stops.length === 0
-                ? 'Nothing added yet.'
-                : `${stops.length} ${stops.length === 1 ? 'stop' : 'stops'}, in this order. Drag to rearrange.`}
+                ? t('nothingAdded')
+                : t('stopsInOrder', { count: stops.length })}
             </p>
           </div>
           {stops.length > 0 ? (
             <div className="rc-plan-itinerary-tools">
               <button type="button" onClick={onOptimise} disabled={stops.length < 4}>
-                Shortest order
+                {t('shortestOrder')}
               </button>
               <button type="button" onClick={onClear} className="rc-plan-clear">
-                Clear
+                {t('clear')}
               </button>
             </div>
           ) : null}
@@ -301,10 +307,7 @@ export function JourneyBuilder({
 
         <div className="rc-plan-pane-scroll">
         {stops.length === 0 ? (
-          <p className="rc-plan-itinerary-empty">
-            Pick a first place from the list. Distances, drive times and the route on the map appear
-            as soon as there are two.
-          </p>
+          <p className="rc-plan-itinerary-empty">{t('pickFirst')}</p>
         ) : (
           <ol className="rc-plan-stops">
             {stops.map((stop, index) => {
@@ -312,10 +315,13 @@ export function JourneyBuilder({
               return (
                 <li key={`${stop.slug}-${index}`}>
                   {leg ? (
-                    <p className="rc-plan-leg-inline" aria-label={`Drive to ${stop.name}`}>
+                    <p className="rc-plan-leg-inline" aria-label={t('driveTo', { name: stop.name })}>
                       <i aria-hidden="true">↓</i>
                       <span>
-                        {formatKm(leg.roadKm)} · {formatDuration(leg.minutes)} drive
+                        {t('legInline', {
+                          km: formatKm(leg.roadKm),
+                          duration: formatDuration(leg.minutes)
+                        })}
                       </span>
                     </p>
                   ) : null}
@@ -356,14 +362,14 @@ export function JourneyBuilder({
                     </span>
                     <span className="rc-plan-stop-name">
                       {stop.name}
-                      {stop.custom ? <em title="Added from OpenStreetMap, not our atlas">own stop</em> : null}
+                      {stop.custom ? <em title={t('ownStopTitle')}>{t('ownStop')}</em> : null}
                     </span>
                     <span className="rc-plan-stop-controls">
                       <button
                         type="button"
                         onClick={() => move(index, index - 1)}
                         disabled={index === 0}
-                        aria-label={`Move ${stop.name} earlier`}
+                        aria-label={t('moveEarlier', { name: stop.name })}
                       >
                         ↑
                       </button>
@@ -371,14 +377,14 @@ export function JourneyBuilder({
                         type="button"
                         onClick={() => move(index, index + 1)}
                         disabled={index === stops.length - 1}
-                        aria-label={`Move ${stop.name} later`}
+                        aria-label={t('moveLater', { name: stop.name })}
                       >
                         ↓
                       </button>
                       <button
                         type="button"
                         onClick={() => onRemove(index)}
-                        aria-label={`Remove ${stop.name}`}
+                        aria-label={t('remove', { name: stop.name })}
                         className="rc-plan-stop-remove"
                       >
                         ×
