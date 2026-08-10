@@ -1,3 +1,9 @@
+import { readFileSync } from 'node:fs';
+
+const editorial = JSON.parse(
+  readFileSync(new URL('./destination-editorial.json', import.meta.url), 'utf8')
+);
+
 const regionNames = {
   Central: 'Central Highlands',
   Eastern: 'East Coast',
@@ -205,14 +211,17 @@ export function buildDestinationContent(place) {
   const seoDescription =
     detailedSeoDescription.length <= 160 ? detailedSeoDescription : conciseSeoDescription;
 
+  const placeEditorial = editorial[place.slug];
+  if (!placeEditorial) throw new Error(`No destination editorial for ${place.slug}`);
+
   return {
     seoTitle: titleFor(place.name),
-    seoDescription,
+    seoDescription: placeEditorial.seoDescription ?? seoDescription,
     region,
-    note: profile.note,
-    introHeading: profile.heading(context),
-    introCopy: `${place.name} is ${profile.label === 'island' ? 'an' : 'a'} ${profile.label} in ${area}, ${place.district} District. We shape a visit around its setting, local context and enough time to experience this part of ${region} without rushing.`,
-    highlights: portableHighlights(profile, context),
+    note: placeEditorial.note ?? profile.note,
+    introHeading: placeEditorial.introHeading ?? profile.heading(context),
+    introCopy: placeEditorial.introCopy,
+    highlights: placeEditorial.highlights ?? portableHighlights(profile, context),
     goodToKnowHeading: `Plan ${place.name} around the conditions, not the clock.`,
     goodToKnowCopy: profile.know
   };
@@ -223,12 +232,26 @@ export function auditDestinationContent(atlas) {
   const issues = [];
   const titles = new Map();
   const descriptions = new Map();
+  const introCopies = new Map();
+  const highlightCopies = new Map();
 
   for (const { place, content } of rows) {
     if (content.seoTitle.length > 60) issues.push(`${place.slug}: SEO title is ${content.seoTitle.length} characters`);
     if (content.seoDescription.length > 160) issues.push(`${place.slug}: SEO description is ${content.seoDescription.length} characters`);
     if (content.seoDescription.length < 110) issues.push(`${place.slug}: SEO description is only ${content.seoDescription.length} characters`);
     if (content.highlights.length !== 3) issues.push(`${place.slug}: expected 3 highlights`);
+    const introWords = content.introCopy.trim().split(/\s+/).length;
+    if (introWords < 70 || introWords > 125) issues.push(`${place.slug}: intro copy is ${introWords} words`);
+    if (introCopies.has(content.introCopy)) issues.push(`${place.slug}: duplicate intro copy with ${introCopies.get(content.introCopy)}`);
+    introCopies.set(content.introCopy, place.slug);
+    for (const highlight of content.highlights) {
+      if (highlightCopies.has(highlight.copy)) issues.push(`${place.slug}: duplicate highlight copy with ${highlightCopies.get(highlight.copy)}`);
+      highlightCopies.set(highlight.copy, place.slug);
+    }
+    const editorialText = JSON.stringify(content).toLowerCase();
+    for (const banned of ['without rushing', 'we shape', 'thoughtful trip', 'key highlights']) {
+      if (editorialText.includes(banned)) issues.push(`${place.slug}: contains banned phrase “${banned}”`);
+    }
     if (titles.has(content.seoTitle)) issues.push(`${place.slug}: duplicate SEO title with ${titles.get(content.seoTitle)}`);
     if (descriptions.has(content.seoDescription)) issues.push(`${place.slug}: duplicate SEO description with ${descriptions.get(content.seoDescription)}`);
     titles.set(content.seoTitle, place.slug);

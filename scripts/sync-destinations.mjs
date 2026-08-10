@@ -26,6 +26,7 @@ import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { createClient } from '@sanity/client';
+import { getCliClient } from 'sanity/cli';
 import { buildDestinationContent } from './destination-content.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -38,9 +39,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production';
 const token = process.env.SANITY_API_TOKEN;
 
 if (!projectId) throw new Error('Missing NEXT_PUBLIC_SANITY_PROJECT_ID');
-if (!token && !dryRun) throw new Error('Missing SANITY_API_TOKEN (needs write access)');
-
-const client = createClient({
+const clientConfig = {
   projectId,
   dataset,
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION ?? '2024-10-01',
@@ -50,7 +49,11 @@ const client = createClient({
   // unpublished draft for a live document. The atlas sync only updates what the
   // website can actually read.
   perspective: 'published'
-});
+};
+
+const client = token
+  ? createClient({ ...clientConfig, token })
+  : getCliClient(clientConfig);
 
 /** The five that lead the homepage rail — mirrors defaultFeaturedSlugs in src/lib/places.ts. */
 const featuredSlugs = [
@@ -118,17 +121,15 @@ async function main() {
   );
   const known = new Map(existing.map((row) => [row.slug, row]));
 
-  if (token) {
-    const drafts = await client
-      .withConfig({ perspective: 'raw' })
-      .fetch('*[_type == "destination" && _id in path("drafts.**")]{ _id, "slug": slug.current }');
-    if (drafts.length > 0) {
-      throw new Error(
-        `Destination drafts must be published or discarded before syncing, so editor work is not bypassed: ${drafts
-          .map((row) => row.slug)
-          .join(', ')}`
-      );
-    }
+  const drafts = await client
+    .withConfig({ perspective: 'raw' })
+    .fetch('*[_type == "destination" && _id in path("drafts.**")]{ _id, "slug": slug.current }');
+  if (drafts.length > 0) {
+    throw new Error(
+      `Destination drafts must be published or discarded before syncing, so editor work is not bypassed: ${drafts
+        .map((row) => row.slug)
+        .join(', ')}`
+    );
   }
 
   let created = 0;

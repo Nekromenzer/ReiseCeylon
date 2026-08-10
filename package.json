@@ -11,6 +11,8 @@
     "seed:journal": "node --env-file=.env scripts/seed-journal.mjs",
     "seed:site": "node --experimental-strip-types --env-file=.env scripts/seed-site.mjs",
     "sync:destinations": "node --env-file=.env scripts/sync-destinations.mjs",
+    "sync:destinations:auth": "sanity exec scripts/sync-destinations.mjs --with-user-token --",
+    "generate:destination-editorial": "sanity exec scripts/generate-destination-editorial.mjs --with-user-token",
     "audit:destinations": "node scripts/audit-destination-content.mjs",
     "images:destinations": "node scripts/generate-destination-images.mjs"
   },

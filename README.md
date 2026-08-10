@@ -177,11 +177,15 @@ without deleting anything.
 
 ### Seed and sync scripts
 
-All need a token with write access and are run by hand, not as part of a build.
+These are run by hand, not as part of a build. The `:auth` command uses the
+current Sanity CLI login; the original command remains available for CI or an
+explicit `SANITY_API_TOKEN`.
 
 ```bash
 SANITY_API_TOKEN=sk... npm run sync:destinations   # the 174 atlas places
 SANITY_API_TOKEN=sk... npm run sync:destinations -- --with-content # refresh SEO and story copy
+npm run sync:destinations:auth -- --with-content  # same refresh with the CLI login
+npm run generate:destination-editorial            # generate missing reviewable copy (uses Sanity AI credits)
 SANITY_API_TOKEN=sk... npm run seed:site           # journeys, contact details
 SANITY_API_TOKEN=sk... npm run seed:journal        # one sample journal entry
 npm run audit:destinations                         # validate generated destination content
@@ -190,7 +194,9 @@ npm run audit:destinations                         # validate generated destinat
 `sync:destinations` is the one that is safe to re-run: it creates what is
 missing, refreshes the location half of what exists, and normally never touches copy an
 editor has written. `--with-content` deliberately refreshes each place's SEO and
-story fields; it still does not touch images. `--dry-run` prints the plan; `--with-images` also uploads
+story fields from `scripts/destination-editorial.json`; it still does not touch
+images. The generator writes only missing entries to that reviewable file and
+does not publish them. `--dry-run` prints the plan; `--with-images` also uploads
 each sample plate to Sanity (174 uploads, and only for documents with no image
 yet). The two seed scripts do overwrite studio edits — run them once, at
 migration time.
