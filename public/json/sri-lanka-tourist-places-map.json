@@ -34,7 +34,7 @@
       "name": "Ancient Cities and Archaeological Sites",
       "slug": "ancient-cities-and-ruins",
       "icon": "landmark",
-      "placeCount": 20
+      "placeCount": 21
     },
     {
       "id": "temples",
@@ -104,7 +104,7 @@
       "name": "Botanical Gardens and Parks",
       "slug": "botanical-gardens-and-parks",
       "icon": "trees",
-      "placeCount": 7
+      "placeCount": 6
     },
     {
       "id": "marine-and-coastal-attractions",
@@ -4458,28 +4458,28 @@
       "featured": false
     },
     {
-      "id": "galle-face-green",
-      "name": "Galle Face Green",
-      "slug": "galle-face-green",
-      "categoryId": "botanical-gardens-and-parks",
-      "category": "Botanical Gardens and Parks",
+      "id": "galle-fort",
+      "name": "Galle Fort",
+      "slug": "galle-fort",
+      "categoryId": "ancient-cities-and-ruins",
+      "category": "Ancient Cities and Archaeological Sites",
       "location": {
         "type": "Point",
         "coordinates": [
-          79.8447,
-          6.9271
+          80.2175,
+          6.0258
         ],
-        "latitude": 6.9271,
-        "longitude": 79.8447,
+        "latitude": 6.0258,
+        "longitude": 80.2175,
         "precision": "exact"
       },
-      "province": "Western",
-      "district": "Colombo",
-      "city": "Colombo",
+      "province": "Southern",
+      "district": "Galle",
+      "city": "Galle",
       "country": "Sri Lanka",
       "countryCode": "LK",
-      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9271,79.8447",
-      "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9271&mlon=79.8447#map=15/6.9271/79.8447",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0258,80.2175",
+      "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0258&mlon=80.2175#map=15/6.0258/80.2175",
       "status": "published",
       "featured": false
     },

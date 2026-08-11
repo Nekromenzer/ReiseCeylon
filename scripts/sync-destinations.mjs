@@ -33,6 +33,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const withImages = process.argv.includes('--with-images');
 const withContent = process.argv.includes('--with-content');
 const dryRun = process.argv.includes('--dry-run');
+const onlySlug = process.argv.find((argument) => argument.startsWith('--slug='))?.split('=')[1];
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? process.env.SANITY_STUDIO_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production';
@@ -69,6 +70,11 @@ const legacyAliases = {
   sigiriya: 'sigiriya-rock-fortress',
   hikkaduwa: 'hikkaduwa-marine-sanctuary',
   yala: 'yala-national-park'
+};
+
+/** Atlas entries intentionally replaced by a different destination. */
+const retiredDestinations = {
+  'galle-face-green': 'galle-fort'
 };
 
 /**
@@ -139,7 +145,14 @@ async function main() {
   );
 
   console.log(`${dryRun ? 'Dry run against' : 'Syncing to'} ${projectId}/${dataset}`);
-  console.log(`${atlas.places.length} places in the atlas\n`);
+  const selectedPlaces = atlas.places
+    .map((place, index) => ({ place, index }))
+    .filter(({ place }) => !onlySlug || place.slug === onlySlug);
+  if (onlySlug && selectedPlaces.length === 0) {
+    throw new Error(`Unknown atlas slug: ${onlySlug}`);
+  }
+
+  console.log(`${selectedPlaces.length}${onlySlug ? ` selected from ${atlas.places.length}` : ''} places in the atlas\n`);
 
   /* One read tells us which documents already exist and which carry an image. */
   const existing = await client.fetch(
@@ -162,7 +175,7 @@ async function main() {
   let updated = 0;
   let images = 0;
 
-  for (const [index, place] of atlas.places.entries()) {
+  for (const { place, index } of selectedPlaces) {
     const knownRecord = known.get(place.slug);
     /* Reuse whatever id the document already has, so a re-slugged doc is updated, not cloned. */
     const id = knownRecord?._id ?? `destination-${place.slug}`;
@@ -197,7 +210,10 @@ async function main() {
 
   /* Fold the pre-atlas documents into the records that replaced them. */
   const merged = [];
-  for (const [legacy, target] of Object.entries(legacyAliases)) {
+  const selectedLegacyAliases = Object.entries(legacyAliases).filter(
+    ([, target]) => !onlySlug || target === onlySlug
+  );
+  for (const [legacy, target] of selectedLegacyAliases) {
     if (!known.has(legacy) || dryRun) continue;
     const source = await client.fetch('*[_type == "destination" && slug.current == $slug][0]', {
       slug: legacy
@@ -231,7 +247,7 @@ async function main() {
     `\n${created} ${tense} created, ${updated} ${tense} updated${withImages && !dryRun ? `, ${images} photographs uploaded` : ''}.`
   );
 
-  const pending = Object.entries(legacyAliases).filter(([legacy]) => known.has(legacy));
+  const pending = selectedLegacyAliases.filter(([legacy]) => known.has(legacy));
   if (dryRun && pending.length > 0) {
     console.log(
       `Pre-atlas documents that would be merged and hidden: ${pending
@@ -242,6 +258,24 @@ async function main() {
   if (merged.length > 0) {
     console.log(`Merged and hid the pre-atlas documents: ${merged.join(', ')}.`);
   }
+
+  const retired = [];
+  const selectedRetirements = Object.entries(retiredDestinations).filter(
+    ([, replacement]) => !onlySlug || replacement === onlySlug
+  );
+  for (const [slug, replacement] of selectedRetirements) {
+    const record = known.get(slug);
+    if (!record) continue;
+    if (!dryRun) {
+      /* This is a different place, so its story and photograph must not migrate. */
+      await client.patch(record._id).set({ status: 'hidden', featured: false }).commit();
+    }
+    retired.push(`${slug} → ${replacement}`);
+  }
+  if (retired.length > 0) {
+    console.log(`${dryRun ? 'Would hide' : 'Hid'} replaced destinations: ${retired.join(', ')}.`);
+  }
+
   if (!withImages) {
     console.log('Photographs were not changed.');
   }

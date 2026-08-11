@@ -153,7 +153,8 @@ export function categoryFor(categoryId: string) {
 export const legacySlugAliases: Record<string, string> = {
   sigiriya: 'sigiriya-rock-fortress',
   hikkaduwa: 'hikkaduwa-marine-sanctuary',
-  yala: 'yala-national-park'
+  yala: 'yala-national-park',
+  'galle-face-green': 'galle-fort'
 };
 
 /**

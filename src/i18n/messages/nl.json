@@ -147,24 +147,79 @@
     ],
     "experiences": [
       {
-        "hours": "Vanaf 05:20",
-        "title": "Ontmoetingen in het wild",
-        "copy": "Vertrek voordat de parkpoorten opengaan. Onze natuurgidsen lezen de sporen, de alarmroepen en het licht — en wachten dan, stil, op de juiste plek."
+        "hours": "Sigiriya · Halve dag",
+        "title": "Dorpstour in Sigiriya",
+        "copy": "Rijd met een ossenkar, steek het meer over per catamaran, wandel door rijstvelden, leer traditioneel koken en deel een dorpslunch."
       },
       {
-        "hours": "Vanaf 07:00",
-        "title": "Theestreek",
-        "copy": "Loop over een plantage met de mensen die plukken, zie de droogzolders vollopen en drink de eerste oogst voordat die ooit een kist bereikt."
+        "hours": "Theestreek · Halve dag",
+        "title": "Theeplantage en thee plukken",
+        "copy": "Draag de mand van een theeplukker, pluk verse blaadjes, bezoek een werkende theefabriek en sluit af met een kop Ceylonthee."
       },
       {
-        "hours": "Vanaf 16:30",
-        "title": "Rituelen aan zee",
-        "copy": "Een naamloze baai, een gedekte tafel in het zand en het lange blauwe uur dat de zuidkust voor zichzelf houdt."
+        "hours": "Mirissa of Trincomalee · Dageraad",
+        "title": "Walvissen en dolfijnen spotten",
+        "copy": "Vertrek vroeg voor een bootsafari op zoek naar blauwe vinvissen, potvissen en groepen dolfijnen in de wateren voor Sri Lanka."
       },
       {
-        "hours": "Vanaf 06:10",
-        "title": "Levend erfgoed",
-        "copy": "Oude steden voordat de bussen komen, tempeltrommels in de schemering en werkplaatsen waar het ambacht al generaties niet van hand is veranderd."
+        "hours": "Kitulgala · Halve dag",
+        "title": "Wildwaterraften",
+        "copy": "Vaar met een ervaren gids door de beboste stroomversnellingen van de Kelani-rivier, met routes voor beginners en ervaren rafters."
+      },
+      {
+        "hours": "Matale · 1–2 uur",
+        "title": "Bezoek aan een kruidentuin",
+        "copy": "Wandel door een specerijenplantage, leer over ayurvedische kruiden en ontdek hoe bekende Sri Lankaanse specerijen worden geteeld en bereid."
+      },
+      {
+        "hours": "Pinnawala · Halve dag",
+        "title": "Olifantenervaring in Pinnawala",
+        "copy": "Bekijk olifanten tijdens het baden en voeren en leer meer over hun verzorging, gedrag en het voortdurende natuurbehoud."
+      },
+      {
+        "hours": "Kandy · Avond",
+        "title": "Culturele dansshow in Kandy",
+        "copy": "Beleef Kandyaanse drums, ceremoniële dans, traditionele kostuums en de indrukwekkende vuurloopfinale in het hart van Kandy."
+      },
+      {
+        "hours": "Zuidkust · 1–2 uur",
+        "title": "Bezoek aan een zeeschildpaddenopvang",
+        "copy": "Bezoek een broedcentrum aan de kust, ontmoet geredde zeeschildpadden en leer hoe lokale teams nesten beschermen en vrijlatingen begeleiden."
+      },
+      {
+        "hours": "Over het hele eiland · Halve dag",
+        "title": "Traditionele Sri Lankaanse kookles",
+        "copy": "Bezoek een lokale markt, bereid met uw gastheer authentieke curry’s en sambols en geniet daarna samen van de zelfgemaakte maaltijd."
+      },
+      {
+        "hours": "Yala of Udawalawe · Dageraad",
+        "title": "Jeepsafari in Yala of Udawalawe",
+        "copy": "Ga per privéjeep op zoek naar olifanten, krokodillen en exotische vogels, met in Yala kans op luipaarden en lippenberen."
+      },
+      {
+        "hours": "Kandy naar Ella · Hele dag",
+        "title": "Panoramische treinreis",
+        "copy": "Reis over de beroemde hooglandspoorlijn langs theeplantages, nevelwoud en bergdorpen tussen Kandy, Nuwara Eliya en Ella."
+      },
+      {
+        "hours": "Kust · Zonsondergang",
+        "title": "Catamarancruise bij zonsondergang",
+        "copy": "Ontspan aan boord van een catamaran in Bentota, Trincomalee of Mirissa terwijl de kust verzacht in het avondlicht."
+      },
+      {
+        "hours": "Kustdorpen · Dageraad",
+        "title": "Vissen met lokale vissers",
+        "copy": "Ga mee met vissers aan de kust, probeer traditionele technieken en ontdek het dagelijkse ritme van Sri Lankaanse vissersdorpen."
+      },
+      {
+        "hours": "Over het hele eiland · 1–3 uur",
+        "title": "Ayurvedische wellness en spa",
+        "copy": "Kom tot rust met kruidenbehandelingen, therapeutische massages en persoonlijke wellnessrituelen uit de ayurvedische tradities van Sri Lanka."
+      },
+      {
+        "hours": "Landelijk Sri Lanka · Halve dag",
+        "title": "Fietsen door landelijke dorpen",
+        "copy": "Volg rustige wegen langs rijstvelden, tempels en meren en ontmoet onderweg lokale gemeenschappen tijdens een begeleide fietstocht."
       }
     ],
     "voices": [

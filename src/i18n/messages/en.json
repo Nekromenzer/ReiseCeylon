@@ -147,24 +147,79 @@
     ],
     "experiences": [
       {
-        "hours": "From 05:20",
-        "title": "Wild encounters",
-        "copy": "Leave before the park gates open. Our naturalists read the tracks, the alarm calls and the light — then wait, quietly, in the right place."
+        "hours": "Sigiriya · Half day",
+        "title": "Sigiriya Village Tour",
+        "copy": "Ride a bullock cart, cross the lake by catamaran, walk through paddy fields, learn traditional cooking and share a village lunch."
       },
       {
-        "hours": "From 07:00",
-        "title": "Tea country",
-        "copy": "Walk an estate with the people who pick it, watch the withering lofts fill, and drink the first flush before it ever reaches a crate."
+        "hours": "Tea country · Half day",
+        "title": "Tea Plantation & Tea Plucking Experience",
+        "copy": "Wear a tea picker’s basket, pluck fresh leaves, follow them through a working tea factory and finish with a cup of Ceylon tea."
       },
       {
-        "hours": "From 16:30",
-        "title": "Ocean rituals",
-        "copy": "A cove with no name, a table set in the sand, and the long blue hour the south coast keeps to itself."
+        "hours": "Mirissa or Trincomalee · Dawn",
+        "title": "Whale & Dolphin Watching",
+        "copy": "Set out on an early-morning boat safari in search of blue whales, sperm whales and pods of dolphins in Sri Lanka’s offshore waters."
       },
       {
-        "hours": "From 06:10",
-        "title": "Living heritage",
-        "copy": "Ancient cities before the buses arrive, temple drums at dusk, and workshops where crafts have not changed hands in generations."
+        "hours": "Kitulgala · Half day",
+        "title": "White Water Rafting",
+        "copy": "Run the Kelani River’s forest-framed rapids with an experienced guide, with routes suited to both first-time and experienced rafters."
+      },
+      {
+        "hours": "Matale · 1–2 hours",
+        "title": "Spice Garden Experience",
+        "copy": "Walk through a spice plantation, discover the uses of Ayurvedic herbs and see how Sri Lanka’s familiar spices are grown and prepared."
+      },
+      {
+        "hours": "Pinnawala · Half day",
+        "title": "Pinnawala Elephant Experience",
+        "copy": "Observe elephants during river bathing and feeding sessions while learning about their care, behaviour and ongoing conservation."
+      },
+      {
+        "hours": "Kandy · Evening",
+        "title": "Kandy Cultural Dance Show",
+        "copy": "Experience Kandyan drumming, ceremonial dance, vivid traditional costumes and the dramatic fire-walking finale in the heart of Kandy."
+      },
+      {
+        "hours": "Southern coast · 1–2 hours",
+        "title": "Sea Turtle Conservation Farm Visit",
+        "copy": "Visit a coastal hatchery, meet rescued sea turtles and learn how local conservation teams protect nests and support their release."
+      },
+      {
+        "hours": "Islandwide · Half day",
+        "title": "Traditional Sri Lankan Cooking Class",
+        "copy": "Shop at a local market, prepare authentic curries and sambols with a host, then sit down together to enjoy the meal you made."
+      },
+      {
+        "hours": "Yala or Udawalawe · Dawn",
+        "title": "Yala or Udawalawe Jeep Safari",
+        "copy": "Travel by private jeep in search of elephants, crocodiles and exotic birdlife, with chances to see leopards and sloth bears in Yala."
+      },
+      {
+        "hours": "Kandy to Ella · Full day",
+        "title": "Scenic Train Journey",
+        "copy": "Ride Sri Lanka’s celebrated hill-country railway through tea estates, cloud forest and mountain villages between Kandy, Nuwara Eliya and Ella."
+      },
+      {
+        "hours": "Coast · Sunset",
+        "title": "Catamaran Sunset Cruise",
+        "copy": "Unwind aboard a catamaran in Bentota, Trincomalee or Mirissa as the coastline softens into the evening light."
+      },
+      {
+        "hours": "Coastal villages · Dawn",
+        "title": "Fishing with Local Fishermen",
+        "copy": "Join local fishermen on the coast, try traditional techniques and discover the working rhythms of Sri Lanka’s fishing villages."
+      },
+      {
+        "hours": "Islandwide · 1–3 hours",
+        "title": "Ayurvedic Wellness & Spa",
+        "copy": "Slow down with herbal treatments, therapeutic massage and personalised wellness rituals rooted in Sri Lanka’s Ayurvedic traditions."
+      },
+      {
+        "hours": "Rural Sri Lanka · Half day",
+        "title": "Cycling Through Rural Villages",
+        "copy": "Follow quiet lanes past paddy fields, temples and lakes, meeting local communities along the way on a guided bicycle tour."
       }
     ],
     "voices": [

@@ -4686,27 +4686,27 @@
     },
     {
       "type": "Feature",
-      "id": "galle-face-green",
+      "id": "galle-fort",
       "geometry": {
         "type": "Point",
         "coordinates": [
-          79.8447,
-          6.9271
+          80.2175,
+          6.0258
         ]
       },
       "properties": {
-        "id": "galle-face-green",
-        "name": "Galle Face Green",
-        "slug": "galle-face-green",
-        "categoryId": "botanical-gardens-and-parks",
-        "category": "Botanical Gardens and Parks",
-        "province": "Western",
-        "district": "Colombo",
-        "city": "Colombo",
+        "id": "galle-fort",
+        "name": "Galle Fort",
+        "slug": "galle-fort",
+        "categoryId": "ancient-cities-and-ruins",
+        "category": "Ancient Cities and Archaeological Sites",
+        "province": "Southern",
+        "district": "Galle",
+        "city": "Galle",
         "country": "Sri Lanka",
         "countryCode": "LK",
-        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.9271,79.8447",
-        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.9271&mlon=79.8447#map=15/6.9271/79.8447",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.0258,80.2175",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.0258&mlon=80.2175#map=15/6.0258/80.2175",
         "status": "published",
         "featured": false,
         "precision": "exact"

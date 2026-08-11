@@ -399,7 +399,7 @@ export function HomePage({
             <article
               className="rc-stack-card"
               key={item.title}
-              style={{ '--i': index } as React.CSSProperties}
+              style={{ '--stack-offset': `${Math.min(index, 5) * 12}px` } as React.CSSProperties}
             >
               <div className="rc-stack-inner">
                 <div className="rc-stack-media">
@@ -412,7 +412,9 @@ export function HomePage({
                   <span>{item.hours}</span>
                 </div>
                 <div className="rc-stack-copy">
-                  <span className="rc-stack-num">{String(index + 1).padStart(2, '0')} / 04</span>
+                  <span className="rc-stack-num">
+                    {String(index + 1).padStart(2, '0')} / {String(experienceDetail.length).padStart(2, '0')}
+                  </span>
                   <h3>{item.title}</h3>
                   <p>{item.copy}</p>
                   <Link href="/contact" className="rc-link rc-link-light">

@@ -147,24 +147,79 @@
     ],
     "experiences": [
       {
-        "hours": "Ab 05:20",
-        "title": "Begegnungen in der Wildnis",
-        "copy": "Aufbrechen, bevor die Parktore öffnen. Unsere Naturkundler lesen die Spuren, die Warnrufe und das Licht — und warten dann still am richtigen Ort."
+        "hours": "Sigiriya · Halber Tag",
+        "title": "Dorftour in Sigiriya",
+        "copy": "Fahren Sie im Ochsenkarren, überqueren Sie den See im Katamaran, gehen Sie durch Reisfelder, kochen Sie traditionell und teilen Sie ein Mittagessen im Dorf."
       },
       {
-        "hours": "Ab 07:00",
-        "title": "Teeland",
-        "copy": "Gehen Sie mit den Pflückerinnen über eine Plantage, sehen Sie zu, wie sich die Welkböden füllen, und trinken Sie den ersten Aufguss, bevor er je eine Kiste sieht."
+        "hours": "Teeland · Halber Tag",
+        "title": "Teeplantage und Teepflücken",
+        "copy": "Tragen Sie den Korb der Teepflückerinnen, ernten Sie frische Blätter, besuchen Sie eine Teefabrik und genießen Sie zum Abschluss Ceylon-Tee."
       },
       {
-        "hours": "Ab 16:30",
-        "title": "Rituale am Meer",
-        "copy": "Eine namenlose Bucht, ein gedeckter Tisch im Sand und die lange blaue Stunde, die die Südküste für sich behält."
+        "hours": "Mirissa oder Trincomalee · Morgengrauen",
+        "title": "Wal- und Delfinbeobachtung",
+        "copy": "Starten Sie früh zu einer Bootssafari und halten Sie in Sri Lankas Küstengewässern Ausschau nach Blauwalen, Pottwalen und Delfinen."
       },
       {
-        "hours": "Ab 06:10",
-        "title": "Gelebtes Erbe",
-        "copy": "Alte Städte, bevor die Busse kommen, Tempeltrommeln in der Dämmerung und Werkstätten, in denen das Handwerk seit Generationen dasselbe geblieben ist."
+        "hours": "Kitulgala · Halber Tag",
+        "title": "Wildwasser-Rafting",
+        "copy": "Bezwingen Sie mit einem erfahrenen Guide die waldgesäumten Stromschnellen des Kelani River – auf Routen für Anfänger und erfahrene Rafter."
+      },
+      {
+        "hours": "Matale · 1–2 Stunden",
+        "title": "Gewürzgarten-Erlebnis",
+        "copy": "Spazieren Sie durch eine Plantage, lernen Sie ayurvedische Kräuter kennen und erfahren Sie, wie Sri Lankas Gewürze angebaut und verarbeitet werden."
+      },
+      {
+        "hours": "Pinnawala · Halber Tag",
+        "title": "Elefantenerlebnis in Pinnawala",
+        "copy": "Beobachten Sie Elefanten beim Baden und Füttern und erfahren Sie mehr über ihre Pflege, ihr Verhalten und den Schutz der Tiere."
+      },
+      {
+        "hours": "Kandy · Abend",
+        "title": "Kulturelle Tanzshow in Kandy",
+        "copy": "Erleben Sie Kandyan-Trommeln, zeremonielle Tänze, traditionelle Kostüme und das eindrucksvolle Feuerlauf-Finale im Herzen Kandys."
+      },
+      {
+        "hours": "Südküste · 1–2 Stunden",
+        "title": "Besuch einer Meeresschildkröten-Station",
+        "copy": "Besuchen Sie eine Küstenaufzuchtstation, sehen Sie gerettete Meeresschildkröten und lernen Sie, wie lokale Teams Nester schützen und Auswilderungen begleiten."
+      },
+      {
+        "hours": "Inselweit · Halber Tag",
+        "title": "Traditioneller sri-lankischer Kochkurs",
+        "copy": "Kaufen Sie auf einem lokalen Markt ein, bereiten Sie mit Ihrem Gastgeber Currys und Sambols zu und genießen Sie anschließend gemeinsam das selbstgekochte Essen."
+      },
+      {
+        "hours": "Yala oder Udawalawe · Morgengrauen",
+        "title": "Jeep-Safari in Yala oder Udawalawe",
+        "copy": "Suchen Sie im privaten Jeep nach Elefanten, Krokodilen und exotischen Vögeln – in Yala mit Chancen auf Leoparden und Lippenbären."
+      },
+      {
+        "hours": "Kandy bis Ella · Ganzer Tag",
+        "title": "Panoramafahrt mit dem Zug",
+        "copy": "Fahren Sie auf Sri Lankas berühmter Hochlandstrecke durch Teeplantagen, Nebelwald und Bergdörfer zwischen Kandy, Nuwara Eliya und Ella."
+      },
+      {
+        "hours": "Küste · Sonnenuntergang",
+        "title": "Katamaranfahrt bei Sonnenuntergang",
+        "copy": "Entspannen Sie an Bord eines Katamarans in Bentota, Trincomalee oder Mirissa, während die Küste im Abendlicht zur Ruhe kommt."
+      },
+      {
+        "hours": "Küstendörfer · Morgengrauen",
+        "title": "Fischen mit einheimischen Fischern",
+        "copy": "Begleiten Sie Fischer an der Küste, probieren Sie traditionelle Techniken aus und erleben Sie den Alltag sri-lankischer Fischerdörfer."
+      },
+      {
+        "hours": "Inselweit · 1–3 Stunden",
+        "title": "Ayurvedisches Wellness und Spa",
+        "copy": "Entschleunigen Sie bei Kräuterbehandlungen, therapeutischen Massagen und persönlichen Wellnessritualen aus Sri Lankas ayurvedischer Tradition."
+      },
+      {
+        "hours": "Ländliches Sri Lanka · Halber Tag",
+        "title": "Radtour durch ländliche Dörfer",
+        "copy": "Folgen Sie mit dem Rad ruhigen Wegen vorbei an Reisfeldern, Tempeln und Seen und begegnen Sie unterwegs den lokalen Gemeinschaften."
       }
     ],
     "voices": [

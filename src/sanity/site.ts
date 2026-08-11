@@ -39,6 +39,7 @@ import {
   googleMapsUrlFor,
   hasSamplePhotograph,
   imageForSlug,
+  legacySlugAliases,
   openStreetMapUrlFor,
   places,
   type Place,
@@ -367,8 +368,11 @@ export async function getDestinations(locale: string): Promise<Destination[]> {
   if (rows.length === 0) return fallback;
 
   const known = new Set(rows.map((row) => row.slug));
+  const visibleRows = rows.filter(
+    (row) => row.status !== 'hidden' && !legacySlugAliases[row.slug]
+  );
   return [
-    ...rows.filter((row) => row.status !== 'hidden').map((row) => resolveDestination(row, copy)),
+    ...visibleRows.map((row) => resolveDestination(row, copy)),
     ...fallback.filter((place) => !known.has(place.slug))
   ].sort((a, b) => a.name.localeCompare(b.name, locale));
 }

@@ -4341,29 +4341,31 @@
       }
     ]
   },
-  "galle-face-green": {
-    "note": "Iconic seaside promenade in central Colombo",
-    "introHeading": "Colombo’s open seaside promenade and lawn",
-    "introCopy": "Galle Face Green runs along the Indian Ocean in central Colombo, bordered by busy roads and prominent hotels. This long strip of lawn and promenade has become a favourite place for evening walks, kite flying and street food. Visitors experience strong sea breezes, open views and the sound of waves against the rocky shoreline. The space often reflects current city life, from casual family outings to public gatherings. Its simple, open layout offers a rare sense of horizon in the middle of Sri Lanka’s largest city.",
-    "seoDescription": "Visit Galle Face Green in Colombo, Sri Lanka, a central seaside lawn and promenade known for sea views, kites, street food and evening crowds.",
+  "galle-fort": {
+    "note": "Portuguese origins, Dutch ramparts and a living coastal quarter",
+    "introHeading": "A fortified port where European design met South Asian life",
+    "introCopy": "Galle Fort occupies a peninsula beside the Bay of Galle on Sri Lanka’s southwest coast. The Portuguese established a fort here in the 16th century, and the Dutch rebuilt and greatly expanded its defences after taking Galle in 1640. The British assumed control in 1796 while retaining much of the earlier street plan and fortifications. Today the ramparts enclose an active neighbourhood of homes, places of worship, museums, cafés and public buildings. Recognised as part of the UNESCO-listed Old Town of Galle and its Fortifications, it preserves a distinctive meeting of European urban design and South Asian building traditions.",
+    "seoDescription": "Explore Galle Fort, Sri Lanka: its Portuguese origins, Dutch ramparts, colonial streets, lighthouse and UNESCO-listed architectural heritage.",
+    "goodToKnowHeading": "Walk the fort early or toward sunset.",
+    "goodToKnowCopy": "Galle Fort is an active neighbourhood rather than a closed monument. Allow several hours, carry water and respect homes and places of worship while exploring its streets and ramparts.",
     "highlights": [
       {
         "_type": "highlight",
         "_key": "editorial-1",
-        "title": "Wide ocean views and sea breeze",
-        "copy": "Stand along the promenade to feel the steady ocean wind and watch waves break against the rocks, with uninterrupted views toward the horizon."
+        "title": "Ramparts, bastions and ocean views",
+        "copy": "Walk the stone ramparts between historic bastions, looking across the Indian Ocean, Galle harbour and the tiled roofs within the fortified peninsula."
       },
       {
         "_type": "highlight",
         "_key": "editorial-2",
-        "title": "Kites and informal recreation",
-        "copy": "See colourful kites, casual games and picnicking families spread across the lawn, especially on weekends and public holidays when the area feels most animated."
+        "title": "A living colonial street plan",
+        "copy": "Follow the Dutch-era grid past gabled houses, the Groote Kerk, Meeran Mosque, the old hospital and working buildings adapted across successive periods."
       },
       {
         "_type": "highlight",
         "_key": "editorial-3",
-        "title": "Street food and sunset atmosphere",
-        "copy": "Sample snacks from vendors and watch the sky change colour over the water, a daily ritual that draws both Colombo residents and visitors."
+        "title": "Lighthouse and Utrecht Bastion",
+        "copy": "Reach Point Utrecht to see the white Galle Lighthouse above the walls, then continue around the seaward edge as evening light reaches the fort."
       }
     ]
   },

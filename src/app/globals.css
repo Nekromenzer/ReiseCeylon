@@ -802,7 +802,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 
 .rc-stack-card {
   position: sticky;
-  top: calc(112px + var(--i) * 16px);
+  top: calc(112px + var(--stack-offset));
   padding-bottom: 34px;
 }
 

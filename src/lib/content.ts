@@ -52,11 +52,27 @@ export const heroPlates = [
 ] as const;
 
 /**
- * The photography behind the four experience cards, in the order the translated
- * `content.experiences` list runs. The words live in the message catalogues; only
- * the pictures are here.
+ * Photography for the experience stack, in the same order as
+ * `content.experiences` in each message catalogue. Replace any path here when
+ * final experience photography is ready; no component changes are required.
  */
-export const experienceArt = [art.jungle, art.highland, art.coast, art.fortress];
+export const experienceArt = [
+  '/images/destination/sigiriya-rock-fortress.jpg',
+  '/images/destination/liptons-seat.jpg',
+  '/images/destination/mirissa-whale-watching.jpg',
+  '/images/destination/belihuloya-river-pools.webp',
+  '/images/destination/royal-botanical-gardens-peradeniya.jpg',
+  '/images/destination/udawalawe-national-park.jpg',
+  '/images/destination/temple-of-the-sacred-tooth-relic.jpg',
+  '/images/destination/kosgoda-turtle-conservation-centre.jpg',
+  '/images/destination/galle-fort.jpg',
+  '/images/destination/yala-national-park.jpg',
+  '/images/destination/nine-arches-bridge-viewpoint.jpg',
+  '/images/destination/bentota-beach.jpg',
+  '/images/destination/weligama-beach.jpg',
+  '/images/destination/hakgala-botanical-garden.jpg',
+  '/images/destination/polonnaruwa-ancient-city.jpg'
+];
 
 export const routeLine =
   'M294 314C302 360 263 378 258 416C252 455 303 470 306 510C310 552 353 566 352 612C351 655 274 675 208 690';
@@ -153,7 +169,6 @@ export const touristAttractions: Array<{
     { name: 'Brief Garden', region: 'Bentota', category: 'Nature', lat: 6.43, lon: 80.069 },
     { name: 'Colombo National Museum', region: 'Colombo', category: 'City', lat: 6.91, lon: 79.861 },
     { name: 'Gangaramaya Temple', region: 'Colombo', category: 'Heritage', lat: 6.916, lon: 79.856 },
-    { name: 'Galle Face Green', region: 'Colombo', category: 'City', lat: 6.927, lon: 79.844 },
     { name: 'Pettah Market', region: 'Colombo', category: 'City', lat: 6.936, lon: 79.85 },
     { name: 'Kelaniya Raja Maha Vihara', region: 'Western Province', category: 'Heritage', lat: 6.956, lon: 79.922 },
     { name: 'Negombo Lagoon', region: 'West Coast', category: 'Coast', lat: 7.208, lon: 79.84 },

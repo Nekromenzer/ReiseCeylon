@@ -222,8 +222,9 @@ export function buildDestinationContent(place) {
     introHeading: placeEditorial.introHeading ?? profile.heading(context),
     introCopy: placeEditorial.introCopy,
     highlights: placeEditorial.highlights ?? portableHighlights(profile, context),
-    goodToKnowHeading: `Plan ${place.name} around the conditions, not the clock.`,
-    goodToKnowCopy: profile.know
+    goodToKnowHeading:
+      placeEditorial.goodToKnowHeading ?? `Plan ${place.name} around the conditions, not the clock.`,
+    goodToKnowCopy: placeEditorial.goodToKnowCopy ?? profile.know
   };
 }
 
