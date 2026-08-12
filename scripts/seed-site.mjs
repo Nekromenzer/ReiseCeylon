@@ -106,6 +106,7 @@ async function main() {
     _id: 'siteSettings',
     _type: 'siteSettings',
     email: contactDefaults.email,
+    phone: contactDefaults.phone,
     location: en(contactDefaults.location),
     responseTime: en(contactDefaults.responseTime)
   };

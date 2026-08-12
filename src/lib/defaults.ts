@@ -40,7 +40,8 @@ export const tourDefaults = {
 };
 
 export const contactDefaults = {
-  email: 'journeys@reiseceylon.com',
+  email: 'reiseceylon@gmail.com',
+  phone: '+94 77 050 2482',
   location: 'Colombo, Sri Lanka',
   responseTime: 'within one working day'
 };

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import { notFound } from 'next/navigation';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import '../globals.css';
@@ -80,6 +81,7 @@ export default async function LocaleLayout({
           <Footer />
         </NextIntlClientProvider>
       </body>
+      <GoogleAnalytics gaId="G-2NS65L5S3F" />
     </html>
   );
 }

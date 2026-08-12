@@ -514,7 +514,7 @@ export async function getContactDetails(locale: string): Promise<ContactDetails>
 
   const fallback: ContactDetails = {
     email: contactDefaults.email,
-    phone: null,
+    phone: contactDefaults.phone,
     whatsapp: null,
     location: copy.contact.location,
     address: null,
