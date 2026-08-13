@@ -46,7 +46,12 @@
     "destinationsDescription": "Jeder Strand, jede Ruine, jeder Wasserfall, jeder Nationalpark und jeder Bergort, den wir ansteuern — nach Provinz und Kategorie kartiert.",
     "journeysTitle": "Reise planen",
     "journeysDescription": "Wählen Sie eine fertige Sri-Lanka-Reise oder gestalten Sie Ihre eigene. Sehen Sie die Route auf der Karte, mit Entfernungen, Fahrzeiten und jedem Ort unterwegs.",
-    "destinationFallbackTitle": "Reiseziel — ReiseCeylon"
+    "destinationFallbackTitle": "Reiseziel — ReiseCeylon",
+    "aboutDescription": "Warum es ReiseCeylon gibt, wie wir eine private Reise durch Sri Lanka planen und mit wem Sie unterwegs sind.",
+    "contactDescription": "Sagen Sie uns, wie Sie Sri Lanka bereisen möchten, und wir planen die Route. Jede Anfrage wird innerhalb eines Werktags beantwortet.",
+    "blogDescription": "Notizen aus Sri Lanka — die Routen, die Jahreszeiten, die Züge und die Orte, an die wir immer wieder zurückkehren.",
+    "toursTitle": "Private Reisen",
+    "feedTitle": "ReiseCeylon — Notizen aus Sri Lanka"
   },
   "home": {
     "heroAriaPlates": "Ausgewählte Orte",
@@ -342,7 +347,11 @@
     "emptyCopyLink": "lassen Sie uns die Route bauen",
     "featured": "Empfohlen",
     "showMore": "Mehr anzeigen",
-    "shownOf": "{shown} von {total}"
+    "shownOf": "{shown} von {total}",
+    "indexEyebrow": "Die vollständige Liste",
+    "indexHeading": "Alle verzeichneten Orte.",
+    "indexIntro": "Alle {count} Ziele des Atlas in alphabetischer Reihenfolge, jeweils mit ihrem Distrikt.",
+    "indexAria": "Alle Ziele in alphabetischer Reihenfolge"
   },
   "destination": {
     "breadcrumbAria": "Brotkrumennavigation",
@@ -369,6 +378,31 @@
     "moreOf": "Mehr {category}",
     "goodToKnow": "Gut zu wissen",
     "seeJourney": "Eine Reise durch diese Gegend ansehen"
+  },
+  "faq": {
+    "eyebrow": "Fragen",
+    "heading": "Fragen zu {name}.",
+    "districtOf": "Distrikt {district}",
+    "provinceOf": "Provinz {province}",
+    "whereQuestion": "Wo liegt {name}?",
+    "whereAnswerArea": "{name} liegt in {area}, Sri Lanka.",
+    "whereAnswerIsland": "{name} liegt in Sri Lanka.",
+    "whereAnswerTown": "Die nächstgelegene Stadt ist {city}.",
+    "whereAnswerPoint": "Der Ort ist bei {coordinates} verzeichnet.",
+    "whereAnswerCategory": "In unserem Atlas ist er unter {category} geführt.",
+    "distanceQuestion": "Wie weit ist {name} von Colombo entfernt?",
+    "distanceAnswerColombo": "{name} liegt rund {km} von Colombo entfernt, eine Fahrt von etwa {duration}.",
+    "distanceAnswerAirport": "Vom Flughafen Bandaranaike International (CMB) sind es etwa {km} beziehungsweise {duration}.",
+    "distanceAnswerCaveat": "Beide Werte sind Schätzungen aus den verzeichneten Koordinaten und üblichen Reisegeschwindigkeiten — ohne aktuelle Verkehrslage und ohne die Schnellstraßen.",
+    "seasonQuestion": "Wann ist die beste Reisezeit für {name}?",
+    "seasonAnswerSouthwest": "{name} folgt dem südwestlichen Wettermuster Sri Lankas: am trockensten von Dezember bis April, während der Südwestmonsun zwischen Mai und September den meisten Regen bringt.",
+    "seasonAnswerNortheast": "{name} folgt dem nordöstlichen Wettermuster Sri Lankas und dem der Trockenzone: am trockensten von Mai bis September, während der Nordostmonsun zwischen Oktober und Januar den meisten Regen bringt.",
+    "seasonAnswerBoth": "Da die Insel zwei Monsune an gegenüberliegenden Küsten hat, ist in jedem Monat des Jahres irgendein Teil Sri Lankas in der besten Reisezeit.",
+    "nearbyQuestion": "Was liegt in der Nähe von {name}?",
+    "nearbyItem": "{name} ({km})",
+    "nearbyItemClose": "{name} (unter 1 km)",
+    "nearbyAnswer": "Die nächstgelegenen verzeichneten Orte zu {name} sind {list}.",
+    "nearbyAnswerCaveat": "Diese Entfernungen sind Luftlinie, die Fahrstrecke ist stets länger."
   },
   "highlights": {
     "eyebrow": "Höhepunkte",

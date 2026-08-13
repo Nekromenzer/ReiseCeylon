@@ -28,6 +28,8 @@ export type PostCard = {
   coverImage: SanityImage;
   category: string | null;
   publishedAt: string;
+  /** Sanity's own last-write timestamp — `dateModified`, and the sitemap's. */
+  updatedAt: string | null;
   readingTime: number | null;
   featured: boolean | null;
 };
@@ -49,6 +51,7 @@ type PostCardRow = {
   coverImage: RawImageField;
   category: MaybeLocalised;
   publishedAt: string;
+  updatedAt: string | null;
   readingTime: number | null;
   featured: boolean | null;
 };
@@ -67,6 +70,7 @@ const cardFields = /* groq */ `
   coverImage,
   "category": category->title,
   publishedAt,
+  "updatedAt": _updatedAt,
   featured,
   // Estimated from the English body at ~180 words a minute unless the editor set it.
   "readingTime": coalesce(readingTime, round(length(pt::text(body.en)) / 5 / 180) + 1)
@@ -88,6 +92,13 @@ export const postBySlugQuery = defineQuery(`
 
 export const postSlugsQuery = defineQuery(`
   *[_type == "post" && defined(slug.current)][].slug.current
+`);
+
+/** Slug and last-write date for every entry — what the sitemap needs, no more. */
+export const postIndexQuery = defineQuery(`
+  *[_type == "post" && defined(slug.current)] {
+    "slug": slug.current, "updatedAt": _updatedAt
+  }
 `);
 
 export const relatedPostsQuery = defineQuery(`
@@ -112,6 +123,7 @@ function resolveCard(row: PostCardRow, locale: string): PostCard {
     coverImage: resolveImage(row.coverImage, locale),
     category: pickLocaleOrNull(row.category, locale),
     publishedAt: row.publishedAt,
+    updatedAt: row.updatedAt ?? null,
     readingTime: row.readingTime,
     featured: row.featured
   };
@@ -160,6 +172,10 @@ export async function getPost(slug: string, locale: string): Promise<Post | null
 
 export function getPostSlugs() {
   return fetchJournal<string[]>(postSlugsQuery, {}, []);
+}
+
+export function getPostIndex() {
+  return fetchJournal<Array<{ slug: string; updatedAt: string | null }>>(postIndexQuery, {}, []);
 }
 
 export async function getRelatedPosts(slug: string, locale: string): Promise<PostCard[]> {

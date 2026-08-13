@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { JourneyPlanner, type PlannerPackage } from '@/components/JourneyPlanner';
+import { JsonLd } from '@/components/JsonLd';
 import { Link } from '@/i18n/navigation';
 import { durationBands, type PlannerPlace } from '@/lib/journey';
 import { staticCopy } from '@/lib/localised';
 import { placeCategories, places, provinces } from '@/lib/places';
-import { alternatesFor } from '@/lib/seo';
+import { breadcrumbSchema, itemListSchema } from '@/lib/schema';
+import { alternatesFor, urlFor } from '@/lib/seo';
 import { getTours } from '@/sanity/site';
 
 export async function generateMetadata({
@@ -18,7 +20,13 @@ export async function generateMetadata({
   return {
     title: t('journeysTitle'),
     description: t('journeysDescription'),
-    alternates: alternatesFor('/journeys', locale)
+    alternates: alternatesFor('/journeys', locale),
+    openGraph: {
+      title: t('journeysTitle'),
+      description: t('journeysDescription'),
+      url: urlFor('/journeys', locale),
+      type: 'website'
+    }
   };
 }
 
@@ -43,9 +51,10 @@ export default async function JourneysPage({ params }: { params: Promise<{ local
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const [t, journeyCopy, copy, tours] = await Promise.all([
+  const [t, journeyCopy, meta, copy, tours] = await Promise.all([
     getTranslations('journeys'),
     getTranslations('journey'),
+    getTranslations('meta'),
     staticCopy(locale),
     getTours(locale)
   ]);
@@ -95,6 +104,20 @@ export default async function JourneysPage({ params }: { params: Promise<{ local
      * — so the map never leaves the screen while you are working on a route.
      */
     <main className="rc-plan-page">
+      <JsonLd
+        data={[
+          itemListSchema({
+            name: meta('journeysTitle'),
+            description: meta('journeysDescription'),
+            url: urlFor('/journeys', locale),
+            items: tours.map((tour) => ({
+              name: tour.title,
+              url: urlFor(`/tours/${tour.slug}`, locale)
+            }))
+          }),
+          breadcrumbSchema([{ name: meta('journeysTitle'), path: '/journeys' }], locale)
+        ]}
+      />
       <header className="rc-plan-bar">
         <div>
           <p className="eyebrow">{t('eyebrow')}</p>

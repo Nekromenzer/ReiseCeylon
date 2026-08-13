@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DestinationAtlas } from '@/components/DestinationAtlas';
+import { JsonLd } from '@/components/JsonLd';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { art } from '@/lib/content';
 import { staticCopy } from '@/lib/localised';
 import { placeCategories } from '@/lib/places';
-import { alternatesFor } from '@/lib/seo';
+import { breadcrumbSchema, itemListSchema } from '@/lib/schema';
+import { alternatesFor, urlFor } from '@/lib/seo';
 import { getDestinations, getFeaturedDestinations } from '@/sanity/site';
 
 export async function generateMetadata({
@@ -20,7 +22,13 @@ export async function generateMetadata({
   return {
     title: t('destinationsTitle'),
     description: t('destinationsDescription'),
-    alternates: alternatesFor('/destinations', locale)
+    alternates: alternatesFor('/destinations', locale),
+    openGraph: {
+      title: t('destinationsTitle'),
+      description: t('destinationsDescription'),
+      url: urlFor('/destinations', locale),
+      type: 'website'
+    }
   };
 }
 
@@ -32,8 +40,10 @@ export default async function DestinationsPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const [t, copy, destinations, featured] = await Promise.all([
+  const [t, meta, atlasCopy, copy, destinations, featured] = await Promise.all([
     getTranslations('destinations'),
+    getTranslations('meta'),
+    getTranslations('atlas'),
     staticCopy(locale),
     getDestinations(locale),
     getFeaturedDestinations(locale)
@@ -56,6 +66,20 @@ export default async function DestinationsPage({
 
   return (
     <main>
+      <JsonLd
+        data={[
+          itemListSchema({
+            name: meta('destinationsTitle'),
+            description: meta('destinationsDescription'),
+            url: urlFor('/destinations', locale),
+            items: destinations.map((place) => ({
+              name: place.name,
+              url: urlFor(`/destinations/${place.slug}`, locale)
+            }))
+          }),
+          breadcrumbSchema([{ name: meta('destinationsTitle'), path: '/destinations' }], locale)
+        ]}
+      />
       <section className="page-hero atlas-hero">
         <Image src={featured[0]?.image ?? art.fortress} alt="" fill priority sizes="100vw" />
         <div className="page-hero-content">
@@ -129,6 +153,35 @@ export default async function DestinationsPage({
         categories={categories}
         provinces={provinces}
       />
+
+      {/*
+        Every place, server-rendered, as plain links.
+
+        The atlas above is a client component that shows 24 cards and loads the
+        rest on a button. That is right for a reader and wrong for everything
+        that does not click: a crawler without JavaScript saw 24 of 174 links,
+        and the page never read as the hub for the other 150. This list closes
+        that gap in the initial html, at the cost of one flat `<ul>`.
+      */}
+      <section className="atlas-index">
+        <Reveal>
+          <p className="eyebrow">{atlasCopy('indexEyebrow')}</p>
+          <h2>{atlasCopy('indexHeading')}</h2>
+          <p className="atlas-index-intro">
+            {atlasCopy('indexIntro', { count: destinations.length })}
+          </p>
+        </Reveal>
+        <ul className="atlas-index-list" aria-label={atlasCopy('indexAria')}>
+          {destinations.map((place) => (
+            <li key={place.slug}>
+              <Link href={`/destinations/${place.slug}`}>
+                <strong>{place.name}</strong>
+                {place.district ? <span>{place.district}</span> : null}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }

@@ -7,7 +7,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import '../globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { alternatesFor } from '@/lib/seo';
+import { JsonLd } from '@/components/JsonLd';
+import { alternatesFor, SITE_URL } from '@/lib/seo';
+import { siteGraph } from '@/lib/schema';
+import { getContactDetails } from '@/sanity/site';
 import { localeTags, routing } from '@/i18n/routing';
 
 /*
@@ -42,20 +45,38 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'meta' });
 
   return {
-    metadataBase: new URL('https://reiseceylon.com'),
+    metadataBase: new URL(SITE_URL),
     icons: { icon: '/brand/logo-primary.png' },
     title: {
       default: t('siteTitle'),
       template: '%s — ReiseCeylon'
     },
     description: t('siteDescription'),
-    alternates: alternatesFor('/', locale),
+    applicationName: 'ReiseCeylon',
+    alternates: {
+      ...alternatesFor('/', locale),
+      /* The journal as a feed — how an aggregator, a reader and a crawler that
+         prefers structured lists over html all find new entries. */
+      types: { 'application/rss+xml': `${SITE_URL}/feed.xml` }
+    },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
+      siteName: 'ReiseCeylon',
       locale: localeTags[locale as keyof typeof localeTags],
       images: ['/images/sigiriya.jpg']
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      images: ['/images/sigiriya.jpg']
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 }
     }
   };
 }
@@ -70,9 +91,25 @@ export default async function LocaleLayout({
   /* Opts this tree into static rendering — without it every page goes dynamic. */
   setRequestLocale(locale);
 
+  /* The agency and the site itself, declared once on every url in every language.
+     Both nodes carry a fixed @id, so the 700-odd pages that repeat them resolve
+     to one company and one website rather than 700 of each. */
+  const [t, contact] = await Promise.all([
+    getTranslations({ locale, namespace: 'meta' }),
+    getContactDetails(locale)
+  ]);
+
   return (
     <html lang={localeTags[locale]} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+        <JsonLd
+          data={siteGraph({
+            locale,
+            contact,
+            name: t('siteTitle'),
+            description: t('siteDescription')
+          })}
+        />
         {/* The whole catalogue for this one language crosses to the browser, which
             is what lets the planner and the homepage translate client-side. */}
         <NextIntlClientProvider>

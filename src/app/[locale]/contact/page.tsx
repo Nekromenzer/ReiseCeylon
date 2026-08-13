@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactForm } from '@/components/ContactForm';
-import { alternatesFor } from '@/lib/seo';
+import { JsonLd } from '@/components/JsonLd';
+import { breadcrumbSchema, pageSchema } from '@/lib/schema';
+import { alternatesFor, urlFor } from '@/lib/seo';
 import { getContactDetails } from '@/sanity/site';
 
 export async function generateMetadata({
@@ -11,16 +13,42 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('contactTitle'), alternates: alternatesFor('/contact', locale) };
+  return {
+    title: t('contactTitle'),
+    description: t('contactDescription'),
+    alternates: alternatesFor('/contact', locale),
+    openGraph: {
+      title: t('contactTitle'),
+      description: t('contactDescription'),
+      url: urlFor('/contact', locale),
+      type: 'website'
+    }
+  };
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const [t, contact] = await Promise.all([getTranslations('contact'), getContactDetails(locale)]);
+  const [t, meta, contact] = await Promise.all([
+    getTranslations('contact'),
+    getTranslations('meta'),
+    getContactDetails(locale)
+  ]);
 
   return (
     <main className="contact-page">
+      <JsonLd
+        data={[
+          pageSchema({
+            type: 'ContactPage',
+            name: meta('contactTitle'),
+            description: meta('contactDescription'),
+            path: '/contact',
+            locale
+          }),
+          breadcrumbSchema([{ name: meta('contactTitle'), path: '/contact' }], locale)
+        ]}
+      />
       <div className="contact-copy">
         <p className="eyebrow">{t('eyebrow')}</p>
         <h1 className="contact-heading">

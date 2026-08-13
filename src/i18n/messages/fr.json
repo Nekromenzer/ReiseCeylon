@@ -46,7 +46,12 @@
     "destinationsDescription": "Chaque plage, ruine, cascade, parc et station de montagne par lesquels nous passons, cartographiés par province et par catégorie à travers le Sri Lanka.",
     "journeysTitle": "Planifier votre voyage",
     "journeysDescription": "Choisissez un voyage tout tracé au Sri Lanka ou composez le vôtre. Visualisez la route sur la carte, avec les distances, les temps de conduite et chaque lieu traversé.",
-    "destinationFallbackTitle": "Destination — ReiseCeylon"
+    "destinationFallbackTitle": "Destination — ReiseCeylon",
+    "aboutDescription": "Pourquoi ReiseCeylon existe, comment nous concevons un voyage privé au Sri Lanka et avec qui vous partez.",
+    "contactDescription": "Dites-nous comment vous souhaitez parcourir le Sri Lanka et nous traçons la route. Chaque demande reçoit une réponse sous un jour ouvré.",
+    "blogDescription": "Carnet de route du Sri Lanka — les itinéraires, les saisons, les trains et les lieux où nous revenons toujours.",
+    "toursTitle": "Voyages privés",
+    "feedTitle": "ReiseCeylon — Carnet de route"
   },
   "home": {
     "heroAriaPlates": "Lieux à la une",
@@ -342,7 +347,11 @@
     "emptyCopyLink": "demandez-nous de construire la route",
     "featured": "À la une",
     "showMore": "Afficher plus",
-    "shownOf": "{shown} sur {total}"
+    "shownOf": "{shown} sur {total}",
+    "indexEyebrow": "La liste complète",
+    "indexHeading": "Tous les lieux cartographiés.",
+    "indexIntro": "Les {count} destinations de l’atlas par ordre alphabétique, avec le district de chacune.",
+    "indexAria": "Toutes les destinations par ordre alphabétique"
   },
   "destination": {
     "breadcrumbAria": "Fil d’Ariane",
@@ -369,6 +378,31 @@
     "moreOf": "Plus de {category}",
     "goodToKnow": "Bon à savoir",
     "seeJourney": "Voir un voyage qui passe par ici"
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "heading": "Questions sur {name}.",
+    "districtOf": "district de {district}",
+    "provinceOf": "province de {province}",
+    "whereQuestion": "Où se trouve {name} ?",
+    "whereAnswerArea": "{name} se trouve dans le {area}, au Sri Lanka.",
+    "whereAnswerIsland": "{name} se trouve au Sri Lanka.",
+    "whereAnswerTown": "La ville la plus proche est {city}.",
+    "whereAnswerPoint": "Le site est cartographié à {coordinates}.",
+    "whereAnswerCategory": "Dans notre atlas, il figure sous {category}.",
+    "distanceQuestion": "À quelle distance de Colombo se trouve {name} ?",
+    "distanceAnswerColombo": "{name} est à environ {km} de Colombo par la route, soit près de {duration} de trajet.",
+    "distanceAnswerAirport": "Depuis l’aéroport international de Bandaranaike (CMB), comptez environ {km}, soit {duration}.",
+    "distanceAnswerCaveat": "Ces deux estimations sont calculées à partir des coordonnées cartographiées et de vitesses de circulation habituelles — sans trafic en temps réel et sans emprunter les autoroutes.",
+    "seasonQuestion": "Quelle est la meilleure période pour visiter {name} ?",
+    "seasonAnswerSouthwest": "{name} suit le régime climatique du sud-ouest du Sri Lanka : le plus sec de décembre à avril, la mousson du sud-ouest apportant les pluies les plus fortes entre mai et septembre.",
+    "seasonAnswerNortheast": "{name} suit le régime climatique du nord-est et de la zone sèche du Sri Lanka : le plus sec de mai à septembre, la mousson du nord-est apportant les pluies les plus fortes entre octobre et janvier.",
+    "seasonAnswerBoth": "L’île connaissant deux moussons sur des côtes opposées, une région du Sri Lanka est en bonne saison chaque mois de l’année.",
+    "nearbyQuestion": "Que voir à proximité de {name} ?",
+    "nearbyItem": "{name} ({km})",
+    "nearbyItemClose": "{name} (moins de 1 km)",
+    "nearbyAnswer": "Les lieux cartographiés les plus proches de {name} sont {list}.",
+    "nearbyAnswerCaveat": "Ces distances sont à vol d’oiseau ; le trajet routier est toujours plus long."
   },
   "highlights": {
     "eyebrow": "Temps forts",

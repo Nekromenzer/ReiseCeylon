@@ -3,9 +3,11 @@ import Image from 'next/image';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DestinationHighlights } from '@/components/DestinationHighlights';
+import { JsonLd } from '@/components/JsonLd';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
+import { destinationFaqs } from '@/lib/faq';
 import {
   aliasGroupFor,
   directionsUrlFor,
@@ -14,7 +16,8 @@ import {
   legacySlugAliases,
   mapEmbedUrl
 } from '@/lib/places';
-import { alternatesFor, pathFor } from '@/lib/seo';
+import { attractionSchema, breadcrumbSchema, faqSchema } from '@/lib/schema';
+import { alternatesFor, pathFor, urlFor } from '@/lib/seo';
 import { getDestination, getDestinations, getTours, type Destination } from '@/sanity/site';
 
 /* Destinations added in the studio after a build are rendered on first request. */
@@ -94,8 +97,9 @@ export default async function DestinationPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const [t, destinations, tours] = await Promise.all([
+  const [t, faqCopy, destinations, tours] = await Promise.all([
     getTranslations('destination'),
+    getTranslations('faq'),
     getDestinations(locale),
     getTours(locale)
   ]);
@@ -135,8 +139,36 @@ export default async function DestinationPage({
         .slice(0, 8)
     : [];
 
+  /* The questions a traveller types, answered from the record above — see
+     `@/lib/faq`. Rendered below and declared as an FAQPage in the same breath:
+     Google will not show an answer it cannot find in the page, and neither
+     should anything else. */
+  const faqs = destinationFaqs(
+    destination,
+    nearby.map(({ place, km }) => ({ name: place.name, km })),
+    faqCopy
+  );
+  const path = `/destinations/${destination.slug}`;
+
   return (
     <main>
+      <JsonLd
+        data={[
+          attractionSchema(destination, locale, {
+            regionName: destination.provinceLabel
+              ? t('provinceSuffix', { province: destination.provinceLabel })
+              : undefined
+          }),
+          breadcrumbSchema(
+            [
+              { name: t('breadcrumbRoot'), path: '/destinations' },
+              { name: destination.name, path }
+            ],
+            locale
+          ),
+          faqSchema(faqs, urlFor(path, locale))
+        ]}
+      />
       <section className="page-hero">
         <Image src={destination.image} alt={destination.imageAlt} fill priority sizes="100vw" />
         <div className="page-hero-content">
@@ -279,6 +311,26 @@ export default async function DestinationPage({
               </Link>
             ) : null}
           </Reveal>
+        </section>
+      ) : null}
+
+      {faqs.length > 0 ? (
+        <section className="detail-faq">
+          <Reveal className="detail-faq-head">
+            <p className="eyebrow">{faqCopy('eyebrow')}</p>
+            <h2>{faqCopy('heading', { name: destination.name })}</h2>
+          </Reveal>
+          {/* Answers are rendered open rather than behind a disclosure. They are
+              four sentences each, and text a reader has to click for is text an
+              extractor has to guess at. */}
+          <dl className="detail-faq-list">
+            {faqs.map((entry) => (
+              <div key={entry.question}>
+                <dt>{entry.question}</dt>
+                <dd>{entry.answer}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
       ) : null}
     </main>

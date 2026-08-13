@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { JsonLd } from '@/components/JsonLd';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { cardMeta } from '@/lib/journal';
-import { alternatesFor } from '@/lib/seo';
+import { breadcrumbSchema, itemListSchema, pageSchema } from '@/lib/schema';
+import { alternatesFor, urlFor, SITE_URL } from '@/lib/seo';
 import { urlForImage } from '@/sanity/image';
 import { getPosts } from '@/sanity/queries';
 
@@ -15,7 +17,20 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('blogTitle'), alternates: alternatesFor('/blog', locale) };
+  return {
+    title: t('blogTitle'),
+    description: t('blogDescription'),
+    alternates: {
+      ...alternatesFor('/blog', locale),
+      types: { 'application/rss+xml': `${SITE_URL}/feed.xml` }
+    },
+    openGraph: {
+      title: t('blogTitle'),
+      description: t('blogDescription'),
+      url: urlFor('/blog', locale),
+      type: 'website'
+    }
+  };
 }
 
 /** The photographs behind the placeholder cards, paired by position. */
@@ -31,7 +46,11 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const [t, posts] = await Promise.all([getTranslations('blog'), getPosts(locale)]);
+  const [t, meta, posts] = await Promise.all([
+    getTranslations('blog'),
+    getTranslations('meta'),
+    getPosts(locale)
+  ]);
 
   /* Shown until the first entry is published in the studio, so the journal never
      renders as an empty page. */
@@ -39,6 +58,31 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
 
   return (
     <main>
+      <JsonLd
+        data={[
+          pageSchema({
+            type: 'CollectionPage',
+            name: meta('blogTitle'),
+            description: meta('blogDescription'),
+            path: '/blog',
+            locale
+          }),
+          /* Only real entries are listed. The placeholder cards below exist so
+             an empty journal still renders; declaring them as articles would be
+             advertising pages that do not exist. */
+          posts.length > 0
+            ? itemListSchema({
+                name: meta('blogTitle'),
+                url: urlFor('/blog', locale),
+                items: posts.map((post) => ({
+                  name: post.title,
+                  url: urlFor(`/blog/${post.slug}`, locale)
+                }))
+              })
+            : null,
+          breadcrumbSchema([{ name: meta('blogTitle'), path: '/blog' }], locale)
+        ]}
+      />
       <section className="detail-intro" style={{ paddingTop: 190 }}>
         <div>{t('eyebrow')}</div>
         <Reveal>

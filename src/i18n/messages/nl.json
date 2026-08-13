@@ -46,7 +46,12 @@
     "destinationsDescription": "Elk strand, elke ruïne, waterval, park en bergdorp waar we langs reizen, in kaart gebracht per provincie en categorie in heel Sri Lanka.",
     "journeysTitle": "Plan uw reis",
     "journeysDescription": "Kies een kant-en-klare reis door Sri Lanka of ontwerp uw eigen route. Bekijk de route op de kaart, met afstanden, rijtijden en elke plek onderweg.",
-    "destinationFallbackTitle": "Bestemming — ReiseCeylon"
+    "destinationFallbackTitle": "Bestemming — ReiseCeylon",
+    "aboutDescription": "Waarom ReiseCeylon bestaat, hoe wij een privéreis door Sri Lanka samenstellen en met wie u op pad gaat.",
+    "contactDescription": "Vertel ons hoe u Sri Lanka wilt zien, dan stippelen wij de route uit. Elke aanvraag krijgt binnen één werkdag antwoord.",
+    "blogDescription": "Aantekeningen uit Sri Lanka — de routes, de seizoenen, de treinen en de plekken waar we blijven terugkomen.",
+    "toursTitle": "Privéreizen",
+    "feedTitle": "ReiseCeylon — Aantekeningen"
   },
   "home": {
     "heroAriaPlates": "Uitgelichte plaatsen",
@@ -342,7 +347,11 @@
     "emptyCopyLink": "vraag ons de route te bouwen",
     "featured": "Uitgelicht",
     "showMore": "Meer tonen",
-    "shownOf": "{shown} van {total}"
+    "shownOf": "{shown} van {total}",
+    "indexEyebrow": "De volledige lijst",
+    "indexHeading": "Alle vastgelegde plekken.",
+    "indexIntro": "Alle {count} bestemmingen uit de atlas op alfabet, met het district waarin ze liggen.",
+    "indexAria": "Alle bestemmingen op alfabet"
   },
   "destination": {
     "breadcrumbAria": "Kruimelpad",
@@ -369,6 +378,31 @@
     "moreOf": "Meer {category}",
     "goodToKnow": "Goed om te weten",
     "seeJourney": "Bekijk een reis die hierlangs gaat"
+  },
+  "faq": {
+    "eyebrow": "Vragen",
+    "heading": "Vragen over {name}.",
+    "districtOf": "district {district}",
+    "provinceOf": "provincie {province}",
+    "whereQuestion": "Waar ligt {name}?",
+    "whereAnswerArea": "{name} ligt in {area}, Sri Lanka.",
+    "whereAnswerIsland": "{name} ligt in Sri Lanka.",
+    "whereAnswerTown": "De dichtstbijzijnde plaats is {city}.",
+    "whereAnswerPoint": "De locatie is vastgelegd op {coordinates}.",
+    "whereAnswerCategory": "In onze atlas staat de plek onder {category}.",
+    "distanceQuestion": "Hoe ver ligt {name} van Colombo?",
+    "distanceAnswerColombo": "{name} ligt ongeveer {km} van Colombo over de weg, zo’n {duration} rijden.",
+    "distanceAnswerAirport": "Vanaf Bandaranaike International Airport (CMB) is het ongeveer {km}, oftewel {duration}.",
+    "distanceAnswerCaveat": "Beide cijfers zijn schattingen op basis van de vastgelegde coördinaten en gebruikelijke rijsnelheden — zonder actuele verkeersinformatie en zonder de snelwegen.",
+    "seasonQuestion": "Wat is de beste reistijd voor {name}?",
+    "seasonAnswerSouthwest": "{name} volgt het zuidwestelijke weerpatroon van Sri Lanka: het droogst van december tot april, waarbij de zuidwestmoesson tussen mei en september de meeste regen brengt.",
+    "seasonAnswerNortheast": "{name} volgt het noordoostelijke weerpatroon en dat van de droge zone van Sri Lanka: het droogst van mei tot september, waarbij de noordoostmoesson tussen oktober en januari de meeste regen brengt.",
+    "seasonAnswerBoth": "Omdat het eiland twee moessons kent aan tegenovergestelde kusten, is er elke maand van het jaar wel een deel van Sri Lanka in het goede seizoen.",
+    "nearbyQuestion": "Wat is er te zien in de buurt van {name}?",
+    "nearbyItem": "{name} ({km})",
+    "nearbyItemClose": "{name} (minder dan 1 km)",
+    "nearbyAnswer": "De dichtstbijzijnde vastgelegde plekken bij {name} zijn {list}.",
+    "nearbyAnswerCaveat": "Die afstanden zijn hemelsbreed; over de weg is het altijd verder."
   },
   "highlights": {
     "eyebrow": "Hoogtepunten",

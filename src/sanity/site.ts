@@ -81,6 +81,12 @@ export type Destination = {
   googleMapsUrl: string | null;
   openStreetMapUrl: string | null;
   featured: boolean;
+  /**
+   * Sanity's last-write timestamp, and null for a place that exists only in the
+   * atlas. The sitemap reads it: a `lastModified` of “now” on every url, every
+   * build, is not a freshness signal, it is noise a crawler learns to discount.
+   */
+  updatedAt: string | null;
 };
 
 export type Tour = {
@@ -101,6 +107,8 @@ export type Tour = {
   includedCopy: string;
   /** Atlas slugs in travel order — the route drawn on the map. */
   stops: string[];
+  /** As on `Destination` — null for a package that has no studio document. */
+  updatedAt: string | null;
 };
 
 export type SocialLink = { label: string; url: string };
@@ -148,7 +156,8 @@ function destinationFromPlace(place: Place, copy: StaticCopy): Destination {
     precisionNote: copy.precision(place.precision),
     googleMapsUrl: place.googleMapsUrl,
     openStreetMapUrl: place.openStreetMapUrl,
-    featured: defaultFeaturedSlugs.includes(place.slug)
+    featured: defaultFeaturedSlugs.includes(place.slug),
+    updatedAt: null
   };
 }
 
@@ -194,7 +203,8 @@ function fallbackToursFor(copy: StaticCopy): Tour[] {
       introHeading: copy.tour.introHeading,
       introCopy: copy.tour.introCopy,
       includedHeading: copy.tour.includedHeading,
-      includedCopy: copy.tour.includedCopy
+      includedCopy: copy.tour.includedCopy,
+      updatedAt: null
     };
   });
 }
@@ -210,6 +220,7 @@ const destinationFields = /* groq */ `
   "highlights": coalesce(highlights[]{title, copy}, []),
   goodToKnowHeading, goodToKnowCopy,
   categoryId, province, district, city, precision,
+  "updatedAt": _updatedAt,
   "status": coalesce(status, "published"),
   "featured": coalesce(featured, false),
   "latitude": location.lat, "longitude": location.lng
@@ -232,7 +243,8 @@ const toursQuery = defineQuery(`
     introHeading, introCopy,
     "itinerary": coalesce(itinerary[]{period, title, copy}, []),
     includedHeading, includedCopy,
-    "stops": coalesce(stops, [])
+    "stops": coalesce(stops, []),
+    "updatedAt": _updatedAt
   }
 `);
 
@@ -279,6 +291,7 @@ type DestinationRow = {
   featured: boolean;
   image: RawImage | null;
   status?: 'published' | 'hidden';
+  updatedAt: string | null;
 };
 
 /**
@@ -350,7 +363,8 @@ function resolveDestination(row: DestinationRow, copy: StaticCopy): Destination 
     precisionNote: copy.precision(precision),
     featured: row.featured,
     googleMapsUrl: hasPoint ? googleMapsUrlFor(latitude, longitude) : null,
-    openStreetMapUrl: hasPoint ? openStreetMapUrlFor(latitude, longitude) : null
+    openStreetMapUrl: hasPoint ? openStreetMapUrlFor(latitude, longitude) : null,
+    updatedAt: row.updatedAt ?? null
   };
 }
 
@@ -435,6 +449,7 @@ type TourRow = {
   image: RawImage;
   durationDays: number | null;
   stops: string[] | null;
+  updatedAt: string | null;
 };
 
 function resolveTour(row: TourRow, copy: StaticCopy): Tour {
@@ -473,7 +488,8 @@ function resolveTour(row: TourRow, copy: StaticCopy): Tour {
     itinerary: itinerary.length > 0 ? itinerary : itineraryFromStops(stops, durationDays, copy),
     includedHeading: pickExact(row.includedHeading, locale) || copy.tour.includedHeading,
     includedCopy: pickExact(row.includedCopy, locale) || copy.tour.includedCopy,
-    stops
+    stops,
+    updatedAt: row.updatedAt ?? null
   };
 }
 

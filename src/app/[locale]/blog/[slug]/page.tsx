@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { JsonLd } from '@/components/JsonLd';
 import { PortableBody } from '@/components/PortableBody';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { cardMeta, formatDate } from '@/lib/journal';
-import { alternatesFor } from '@/lib/seo';
+import { articleSchema, breadcrumbSchema } from '@/lib/schema';
+import { alternatesFor, urlFor } from '@/lib/seo';
 import { urlForImage } from '@/sanity/image';
 import { getPost, getPostSlugs, getRelatedPosts } from '@/sanity/queries';
 
@@ -32,16 +34,28 @@ export async function generateMetadata({
   if (!post) return { title: t('blogTitle') };
 
   const description = post.seoDescription ?? post.excerpt ?? undefined;
+  const image = urlForImage(post.coverImage, 1200, 630);
   return {
     title: post.title,
     description,
+    authors: post.author ? [{ name: post.author.name }] : undefined,
     alternates: alternatesFor(`/blog/${slug}`, locale),
     openGraph: {
       title: post.title,
       description,
+      url: urlFor(`/blog/${slug}`, locale),
       type: 'article',
       publishedTime: post.publishedAt,
-      images: [urlForImage(post.coverImage, 1200, 630)]
+      modifiedTime: post.updatedAt ?? post.publishedAt,
+      authors: post.author ? [post.author.name] : undefined,
+      section: post.category ?? undefined,
+      images: [image]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: [image]
     }
   };
 }
@@ -54,7 +68,11 @@ export default async function JournalEntryPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const [t, post] = await Promise.all([getTranslations('blog'), getPost(slug, locale)]);
+  const [t, meta, post] = await Promise.all([
+    getTranslations('blog'),
+    getTranslations('meta'),
+    getPost(slug, locale)
+  ]);
   if (!post) notFound();
 
   const related = await getRelatedPosts(slug, locale);
@@ -62,6 +80,21 @@ export default async function JournalEntryPage({
 
   return (
     <main>
+      <JsonLd
+        data={[
+          articleSchema(post, locale, {
+            image: urlForImage(post.coverImage, 1200, 630),
+            body: post.body
+          }),
+          breadcrumbSchema(
+            [
+              { name: meta('blogTitle'), path: '/blog' },
+              { name: post.title, path: `/blog/${slug}` }
+            ],
+            locale
+          )
+        ]}
+      />
       <section className="page-hero">
         <Image
           src={urlForImage(post.coverImage, 2400, 1400)}
