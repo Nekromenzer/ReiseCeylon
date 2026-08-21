@@ -192,6 +192,14 @@ category, body, cover asset, or cover-image alternative text. After publication,
 the existing signed Sanity webhook refreshes the journal, article route, sitemap
 and RSS-backed reads.
 
+Generated drafts are also checked for a concise descriptive title, a useful
+search description, substantial non-placeholder copy, at least two H2 sections,
+canonical internal links and descriptive anchor text. Each planned topic carries
+a primary search phrase and user intent, while the generator records specific
+fact-check items in the Studio review notes. These checks prevent weak automated
+posts; they do not guarantee a search ranking, which still depends on editorial
+quality, authority, competition, links and the overall page experience.
+
 Configure these under **GitHub → Settings → Secrets and variables → Actions**:
 
 | Kind | Name | Value |

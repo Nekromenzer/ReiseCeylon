@@ -33,11 +33,11 @@ const client = createClient({
 const articleSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ['title', 'excerpt', 'seoDescription', 'coverImageAlt', 'readingTime', 'blocks'],
+  required: ['title', 'excerpt', 'seoDescription', 'coverImageAlt', 'readingTime', 'blocks', 'factCheckItems'],
   properties: {
-    title: { type: 'string', minLength: 20, maxLength: 96 },
+    title: { type: 'string', minLength: 25, maxLength: 70 },
     excerpt: { type: 'string', minLength: 80, maxLength: 240 },
-    seoDescription: { type: 'string', minLength: 100, maxLength: 165 },
+    seoDescription: { type: 'string', minLength: 110, maxLength: 165 },
     coverImageAlt: { type: 'string', minLength: 20, maxLength: 180 },
     readingTime: { type: 'integer', minimum: 3, maximum: 20 },
     blocks: {
@@ -53,6 +53,12 @@ const articleSchema = {
           text: { type: 'string', minLength: 1, maxLength: 1800 }
         }
       }
+    },
+    factCheckItems: {
+      type: 'array',
+      minItems: 2,
+      maxItems: 8,
+      items: { type: 'string', minLength: 15, maxLength: 240 }
     }
   }
 };
@@ -79,9 +85,14 @@ async function generateArticle(topic) {
       instructions: [
         'Write an original ReiseCeylon travel-journal draft in clear, warm B1-level English.',
         'Sound like an experienced Sri Lankan journey planner, not an advertisement or generic AI article.',
+        'Satisfy the supplied searchIntent completely and use the primaryKeyword naturally, never repeatedly or awkwardly.',
+        'Write a unique, descriptive title of 25-70 characters. The opening paragraph must answer the traveller’s main need directly.',
+        'Create at least two useful H2 sections. Prefer concrete decisions, trade-offs and local context over generic travel advice.',
+        'Aim for a substantial 600-1,200 word guide, but do not pad the article or repeat points to reach a word count.',
         'Do not invent first-person experiences, quotations, prices, schedules, laws, statistics or historical facts.',
         'Treat weather, wildlife and transport as variable. Use careful language and flag anything that needs live verification.',
-        'Use the supplied internal links naturally in Markdown form: [useful anchor](/path).',
+        'Use every supplied internal link naturally in Markdown form: [descriptive anchor](/path). Never use click here or read more.',
+        'Return specific factCheckItems for the human editor, including cultural or historical claims and anything that can change.',
         'Include practical advice, cultural respect and a calm conclusion. Do not use a FAQ section.',
         'The coverImageAlt describes a suitable future photograph; it does not claim that an image already exists.'
       ].join('\n'),
@@ -103,7 +114,7 @@ async function generateArticle(topic) {
   }
 
   const article = JSON.parse(responseText(await response.json()));
-  const errors = validateGeneratedArticle(article);
+  const errors = validateGeneratedArticle(article, topic);
   if (errors.length > 0) throw new Error(`Generated article failed validation:\n- ${errors.join('\n- ')}`);
   return article;
 }
@@ -205,7 +216,12 @@ async function main() {
       generated: true,
       status: 'needs-review',
       topicKey: topic.key,
-      reviewNotes: 'Verify every factual claim, add an owned cover image, review internal links, then choose a date and approve.'
+      reviewNotes: [
+        `Search intent: ${topic.searchIntent}`,
+        `Primary phrase: ${topic.primaryKeyword}`,
+        'Before approval: add an owned cover image, review every link and verify these claims:',
+        ...article.factCheckItems.map((item) => `- ${item}`)
+      ].join('\n')
     }
   };
 

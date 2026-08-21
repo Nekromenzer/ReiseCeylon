@@ -15,7 +15,7 @@ import { defaultLocale, localeTags, locales } from '@/i18n/routing';
  * read it from here — a JSON-LD graph whose nodes disagree about the origin is
  * a graph of unrelated nodes.
  */
-export const SITE_URL = 'https://reiseceylon.com';
+export const SITE_URL = 'https://www.reiseceylon.com';
 
 /** `/destinations` in `de` is `/de/destinations`; in `en` it stays as it is. */
 export function pathFor(path: string, locale: string) {
