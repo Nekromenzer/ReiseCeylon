@@ -26,6 +26,7 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    environment: Production
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
