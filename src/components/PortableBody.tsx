@@ -14,9 +14,14 @@ const components: PortableTextComponents = {
   marks: {
     link: ({ children, value }) => {
       const href: string = value?.href ?? '#';
-      const external = /^https?:\/\//.test(href) && !href.includes('reiseceylon.com');
-      return external ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" className="article-link">
+      const absolute = /^https?:\/\//.test(href);
+      const external = absolute && !/^https:\/\/(www\.)?reiseceylon\.com(\/|$)/.test(href);
+      return absolute ? (
+        <a
+          href={href}
+          {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          className="article-link"
+        >
           {children}
         </a>
       ) : (

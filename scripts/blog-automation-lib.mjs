@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
 export const AUTOMATION_AUTHOR_ID = 'author-reiseceylon';
+export const BLOG_SITE_ORIGIN = 'https://www.reiseceylon.com';
 
 export function slugify(value) {
   return value
@@ -16,9 +17,9 @@ export function portableTextKey(seed) {
   return `auto-${String(seed).replace(/[^a-zA-Z0-9_-]/g, '-')}`;
 }
 
-function safeHref(href) {
+export function canonicalBlogHref(href) {
   if (typeof href !== 'string') return null;
-  if (/^\/(blog|destinations|journeys|tours)(\/|$)/.test(href)) return href;
+  if (/^\/(blog|destinations|journeys|tours)(\/|$)/.test(href)) return `${BLOG_SITE_ORIGIN}${href}`;
   if (/^https:\/\//.test(href)) return href;
   return null;
 }
@@ -44,7 +45,7 @@ export function textToChildren(value, blockKey) {
 
   while ((match = pattern.exec(value)) !== null) {
     addSpan(value.slice(cursor, match.index));
-    const href = safeHref(match[2]);
+    const href = canonicalBlogHref(match[2]);
     if (href) {
       const markKey = portableTextKey(`${blockKey}-link-${markDefs.length}`);
       markDefs.push({ _type: 'link', _key: markKey, href });

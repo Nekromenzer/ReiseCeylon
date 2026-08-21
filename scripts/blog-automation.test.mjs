@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   assertTopics,
   blocksToPortableText,
+  canonicalBlogHref,
   draftIdFor,
   isPublishableDraft,
   slugify,
@@ -19,8 +20,17 @@ test('Portable Text conversion keeps safe internal links', () => {
     { style: 'normal', text: 'Continue to [Ella](/destinations/ella) after breakfast.' }
   ]);
   assert.equal(block.children.map((child) => child.text).join(''), 'Continue to Ella after breakfast.');
-  assert.equal(block.markDefs[0].href, '/destinations/ella');
+  assert.equal(block.markDefs[0].href, 'https://www.reiseceylon.com/destinations/ella');
   assert.deepEqual(block.children.find((child) => child.text === 'Ella').marks, [block.markDefs[0]._key]);
+});
+
+test('blog links use the public www origin and preserve safe external links', () => {
+  assert.equal(
+    canonicalBlogHref('/destinations/sigiriya-rock-fortress'),
+    'https://www.reiseceylon.com/destinations/sigiriya-rock-fortress'
+  );
+  assert.equal(canonicalBlogHref('https://example.com/guide'), 'https://example.com/guide');
+  assert.equal(canonicalBlogHref('javascript:alert(1)'), null);
 });
 
 test('generated article validation rejects thin drafts', () => {
