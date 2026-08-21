@@ -1,5 +1,6 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { phoneHref, whatsappHref } from '@/lib/contact-links';
 import { getContactDetails } from '@/sanity/site';
 
 export async function Footer() {
@@ -45,9 +46,9 @@ export async function Footer() {
         <div>
           <strong>{t('sayHello')}</strong>
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
-          {contact.phone ? <a href={`tel:${contact.phone.replace(/\s+/g, '')}`}>{contact.phone}</a> : null}
+          {contact.phone ? <a href={phoneHref(contact.phone)}>{contact.phone}</a> : null}
           {contact.whatsapp ? (
-            <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener noreferrer">
+            <a href={whatsappHref(contact.whatsapp)} target="_blank" rel="noopener noreferrer">
               {t('whatsapp')}
             </a>
           ) : null}

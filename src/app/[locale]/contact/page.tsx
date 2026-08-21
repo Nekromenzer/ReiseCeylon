@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactForm } from '@/components/ContactForm';
 import { JsonLd } from '@/components/JsonLd';
+import { phoneHref, whatsappHref } from '@/lib/contact-links';
 import { breadcrumbSchema, pageSchema } from '@/lib/schema';
 import { alternatesFor, urlFor } from '@/lib/seo';
 import { getContactDetails } from '@/sanity/site';
@@ -59,9 +60,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         <p>{t('intro', { responseTime: contact.responseTime })}</p>
         <div className="contact-details">
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
-          {contact.phone ? <a href={`tel:${contact.phone.replace(/\s+/g, '')}`}>{contact.phone}</a> : null}
+          {contact.phone ? <a href={phoneHref(contact.phone)}>{contact.phone}</a> : null}
           {contact.whatsapp ? (
-            <a href={`https://wa.me/${contact.whatsapp}`} target="_blank" rel="noopener noreferrer">
+            <a href={whatsappHref(contact.whatsapp)} target="_blank" rel="noopener noreferrer">
               {t('whatsapp')}
             </a>
           ) : null}

@@ -11,6 +11,11 @@ function revalidateLocalizedPath(path: string) {
   for (const locale of locales) revalidatePath(`/${locale}${path}`);
 }
 
+function revalidateLocalizedLayouts() {
+  revalidatePath('/', 'layout');
+  for (const locale of locales) revalidatePath(`/${locale}`, 'layout');
+}
+
 /**
  * Sanity webhook target. Publishing in the studio drops the cached queries so
  * the change is live within seconds.
@@ -46,10 +51,11 @@ export async function POST(request: NextRequest) {
       if (slug) revalidateLocalizedPath(`/blog/${slug}`);
     } else {
       /* Destinations, journeys and contact details all feed the 'site' tag. */
-      revalidateTag('site', 'max');
-      revalidatePath('/', 'layout');
-      if (body._type === 'destination' && slug) revalidatePath(`/destinations/${slug}`);
-      if (body._type === 'tour' && slug) revalidatePath(`/tours/${slug}`);
+      revalidateTag('site', { expire: 0 });
+      revalidateLocalizedLayouts();
+      if (body._type === 'siteSettings') revalidateLocalizedPath('/contact');
+      if (body._type === 'destination' && slug) revalidateLocalizedPath(`/destinations/${slug}`);
+      if (body._type === 'tour' && slug) revalidateLocalizedPath(`/tours/${slug}`);
     }
 
     return NextResponse.json({ revalidated: true, now: Date.now() });
