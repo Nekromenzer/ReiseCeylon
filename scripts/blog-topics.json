@@ -1,0 +1,66 @@
+[
+  {
+    "key": "sigiriya-first-visit-guide",
+    "title": "How to plan a first visit to Sigiriya",
+    "searchIntent": "Practical planning for travellers deciding when to arrive and what to combine with Sigiriya",
+    "category": "Heritage",
+    "brief": "Explain the shape of a calm visit without quoting changeable ticket prices or promising exact opening times. Include cultural respect, heat preparation and a slower nearby experience.",
+    "internalLinks": ["/destinations/sigiriya-rock-fortress", "/journeys"]
+  },
+  {
+    "key": "kandy-cultural-day",
+    "title": "A thoughtful cultural day in Kandy",
+    "searchIntent": "A one-day Kandy plan balancing heritage, nature and respectful temple visits",
+    "category": "Heritage",
+    "brief": "Build a realistic day rather than a checklist. Explain respectful clothing and behaviour, and avoid unsupported historical claims.",
+    "internalLinks": ["/destinations/kandy", "/journeys"]
+  },
+  {
+    "key": "ella-slow-travel-guide",
+    "title": "A slower way to experience Ella",
+    "searchIntent": "Advice for travellers who want walks, viewpoints and village time around Ella",
+    "category": "Hill country",
+    "brief": "Discuss pacing, changing hill-country weather and responsible walking. Do not state live train schedules or guaranteed journey times.",
+    "internalLinks": ["/destinations/ella", "/journeys"]
+  },
+  {
+    "key": "south-coast-season-planning",
+    "title": "Planning a Sri Lanka south-coast journey by season",
+    "searchIntent": "Season-aware itinerary guidance for Sri Lanka's south coast",
+    "category": "Coast",
+    "brief": "Explain broad seasonal patterns with uncertainty and useful alternatives. Avoid presenting weather as guaranteed.",
+    "internalLinks": ["/destinations/mirissa-beach", "/journeys"]
+  },
+  {
+    "key": "yala-responsible-safari",
+    "title": "How to choose a responsible safari around Yala",
+    "searchIntent": "Responsible wildlife-viewing guidance for visitors considering Yala",
+    "category": "Wildlife",
+    "brief": "Prioritise animal welfare, patient observation and responsible operator questions. Never promise sightings.",
+    "internalLinks": ["/destinations/yala-national-park", "/journeys"]
+  },
+  {
+    "key": "galle-fort-walking-guide",
+    "title": "How to explore Galle Fort beyond the main streets",
+    "searchIntent": "A practical and culturally aware walking guide to Galle Fort",
+    "category": "Heritage",
+    "brief": "Describe a slow walking approach, living heritage and respectful photography. Avoid invented stories about individual buildings.",
+    "internalLinks": ["/destinations/galle-fort", "/journeys"]
+  },
+  {
+    "key": "sri-lanka-train-travel-planning",
+    "title": "What to know before planning train travel in Sri Lanka",
+    "searchIntent": "Practical preparation for travellers using Sri Lankan trains",
+    "category": "Practical travel",
+    "brief": "Cover comfort, flexibility, luggage and booking preparation without quoting live timetables, fares or availability.",
+    "internalLinks": ["/destinations/ella", "/journeys"]
+  },
+  {
+    "key": "two-week-sri-lanka-pacing",
+    "title": "How to pace a two-week Sri Lanka journey",
+    "searchIntent": "Itinerary structure for first-time visitors who want variety without rushing",
+    "category": "Journey planning",
+    "brief": "Explain route trade-offs and rest days. Keep the article useful without claiming one perfect itinerary for everyone.",
+    "internalLinks": ["/destinations", "/journeys"]
+  }
+]

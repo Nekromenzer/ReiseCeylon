@@ -146,8 +146,12 @@ content when its document type is empty in Sanity, so the site never renders bla
 Redeploy the hosted studio after any schema change:
 
 ```bash
-set -a && . ./.env && set +a && SANITY_AUTH_TOKEN="$SANITY_REVALIDATE_SECRET" npx sanity deploy -y
+npx sanity login
+npm run sanity -- deploy --yes
 ```
+
+The webhook revalidation secret is not a Sanity login token and must not be
+used as `SANITY_AUTH_TOKEN`.
 
 Local setup:
 
@@ -164,6 +168,60 @@ One-time setup in [sanity.io/manage](https://sanity.io/manage) → API:
   `SANITY_REVALIDATE_SECRET`. Publishing then refreshes the affected pages within seconds.
 
 Publishing an entry: **Journal entries → Create**, fill in title, slug (generated from the title), excerpt, cover image, category and body, then **Publish**. Categories and authors are separate documents, created once and referenced from each entry.
+
+### Automated journal drafts and publishing
+
+The blog automation deliberately has two stages. Every Monday at 09:00 Sri
+Lanka time, `.github/workflows/generate-blog-draft.yml` takes the next unused
+entry from `scripts/blog-topics.json`, asks the configured AI model for an
+English draft, validates it, and creates a document under **Blog posts** in
+Sanity. It cannot publish that draft.
+
+An editor must then:
+
+1. Check every factual claim and internal link.
+2. Upload a cover photograph ReiseCeylon owns or is licensed to use.
+3. Check the image alternative text and revise the English copy.
+4. Add translations when they have been reviewed.
+5. In **Publishing workflow**, choose a future **Publish at** value and change
+   **Review status** to **Approved for scheduled publishing**.
+
+`.github/workflows/publish-approved-blog.yml` checks hourly. It refuses drafts
+that are not explicitly approved or are missing their due date, English copy,
+category, body, cover asset, or cover-image alternative text. After publication,
+the existing signed Sanity webhook refreshes the journal, article route, sitemap
+and RSS-backed reads.
+
+Configure these under **GitHub → Settings → Secrets and variables → Actions**:
+
+| Kind | Name | Value |
+| --- | --- | --- |
+| Secret | `SANITY_API_TOKEN` | Sanity token with Editor permissions |
+| Secret | `OPENAI_API_KEY` | API key used only by draft generation |
+| Variable | `NEXT_PUBLIC_SANITY_PROJECT_ID` | Same project id as the deployed site |
+| Variable | `NEXT_PUBLIC_SANITY_DATASET` | Normally `production` |
+| Variable | `NEXT_PUBLIC_SANITY_API_VERSION` | Normally `2024-10-01` |
+| Variable | `BLOG_AI_MODEL` | Optional; defaults to `gpt-5-mini` |
+
+The schedules start only after these workflow files reach the repository's
+default branch. Before enabling them, deploy the updated Studio schema and run
+both workflows manually: generate a draft, inspect it in Studio, then use the
+publisher's default dry-run option. A manual publisher run changes content only
+when **Dry run** is turned off.
+
+Useful local checks and manual commands:
+
+```bash
+npm run blog:validate-topics
+npm test
+npm run blog:generate-draft -- --topic=sigiriya-first-visit-guide --dry-run
+npm run blog:publish-approved -- --dry-run
+```
+
+The generation dry run still calls the AI service and reads Sanity, but does not
+write documents. Add new reviewed topics to the end of
+`scripts/blog-topics.json`; stable topic keys prevent workflow retries from
+creating duplicates.
 
 Schemas live in `src/sanity/schemas/`. Journal queries are in `src/sanity/queries.ts`,
 everything else in `src/sanity/site.ts`.

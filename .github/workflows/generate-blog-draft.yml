@@ -1,0 +1,52 @@
+name: Generate weekly blog draft
+
+on:
+  schedule:
+    # Monday 09:00 in Sri Lanka (UTC+05:30).
+    - cron: '30 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Optional exact key from scripts/blog-topics.json'
+        required: false
+        type: string
+      dry_run:
+        description: 'Generate and validate without writing to Sanity'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reiseceylon-blog-draft
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run blog:validate-topics
+      - name: Generate the next draft
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ vars.NEXT_PUBLIC_SANITY_API_VERSION }}
+          SANITY_API_TOKEN: ${{ secrets.SANITY_API_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BLOG_AI_MODEL: ${{ vars.BLOG_AI_MODEL }}
+          SELECTED_TOPIC: ${{ inputs.topic }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=()
+          if [ -n "$SELECTED_TOPIC" ]; then args+=("--topic=$SELECTED_TOPIC"); fi
+          if [ "$DRY_RUN" = "true" ]; then args+=("--dry-run"); fi
+          npm run blog:generate-draft -- "${args[@]}"

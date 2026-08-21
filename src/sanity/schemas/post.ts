@@ -84,6 +84,62 @@ export const post = defineType({
       title: 'SEO description',
       type: 'localeTextOptional',
       description: 'Falls back to the excerpt when empty.'
+    }),
+    defineField({
+      name: 'automation',
+      title: 'Publishing workflow',
+      type: 'object',
+      description: 'AI-created entries stay as drafts until a person approves and schedules them.',
+      options: { collapsible: true, collapsed: false },
+      fields: [
+        defineField({
+          name: 'generated',
+          title: 'Generated draft',
+          type: 'boolean',
+          readOnly: true,
+          initialValue: false
+        }),
+        defineField({
+          name: 'status',
+          title: 'Review status',
+          type: 'string',
+          initialValue: 'needs-review',
+          options: {
+            layout: 'radio',
+            list: [
+              { title: 'Needs review', value: 'needs-review' },
+              { title: 'Approved for scheduled publishing', value: 'approved' },
+              { title: 'Published by automation', value: 'published' }
+            ]
+          }
+        }),
+        defineField({
+          name: 'scheduledFor',
+          title: 'Publish at',
+          type: 'datetime',
+          description: 'Used only after the review status is changed to Approved.'
+        }),
+        defineField({
+          name: 'topicKey',
+          title: 'Content-plan key',
+          type: 'string',
+          readOnly: true
+        }),
+        defineField({
+          name: 'reviewNotes',
+          title: 'Review notes',
+          type: 'text',
+          rows: 3,
+          description: 'Record fact checks, image rights, translation status or requested edits.'
+        })
+      ],
+      validation: (rule) =>
+        rule.custom((value) => {
+          if (value?.status === 'approved' && !value.scheduledFor) {
+            return 'Choose a publishing date and time before approving this entry.';
+          }
+          return true;
+        })
     })
   ],
   orderings: [

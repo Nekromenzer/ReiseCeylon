@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "tsc --noEmit",
     "sanity": "sanity",
+    "blog:generate-draft": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/generate-blog-draft.mjs",
+    "blog:publish-approved": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/publish-approved-posts.mjs",
+    "blog:validate-topics": "node scripts/validate-blog-topics.mjs",
     "seed:journal": "node --env-file=.env scripts/seed-journal.mjs",
     "seed:site": "node --experimental-strip-types --env-file=.env scripts/seed-site.mjs",
     "sync:destinations": "node --env-file=.env scripts/sync-destinations.mjs",
@@ -15,7 +18,8 @@
     "generate:destination-editorial": "sanity exec scripts/generate-destination-editorial.mjs --with-user-token",
     "migrate:locales": "node --env-file=.env scripts/migrate-locale-fields.mjs",
     "audit:destinations": "node scripts/audit-destination-content.mjs",
-    "images:destinations": "node scripts/generate-destination-images.mjs"
+    "images:destinations": "node scripts/generate-destination-images.mjs",
+    "test": "node --test scripts/*.test.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
