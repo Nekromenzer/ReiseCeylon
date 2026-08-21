@@ -9,7 +9,7 @@ import { structureTool } from 'sanity/structure';
 import { dataset, projectId } from './src/sanity/env';
 import { schemaTypes } from './src/sanity/schemas';
 
-const visibleDocumentTypes = new Set(['destination', 'post', 'author', 'category']);
+const creatableDocumentTypes = new Set(['destination', 'post', 'author', 'category']);
 
 export default defineConfig({
   name: 'reiseceylon',
@@ -23,9 +23,13 @@ export default defineConfig({
   scheduledPublishing: { enabled: false },
   schema: { types: schemaTypes },
   document: {
-    /* Keep the Studio focused on content editors can manage here. */
+    /* The contact document is a pinned singleton, never a generic new document. */
     newDocumentOptions: (previous) =>
-      previous.filter((item) => visibleDocumentTypes.has(item.templateId))
+      previous.filter((item) => creatableDocumentTypes.has(item.templateId)),
+    actions: (previous, context) =>
+      context.schemaType === 'siteSettings'
+        ? previous.filter((item) => !['delete', 'duplicate', 'unpublish'].includes(item.action ?? ''))
+        : previous
   },
   plugins: [
     structureTool({
@@ -37,7 +41,12 @@ export default defineConfig({
             S.divider(),
             S.documentTypeListItem('post').title('Blog posts'),
             S.documentTypeListItem('category').title('Blog categories'),
-            S.documentTypeListItem('author').title('Authors')
+            S.documentTypeListItem('author').title('Authors'),
+            S.divider(),
+            S.listItem()
+              .id('siteSettings')
+              .title('Contact details')
+              .child(S.document().schemaType('siteSettings').documentId('siteSettings').title('Contact details'))
           ])
     })
   ]
