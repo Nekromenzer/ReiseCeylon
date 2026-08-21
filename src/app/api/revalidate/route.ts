@@ -1,6 +1,15 @@
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
 import { parseBody } from 'next-sanity/webhook';
+import { locales } from '@/i18n/routing';
+
+function revalidateLocalizedPath(path: string) {
+  // Revalidate both the public default-locale URL and every internal locale
+  // route used by next-intl. This keeps the webhook correct regardless of
+  // whether the request reached Next.js as /blog or /en/blog.
+  revalidatePath(path);
+  for (const locale of locales) revalidatePath(`/${locale}${path}`);
+}
 
 /**
  * Sanity webhook target. Publishing in the studio drops the cached queries so
@@ -29,9 +38,12 @@ export async function POST(request: NextRequest) {
     const slug = body.slug?.current;
 
     if (body._type === 'post') {
-      revalidateTag('post', 'max');
-      revalidatePath('/blog');
-      if (slug) revalidatePath(`/blog/${slug}`);
+      // A webhook is expected to make newly published content visible on the
+      // very next request. `max` serves stale content once while refreshing in
+      // the background, so expire the tagged data immediately instead.
+      revalidateTag('post', { expire: 0 });
+      revalidateLocalizedPath('/blog');
+      if (slug) revalidateLocalizedPath(`/blog/${slug}`);
     } else {
       /* Destinations, journeys and contact details all feed the 'site' tag. */
       revalidateTag('site', 'max');
