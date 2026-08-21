@@ -139,7 +139,9 @@ async function fetchJournal<T>(query: string, params: Record<string, unknown>, f
   if (!isSanityConfigured) return fallback;
   try {
     return await getClient().fetch<T>(query, params, {
-      next: { tags: ['post'], revalidate: 3600 }
+      // The signed webhook refreshes this immediately. The short fallback
+      // prevents a webhook/configuration failure from hiding posts for an hour.
+      next: { tags: ['post'], revalidate: 60 }
     });
   } catch (error) {
     console.error('[sanity] journal fetch failed', error);

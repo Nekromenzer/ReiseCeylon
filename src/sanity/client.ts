@@ -14,8 +14,10 @@ export function getClient() {
       projectId,
       dataset,
       apiVersion,
-      // Served from Sanity's CDN; published documents only, which is what the site wants.
-      useCdn: true,
+      // Next.js owns the server-side cache and invalidates it from the signed
+      // webhook. Read the origin API when that cache refreshes so a second CDN
+      // layer cannot return an older post after publication.
+      useCdn: false,
       perspective: 'published'
     });
   }
