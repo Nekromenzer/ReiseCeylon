@@ -316,7 +316,9 @@
     "interestEverything": "Un peu de tout",
     "message": "Dites-nous en plus",
     "messagePlaceholder": "Qui voyage, à quel rythme, et les moments que vous espérez trouver...",
-    "submit": "Commencer la conversation ↗"
+    "submit": "Commencer la conversation ↗",
+    "sending": "Envoi en cours…",
+    "sendFailed": "Votre demande n’a pas pu être envoyée. Réessayez ou écrivez-nous directement par e-mail."
   },
   "destinations": {
     "heroEyebrow": "L’atlas · {count} lieux",

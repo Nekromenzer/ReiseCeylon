@@ -11,9 +11,7 @@
  * lives here.
  *
  * Two addresses matter:
- *   JOURNEY_ENQUIRY_TO    where enquiries land. Falls back to the contact email
- *                         in the studio, which is where the rest of the site
- *                         already points.
+ *   All ReiseCeylon copies go to the canonical contact inbox in defaults.ts.
  *   JOURNEY_ENQUIRY_FROM  the sender. Resend will only accept a domain you have
  *                         verified with them; until one is verified their
  *                         onboarding@resend.dev sender works and delivers to the
@@ -26,7 +24,7 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getTranslations } from 'next-intl/server';
 import { defaultLocale, isLocale } from '@/i18n/routing';
-import { getContactDetails } from '@/sanity/site';
+import { CONTACT_EMAIL } from '@/lib/defaults';
 import {
   renderItineraryEmailHtml,
   renderItineraryEmailText,
@@ -37,7 +35,10 @@ import {
 
 /** `RESEND_API` is what this project's .env uses; the conventional name works too. */
 const apiKey = process.env.RESEND_API_KEY ?? process.env.RESEND_API;
-const from = process.env.JOURNEY_ENQUIRY_FROM ?? 'ReiseCeylon <onboarding@resend.dev>';
+const configuredFrom = process.env.JOURNEY_ENQUIRY_FROM;
+const from = configuredFrom && !/@resend\.dev>?$/i.test(configuredFrom.trim())
+  ? configuredFrom
+  : 'ReiseCeylon <enquiries@tours.reiseceylon.com>';
 
 /**
  * Node, not edge — the Resend SDK is a Node client, and an edge deployment would
@@ -201,19 +202,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const contact = await getContactDetails(enquiry.locale);
-  const to = process.env.JOURNEY_ENQUIRY_TO ?? contact.email;
-
-  if (!isEmail(to)) {
-    console.error('[journey-enquiry] no usable destination address', {
-      JOURNEY_ENQUIRY_TO: process.env.JOURNEY_ENQUIRY_TO ?? null,
-      contactEmail: contact.email
-    });
-    return NextResponse.json(
-      { error: 'Email is not configured on this site yet. Please write to us directly.' },
-      { status: 503 }
-    );
-  }
+  const to = CONTACT_EMAIL;
 
   const resend = new Resend(apiKey);
 

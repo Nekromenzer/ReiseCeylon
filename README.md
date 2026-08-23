@@ -110,20 +110,18 @@ Two emails go out: the enquiry to ReiseCeylon, then a copy of the itinerary to
 the traveller. The copy is sent second and its failure is swallowed — their plan
 reaching us is what matters, and a bounced copy must not report the whole send as
 failed. The response says which of the two went (`{ ok, copySent }`), and the
-confirmation only promises a copy when one was actually delivered. Until a domain
-is verified the copy will fail for every address except the Resend account
-owner's.
+confirmation only promises a copy when one was actually delivered. The sender
+uses the verified `tours.reiseceylon.com` domain so copies can reach travellers.
 
 | Variable | |
 | --- | --- |
 | `RESEND_API_KEY` | The API key. `RESEND_API` is accepted too. |
-| `JOURNEY_ENQUIRY_TO` | Where enquiries land. Defaults to the studio's contact email. |
-| `JOURNEY_ENQUIRY_FROM` | The sender. Must be a domain verified with Resend. |
+| Inquiry recipient | Every ReiseCeylon copy is sent to `reiseceylon@gmail.com`. |
+| `JOURNEY_ENQUIRY_FROM` | The sender. Use `ReiseCeylon <enquiries@tours.reiseceylon.com>`, on the verified Resend domain. |
 
-Until a domain is verified at [resend.com/domains](https://resend.com/domains),
-Resend only delivers to the address that owns the account, and `from` must stay
-`onboarding@resend.dev`. With no key set the endpoint returns 503 and the form
-says email is not configured rather than failing silently.
+With no key set the endpoint returns 503 and the form says email is not
+configured rather than failing silently. The restricted `onboarding@resend.dev`
+test sender is automatically replaced with the verified ReiseCeylon sender.
 
 ## Content (Sanity)
 

@@ -316,7 +316,9 @@
     "interestEverything": "A little of everything",
     "message": "Tell us more",
     "messagePlaceholder": "Who is travelling, your pace, and the moments you hope to find...",
-    "submit": "Begin the conversation ↗"
+    "submit": "Begin the conversation ↗",
+    "sending": "Sending…",
+    "sendFailed": "We could not send your enquiry. Please try again or email us directly."
   },
   "destinations": {
     "heroEyebrow": "The atlas · {count} places",

@@ -316,7 +316,9 @@
     "interestEverything": "Van alles wat",
     "message": "Vertel ons meer",
     "messagePlaceholder": "Wie er meereist, uw tempo, en de momenten die u hoopt te vinden...",
-    "submit": "Begin het gesprek ↗"
+    "submit": "Begin het gesprek ↗",
+    "sending": "Verzenden…",
+    "sendFailed": "Uw aanvraag kon niet worden verzonden. Probeer het opnieuw of e-mail ons rechtstreeks."
   },
   "destinations": {
     "heroEyebrow": "De atlas · {count} plaatsen",

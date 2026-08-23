@@ -12,6 +12,7 @@
  * Everything here is a pure string function with no Sanity, Resend or DOM
  * dependency, so it runs unchanged on either side.
  */
+import { CONTACT_EMAIL } from './defaults';
 import { CUSTOM_PREFIX, formatDuration } from './journey';
 
 /**
@@ -409,7 +410,7 @@ export function renderItineraryPrintable(
 
     <footer>
       ${e(t('printFooter'))}<br>
-      ReiseCeylon · journeys@reiseceylon.com · reiseceylon.com
+      ReiseCeylon · ${CONTACT_EMAIL} · reiseceylon.com
     </footer>
   </div>
 </body>

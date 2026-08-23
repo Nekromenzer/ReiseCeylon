@@ -1,20 +1,56 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+
+type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 export function ContactForm() {
   const t = useTranslations('contactForm');
-  const [sent, setSent] = useState(false);
+  const locale = useLocale();
+  const [status, setStatus] = useState<Status>('idle');
+  const [error, setError] = useState('');
 
-  if (sent) {
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
+    setStatus('sending');
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact-enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          locale,
+          name: String(form.get('name') ?? ''),
+          email: String(form.get('email') ?? ''),
+          dates: String(form.get('dates') ?? ''),
+          interest: String(form.get('interest') ?? ''),
+          message: String(form.get('message') ?? ''),
+          website: String(form.get('website') ?? '')
+        })
+      });
+      const body = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(body.error || t('sendFailed'));
+
+      formElement.reset();
+      setStatus('sent');
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : t('sendFailed'));
+      setStatus('error');
+    }
+  }
+
+  if (status === 'sent') {
     return (
       <div className="contact-form">
         <div className="contact-success">
           <span>{t('successEyebrow')}</span>
           <h2>{t('successHeading')}</h2>
           <p>{t('successCopy')}</p>
-          <button type="button" onClick={() => setSent(false)}>{t('sendAnother')}</button>
+          <button type="button" onClick={() => setStatus('idle')}>{t('sendAnother')}</button>
         </div>
       </div>
     );
@@ -22,7 +58,8 @@ export function ContactForm() {
 
   return (
     <div className="contact-form">
-      <form onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
+      <form onSubmit={submit}>
+        <input className="contact-honeypot" name="website" tabIndex={-1} autoComplete="off" aria-hidden />
         <label>{t('name')}<input name="name" required placeholder={t('namePlaceholder')} /></label>
         <label>{t('email')}<input name="email" type="email" required placeholder={t('emailPlaceholder')} /></label>
         <label>{t('dates')}<input name="dates" placeholder={t('datesPlaceholder')} /></label>
@@ -36,7 +73,10 @@ export function ContactForm() {
           </select>
         </label>
         <label>{t('message')}<textarea name="message" placeholder={t('messagePlaceholder')} /></label>
-        <button type="submit">{t('submit')}</button>
+        {status === 'error' ? <p className="contact-error" role="alert">{error}</p> : null}
+        <button type="submit" disabled={status === 'sending'}>
+          {status === 'sending' ? t('sending') : t('submit')}
+        </button>
       </form>
     </div>
   );

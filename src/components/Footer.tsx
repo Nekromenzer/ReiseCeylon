@@ -1,6 +1,6 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { phoneHref, whatsappHref } from '@/lib/contact-links';
+import { emailHref, phoneHref, whatsappHref } from '@/lib/contact-links';
 import { getContactDetails } from '@/sanity/site';
 
 export async function Footer() {
@@ -23,7 +23,7 @@ export async function Footer() {
           <Link href="/contact" className="light-cta">
             {t('cta')} <span>↗</span>
           </Link>
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <a href={emailHref(contact.email)}>{contact.email}</a>
         </div>
       </div>
       <div className="footer-grid">
@@ -45,7 +45,7 @@ export async function Footer() {
         </div>
         <div>
           <strong>{t('sayHello')}</strong>
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          <a href={emailHref(contact.email)}>{contact.email}</a>
           {contact.phone ? <a href={phoneHref(contact.phone)}>{contact.phone}</a> : null}
           {contact.whatsapp ? (
             <a href={whatsappHref(contact.whatsapp)} target="_blank" rel="noopener noreferrer">

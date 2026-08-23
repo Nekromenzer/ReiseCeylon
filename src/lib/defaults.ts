@@ -39,8 +39,10 @@ export const tourDefaults = {
     'Handpicked accommodation, daily breakfast, private transport, specialist hosts, selected experiences and 24/7 local assistance are included. International flights and travel insurance are excluded.'
 };
 
+export const CONTACT_EMAIL = 'reiseceylon@gmail.com';
+
 export const contactDefaults = {
-  email: 'reiseceylon@gmail.com',
+  email: CONTACT_EMAIL,
   phone: '+94 77 050 2482',
   location: 'Colombo, Sri Lanka',
   responseTime: 'within one working day'

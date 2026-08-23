@@ -541,7 +541,9 @@ export async function getContactDetails(locale: string): Promise<ContactDetails>
   if (!row?.email) return fallback;
 
   return {
-    email: row.email,
+    /* One canonical inbox across the site; CMS content cannot accidentally
+       redirect public links or enquiries to a different address. */
+    email: contactDefaults.email,
     phone: row.phone ?? null,
     whatsapp: row.whatsapp ?? null,
     location: pickExact(row.location, locale) || fallback.location,

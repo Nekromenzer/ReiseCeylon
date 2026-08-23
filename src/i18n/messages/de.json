@@ -316,7 +316,9 @@
     "interestEverything": "Von allem etwas",
     "message": "Erzählen Sie uns mehr",
     "messagePlaceholder": "Wer reist mit, in welchem Tempo, und welche Momente erhoffen Sie sich...",
-    "submit": "Das Gespräch beginnen ↗"
+    "submit": "Das Gespräch beginnen ↗",
+    "sending": "Wird gesendet…",
+    "sendFailed": "Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per E-Mail."
   },
   "destinations": {
     "heroEyebrow": "Der Atlas · {count} Orte",

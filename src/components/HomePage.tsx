@@ -9,6 +9,7 @@ import Lenis from 'lenis';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { localeTags } from '@/i18n/routing';
+import { emailHref } from '@/lib/contact-links';
 import {
   art,
   attractionCategories,
@@ -28,10 +29,12 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function HomePage({
   destinations,
-  tours
+  tours,
+  contactEmail
 }: {
   destinations: Destination[];
   tours: Tour[];
+  contactEmail: string;
 }) {
   const t = useTranslations('home');
   const c = useTranslations('content');
@@ -565,8 +568,8 @@ export function HomePage({
                   {t('inviteCta')}
                   <span>↗</span>
                 </Link>
-                <a href="mailto:journeys@reiseceylon.com" className="rc-pill rc-pill-glass group">
-                  journeys@reiseceylon.com
+                <a href={emailHref(contactEmail)} className="rc-pill rc-pill-glass group">
+                  {contactEmail}
                   <span>✉</span>
                 </a>
               </div>

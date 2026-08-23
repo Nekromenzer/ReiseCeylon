@@ -17,6 +17,7 @@
  * unbounded search would return a Kandy in half a dozen other countries.
  */
 import { NextResponse } from 'next/server';
+import { CONTACT_EMAIL } from '@/lib/defaults';
 
 const NOMINATIM = 'https://nominatim.openstreetmap.org/search';
 
@@ -24,7 +25,7 @@ const NOMINATIM = 'https://nominatim.openstreetmap.org/search';
  * Nominatim asks for an application name and a contact address so they can get
  * in touch before blocking anyone. Keep it accurate.
  */
-const USER_AGENT = 'ReiseCeylon-JourneyPlanner/1.0 (+https://reiseceylon.com; journeys@reiseceylon.com)';
+const USER_AGENT = `ReiseCeylon-JourneyPlanner/1.0 (+https://reiseceylon.com; ${CONTACT_EMAIL})`;
 
 /** Long enough that repeat searches for the same town cost Nominatim nothing. */
 const CACHE_SECONDS = 60 * 60 * 24;
