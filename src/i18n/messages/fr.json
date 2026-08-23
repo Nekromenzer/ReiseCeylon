@@ -306,6 +306,8 @@
     "namePlaceholder": "Comment devons-nous vous appeler ?",
     "email": "Adresse e-mail",
     "emailPlaceholder": "vous@exemple.fr",
+    "phone": "Numéro de mobile (facultatif)",
+    "phonePlaceholder": "+33 6 12 34 56 78",
     "dates": "À quelle période pensez-vous ?",
     "datesPlaceholder": "Mois ou dates approximatives",
     "interest": "Qu’est-ce qui vous attire ?",

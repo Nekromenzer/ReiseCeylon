@@ -12,6 +12,7 @@ const from = configuredFrom && !/@resend\.dev>?$/i.test(configuredFrom.trim())
   ? configuredFrom
   : 'ReiseCeylon <enquiries@tours.reiseceylon.com>';
 const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const isPhone = (value: string) => /^[+\d][\d\s().-]{5,31}$/.test(value);
 const escapeHtml = (value: string) => value
   .replaceAll('&', '&amp;')
   .replaceAll('<', '&lt;')
@@ -23,6 +24,7 @@ type ContactEnquiry = {
   locale: string;
   name: string;
   email: string;
+  phone: string;
   dates: string;
   interest: string;
   message: string;
@@ -35,13 +37,16 @@ function parse(body: unknown): ContactEnquiry | null {
 
   const name = String(raw.name ?? '').trim();
   const email = String(raw.email ?? '').trim().toLowerCase();
+  const phone = String(raw.phone ?? '').trim();
   if (!name || name.length > 120 || !isEmail(email) || email.length > 200) return null;
+  if (phone && !isPhone(phone)) return null;
 
   const requestedLocale = String(raw.locale ?? '');
   return {
     locale: isLocale(requestedLocale) ? requestedLocale : defaultLocale,
     name,
     email,
+    phone,
     dates: String(raw.dates ?? '').trim().slice(0, 200),
     interest: String(raw.interest ?? '').trim().slice(0, 200),
     message: String(raw.message ?? '').trim().slice(0, 4000)
@@ -66,7 +71,10 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    return NextResponse.json({ error: 'Please enter a valid name and email address.' }, { status: 400 });
+    return NextResponse.json(
+      { error: 'Please enter a valid name, email address and mobile number.' },
+      { status: 400 }
+    );
   }
 
   if (!apiKey) {
@@ -82,6 +90,7 @@ export async function POST(request: Request) {
   const rows = [
     ['Name', enquiry.name],
     ['Email', enquiry.email],
+    ['Mobile', enquiry.phone || 'Not provided'],
     ['Dates', enquiry.dates || 'Not provided'],
     ['Interest', enquiry.interest || 'Not provided'],
     ['Language', enquiry.locale.toUpperCase()],

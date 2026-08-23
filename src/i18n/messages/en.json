@@ -306,6 +306,8 @@
     "namePlaceholder": "How should we address you?",
     "email": "Email address",
     "emailPlaceholder": "you@example.com",
+    "phone": "Mobile number (optional)",
+    "phonePlaceholder": "+94 77 123 4567",
     "dates": "When are you thinking?",
     "datesPlaceholder": "Month or approximate dates",
     "interest": "What are you drawn to?",

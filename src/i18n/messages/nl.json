@@ -306,6 +306,8 @@
     "namePlaceholder": "Hoe mogen we u aanspreken?",
     "email": "E-mailadres",
     "emailPlaceholder": "u@voorbeeld.nl",
+    "phone": "Mobiel nummer (optioneel)",
+    "phonePlaceholder": "+31 6 12345678",
     "dates": "Aan welke periode denkt u?",
     "datesPlaceholder": "Maand of bij benadering",
     "interest": "Waar wordt u door aangetrokken?",

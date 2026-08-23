@@ -306,6 +306,8 @@
     "namePlaceholder": "Wie dürfen wir Sie ansprechen?",
     "email": "E-Mail-Adresse",
     "emailPlaceholder": "sie@beispiel.de",
+    "phone": "Mobilnummer (optional)",
+    "phonePlaceholder": "+49 151 12345678",
     "dates": "Woran denken Sie zeitlich?",
     "datesPlaceholder": "Monat oder ungefährer Zeitraum",
     "interest": "Was zieht Sie an?",

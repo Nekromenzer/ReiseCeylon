@@ -26,6 +26,7 @@ export function ContactForm() {
           locale,
           name: String(form.get('name') ?? ''),
           email: String(form.get('email') ?? ''),
+          phone: String(form.get('phone') ?? ''),
           dates: String(form.get('dates') ?? ''),
           interest: String(form.get('interest') ?? ''),
           message: String(form.get('message') ?? ''),
@@ -62,6 +63,16 @@ export function ContactForm() {
         <input className="contact-honeypot" name="website" tabIndex={-1} autoComplete="off" aria-hidden />
         <label>{t('name')}<input name="name" required placeholder={t('namePlaceholder')} /></label>
         <label>{t('email')}<input name="email" type="email" required placeholder={t('emailPlaceholder')} /></label>
+        <label>
+          {t('phone')}
+          <input
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder={t('phonePlaceholder')}
+          />
+        </label>
         <label>{t('dates')}<input name="dates" placeholder={t('datesPlaceholder')} /></label>
         <label>{t('interest')}
           <select name="interest" defaultValue="">
