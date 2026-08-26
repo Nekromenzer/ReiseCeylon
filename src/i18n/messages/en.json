@@ -290,13 +290,20 @@
     "card2Title": "Less, but better",
     "card2Copy": "We recommend fewer places and know them more deeply.",
     "card3Title": "Care that travels",
-    "card3Copy": "Your journey should benefit the people and landscapes that make it possible."
+    "card3Copy": "Your journey should benefit the people and landscapes that make it possible.",
+    "approachEyebrow": "How we plan",
+    "approachTitle": "Local knowledge shapes every route.",
+    "approachCopy1": "We begin with the season, the time you have and the places that genuinely suit your interests. Then we look at road time, opening days and the natural rhythm between coast, hills, heritage and wildlife.",
+    "approachCopy2": "Nothing is added only to make an itinerary look busy. We leave room for rest, conversation and unexpected stops, while working with people and small businesses that know their region well."
   },
   "contact": {
     "eyebrow": "Plan your journey",
     "headingLine1": "Tell us what",
     "headingLine2": "moves you.",
     "intro": "Share a little about the trip in your mind. A Sri Lanka travel designer will reply {responseTime} with thoughtful first ideas.",
+    "guidanceTitle": "What helps us plan well",
+    "guidanceCopy1": "Tell us your travel dates, group size, preferred pace and the parts of Sri Lanka that interest you. It is also useful to share any mobility, dietary or room needs from the start.",
+    "guidanceCopy2": "You do not need a finished itinerary. We will turn those details into a practical first route, explain the main choices and adjust it with you before anything is confirmed.",
     "whatsapp": "Message on WhatsApp"
   },
   "contactForm": {
@@ -566,6 +573,10 @@
     "headingLine1": "Stories for the",
     "headingLine2": "curious traveller.",
     "intro": "Local perspective, unrushed guides and ideas for seeing Sri Lanka with greater depth.",
+    "guideEyebrow": "Plan with context",
+    "guideTitle": "Useful Sri Lanka travel stories, written from the island.",
+    "guideCopy1": "Our field notes help you understand a place before adding it to a route. We cover practical timing, cultural context, wildlife etiquette, train journeys, regional food and the small choices that can make a visit calmer and more rewarding.",
+    "guideCopy2": "Each article is researched for travellers planning a private Sri Lanka journey. Use these stories to compare regions, choose the right season and ask better questions. When details such as opening times or access rules can change, we check them again while planning your trip.",
     "comingSoon": "Coming soon",
     "minRead": "{minutes} min read",
     "published": "Published",
@@ -601,7 +612,16 @@
     "theJourney": "The journey",
     "howStoryUnfolds": "How the story unfolds.",
     "included": "Included",
-    "tailor": "Tailor this journey"
+    "tailor": "Tailor this journey",
+    "planningEyebrow": "Before you travel",
+    "planningTitle": "Planning {title}",
+    "planningIntro": "This {days} route through {route} is a starting point for a private journey. We shape the final plan around your dates, interests and preferred pace.",
+    "flexibilityTitle": "Can the route change?",
+    "flexibilityCopy": "Yes. Stops, nights and experiences can be adjusted. We keep the route practical by checking drive times and the order in which each place is visited.",
+    "paceTitle": "How is the pace set?",
+    "paceCopy": "We balance planned visits with time to rest and explore. Tell us whether you prefer early starts, slower mornings, active days or more time at each stay.",
+    "beforeBookingTitle": "What happens before booking?",
+    "beforeBookingCopy": "We confirm current availability, seasonal conditions and important opening days. You receive a clear route and can review the main choices before the journey is confirmed."
   },
   "places": {
     "regions": {

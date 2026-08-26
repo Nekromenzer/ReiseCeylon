@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DestinationHighlights } from '@/components/DestinationHighlights';
+import { ClientMessages } from '@/components/ClientMessages';
 import { JsonLd } from '@/components/JsonLd';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
@@ -228,12 +229,14 @@ export default async function DestinationPage({
         </Reveal>
       </section>
 
-      <DestinationHighlights
-        highlights={destination.highlights}
-        image={destination.image}
-        imageAlt={destination.imageAlt}
-        heading={t('highlightsHeading', { name: destination.name })}
-      />
+      <ClientMessages locale={locale} namespaces={['highlights']}>
+        <DestinationHighlights
+          highlights={destination.highlights}
+          image={destination.image}
+          imageAlt={destination.imageAlt}
+          heading={t('highlightsHeading', { name: destination.name })}
+        />
+      </ClientMessages>
 
       {hasPoint ? (
         <section className="detail-map">

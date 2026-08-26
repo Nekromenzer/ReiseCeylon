@@ -10,5 +10,5 @@ export function phoneHref(phone: string) {
 
 /** WhatsApp requires the international number as digits only. */
 export function whatsappHref(phone: string) {
-  return `https://wa.me/${phone.replace(/\D/g, '')}`;
+  return `https://api.whatsapp.com/send?phone=${phone.replace(/\D/g, '')}`;
 }

@@ -290,13 +290,20 @@
     "card2Title": "Moins, mais mieux",
     "card2Copy": "Nous recommandons moins de lieux et les connaissons plus profondément.",
     "card3Title": "Un soin qui voyage",
-    "card3Copy": "Votre voyage doit bénéficier aux personnes et aux paysages qui le rendent possible."
+    "card3Copy": "Votre voyage doit bénéficier aux personnes et aux paysages qui le rendent possible.",
+    "approachEyebrow": "Notre façon de planifier",
+    "approachTitle": "La connaissance locale façonne chaque itinéraire.",
+    "approachCopy1": "Nous commençons par la saison, le temps dont vous disposez et les lieux qui correspondent vraiment à vos envies. Nous étudions ensuite les temps de route, les jours d’ouverture et le rythme naturel entre côte, montagnes, patrimoine et faune.",
+    "approachCopy2": "Rien n’est ajouté uniquement pour remplir le programme. Nous gardons du temps pour le repos, les rencontres et les arrêts imprévus, tout en travaillant avec des personnes et de petites entreprises qui connaissent bien leur région."
   },
   "contact": {
     "eyebrow": "Planifier votre voyage",
     "headingLine1": "Dites-nous ce",
     "headingLine2": "qui vous émeut.",
     "intro": "Parlez-nous un peu du voyage que vous avez en tête. Un concepteur de voyages au Sri Lanka vous répondra {responseTime} avec de premières idées réfléchies.",
+    "guidanceTitle": "Ce qui nous aide à bien planifier",
+    "guidanceCopy1": "Indiquez-nous vos dates, la taille du groupe, le rythme souhaité et les régions du Sri Lanka qui vous attirent. Il est aussi utile de préciser dès le départ vos besoins de mobilité, d’alimentation ou de chambre.",
+    "guidanceCopy2": "Vous n’avez pas besoin d’un itinéraire terminé. Nous transformons ces informations en une première route pratique, expliquons les choix principaux et l’ajustons avec vous avant toute confirmation.",
     "whatsapp": "Écrire sur WhatsApp"
   },
   "contactForm": {
@@ -566,6 +573,10 @@
     "headingLine1": "Des histoires pour le",
     "headingLine2": "voyageur curieux.",
     "intro": "Regards locaux, guides sans hâte et idées pour voir le Sri Lanka avec plus de profondeur.",
+    "guideEyebrow": "Planifier avec du contexte",
+    "guideTitle": "Des récits utiles sur le Sri Lanka, écrits depuis l’île.",
+    "guideCopy1": "Nos carnets vous aident à comprendre un lieu avant de l’ajouter à votre itinéraire. Nous parlons des bonnes périodes, du contexte culturel, du respect de la faune, des trajets en train, de la cuisine régionale et des petits choix qui rendent une visite plus calme et plus riche.",
+    "guideCopy2": "Chaque article s’adresse aux voyageurs qui préparent un voyage privé au Sri Lanka. Utilisez ces récits pour comparer les régions, choisir la bonne saison et poser de meilleures questions. Les horaires ou règles d’accès susceptibles de changer sont vérifiés de nouveau lors de la planification.",
     "comingSoon": "Bientôt",
     "minRead": "{minutes} min de lecture",
     "published": "Publié",
@@ -601,7 +612,16 @@
     "theJourney": "Le voyage",
     "howStoryUnfolds": "Comment l’histoire se déroule.",
     "included": "Inclus",
-    "tailor": "Adapter ce voyage"
+    "tailor": "Adapter ce voyage",
+    "planningEyebrow": "Avant le départ",
+    "planningTitle": "Préparer {title}",
+    "planningIntro": "Cet itinéraire de {days} par {route} sert de point de départ à un voyage privé. Nous adaptons le programme final à vos dates, à vos envies et à votre rythme.",
+    "flexibilityTitle": "L’itinéraire peut-il changer ?",
+    "flexibilityCopy": "Oui. Les étapes, les nuits et les expériences peuvent être modifiées. Nous gardons une route réaliste en vérifiant les temps de trajet et le meilleur ordre de visite.",
+    "paceTitle": "Comment le rythme est-il choisi ?",
+    "paceCopy": "Nous équilibrons les visites prévues avec du temps pour vous reposer et explorer. Dites-nous si vous préférez partir tôt, commencer doucement, vivre des journées actives ou rester plus longtemps à chaque étape.",
+    "beforeBookingTitle": "Que se passe-t-il avant la réservation ?",
+    "beforeBookingCopy": "Nous vérifions les disponibilités, les conditions saisonnières et les jours d’ouverture importants. Vous recevez un itinéraire clair et pouvez revoir les choix principaux avant la confirmation du voyage."
   },
   "places": {
     "regions": {

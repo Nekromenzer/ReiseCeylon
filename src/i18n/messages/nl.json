@@ -290,13 +290,20 @@
     "card2Title": "Minder, maar beter",
     "card2Copy": "We bevelen minder plaatsen aan en kennen ze des te beter.",
     "card3Title": "Zorg die meereist",
-    "card3Copy": "Uw reis hoort ten goede te komen aan de mensen en landschappen die haar mogelijk maken."
+    "card3Copy": "Uw reis hoort ten goede te komen aan de mensen en landschappen die haar mogelijk maken.",
+    "approachEyebrow": "Zo plannen we",
+    "approachTitle": "Lokale kennis vormt elke route.",
+    "approachCopy1": "We beginnen met het seizoen, de tijd die u hebt en de plaatsen die echt bij uw interesses passen. Daarna bekijken we reistijden, openingsdagen en het natuurlijke ritme tussen kust, heuvelland, erfgoed en dierenwereld.",
+    "approachCopy2": "Niets wordt alleen toegevoegd om een reisplan voller te laten lijken. We laten ruimte voor rust, gesprekken en onverwachte stops en werken met mensen en kleine bedrijven die hun regio goed kennen."
   },
   "contact": {
     "eyebrow": "Plan uw reis",
     "headingLine1": "Vertel ons wat",
     "headingLine2": "u raakt.",
     "intro": "Vertel ons iets over de reis die u voor ogen hebt. Een reisontwerper voor Sri Lanka antwoordt {responseTime} met doordachte eerste ideeën.",
+    "guidanceTitle": "Wat ons helpt goed te plannen",
+    "guidanceCopy1": "Vertel ons uw reisdata, groepsgrootte, gewenste tempo en welke delen van Sri Lanka u interesseren. Het helpt ook als u vanaf het begin wensen rond mobiliteit, voeding of kamers met ons deelt.",
+    "guidanceCopy2": "U hebt nog geen volledig reisplan nodig. Wij maken van deze informatie een praktische eerste route, leggen de belangrijkste keuzes uit en passen alles samen met u aan voordat iets wordt bevestigd.",
     "whatsapp": "Bericht via WhatsApp"
   },
   "contactForm": {
@@ -566,6 +573,10 @@
     "headingLine1": "Verhalen voor de",
     "headingLine2": "nieuwsgierige reiziger.",
     "intro": "Lokaal perspectief, ongehaaste gidsen en ideeën om Sri Lanka met meer diepgang te zien.",
+    "guideEyebrow": "Plannen met context",
+    "guideTitle": "Nuttige reisverhalen over Sri Lanka, geschreven op het eiland.",
+    "guideCopy1": "Onze veldnotities helpen u een plek te begrijpen voordat u die aan uw route toevoegt. We schrijven over goede reistijden, culturele context, respect voor dieren, treinreizen, regionale gerechten en kleine keuzes die een bezoek rustiger en waardevoller maken.",
+    "guideCopy2": "Elk artikel is gemaakt voor reizigers die een privéreis door Sri Lanka plannen. Gebruik deze verhalen om regio’s te vergelijken, het juiste seizoen te kiezen en betere vragen te stellen. Gegevens die kunnen veranderen, zoals openingstijden of toegangsregels, controleren we opnieuw tijdens de reisplanning.",
     "comingSoon": "Binnenkort",
     "minRead": "{minutes} min lezen",
     "published": "Gepubliceerd",
@@ -601,7 +612,16 @@
     "theJourney": "De reis",
     "howStoryUnfolds": "Hoe het verhaal zich ontvouwt.",
     "included": "Inbegrepen",
-    "tailor": "Deze reis op maat maken"
+    "tailor": "Deze reis op maat maken",
+    "planningEyebrow": "Voor vertrek",
+    "planningTitle": "De planning van {title}",
+    "planningIntro": "Deze route van {days} via {route} is het beginpunt voor een privéreis. We stemmen het definitieve plan af op uw data, interesses en gewenste tempo.",
+    "flexibilityTitle": "Kan de route veranderen?",
+    "flexibilityCopy": "Ja. Stops, overnachtingen en ervaringen kunnen worden aangepast. We houden de route praktisch door reistijden en de beste volgorde van de plaatsen te controleren.",
+    "paceTitle": "Hoe bepalen we het tempo?",
+    "paceCopy": "We combineren geplande bezoeken met tijd om uit te rusten en zelf te ontdekken. Vertel ons of u vroeg wilt starten, rustig wilt beginnen, actieve dagen wilt of langer op elke plek wilt blijven.",
+    "beforeBookingTitle": "Wat gebeurt er voor het boeken?",
+    "beforeBookingCopy": "We controleren de actuele beschikbaarheid, seizoensomstandigheden en belangrijke openingsdagen. U ontvangt een duidelijke route en kunt de belangrijkste keuzes bekijken voordat de reis wordt bevestigd."
   },
   "places": {
     "regions": {

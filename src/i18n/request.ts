@@ -2,9 +2,8 @@
  * The per-request i18n configuration next-intl asks for on every server render.
  *
  * Messages are loaded one language at a time — a French reader never downloads
- * the German catalogue — and the whole catalogue for the active language is
- * handed to `NextIntlClientProvider` in the layout, which is what lets the
- * planner and the homepage read their copy in the browser without prop drilling.
+ * the German catalogue. Server Components read this catalogue directly; each
+ * client island receives only the namespaces it uses through `ClientMessages`.
  */
 import { hasLocale } from 'next-intl';
 import { getRequestConfig } from 'next-intl/server';

@@ -86,12 +86,20 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
       <section className="detail-intro" style={{ paddingTop: 190 }}>
         <div>{t('eyebrow')}</div>
         <Reveal>
-          <blockquote>
+          <h1 className="editorial-heading">
             {t('headingLine1')}
             <br />
             {t('headingLine2')}
-          </blockquote>
+          </h1>
           <p>{t('intro')}</p>
+        </Reveal>
+      </section>
+      <section className="detail-intro editorial-copy-section">
+        <div>{t('guideEyebrow')}</div>
+        <Reveal>
+          <h2 className="editorial-subheading">{t('guideTitle')}</h2>
+          <p>{t('guideCopy1')}</p>
+          <p>{t('guideCopy2')}</p>
         </Reveal>
       </section>
       <section className="content-section">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DestinationAtlas } from '@/components/DestinationAtlas';
+import { ClientMessages } from '@/components/ClientMessages';
 import { JsonLd } from '@/components/JsonLd';
 import { Reveal } from '@/components/Reveal';
 import { Link } from '@/i18n/navigation';
@@ -132,8 +133,9 @@ export default async function DestinationsPage({
         </section>
       ) : null}
 
-      <DestinationAtlas
-        destinations={destinations.map((place) => ({
+      <ClientMessages locale={locale} namespaces={['atlas']}>
+        <DestinationAtlas
+          destinations={destinations.map((place) => ({
           slug: place.slug,
           name: place.name,
           note: place.note,
@@ -149,10 +151,11 @@ export default async function DestinationsPage({
           latitude: place.latitude,
           longitude: place.longitude,
           featured: place.featured
-        }))}
-        categories={categories}
-        provinces={provinces}
-      />
+          }))}
+          categories={categories}
+          provinces={provinces}
+        />
+      </ClientMessages>
 
       {/*
         Every place, server-rendered, as plain links.

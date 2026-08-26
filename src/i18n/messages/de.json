@@ -290,13 +290,20 @@
     "card2Title": "Weniger, aber besser",
     "card2Copy": "Wir empfehlen weniger Orte und kennen sie dafür genauer.",
     "card3Title": "Fürsorge, die mitreist",
-    "card3Copy": "Ihre Reise soll den Menschen und Landschaften zugutekommen, die sie möglich machen."
+    "card3Copy": "Ihre Reise soll den Menschen und Landschaften zugutekommen, die sie möglich machen.",
+    "approachEyebrow": "So planen wir",
+    "approachTitle": "Lokales Wissen prägt jede Route.",
+    "approachCopy1": "Am Anfang stehen die Jahreszeit, Ihre verfügbare Zeit und die Orte, die wirklich zu Ihren Interessen passen. Danach prüfen wir Fahrzeiten, Öffnungstage und den natürlichen Rhythmus zwischen Küste, Bergland, Kulturerbe und Tierwelt.",
+    "approachCopy2": "Nichts wird nur hinzugefügt, damit ein Reiseplan voller wirkt. Wir lassen Raum für Erholung, Gespräche und ungeplante Stopps und arbeiten mit Menschen und kleinen Betrieben, die ihre Region gut kennen."
   },
   "contact": {
     "eyebrow": "Ihre Reise planen",
     "headingLine1": "Erzählen Sie uns,",
     "headingLine2": "was Sie bewegt.",
     "intro": "Erzählen Sie uns ein wenig von der Reise, die Ihnen vorschwebt. Ein Reisegestalter für Sri Lanka antwortet {responseTime} mit durchdachten ersten Ideen.",
+    "guidanceTitle": "Was uns bei der Planung hilft",
+    "guidanceCopy1": "Nennen Sie uns Ihre Reisedaten, die Gruppengröße, Ihr gewünschtes Tempo und die Regionen Sri Lankas, die Sie interessieren. Auch Hinweise zu Mobilität, Ernährung oder Zimmerwünschen sind von Anfang an hilfreich.",
+    "guidanceCopy2": "Sie brauchen noch keinen fertigen Reiseplan. Wir machen aus Ihren Angaben eine praktische erste Route, erklären die wichtigsten Entscheidungen und passen alles gemeinsam mit Ihnen an, bevor etwas bestätigt wird.",
     "whatsapp": "Über WhatsApp schreiben"
   },
   "contactForm": {
@@ -566,6 +573,10 @@
     "headingLine1": "Geschichten für",
     "headingLine2": "neugierige Reisende.",
     "intro": "Lokale Perspektiven, unaufgeregte Reiseführer und Ideen, Sri Lanka mit mehr Tiefe zu sehen.",
+    "guideEyebrow": "Mit Hintergrund planen",
+    "guideTitle": "Nützliche Reisegeschichten aus Sri Lanka, direkt von der Insel.",
+    "guideCopy1": "Unsere Feldnotizen helfen Ihnen, einen Ort zu verstehen, bevor Sie ihn in Ihre Route aufnehmen. Wir schreiben über passende Reisezeiten, kulturelle Hintergründe, respektvolle Tierbeobachtung, Zugfahrten, regionale Küche und kleine Entscheidungen, die einen Besuch ruhiger und lohnender machen.",
+    "guideCopy2": "Jeder Beitrag richtet sich an Reisende, die eine private Sri-Lanka-Reise planen. Vergleichen Sie Regionen, wählen Sie die richtige Jahreszeit und stellen Sie bessere Fragen. Angaben wie Öffnungszeiten oder Zugangsregeln prüfen wir bei der konkreten Reiseplanung noch einmal.",
     "comingSoon": "Demnächst",
     "minRead": "{minutes} Min. Lesezeit",
     "published": "Veröffentlicht",
@@ -601,7 +612,16 @@
     "theJourney": "Die Reise",
     "howStoryUnfolds": "Wie sich die Geschichte entfaltet.",
     "included": "Inbegriffen",
-    "tailor": "Diese Reise anpassen"
+    "tailor": "Diese Reise anpassen",
+    "planningEyebrow": "Vor der Reise",
+    "planningTitle": "Planung für {title}",
+    "planningIntro": "Diese {days} lange Route über {route} ist der Ausgangspunkt für eine private Reise. Den endgültigen Plan stimmen wir auf Ihre Daten, Interessen und Ihr gewünschtes Tempo ab.",
+    "flexibilityTitle": "Kann die Route geändert werden?",
+    "flexibilityCopy": "Ja. Stopps, Übernachtungen und Erlebnisse lassen sich anpassen. Wir achten auf eine sinnvolle Route und prüfen Fahrzeiten sowie die beste Reihenfolge der Orte.",
+    "paceTitle": "Wie wird das Tempo festgelegt?",
+    "paceCopy": "Wir verbinden geplante Besuche mit Zeit für Ruhe und eigene Entdeckungen. Sagen Sie uns, ob Sie frühe Starts, langsame Morgen, aktive Tage oder längere Aufenthalte bevorzugen.",
+    "beforeBookingTitle": "Was passiert vor der Buchung?",
+    "beforeBookingCopy": "Wir prüfen die aktuelle Verfügbarkeit, saisonale Bedingungen und wichtige Öffnungstage. Sie erhalten eine klare Route und können die wichtigsten Entscheidungen prüfen, bevor die Reise bestätigt wird."
   },
   "places": {
     "regions": {

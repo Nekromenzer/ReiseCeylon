@@ -3,12 +3,13 @@ import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/next';
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import '../globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { JsonLd } from '@/components/JsonLd';
+import { ClientMessages } from '@/components/ClientMessages';
 import { alternatesFor, SITE_URL } from '@/lib/seo';
 import { siteGraph } from '@/lib/schema';
 import { getContactDetails } from '@/sanity/site';
@@ -111,13 +112,11 @@ export default async function LocaleLayout({
             description: t('siteDescription')
           })}
         />
-        {/* The whole catalogue for this one language crosses to the browser, which
-            is what lets the planner and the homepage translate client-side. */}
-        <NextIntlClientProvider>
+        <ClientMessages locale={locale} namespaces={['nav']}>
           <Navbar />
-          {children}
-          <Footer />
-        </NextIntlClientProvider>
+        </ClientMessages>
+        {children}
+        <Footer />
         <Analytics />
       </body>
       <GoogleAnalytics gaId="G-2NS65L5S3F" />

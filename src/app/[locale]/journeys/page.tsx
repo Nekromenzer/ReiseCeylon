@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { JourneyPlanner, type PlannerPackage } from '@/components/JourneyPlanner';
+import { ClientMessages } from '@/components/ClientMessages';
 import { JsonLd } from '@/components/JsonLd';
 import { Link } from '@/i18n/navigation';
 import { durationBands, type PlannerPlace } from '@/lib/journey';
@@ -134,13 +135,18 @@ export default async function JourneysPage({ params }: { params: Promise<{ local
         </div>
       </header>
 
-      <JourneyPlanner
-        packages={packages}
-        bands={bands}
-        catalogue={localisedCatalogue}
-        categories={categories}
-        provinces={provinceOptions}
-      />
+      <ClientMessages
+        locale={locale}
+        namespaces={['planner', 'builder', 'enquiry', 'itinerary', 'dialCodes', 'map', 'summary', 'journey']}
+      >
+        <JourneyPlanner
+          packages={packages}
+          bands={bands}
+          catalogue={localisedCatalogue}
+          categories={categories}
+          provinces={provinceOptions}
+        />
+      </ClientMessages>
     </main>
   );
 }

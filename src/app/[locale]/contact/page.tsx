@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ContactForm } from '@/components/ContactForm';
+import { ClientMessages } from '@/components/ClientMessages';
 import { JsonLd } from '@/components/JsonLd';
 import { emailHref, phoneHref, whatsappHref } from '@/lib/contact-links';
 import { breadcrumbSchema, pageSchema } from '@/lib/schema';
@@ -58,6 +59,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           {t('headingLine2')}
         </h1>
         <p>{t('intro', { responseTime: contact.responseTime })}</p>
+        <section className="contact-guidance" aria-labelledby="contact-guidance-title">
+          <h2 id="contact-guidance-title">{t('guidanceTitle')}</h2>
+          <p>{t('guidanceCopy1')}</p>
+          <p>{t('guidanceCopy2')}</p>
+        </section>
         <div className="contact-details">
           <a href={emailHref(contact.email)}>{contact.email}</a>
           {contact.phone ? <a href={phoneHref(contact.phone)}>{contact.phone}</a> : null}
@@ -69,7 +75,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <span>{contact.address ?? contact.location}</span>
         </div>
       </div>
-      <ContactForm />
+      <ClientMessages locale={locale} namespaces={['contactForm']}>
+        <ContactForm />
+      </ClientMessages>
     </main>
   );
 }

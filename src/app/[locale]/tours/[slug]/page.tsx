@@ -132,6 +132,30 @@ export default async function TourPage({
           </div>
         </section>
       ) : null}
+      <section className="content-section journey-planning">
+        <div className="journey-planning-heading">
+          <p className="eyebrow">{t('planningEyebrow')}</p>
+          <h2 className="content-heading">{t('planningTitle', { title: tour.title })}</h2>
+          <p>{t('planningIntro', { days: tour.days, route: tour.route })}</p>
+        </div>
+        <div className="highlight-grid">
+          <Reveal className="highlight-card">
+            <span>01</span>
+            <h3>{t('flexibilityTitle')}</h3>
+            <p>{t('flexibilityCopy')}</p>
+          </Reveal>
+          <Reveal className="highlight-card">
+            <span>02</span>
+            <h3>{t('paceTitle')}</h3>
+            <p>{t('paceCopy')}</p>
+          </Reveal>
+          <Reveal className="highlight-card">
+            <span>03</span>
+            <h3>{t('beforeBookingTitle')}</h3>
+            <p>{t('beforeBookingCopy')}</p>
+          </Reveal>
+        </div>
+      </section>
       {tour.includedHeading || tour.includedCopy ? (
         <section className="detail-intro">
           <div>{t('included')}</div>
