@@ -40,8 +40,9 @@
     "ogTitle": "ReiseCeylon — Entdecken Sie die Seele Sri Lankas",
     "ogDescription": "Langsame, persönliche Reisen durch Sri Lanka.",
     "aboutTitle": "Unsere Geschichte",
-    "contactTitle": "Ihre Reise planen",
+    "contactTitle": "Kontakt zu unserem Sri-Lanka-Reiseteam",
     "blogTitle": "Feldnotizen",
+    "blogArticleTitle": "{title} | Feldnotizen",
     "destinationsTitle": "Reiseziele",
     "destinationsDescription": "Jeder Strand, jede Ruine, jeder Wasserfall, jeder Nationalpark und jeder Bergort, den wir ansteuern — nach Provinz und Kategorie kartiert.",
     "journeysTitle": "Reise planen",
@@ -51,6 +52,7 @@
     "contactDescription": "Sagen Sie uns, wie Sie Sri Lanka bereisen möchten, und wir planen die Route. Jede Anfrage wird innerhalb eines Werktags beantwortet.",
     "blogDescription": "Notizen aus Sri Lanka — die Routen, die Jahreszeiten, die Züge und die Orte, an die wir immer wieder zurückkehren.",
     "toursTitle": "Private Reisen",
+    "tourDetailTitle": "{title} | {days} in Sri Lanka",
     "feedTitle": "ReiseCeylon — Notizen aus Sri Lanka"
   },
   "home": {

@@ -25,17 +25,21 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const tours = await getTours(locale);
+  const [t, tours] = await Promise.all([
+    getTranslations({ locale, namespace: 'meta' }),
+    getTours(locale)
+  ]);
   const tour = tours.find((item) => item.slug === slug);
   if (!tour) return {};
 
   const path = `/tours/${tour.slug}`;
+  const title = t('tourDetailTitle', { title: tour.title, days: tour.days });
   return {
-    title: tour.title,
+    title: { absolute: title },
     description: tour.note,
     alternates: alternatesFor(path, locale),
     openGraph: {
-      title: tour.title,
+      title,
       description: tour.note,
       url: urlFor(path, locale),
       type: 'website',
@@ -43,7 +47,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: tour.title,
+      title,
       description: tour.note,
       images: [tour.image]
     }

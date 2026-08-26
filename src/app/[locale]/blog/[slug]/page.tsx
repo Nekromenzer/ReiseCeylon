@@ -35,13 +35,14 @@ export async function generateMetadata({
 
   const description = post.seoDescription ?? post.excerpt ?? undefined;
   const image = urlForImage(post.coverImage, 1200, 630);
+  const title = t('blogArticleTitle', { title: post.title });
   return {
-    title: post.title,
+    title: { absolute: title },
     description,
     authors: post.author ? [{ name: post.author.name }] : undefined,
     alternates: alternatesFor(`/blog/${slug}`, locale),
     openGraph: {
-      title: post.title,
+      title,
       description,
       url: urlFor(`/blog/${slug}`, locale),
       type: 'article',
@@ -53,7 +54,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title,
       description,
       images: [image]
     }

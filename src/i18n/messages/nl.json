@@ -40,8 +40,9 @@
     "ogTitle": "ReiseCeylon — Ontdek de ziel van Sri Lanka",
     "ogDescription": "Langzame, persoonlijke reizen door Sri Lanka.",
     "aboutTitle": "Ons verhaal",
-    "contactTitle": "Plan uw reis",
+    "contactTitle": "Neem contact op met ons reisteam",
     "blogTitle": "Veldnotities",
+    "blogArticleTitle": "{title} | Veldnotities",
     "destinationsTitle": "Bestemmingen",
     "destinationsDescription": "Elk strand, elke ruïne, waterval, park en bergdorp waar we langs reizen, in kaart gebracht per provincie en categorie in heel Sri Lanka.",
     "journeysTitle": "Plan uw reis",
@@ -51,6 +52,7 @@
     "contactDescription": "Vertel ons hoe u Sri Lanka wilt zien, dan stippelen wij de route uit. Elke aanvraag krijgt binnen één werkdag antwoord.",
     "blogDescription": "Aantekeningen uit Sri Lanka — de routes, de seizoenen, de treinen en de plekken waar we blijven terugkomen.",
     "toursTitle": "Privéreizen",
+    "tourDetailTitle": "{title} | {days} door Sri Lanka",
     "feedTitle": "ReiseCeylon — Aantekeningen"
   },
   "home": {

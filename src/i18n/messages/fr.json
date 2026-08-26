@@ -40,9 +40,10 @@
     "ogTitle": "ReiseCeylon — Découvrez l’âme du Sri Lanka",
     "ogDescription": "Des voyages lents et personnels à travers le Sri Lanka.",
     "aboutTitle": "Notre histoire",
-    "contactTitle": "Planifier votre voyage",
+    "contactTitle": "Contacter notre équipe de voyage",
     "blogTitle": "Carnets de terrain",
-    "destinationsTitle": "Destinations",
+    "blogArticleTitle": "{title} | Carnets de terrain",
+    "destinationsTitle": "Destinations au Sri Lanka",
     "destinationsDescription": "Chaque plage, ruine, cascade, parc et station de montagne par lesquels nous passons, cartographiés par province et par catégorie à travers le Sri Lanka.",
     "journeysTitle": "Planifier votre voyage",
     "journeysDescription": "Choisissez un voyage tout tracé au Sri Lanka ou composez le vôtre. Visualisez la route sur la carte, avec les distances, les temps de conduite et chaque lieu traversé.",
@@ -51,6 +52,7 @@
     "contactDescription": "Dites-nous comment vous souhaitez parcourir le Sri Lanka et nous traçons la route. Chaque demande reçoit une réponse sous un jour ouvré.",
     "blogDescription": "Carnet de route du Sri Lanka — les itinéraires, les saisons, les trains et les lieux où nous revenons toujours.",
     "toursTitle": "Voyages privés",
+    "tourDetailTitle": "{title} | {days} au Sri Lanka",
     "feedTitle": "ReiseCeylon — Carnet de route"
   },
   "home": {
