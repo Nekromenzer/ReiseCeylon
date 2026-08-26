@@ -63,6 +63,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <h2 id="contact-guidance-title">{t('guidanceTitle')}</h2>
           <p>{t('guidanceCopy1')}</p>
           <p>{t('guidanceCopy2')}</p>
+          <p>{t('guidanceCopy3')}</p>
+          <p>{t('guidanceCopy4')}</p>
         </section>
         <div className="contact-details">
           <a href={emailHref(contact.email)}>{contact.email}</a>

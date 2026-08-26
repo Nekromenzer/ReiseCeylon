@@ -294,7 +294,8 @@
     "approachEyebrow": "So planen wir",
     "approachTitle": "Lokales Wissen prägt jede Route.",
     "approachCopy1": "Am Anfang stehen die Jahreszeit, Ihre verfügbare Zeit und die Orte, die wirklich zu Ihren Interessen passen. Danach prüfen wir Fahrzeiten, Öffnungstage und den natürlichen Rhythmus zwischen Küste, Bergland, Kulturerbe und Tierwelt.",
-    "approachCopy2": "Nichts wird nur hinzugefügt, damit ein Reiseplan voller wirkt. Wir lassen Raum für Erholung, Gespräche und ungeplante Stopps und arbeiten mit Menschen und kleinen Betrieben, die ihre Region gut kennen."
+    "approachCopy2": "Nichts wird nur hinzugefügt, damit ein Reiseplan voller wirkt. Wir lassen Raum für Erholung, Gespräche und ungeplante Stopps und arbeiten mit Menschen und kleinen Betrieben, die ihre Region gut kennen.",
+    "approachCopy3": "Vor Ihrer Abreise prüfen wir die Route noch einmal auf saisonale Bedingungen und praktische Änderungen. So bleibt der Plan realistisch und bewahrt zugleich das Gefühl des Entdeckens, das Sie nach Sri Lanka geführt hat."
   },
   "contact": {
     "eyebrow": "Ihre Reise planen",
@@ -304,6 +305,8 @@
     "guidanceTitle": "Was uns bei der Planung hilft",
     "guidanceCopy1": "Nennen Sie uns Ihre Reisedaten, die Gruppengröße, Ihr gewünschtes Tempo und die Regionen Sri Lankas, die Sie interessieren. Auch Hinweise zu Mobilität, Ernährung oder Zimmerwünschen sind von Anfang an hilfreich.",
     "guidanceCopy2": "Sie brauchen noch keinen fertigen Reiseplan. Wir machen aus Ihren Angaben eine praktische erste Route, erklären die wichtigsten Entscheidungen und passen alles gemeinsam mit Ihnen an, bevor etwas bestätigt wird.",
+    "guidanceCopy3": "Wenn Sie bereits Flüge oder eine Liste mit Orten haben, fügen Sie diese Ihrer Nachricht hinzu. Wir prüfen, ob die Route angenehm ist, wo längere Fahrten entstehen und welche Stopps gut zusammenpassen. Klare Angaben am Anfang helfen uns, mit Ratschlägen für Ihre tatsächliche Reise zu antworten.",
+    "guidanceCopy4": "Jede Anfrage wird von einem Menschen gelesen. Unsere erste Antwort erklärt den nächsten praktischen Schritt, und Sie sind nicht zu einer Buchung verpflichtet.",
     "whatsapp": "Über WhatsApp schreiben"
   },
   "contactForm": {
@@ -577,6 +580,8 @@
     "guideTitle": "Nützliche Reisegeschichten aus Sri Lanka, direkt von der Insel.",
     "guideCopy1": "Unsere Feldnotizen helfen Ihnen, einen Ort zu verstehen, bevor Sie ihn in Ihre Route aufnehmen. Wir schreiben über passende Reisezeiten, kulturelle Hintergründe, respektvolle Tierbeobachtung, Zugfahrten, regionale Küche und kleine Entscheidungen, die einen Besuch ruhiger und lohnender machen.",
     "guideCopy2": "Jeder Beitrag richtet sich an Reisende, die eine private Sri-Lanka-Reise planen. Vergleichen Sie Regionen, wählen Sie die richtige Jahreszeit und stellen Sie bessere Fragen. Angaben wie Öffnungszeiten oder Zugangsregeln prüfen wir bei der konkreten Reiseplanung noch einmal.",
+    "guideCopy3": "Sie finden außerdem ehrliche Hinweise zu Entfernungen und Reisetempo. Sri Lanka wirkt auf der Karte klein, doch Bergstraßen, Zugfahrten und lohnende Pausen prägen jeden Tag. Wer diesen Rhythmus früh versteht, plant weniger hastige Stopps und hat mehr Zeit für die ausgewählten Orte.",
+    "guideCopy4": "Unser Ziel ist keine einfache Liste von Sehenswürdigkeiten. Jeder Beitrag soll eine echte Frage zur Reiseplanung beantworten und zeigen, wie ein Ort in eine größere Route passt. Neue Notizen entstehen, wenn unser Team Strecken erneut besucht, mit lokalen Partnern spricht und erfährt, was Reisende vor ihrer Ankunft wissen möchten.",
     "comingSoon": "Demnächst",
     "minRead": "{minutes} Min. Lesezeit",
     "published": "Veröffentlicht",

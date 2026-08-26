@@ -294,7 +294,8 @@
     "approachEyebrow": "Zo plannen we",
     "approachTitle": "Lokale kennis vormt elke route.",
     "approachCopy1": "We beginnen met het seizoen, de tijd die u hebt en de plaatsen die echt bij uw interesses passen. Daarna bekijken we reistijden, openingsdagen en het natuurlijke ritme tussen kust, heuvelland, erfgoed en dierenwereld.",
-    "approachCopy2": "Niets wordt alleen toegevoegd om een reisplan voller te laten lijken. We laten ruimte voor rust, gesprekken en onverwachte stops en werken met mensen en kleine bedrijven die hun regio goed kennen."
+    "approachCopy2": "Niets wordt alleen toegevoegd om een reisplan voller te laten lijken. We laten ruimte voor rust, gesprekken en onverwachte stops en werken met mensen en kleine bedrijven die hun regio goed kennen.",
+    "approachCopy3": "Voor uw vertrek bekijken we de route opnieuw voor seizoensomstandigheden en praktische veranderingen. Zo blijft het plan realistisch en blijft tegelijk het gevoel van ontdekking behouden dat u naar Sri Lanka bracht."
   },
   "contact": {
     "eyebrow": "Plan uw reis",
@@ -304,6 +305,8 @@
     "guidanceTitle": "Wat ons helpt goed te plannen",
     "guidanceCopy1": "Vertel ons uw reisdata, groepsgrootte, gewenste tempo en welke delen van Sri Lanka u interesseren. Het helpt ook als u vanaf het begin wensen rond mobiliteit, voeding of kamers met ons deelt.",
     "guidanceCopy2": "U hebt nog geen volledig reisplan nodig. Wij maken van deze informatie een praktische eerste route, leggen de belangrijkste keuzes uit en passen alles samen met u aan voordat iets wordt bevestigd.",
+    "guidanceCopy3": "Hebt u al vluchten of een lijst met plaatsen, voeg die dan toe aan uw bericht. We kunnen controleren of de route comfortabel is, waar langere ritten voorkomen en welke stops goed samengaan. Duidelijke informatie aan het begin helpt ons om advies te geven dat echt bij uw reis past.",
+    "guidanceCopy4": "Elke aanvraag wordt door een persoon gelezen. Ons eerste antwoord legt de volgende praktische stap uit, zonder dat u verplicht bent te boeken.",
     "whatsapp": "Bericht via WhatsApp"
   },
   "contactForm": {
@@ -577,6 +580,8 @@
     "guideTitle": "Nuttige reisverhalen over Sri Lanka, geschreven op het eiland.",
     "guideCopy1": "Onze veldnotities helpen u een plek te begrijpen voordat u die aan uw route toevoegt. We schrijven over goede reistijden, culturele context, respect voor dieren, treinreizen, regionale gerechten en kleine keuzes die een bezoek rustiger en waardevoller maken.",
     "guideCopy2": "Elk artikel is gemaakt voor reizigers die een privéreis door Sri Lanka plannen. Gebruik deze verhalen om regio’s te vergelijken, het juiste seizoen te kiezen en betere vragen te stellen. Gegevens die kunnen veranderen, zoals openingstijden of toegangsregels, controleren we opnieuw tijdens de reisplanning.",
+    "guideCopy3": "U vindt ook eerlijke uitleg over reisafstanden en tempo. Sri Lanka lijkt klein op de kaart, maar bergwegen, treinritten en waardevolle pauzes bepalen elke dag. Als u dat ritme vroeg begrijpt, plant u minder gehaaste stops en houdt u meer tijd over voor de gekozen plaatsen.",
+    "guideCopy4": "Het doel is niet om een eenvoudige lijst met bezienswaardigheden te publiceren. Elke gids moet een echte planningsvraag beantwoorden en laten zien hoe een plaats in een grotere reis past. Nieuwe notities verschijnen wanneer ons team routes opnieuw bezoekt, met lokale partners spreekt en hoort wat reizigers voor aankomst willen weten.",
     "comingSoon": "Binnenkort",
     "minRead": "{minutes} min lezen",
     "published": "Gepubliceerd",

@@ -294,7 +294,8 @@
     "approachEyebrow": "Notre façon de planifier",
     "approachTitle": "La connaissance locale façonne chaque itinéraire.",
     "approachCopy1": "Nous commençons par la saison, le temps dont vous disposez et les lieux qui correspondent vraiment à vos envies. Nous étudions ensuite les temps de route, les jours d’ouverture et le rythme naturel entre côte, montagnes, patrimoine et faune.",
-    "approachCopy2": "Rien n’est ajouté uniquement pour remplir le programme. Nous gardons du temps pour le repos, les rencontres et les arrêts imprévus, tout en travaillant avec des personnes et de petites entreprises qui connaissent bien leur région."
+    "approachCopy2": "Rien n’est ajouté uniquement pour remplir le programme. Nous gardons du temps pour le repos, les rencontres et les arrêts imprévus, tout en travaillant avec des personnes et de petites entreprises qui connaissent bien leur région.",
+    "approachCopy3": "Avant votre départ, nous vérifions encore l’itinéraire selon la saison et les changements pratiques. Le programme reste ainsi réaliste tout en préservant le sentiment de découverte qui vous a attiré au Sri Lanka."
   },
   "contact": {
     "eyebrow": "Planifier votre voyage",
@@ -304,6 +305,8 @@
     "guidanceTitle": "Ce qui nous aide à bien planifier",
     "guidanceCopy1": "Indiquez-nous vos dates, la taille du groupe, le rythme souhaité et les régions du Sri Lanka qui vous attirent. Il est aussi utile de préciser dès le départ vos besoins de mobilité, d’alimentation ou de chambre.",
     "guidanceCopy2": "Vous n’avez pas besoin d’un itinéraire terminé. Nous transformons ces informations en une première route pratique, expliquons les choix principaux et l’ajustons avec vous avant toute confirmation.",
+    "guidanceCopy3": "Si vous avez déjà des vols ou une liste de lieux, ajoutez-les à votre message. Nous pouvons vérifier si l’itinéraire est confortable, où se trouvent les longs trajets et quelles étapes vont bien ensemble. Des informations claires dès le début nous permettent de répondre avec des conseils utiles pour votre voyage réel.",
+    "guidanceCopy4": "Chaque demande est lue par une personne. Notre première réponse explique la prochaine étape pratique, sans aucune obligation de réserver.",
     "whatsapp": "Écrire sur WhatsApp"
   },
   "contactForm": {
@@ -577,6 +580,8 @@
     "guideTitle": "Des récits utiles sur le Sri Lanka, écrits depuis l’île.",
     "guideCopy1": "Nos carnets vous aident à comprendre un lieu avant de l’ajouter à votre itinéraire. Nous parlons des bonnes périodes, du contexte culturel, du respect de la faune, des trajets en train, de la cuisine régionale et des petits choix qui rendent une visite plus calme et plus riche.",
     "guideCopy2": "Chaque article s’adresse aux voyageurs qui préparent un voyage privé au Sri Lanka. Utilisez ces récits pour comparer les régions, choisir la bonne saison et poser de meilleures questions. Les horaires ou règles d’accès susceptibles de changer sont vérifiés de nouveau lors de la planification.",
+    "guideCopy3": "Vous trouverez aussi des explications honnêtes sur les distances et le rythme. Le Sri Lanka paraît petit sur une carte, mais les routes de montagne, les trajets en train et les pauses utiles façonnent chaque journée. Comprendre ce rythme aide à prévoir moins d’étapes pressées et plus de temps sur place.",
+    "guideCopy4": "Notre but n’est pas de publier une simple liste de sites. Chaque guide doit répondre à une vraie question de préparation et montrer comment un lieu s’intègre dans un voyage plus large. De nouveaux carnets sont ajoutés lorsque notre équipe reprend la route, échange avec des partenaires locaux et écoute les besoins des voyageurs.",
     "comingSoon": "Bientôt",
     "minRead": "{minutes} min de lecture",
     "published": "Publié",

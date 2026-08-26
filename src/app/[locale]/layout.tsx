@@ -114,9 +114,9 @@ export default async function LocaleLayout({
         />
         <ClientMessages locale={locale} namespaces={['nav']}>
           <Navbar />
+          {children}
+          <Footer />
         </ClientMessages>
-        {children}
-        <Footer />
         <Analytics />
       </body>
       <GoogleAnalytics gaId="G-2NS65L5S3F" />

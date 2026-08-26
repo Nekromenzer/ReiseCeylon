@@ -100,6 +100,8 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           <h2 className="editorial-subheading">{t('guideTitle')}</h2>
           <p>{t('guideCopy1')}</p>
           <p>{t('guideCopy2')}</p>
+          <p>{t('guideCopy3')}</p>
+          <p>{t('guideCopy4')}</p>
         </Reveal>
       </section>
       <section className="content-section">

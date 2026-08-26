@@ -294,7 +294,8 @@
     "approachEyebrow": "How we plan",
     "approachTitle": "Local knowledge shapes every route.",
     "approachCopy1": "We begin with the season, the time you have and the places that genuinely suit your interests. Then we look at road time, opening days and the natural rhythm between coast, hills, heritage and wildlife.",
-    "approachCopy2": "Nothing is added only to make an itinerary look busy. We leave room for rest, conversation and unexpected stops, while working with people and small businesses that know their region well."
+    "approachCopy2": "Nothing is added only to make an itinerary look busy. We leave room for rest, conversation and unexpected stops, while working with people and small businesses that know their region well.",
+    "approachCopy3": "Before you travel, we review the route again for seasonal conditions and practical changes. This keeps the plan realistic while protecting the sense of discovery that brought you to Sri Lanka."
   },
   "contact": {
     "eyebrow": "Plan your journey",
@@ -304,6 +305,8 @@
     "guidanceTitle": "What helps us plan well",
     "guidanceCopy1": "Tell us your travel dates, group size, preferred pace and the parts of Sri Lanka that interest you. It is also useful to share any mobility, dietary or room needs from the start.",
     "guidanceCopy2": "You do not need a finished itinerary. We will turn those details into a practical first route, explain the main choices and adjust it with you before anything is confirmed.",
+    "guidanceCopy3": "If you already have flights or a list of places, include them in your message. We can check whether the route is comfortable, where longer drives may occur and which stops work well together. Clear details at the beginning help us reply with advice that is useful for your actual trip.",
+    "guidanceCopy4": "Every enquiry is reviewed by a person. Your first reply will explain the next practical step, and there is no obligation to book.",
     "whatsapp": "Message on WhatsApp"
   },
   "contactForm": {
@@ -577,6 +580,8 @@
     "guideTitle": "Useful Sri Lanka travel stories, written from the island.",
     "guideCopy1": "Our field notes help you understand a place before adding it to a route. We cover practical timing, cultural context, wildlife etiquette, train journeys, regional food and the small choices that can make a visit calmer and more rewarding.",
     "guideCopy2": "Each article is researched for travellers planning a private Sri Lanka journey. Use these stories to compare regions, choose the right season and ask better questions. When details such as opening times or access rules can change, we check them again while planning your trip.",
+    "guideCopy3": "You will also find honest explanations of travel distances and pace. Sri Lanka looks small on a map, but mountain roads, rail journeys and worthwhile pauses shape each day. Understanding that rhythm early helps you build a route with fewer rushed stops and more time to experience the places you chose.",
+    "guideCopy4": "The aim is not to publish a checklist of attractions. We want each guide to answer a real planning question and show how a place fits into a wider journey. New notes are added as our team revisits routes, speaks with local partners and learns what travellers need before they arrive.",
     "comingSoon": "Coming soon",
     "minRead": "{minutes} min read",
     "published": "Published",

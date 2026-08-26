@@ -89,6 +89,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <h2 className="editorial-subheading">{t('approachTitle')}</h2>
           <p>{t('approachCopy1')}</p>
           <p>{t('approachCopy2')}</p>
+          <p>{t('approachCopy3')}</p>
         </Reveal>
       </section>
     </main>
