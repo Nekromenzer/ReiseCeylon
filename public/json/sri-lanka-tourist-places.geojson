@@ -2726,6 +2726,34 @@
     },
     {
       "type": "Feature",
+      "id": "pinnawala-elephant-orphanage",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.3872,
+          7.301
+        ]
+      },
+      "properties": {
+        "id": "pinnawala-elephant-orphanage",
+        "name": "Pinnawala Elephant Orphanage",
+        "slug": "pinnawala-elephant-orphanage",
+        "categoryId": "national-parks-and-wildlife",
+        "category": "National Parks and Wildlife",
+        "province": "Sabaragamuwa",
+        "district": "Kegalle",
+        "city": "Pinnawala",
+        "country": "Sri Lanka",
+        "countryCode": "LK",
+        "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.3010,80.3872",
+        "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.3010&mlon=80.3872#map=15/7.3010/80.3872",
+        "status": "published",
+        "featured": false,
+        "precision": "exact"
+      }
+    },
+    {
+      "type": "Feature",
       "id": "wilpattu-national-park",
       "geometry": {
         "type": "Point",

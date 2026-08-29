@@ -62,7 +62,7 @@
       "name": "National Parks and Wildlife",
       "slug": "national-parks-and-wildlife",
       "icon": "paw-print",
-      "placeCount": 15
+      "placeCount": 16
     },
     {
       "id": "mountains-and-hiking",
@@ -2634,6 +2634,32 @@
       "countryCode": "LK",
       "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=6.4388,80.8882",
       "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=6.4388&mlon=80.8882#map=15/6.4388/80.8882",
+      "status": "published",
+      "featured": false
+    },
+    {
+      "id": "pinnawala-elephant-orphanage",
+      "name": "Pinnawala Elephant Orphanage",
+      "slug": "pinnawala-elephant-orphanage",
+      "categoryId": "national-parks-and-wildlife",
+      "category": "National Parks and Wildlife",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          80.3872,
+          7.301
+        ],
+        "latitude": 7.301,
+        "longitude": 80.3872,
+        "precision": "exact"
+      },
+      "province": "Sabaragamuwa",
+      "district": "Kegalle",
+      "city": "Pinnawala",
+      "country": "Sri Lanka",
+      "countryCode": "LK",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=7.3010,80.3872",
+      "openStreetMapUrl": "https://www.openstreetmap.org/?mlat=7.3010&mlon=80.3872#map=15/7.3010/80.3872",
       "status": "published",
       "featured": false
     },

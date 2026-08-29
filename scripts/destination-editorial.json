@@ -2521,6 +2521,32 @@
       }
     ]
   },
+  "pinnawala-elephant-orphanage": {
+    "note": "Elephant care, living history and the Ma Oya river",
+    "introHeading": "Meet Pinnawala through its elephants, history and daily rhythm",
+    "introCopy": "Pinnawala Elephant Orphanage stands near Rambukkana in Sri Lanka’s Kegalle District. The government-run centre opened in 1975 to care for orphaned young elephants and later developed veterinary, breeding and public education work. Visitors observe a resident herd in managed care rather than elephants living freely in the wild. A thoughtful visit leaves time to understand that distinction, watch social behaviour from the public areas and follow the scheduled movement towards the Ma Oya River without crowding the animals.",
+    "seoDescription": "Visit Pinnawala Elephant Orphanage near Rambukkana, Sri Lanka, to learn its history, observe the resident herd and see the Ma Oya river routine.",
+    "highlights": [
+      {
+        "_type": "highlight",
+        "_key": "editorial-1",
+        "title": "A centre founded in 1975",
+        "copy": "Learn how Pinnawala began with five orphaned elephant calves and grew into a government-managed centre for elephant care, breeding, research and public education."
+      },
+      {
+        "_type": "highlight",
+        "_key": "editorial-2",
+        "title": "The resident herd",
+        "copy": "Observe elephants of different ages from the visitor areas, allowing space for their social behaviour and remembering that this is a managed-care setting rather than a wild encounter."
+      },
+      {
+        "_type": "highlight",
+        "_key": "editorial-3",
+        "title": "The Ma Oya routine",
+        "copy": "Time the visit around the centre’s published daily schedule to see groups move towards the nearby Ma Oya River, with routines subject to weather and animal-care needs."
+      }
+    ]
+  },
   "wilpattu-national-park": {
     "note": "Lakes, forest and quiet wilderness safaris",
     "introHeading": "Forest, villus and quiet wilderness at Wilpattu",
