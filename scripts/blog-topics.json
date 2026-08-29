@@ -18,6 +18,60 @@
     "internalLinks": ["/destinations/kandy", "/journeys"]
   },
   {
+    "key": "ultimate-sri-lanka-travel-guide-2026",
+    "title": "The Ultimate Sri Lanka Travel Guide 2026",
+    "primaryKeyword": "Sri Lanka travel guide",
+    "searchIntent": "Comprehensive planning guidance for first-time travellers researching a trip to Sri Lanka",
+    "category": "Travel guide",
+    "brief": "Create a comprehensive evergreen guide covering the best time to visit, major regions, transport, accommodation, food, money, connectivity, cultural etiquette, beaches, wildlife, hill country and practical preparation. Avoid quoting changeable prices, visa rules, schedules or opening times unless they can be reliably verified. Encourage travellers to explore destination and journey pages for deeper planning.",
+    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella", "/destinations/galle-fort", "/destinations/yala-national-park", "/destinations/mirissa-beach"]
+  },
+  {
+    "key": "best-places-to-visit-sri-lanka",
+    "title": "20 Best Places to Visit in Sri Lanka",
+    "primaryKeyword": "best places to visit in Sri Lanka",
+    "searchIntent": "Destination inspiration for travellers deciding which places to include in a Sri Lanka trip",
+    "category": "Travel inspiration",
+    "brief": "Introduce 20 of Sri Lanka's strongest travel destinations across heritage, beaches, wildlife, hill country and culture. Include places such as Sigiriya, Kandy, Ella, Galle, Yala, Mirissa, Nuwara Eliya, Anuradhapura, Polonnaruwa, Trincomalee, Arugam Bay and Jaffna. Explain what makes each place worth considering without turning the article into a rushed checklist.",
+    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella", "/destinations/galle-fort", "/destinations/yala-national-park", "/destinations/mirissa-beach"]
+  },
+  {
+    "key": "sri-lanka-10-day-itinerary",
+    "title": "The Perfect 10-Day Sri Lanka Itinerary for First-Time Visitors",
+    "primaryKeyword": "Sri Lanka 10 day itinerary",
+    "searchIntent": "A realistic route for first-time travellers planning approximately ten days in Sri Lanka",
+    "category": "Journey planning",
+    "brief": "Create a balanced ten-day route combining heritage, hill country, wildlife and the coast. Explain travel-day trade-offs and provide alternatives for travellers who prefer slower travel. Avoid presenting the itinerary as the only correct way to experience Sri Lanka.",
+    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella", "/destinations/yala-national-park", "/destinations/mirissa-beach", "/destinations/galle-fort"]
+  },
+  {
+    "key": "best-time-to-visit-sri-lanka",
+    "title": "Best Time to Visit Sri Lanka: A Month-by-Month Guide",
+    "primaryKeyword": "best time to visit Sri Lanka",
+    "searchIntent": "Seasonal planning for travellers deciding when and where to visit Sri Lanka",
+    "category": "Travel planning",
+    "brief": "Explain Sri Lanka's broad seasonal and regional weather patterns month by month. Show how conditions can differ between the south and west, east coast and hill country. Avoid guaranteeing weather conditions and encourage travellers to check current forecasts before travelling.",
+    "internalLinks": ["/destinations", "/journeys", "/destinations/mirissa-beach", "/destinations/ella", "/destinations/yala-national-park"]
+  },
+  {
+    "key": "best-beaches-sri-lanka",
+    "title": "15 Best Beaches in Sri Lanka for Your Next Trip",
+    "primaryKeyword": "best beaches in Sri Lanka",
+    "searchIntent": "Beach inspiration for travellers choosing where to stay along Sri Lanka's coastline",
+    "category": "Coast",
+    "brief": "Introduce 15 beaches across Sri Lanka's south, west and east coasts. Explain which destinations suit swimming, surfing, relaxation, families, wildlife experiences and quieter stays. Discuss seasonal differences carefully without guaranteeing sea or weather conditions.",
+    "internalLinks": ["/destinations", "/journeys", "/destinations/mirissa-beach"]
+  },
+  {
+    "key": "sri-lanka-travel-tips-first-trip",
+    "title": "15 Things to Know Before Your First Trip to Sri Lanka",
+    "primaryKeyword": "Sri Lanka travel tips",
+    "searchIntent": "Practical preparation for international travellers visiting Sri Lanka for the first time",
+    "category": "Practical travel",
+    "brief": "Give practical first-trip advice covering transport, trains, tuk-tuks, cultural etiquette, temple clothing, money, connectivity, weather, sun and heat, wildlife ethics, food, luggage and realistic travel times. Avoid quoting changeable regulations, fares or visa requirements without reliable verification.",
+    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella"]
+  },
+  {
     "key": "ella-slow-travel-guide",
     "title": "A slower way to experience Ella",
     "primaryKeyword": "Ella travel guide",
