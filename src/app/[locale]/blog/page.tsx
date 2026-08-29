@@ -83,28 +83,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           breadcrumbSchema([{ name: meta('blogTitle'), path: '/blog' }], locale)
         ]}
       />
-      <section className="detail-intro" style={{ paddingTop: 190 }}>
-        <div>{t('eyebrow')}</div>
-        <Reveal>
-          <h1 className="editorial-heading">
-            {t('headingLine1')}
-            <br />
-            {t('headingLine2')}
-          </h1>
-          <p>{t('intro')}</p>
-        </Reveal>
-      </section>
-      <section className="detail-intro editorial-copy-section">
-        <div>{t('guideEyebrow')}</div>
-        <Reveal>
-          <h2 className="editorial-subheading">{t('guideTitle')}</h2>
-          <p>{t('guideCopy1')}</p>
-          <p>{t('guideCopy2')}</p>
-          <p>{t('guideCopy3')}</p>
-          <p>{t('guideCopy4')}</p>
-        </Reveal>
-      </section>
-      <section className="content-section">
+      <section className="content-section journal-posts-first">
         <div className="destination-grid">
           {posts.length > 0
             ? posts.map((post, index) => (
@@ -149,6 +128,27 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
                 </Reveal>
               ))}
         </div>
+      </section>
+      <section className="detail-intro">
+        <div>{t('eyebrow')}</div>
+        <Reveal>
+          <h1 className="editorial-heading">
+            {t('headingLine1')}
+            <br />
+            {t('headingLine2')}
+          </h1>
+          <p>{t('intro')}</p>
+        </Reveal>
+      </section>
+      <section className="detail-intro editorial-copy-section">
+        <div>{t('guideEyebrow')}</div>
+        <Reveal>
+          <h2 className="editorial-subheading">{t('guideTitle')}</h2>
+          <p>{t('guideCopy1')}</p>
+          <p>{t('guideCopy2')}</p>
+          <p>{t('guideCopy3')}</p>
+          <p>{t('guideCopy4')}</p>
+        </Reveal>
       </section>
     </main>
   );

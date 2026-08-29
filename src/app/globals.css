@@ -1437,6 +1437,9 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
   background: var(--deep);
 }
 
+/* The Journal opens with its entries; this clears the fixed navigation. */
+.journal-posts-first { padding-top: 190px; }
+
 .article-shell {
   max-width: 1400px;
   margin: auto;
@@ -1515,6 +1518,7 @@ body:has(.rc-home) .theme-toggle { background: color-mix(in srgb, var(--ink) 7%,
 }
 
 @media (max-width: 767px) {
+  .journal-posts-first { padding-top: 120px; }
   .article-shell { padding: 80px 16px 20px; }
   .article-meta { grid-template-columns: 1fr 1fr; gap: 20px 30px; }
   .article-body { font-size: 16px; }
