@@ -17,6 +17,7 @@ const openAiKey = process.env.OPENAI_API_KEY;
 const model = process.env.BLOG_AI_MODEL?.trim() || 'gpt-5-mini';
 const requestedTopic = process.argv.find((argument) => argument.startsWith('--topic='))?.split('=')[1];
 const dryRun = process.argv.includes('--dry-run');
+const locales = ['en', 'de', 'fr', 'nl'];
 
 if (!projectId) throw new Error('Missing NEXT_PUBLIC_SANITY_PROJECT_ID.');
 if (!token) throw new Error('Missing SANITY_API_TOKEN with Editor permissions.');
@@ -30,16 +31,15 @@ const client = createClient({
   useCdn: false
 });
 
-const articleSchema = {
+const translationSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ['title', 'excerpt', 'seoDescription', 'coverImageAlt', 'readingTime', 'blocks', 'factCheckItems'],
+  required: ['title', 'excerpt', 'seoDescription', 'coverImageAlt', 'blocks'],
   properties: {
     title: { type: 'string', minLength: 25, maxLength: 70 },
     excerpt: { type: 'string', minLength: 80, maxLength: 240 },
     seoDescription: { type: 'string', minLength: 110, maxLength: 165 },
     coverImageAlt: { type: 'string', minLength: 20, maxLength: 180 },
-    readingTime: { type: 'integer', minimum: 3, maximum: 20 },
     blocks: {
       type: 'array',
       minItems: 8,
@@ -53,7 +53,22 @@ const articleSchema = {
           text: { type: 'string', minLength: 1, maxLength: 1800 }
         }
       }
+    }
+  }
+};
+
+const articleSchema = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['translations', 'readingTime', 'factCheckItems'],
+  properties: {
+    translations: {
+      type: 'object',
+      additionalProperties: false,
+      required: locales,
+      properties: Object.fromEntries(locales.map((locale) => [locale, translationSchema]))
     },
+    readingTime: { type: 'integer', minimum: 3, maximum: 20 },
     factCheckItems: {
       type: 'array',
       minItems: 2,
@@ -82,16 +97,19 @@ async function generateArticle(topic) {
     },
     body: JSON.stringify({
       model,
+      max_output_tokens: 24000,
       instructions: [
-        'Write an original ReiseCeylon travel-journal draft in clear, warm B1-level English.',
+        'Write an original ReiseCeylon travel-journal draft in all four supported languages: English (en), German (de), French (fr), and Dutch (nl).',
+        'First create the factual source article, then produce faithful, natural translations. Every language must communicate the same facts, cautions, structure and practical advice without adding or removing claims.',
+        'Use clear, warm B1-level language appropriate to each locale. Do not leave English text inside the German, French or Dutch versions except proper names.',
         'Sound like an experienced Sri Lankan journey planner, not an advertisement or generic AI article.',
         'Satisfy the supplied searchIntent completely and use the primaryKeyword naturally, never repeatedly or awkwardly.',
         'Write a unique, descriptive title of 25-70 characters. The opening paragraph must answer the traveller’s main need directly.',
         'Create at least two useful H2 sections. Prefer concrete decisions, trade-offs and local context over generic travel advice.',
-        'Aim for a substantial 600-1,200 word guide, but do not pad the article or repeat points to reach a word count.',
+        'Each language must be a substantial 600-1,200 word guide, but do not pad the article or repeat points to reach a word count.',
         'Do not invent first-person experiences, quotations, prices, schedules, laws, statistics or historical facts.',
         'Treat weather, wildlife and transport as variable. Use careful language and flag anything that needs live verification.',
-        'Use every supplied internal link naturally in Markdown form: [descriptive anchor](/path). Never use click here or read more.',
+        'Use every supplied internal link in every language, naturally in Markdown form: [localized descriptive anchor](/path). Keep each supplied path exactly unchanged. Never use click here or read more.',
         'Return specific factCheckItems for the human editor, including cultural or historical claims and anything that can change.',
         'Include practical advice, cultural respect and a calm conclusion. Do not use a FAQ section.',
         'The coverImageAlt describes a suitable future photograph; it does not claim that an image already exists.'
@@ -183,7 +201,7 @@ async function main() {
 
   console.log(`Generating draft for: ${topic.title}`);
   const article = await generateArticle(topic);
-  const slug = slugify(article.title);
+  const slug = slugify(article.translations.en.title);
   const conflictingPost = await client.fetch(
     '*[_type == "post" && slug.current == $slug && !(_id in [$draftId, $publishedId])][0]._id',
     {
@@ -199,18 +217,35 @@ async function main() {
   const draft = {
     _id: draftIdFor(topic),
     _type: 'post',
-    title: { _type: 'localeString', en: article.title.trim() },
+    title: {
+      _type: 'localeString',
+      ...Object.fromEntries(locales.map((locale) => [locale, article.translations[locale].title.trim()]))
+    },
     slug: { _type: 'slug', current: slug },
-    excerpt: { _type: 'localeTextOptional', en: article.excerpt.trim() },
+    excerpt: {
+      _type: 'localeTextOptional',
+      ...Object.fromEntries(locales.map((locale) => [locale, article.translations[locale].excerpt.trim()]))
+    },
     coverImage: {
       _type: 'image',
-      alt: { _type: 'localeStringOptional', en: article.coverImageAlt.trim() }
+      alt: {
+        _type: 'localeStringOptional',
+        ...Object.fromEntries(locales.map((locale) => [locale, article.translations[locale].coverImageAlt.trim()]))
+      }
     },
     publishedAt: new Date().toISOString(),
     readingTime: article.readingTime,
     featured: false,
-    body: { _type: 'localeBlockContent', en: blocksToPortableText(article.blocks) },
-    seoDescription: { _type: 'localeTextOptional', en: article.seoDescription.trim() },
+    body: {
+      _type: 'localeBlockContent',
+      ...Object.fromEntries(
+        locales.map((locale) => [locale, blocksToPortableText(article.translations[locale].blocks)])
+      )
+    },
+    seoDescription: {
+      _type: 'localeTextOptional',
+      ...Object.fromEntries(locales.map((locale) => [locale, article.translations[locale].seoDescription.trim()]))
+    },
     automation: {
       _type: 'automation',
       generated: true,
@@ -219,7 +254,8 @@ async function main() {
       reviewNotes: [
         `Search intent: ${topic.searchIntent}`,
         `Primary phrase: ${topic.primaryKeyword}`,
-        'Before approval: add an owned cover image, review every link and verify these claims:',
+        'Generated languages: English, German, French and Dutch.',
+        'Before approval: review all four translations, add an owned cover image, review every link and verify these claims:',
         ...article.factCheckItems.map((item) => `- ${item}`)
       ].join('\n')
     }
@@ -234,8 +270,8 @@ async function main() {
   draft.category = { _type: 'reference', _ref: references.categoryId };
   draft.author = { _type: 'reference', _ref: references.authorId };
   await client.createIfNotExists(draft);
-  console.log(`Draft created: ${article.title}`);
-  console.log('Next: open Blog posts in Sanity Studio, add an owned cover image, fact-check, schedule and approve.');
+  console.log(`Draft created in English, German, French and Dutch: ${article.translations.en.title}`);
+  console.log('Next: open Blog posts in Sanity Studio, review all translations, add an owned cover image, fact-check, schedule and approve.');
 }
 
 main().catch((error) => {

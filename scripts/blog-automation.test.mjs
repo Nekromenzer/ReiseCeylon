@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  BLOG_LOCALES,
   assertTopics,
   auditPostSeo,
   blocksToPortableText,
@@ -70,7 +71,7 @@ test('topic validation rejects duplicate keys', () => {
   assert.throws(() => assertTopics([topic, topic]), /Duplicate topic key/);
 });
 
-test('publisher requires approval, due date, owned image and complete English content', () => {
+test('publisher requires approval, due date, owned image and complete content in all four languages', () => {
   const paragraph = Array.from({ length: 260 }, (_, index) => `word${index}`).join(' ');
   const linkedBlock = (key, href, text) => ({
     _type: 'block',
@@ -81,25 +82,40 @@ test('publisher requires approval, due date, owned image and complete English co
       { _type: 'span', text, marks: [key] }
     ]
   });
-  const complete = {
-    _id: 'drafts.blog-auto-example',
-    _type: 'post',
-    title: { en: 'A practical first-time guide to Sigiriya' },
-    slug: { current: 'example-title' },
-    excerpt: { en: 'Example excerpt' },
-    seoDescription: {
-      en: 'Plan a thoughtful first visit to Sigiriya with practical advice on pacing, preparation, cultural respect and nearby stops.'
-    },
-    coverImage: { asset: { _ref: 'image-1' }, alt: { en: 'A descriptive alternative' } },
-    category: { _ref: 'category-heritage' },
-    body: {
-      en: [
+  const localizedText = Object.fromEntries(BLOG_LOCALES.map((locale) => [locale, `Example ${locale} excerpt`]));
+  const localizedSeo = Object.fromEntries(
+    BLOG_LOCALES.map((locale) => [
+      locale,
+      `Plan a thoughtful ${locale} visit to Sigiriya with practical advice on pacing, preparation, cultural respect and nearby stops.`
+    ])
+  );
+  const localizedAlt = Object.fromEntries(
+    BLOG_LOCALES.map((locale) => [locale, `A descriptive ${locale} alternative text for the cover photograph`])
+  );
+  const localizedTitle = Object.fromEntries(
+    BLOG_LOCALES.map((locale) => [locale, `A practical first-time guide to Sigiriya ${locale}`])
+  );
+  const localizedBody = Object.fromEntries(
+    BLOG_LOCALES.map((locale) => [
+      locale,
+      [
         { _type: 'block', style: 'h2', markDefs: [], children: [{ text: 'Plan the morning', marks: [] }] },
         linkedBlock('destination-link', 'https://www.reiseceylon.com/destinations/sigiriya-rock-fortress', 'Sigiriya guide'),
         { _type: 'block', style: 'h2', markDefs: [], children: [{ text: 'Continue the journey', marks: [] }] },
         linkedBlock('journey-link', 'https://www.reiseceylon.com/journeys', 'Sri Lanka journey planner')
       ]
-    },
+    ])
+  );
+  const complete = {
+    _id: 'drafts.blog-auto-example',
+    _type: 'post',
+    title: localizedTitle,
+    slug: { current: 'example-title' },
+    excerpt: localizedText,
+    seoDescription: localizedSeo,
+    coverImage: { asset: { _ref: 'image-1' }, alt: localizedAlt },
+    category: { _ref: 'category-heritage' },
+    body: localizedBody,
     automation: {
       generated: true,
       status: 'approved',
@@ -117,4 +133,23 @@ test('publisher requires approval, due date, owned image and complete English co
   assert.equal(result.ok, false);
   assert.ok(result.missing.includes('approval'));
   assert.ok(result.missing.includes('owned cover image'));
+});
+
+test('publisher rejects a generated post when any translation is missing', () => {
+  const result = isPublishableDraft({
+    _id: 'drafts.blog-auto-example',
+    _type: 'post',
+    title: { en: 'English title is present and long enough' },
+    slug: { current: 'example-title' },
+    automation: {
+      generated: true,
+      status: 'approved',
+      scheduledFor: '2026-01-01T00:00:00.000Z'
+    }
+  }, new Date('2026-01-02T00:00:00.000Z'));
+
+  assert.equal(result.ok, false);
+  assert.ok(result.missing.includes('German title'));
+  assert.ok(result.missing.includes('French body'));
+  assert.ok(result.missing.includes('Dutch SEO description'));
 });

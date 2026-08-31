@@ -2,6 +2,14 @@ import { readFile } from 'node:fs/promises';
 
 export const AUTOMATION_AUTHOR_ID = 'author-reiseceylon';
 export const BLOG_SITE_ORIGIN = 'https://www.reiseceylon.com';
+export const BLOG_LOCALES = ['en', 'de', 'fr', 'nl'];
+
+const localeNames = {
+  en: 'English',
+  de: 'German',
+  fr: 'French',
+  nl: 'Dutch'
+};
 
 export function slugify(value) {
   return value
@@ -90,11 +98,12 @@ export function postWordCount(blocks) {
     .filter(Boolean).length;
 }
 
-export function auditPostSeo(document) {
+export function auditPostSeo(document, locale = 'en') {
   const issues = [];
-  const title = document?.title?.en?.trim() ?? '';
-  const description = document?.seoDescription?.en?.trim() ?? '';
-  const blocks = document?.body?.en ?? [];
+  const language = localeNames[locale] ?? locale;
+  const title = document?.title?.[locale]?.trim() ?? '';
+  const description = document?.seoDescription?.[locale]?.trim() ?? '';
+  const blocks = document?.body?.[locale] ?? [];
   const wordCount = postWordCount(blocks);
   const headings = blocks.filter((block) => block?.style === 'h2');
   const links = blocks.flatMap((block) => block?.markDefs ?? []).filter((mark) => mark?._type === 'link');
@@ -107,7 +116,7 @@ export function auditPostSeo(document) {
     issues.push('SEO description between 110 and 165 characters');
   }
   // Google has no preferred word count. This threshold only catches incomplete or thin automation output.
-  if (wordCount < 500) issues.push('substantial English article with at least 500 words');
+  if (wordCount < 500) issues.push(`substantial ${language} article with at least 500 words`);
   if (headings.length < 2) issues.push('at least two descriptive H2 sections');
   if (internalLinks.length < 2) issues.push('at least two canonical internal links');
 
@@ -126,49 +135,69 @@ export function auditPostSeo(document) {
 export function validateGeneratedArticle(article, topic) {
   const errors = [];
   if (!article || typeof article !== 'object') return ['The AI response is not an object.'];
-  if (typeof article.title !== 'string' || article.title.trim().length < 25 || article.title.length > 70) {
-    errors.push('Title must contain between 25 and 70 characters.');
-  }
-  if (typeof article.excerpt !== 'string' || article.excerpt.trim().length < 80 || article.excerpt.length > 240) {
-    errors.push('Excerpt must be between 80 and 240 characters.');
-  }
-  if (
-    typeof article.seoDescription !== 'string' ||
-    article.seoDescription.trim().length < 110 ||
-    article.seoDescription.length > 165
-  ) {
-    errors.push('SEO description must be between 110 and 165 characters.');
-  }
-  if (typeof article.coverImageAlt !== 'string' || article.coverImageAlt.trim().length < 20) {
-    errors.push('Cover-image alternative text must contain at least 20 characters.');
-  }
   if (!Number.isInteger(article.readingTime) || article.readingTime < 3 || article.readingTime > 20) {
     errors.push('Reading time must be a whole number from 3 to 20.');
-  }
-  if (!Array.isArray(article.blocks) || article.blocks.length < 8) {
-    errors.push('The article must contain at least eight content blocks.');
-  } else {
-    const styles = new Set(['normal', 'h2', 'h3', 'blockquote']);
-    article.blocks.forEach((block, index) => {
-      if (!block || !styles.has(block.style) || typeof block.text !== 'string' || !block.text.trim()) {
-        errors.push(`Content block ${index + 1} is invalid.`);
-      }
-    });
-    if (article.blocks.filter((block) => block.style === 'h2').length < 2) {
-      errors.push('The article needs at least two section headings.');
-    }
-    if (postWordCount(article.blocks) < 500) errors.push('The article must contain at least 500 words.');
   }
   if (!Array.isArray(article.factCheckItems) || article.factCheckItems.length < 2) {
     errors.push('The article needs at least two specific fact-check items for its human editor.');
   }
-  if (topic?.internalLinks) {
-    const articleText = article.blocks?.map((block) => block.text).join('\n') ?? '';
-    for (const link of topic.internalLinks) {
-      if (!articleText.includes(`](${link})`)) errors.push(`The article is missing required internal link: ${link}`);
+  for (const locale of BLOG_LOCALES) {
+    const language = localeNames[locale];
+    const translation = article.translations?.[locale];
+    if (!translation || typeof translation !== 'object') {
+      errors.push(`The article is missing its ${language} translation.`);
+      continue;
     }
-    if (/\[(click here|read more|learn more|here)]\(/i.test(articleText)) {
-      errors.push('Internal links must use descriptive anchor text.');
+    if (
+      typeof translation.title !== 'string' ||
+      translation.title.trim().length < 25 ||
+      translation.title.length > 70
+    ) {
+      errors.push(`${language} title must contain between 25 and 70 characters.`);
+    }
+    if (
+      typeof translation.excerpt !== 'string' ||
+      translation.excerpt.trim().length < 80 ||
+      translation.excerpt.length > 240
+    ) {
+      errors.push(`${language} excerpt must be between 80 and 240 characters.`);
+    }
+    if (
+      typeof translation.seoDescription !== 'string' ||
+      translation.seoDescription.trim().length < 110 ||
+      translation.seoDescription.length > 165
+    ) {
+      errors.push(`${language} SEO description must be between 110 and 165 characters.`);
+    }
+    if (typeof translation.coverImageAlt !== 'string' || translation.coverImageAlt.trim().length < 20) {
+      errors.push(`${language} cover-image alternative text must contain at least 20 characters.`);
+    }
+    if (!Array.isArray(translation.blocks) || translation.blocks.length < 8) {
+      errors.push(`The ${language} article must contain at least eight content blocks.`);
+      continue;
+    }
+    const styles = new Set(['normal', 'h2', 'h3', 'blockquote']);
+    translation.blocks.forEach((block, index) => {
+      if (!block || !styles.has(block.style) || typeof block.text !== 'string' || !block.text.trim()) {
+        errors.push(`${language} content block ${index + 1} is invalid.`);
+      }
+    });
+    if (translation.blocks.filter((block) => block.style === 'h2').length < 2) {
+      errors.push(`The ${language} article needs at least two section headings.`);
+    }
+    if (postWordCount(translation.blocks) < 500) {
+      errors.push(`The ${language} article must contain at least 500 words.`);
+    }
+    if (topic?.internalLinks) {
+      const articleText = translation.blocks.map((block) => block.text).join('\n');
+      for (const link of topic.internalLinks) {
+        if (!articleText.includes(`](${link})`)) {
+          errors.push(`The ${language} article is missing required internal link: ${link}`);
+        }
+      }
+      if (/\[(click here|read more|learn more|here)]\(/i.test(articleText)) {
+        errors.push(`${language} internal links must use descriptive anchor text.`);
+      }
     }
   }
   return errors;
@@ -222,15 +251,21 @@ export function isPublishableDraft(document, now = new Date()) {
   } else if (new Date(document.automation.scheduledFor) > now) {
     missing.push('due publishing date');
   }
-  if (!document?.title?.en) missing.push('English title');
   if (!document?.slug?.current) missing.push('slug');
-  if (!document?.excerpt?.en) missing.push('English excerpt');
-  if (!document?.seoDescription?.en) missing.push('English SEO description');
   if (!document?.coverImage?.asset?._ref) missing.push('owned cover image');
-  if (!document?.coverImage?.alt?.en) missing.push('cover-image alternative text');
   if (!document?.category?._ref) missing.push('category');
-  if (!Array.isArray(document?.body?.en) || document.body.en.length === 0) missing.push('English body');
-  const seoAudit = auditPostSeo(document);
-  missing.push(...seoAudit.issues.map((issue) => `SEO: ${issue}`));
+  for (const locale of BLOG_LOCALES) {
+    const language = localeNames[locale];
+    if (!document?.title?.[locale]) missing.push(`${language} title`);
+    if (!document?.excerpt?.[locale]) missing.push(`${language} excerpt`);
+    if (!document?.seoDescription?.[locale]) missing.push(`${language} SEO description`);
+    if (!document?.coverImage?.alt?.[locale]) missing.push(`${language} cover-image alternative text`);
+    if (!Array.isArray(document?.body?.[locale]) || document.body[locale].length === 0) {
+      missing.push(`${language} body`);
+      continue;
+    }
+    const seoAudit = auditPostSeo(document, locale);
+    missing.push(...seoAudit.issues.map((issue) => `${language} SEO: ${issue}`));
+  }
   return { ok: missing.length === 0, missing };
 }
