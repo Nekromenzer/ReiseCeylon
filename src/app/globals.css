@@ -3299,3 +3299,22 @@ html.dark .rc-plan-transfer-tag { color: var(--light-gold) !important; backgroun
   .rc-plan-finalise:hover { transform: none; }
   .rc-plan-modal { animation: none; }
 }
+
+/* ——— Reveal ———
+   The scroll-in used by the card and article routes. `Reveal` adds `is-shown`
+   the first time the block crosses the fold; a per-instance transition-delay
+   supplies the stagger. Held to `prefers-reduced-motion` like everything else. */
+.rc-reveal {
+  opacity: 0;
+  transform: translateY(42px);
+  filter: blur(8px);
+  transition:
+    opacity 900ms cubic-bezier(.32, .72, 0, 1),
+    transform 900ms cubic-bezier(.32, .72, 0, 1),
+    filter 900ms cubic-bezier(.32, .72, 0, 1);
+}
+.rc-reveal.is-shown { opacity: 1; transform: none; filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rc-reveal { opacity: 1; transform: none; filter: none; transition: none; }
+}

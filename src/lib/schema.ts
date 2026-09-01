@@ -85,7 +85,7 @@ export function siteGraph({
     description,
     logo: {
       '@type': 'ImageObject',
-      url: absoluteImage('/brand/logo-primary.png'),
+      url: absoluteImage('/brand/logo-512.png'),
       caption: 'ReiseCeylon'
     },
     image: absoluteImage('/images/sigiriya.jpg'),

@@ -48,11 +48,31 @@ export function HomePage({
 
   const root = useRef<HTMLElement>(null);
   const [plate, setPlate] = useState(0);
+  /*
+   * The two dormant plates sit at `opacity: 0` behind the live one until a chip
+   * is pointed at, but they are inside the viewport, so the browser treats
+   * their lazy images as urgent and pulls both at full hero width — 443 KB of
+   * photography nobody has asked to see, on the wire beside the plate that is
+   * actually the largest contentful paint. They are held back until the page
+   * has finished loading, and brought in early if the reader reaches the hero
+   * furniture before that.
+   */
+  const [platesArmed, setPlatesArmed] = useState(false);
   const [activeDestination, setActiveDestination] = useState(0);
   const [voice, setVoice] = useState(0);
   const [clock, setClock] = useState('—— ——');
   const [attractionCategory, setAttractionCategory] = useState<'All' | AttractionCategory>('All');
   const [activeAttraction, setActiveAttraction] = useState(touristAttractions[0].name);
+
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setPlatesArmed(true);
+      return;
+    }
+    const arm = () => setPlatesArmed(true);
+    window.addEventListener('load', arm, { once: true });
+    return () => window.removeEventListener('load', arm);
+  }, []);
 
   useEffect(() => {
     const tick = () =>
@@ -97,7 +117,12 @@ export function HomePage({
       /* Hero parallax — the frame lets go of the photograph as you leave */
       gsap
         .timeline({ scrollTrigger: { trigger: '.rc-hero', start: 'top top', end: 'bottom top', scrub: 1 } })
-        .to('.rc-hero-plate img', { yPercent: 14, scale: 1.08, ease: 'none' }, 0)
+        /* The plate, not the image inside it: the two dormant plates mount after
+           this timeline is built, and a selector resolved at build time would
+           leave whichever one the reader swaps to sitting still while the rest
+           of the hero drifts. The plate fills the clipped frame exactly, so
+           moving it reads identically. */
+        .to('.rc-hero-plate', { yPercent: 14, scale: 1.08, ease: 'none' }, 0)
         .to('.rc-hero-body, .rc-rail', { opacity: 0, y: -48, ease: 'none' }, 0);
 
       /* Generic scroll reveals */
@@ -176,6 +201,12 @@ export function HomePage({
   const attractionRegion = (region: string) =>
     c.has(`attractionRegions.${region}`) ? c(`attractionRegions.${region}`) : region;
 
+  /** Mounts the plate's photograph and raises it in the same commit. */
+  const showPlate = (index: number) => {
+    setPlatesArmed(true);
+    setPlate(index);
+  };
+
   const live = heroPlates[plate];
   const manifestoLead = t('manifestoLead');
   const manifestoEmphasis = t('manifestoLeadEmphasis');
@@ -190,19 +221,25 @@ export function HomePage({
           <div className="rc-hero-frame">
             {heroPlates.map((item, index) => (
               <div className={`rc-hero-plate${index === plate ? ' is-live' : ''}`} key={item.key}>
-                <Image
-                  src={item.image}
-                  alt={`${item.place}, ${c(`heroPlates.${item.key}.region`)}`}
-                  fill
-                  sizes="100vw"
-                  priority={index === 0}
-                  fetchPriority={index === 0 ? 'high' : 'auto'}
-                />
+                {(index === 0 || platesArmed) && (
+                  <Image
+                    src={item.image}
+                    alt={`${item.place}, ${c(`heroPlates.${item.key}.region`)}`}
+                    fill
+                    sizes="100vw"
+                    priority={index === 0}
+                    fetchPriority={index === 0 ? 'high' : 'low'}
+                  />
+                )}
               </div>
             ))}
             <div className="rc-hero-wash" />
 
-            <div className="rc-plate-picker" aria-label={t('heroAriaPlates')}>
+            <div
+              className="rc-plate-picker"
+              aria-label={t('heroAriaPlates')}
+              onPointerEnter={() => setPlatesArmed(true)}
+            >
               {heroPlates.map((item, index) => (
                 <button
                   type="button"
@@ -210,9 +247,9 @@ export function HomePage({
                   aria-pressed={index === plate}
                   className={`rc-chip${index === plate ? ' is-live' : ''}`}
                   style={{ '--r': item.rotate } as React.CSSProperties}
-                  onMouseEnter={() => setPlate(index)}
-                  onFocus={() => setPlate(index)}
-                  onClick={() => setPlate(index)}
+                  onMouseEnter={() => showPlate(index)}
+                  onFocus={() => showPlate(index)}
+                  onClick={() => showPlate(index)}
                 >
                   <Image src={item.image} alt="" fill sizes="140px" />
                   <span>{item.place}</span>

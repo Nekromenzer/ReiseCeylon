@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/next';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -10,27 +9,37 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { JsonLd } from '@/components/JsonLd';
 import { ClientMessages } from '@/components/ClientMessages';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { alternatesFor, SITE_URL } from '@/lib/seo';
 import { siteGraph } from '@/lib/schema';
 import { getContactDetails } from '@/sanity/site';
 import { localeTags, routing } from '@/i18n/routing';
 
 /*
- * latin-ext is carried as well as latin: the dialling-code list names Türkiye and
- * Czechia, and the German, French and Dutch copy reaches for characters the base
- * latin subset does not hold.
+ * Both faces load as variable fonts on the latin subset alone — three files in
+ * place of sixteen, and three preloads competing with the hero photograph in
+ * place of six.
+ *
+ * `weight: 'variable'` covers every weight the stylesheet asks for (400 through
+ * 700) out of one file per style, rather than shipping a separate static file
+ * per weight. latin-ext is not carried: the only character in any of the four
+ * catalogues outside Latin-1 is `œ`, and Google's latin subset already spans
+ * U+0152-0153. The accented German, French and Dutch copy, and the `ü` in the
+ * dialling-code list, are all inside Latin-1.
  */
 const display = Cormorant_Garamond({
   variable: '--font-display',
-  subsets: ['latin', 'latin-ext'],
-  weight: ['500', '600', '700'],
-  style: ['normal', 'italic']
+  subsets: ['latin'],
+  weight: 'variable',
+  style: ['normal', 'italic'],
+  display: 'swap'
 });
 
 const body = Manrope({
   variable: '--font-interface',
-  subsets: ['latin', 'latin-ext'],
-  weight: ['400', '500', '600', '700']
+  subsets: ['latin'],
+  weight: 'variable',
+  display: 'swap'
 });
 
 /** All four languages are known at build time, so all four prerender. */
@@ -48,7 +57,15 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
-    icons: { icon: '/brand/logo-primary.png' },
+    /* Small, purpose-built marks. The 1254px brand png this used to point at is
+       929 KB, fetched raw on every page in every language. */
+    icons: {
+      icon: [
+        { url: '/brand/icon-32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/brand/icon-192.png', sizes: '192x192', type: 'image/png' }
+      ],
+      apple: { url: '/brand/apple-icon.png', sizes: '180x180', type: 'image/png' }
+    },
     title: {
       default: t('siteTitle'),
       template: '%s — ReiseCeylon'
@@ -118,8 +135,8 @@ export default async function LocaleLayout({
           <Footer />
         </ClientMessages>
         <Analytics />
+        <GoogleAnalytics gaId="G-2NS65L5S3F" />
       </body>
-      <GoogleAnalytics gaId="G-2NS65L5S3F" />
     </html>
   );
 }

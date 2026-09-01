@@ -35,7 +35,10 @@ export function Navbar() {
         <nav className="nav-inner" aria-label={t('ariaMain')}>
           <Link href="/" className="brand" aria-label={t('ariaHome')}>
             <span className="brand-mark">
-              <Image src="/brand/logo-primary.png" alt="" width={64} height={64} priority />
+              {/* Eager, but deliberately not `priority`: a 64px mark does not
+                  deserve a preload link ahead of the hero photograph, and the
+                  512px source spares the optimiser a 1254px decode. */}
+              <Image src="/brand/logo-512.png" alt="" width={64} height={64} loading="eager" />
             </span>
             <span className="brand-type">Reise<span>Ceylon</span></span>
           </Link>
