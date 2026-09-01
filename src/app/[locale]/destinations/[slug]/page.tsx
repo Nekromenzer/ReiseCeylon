@@ -25,13 +25,32 @@ import { getDestination, getDestinations, getTours, type Destination } from '@/s
 export const dynamicParams = true;
 
 /**
- * The cross product of every language and every place. The slug is the same in
- * all four — a url that changed with the language would break the moment a
+ * The languages whose destination pages are built ahead of time.
+ *
+ * This route is the whole atlas crossed with every language — 174 places × 4 =
+ * 696 pages, which is 90% of everything the site caches. Prerendering all four
+ * meant paying to build and store every French and Dutch page on every single
+ * deploy, whether or not anyone ever asked for one.
+ *
+ * English and German are built because they are the markets the site is written
+ * for. French and Dutch are left to `dynamicParams` below: the first request for
+ * one renders it, and it is cached from then on. That first render is normally a
+ * crawler rather than a traveller, and nothing about the page changes — same
+ * html, same hreflang, same sitemap entry, same url. Only the moment it is built
+ * moves.
+ *
+ * Adding a language back is a one-word change here.
+ */
+const PRERENDERED_LOCALES = ['en', 'de'] as const;
+
+/**
+ * The cross product of the languages above and every place. The slug is the same
+ * in all four — a url that changed with the language would break the moment a
  * traveller shared it.
  */
 export async function generateStaticParams() {
   const destinations = await getDestinations(routing.defaultLocale);
-  return routing.locales.flatMap((locale) =>
+  return PRERENDERED_LOCALES.flatMap((locale) =>
     destinations.map(({ slug }) => ({ locale, slug }))
   );
 }

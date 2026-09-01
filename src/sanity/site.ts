@@ -257,10 +257,43 @@ const contactQuery = defineQuery(`
 
 type RawImage = Image & { alt?: MaybeLocalised };
 
-async function fetchSite<T>(query: string, fallback: T): Promise<T> {
+/**
+ * One cache tag per document type, rather than a single `site` tag over all of
+ * them.
+ *
+ * The tag a read carries decides what a publish invalidates. Under one shared
+ * tag every route on the site was tagged with it — the layout reads the contact
+ * details, so every page did — and editing a single destination expired the
+ * journal, the contact page and all four locales of everything else along with
+ * it. Splitting them keeps a destination publish to the routes that actually
+ * render destinations.
+ *
+ * `settings` stays broad on purpose: the footer and the navigation are on every
+ * page, so a change to them *should* refresh the whole site.
+ *
+ * The tag is language-independent, and deliberately so — the GROQ queries here
+ * select whole localised objects and pick a language in TypeScript, so all four
+ * locales share one cache entry per query. Expiring the tag refreshes every
+ * language at once, which is why the webhook needs no per-locale path fan-out.
+ */
+export type SiteTag = 'destination' | 'tour' | 'settings';
+
+/**
+ * The safety net, not the freshness mechanism.
+ *
+ * Publishing sends a signed webhook to /api/revalidate, which expires the tag
+ * immediately, so studio edits are live within seconds regardless of the number
+ * below. This interval only decides how long a *missed* webhook could leave the
+ * site stale. It was an hour, which meant every page in the site re-rendered
+ * hourly forever to catch a webhook failure that essentially never happens; a
+ * day repairs the same fault for a twenty-fourth of the reads.
+ */
+const SITE_REVALIDATE = 86_400;
+
+async function fetchSite<T>(query: string, fallback: T, tag: SiteTag): Promise<T> {
   if (!isSanityConfigured) return fallback;
   try {
-    return await getClient().fetch<T>(query, {}, { next: { tags: ['site'], revalidate: 3600 } });
+    return await getClient().fetch<T>(query, {}, { next: { tags: [tag], revalidate: SITE_REVALIDATE } });
   } catch (error) {
     console.error('[sanity] site fetch failed', error);
     return fallback;
@@ -377,7 +410,7 @@ function resolveDestination(row: DestinationRow, copy: StaticCopy): Destination 
  */
 export async function getDestinations(locale: string): Promise<Destination[]> {
   const copy = await staticCopy(locale);
-  const rows = await fetchSite<DestinationRow[]>(destinationsQuery, []);
+  const rows = await fetchSite<DestinationRow[]>(destinationsQuery, [], 'destination');
   const fallback = places.map((place) => destinationFromPlace(place, copy));
   if (rows.length === 0) return fallback;
 
@@ -398,7 +431,7 @@ export async function getDestinations(locale: string): Promise<Destination[]> {
  */
 export async function getFeaturedDestinations(locale: string): Promise<Destination[]> {
   const copy = await staticCopy(locale);
-  const marked = await fetchSite<DestinationRow[]>(featuredDestinationsQuery, []);
+  const marked = await fetchSite<DestinationRow[]>(featuredDestinationsQuery, [], 'destination');
   const destinations = await getDestinations(locale);
   const chosen: Destination[] = marked.map((row) => resolveDestination(row, copy));
   const taken = new Set(chosen.map((place) => place.slug));
@@ -503,7 +536,7 @@ function resolveTour(row: TourRow, copy: StaticCopy): Tour {
  */
 export async function getTours(locale: string): Promise<Tour[]> {
   const copy = await staticCopy(locale);
-  const rows = await fetchSite<TourRow[]>(toursQuery, []);
+  const rows = await fetchSite<TourRow[]>(toursQuery, [], 'tour');
   const fallback = fallbackToursFor(copy);
   if (rows.length === 0) return fallback;
 
@@ -526,7 +559,7 @@ type ContactRow = {
 
 export async function getContactDetails(locale: string): Promise<ContactDetails> {
   const copy = await staticCopy(locale);
-  const row = await fetchSite<ContactRow | null>(contactQuery, null);
+  const row = await fetchSite<ContactRow | null>(contactQuery, null, 'settings');
 
   const fallback: ContactDetails = {
     email: contactDefaults.email,

@@ -139,9 +139,15 @@ async function fetchJournal<T>(query: string, params: Record<string, unknown>, f
   if (!isSanityConfigured) return fallback;
   try {
     return await getClient().fetch<T>(query, params, {
-      // The signed webhook refreshes this immediately. The short fallback
-      // prevents a webhook/configuration failure from hiding posts for an hour.
-      next: { tags: ['post'], revalidate: 60 }
+      // The signed webhook refreshes this immediately, so this interval is only
+      // the safety net for a webhook that never arrives — never the mechanism a
+      // reader depends on to see a new post.
+      //
+      // It was 60 seconds, which asked every journal route to re-render 1,440
+      // times a day to catch a failure that essentially never happens. The
+      // journal publishes weekly, from a scheduled workflow; an hour repairs the
+      // same fault and reads the dataset 60× less often.
+      next: { tags: ['post'], revalidate: 3600 }
     });
   } catch (error) {
     console.error('[sanity] journal fetch failed', error);
