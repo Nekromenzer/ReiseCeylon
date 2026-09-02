@@ -1,128 +1,152 @@
 [
   {
-    "key": "sigiriya-first-visit-guide",
-    "title": "How to plan a first visit to Sigiriya",
-    "primaryKeyword": "Sigiriya travel guide",
-    "searchIntent": "Practical planning for travellers deciding when to arrive and what to combine with Sigiriya",
-    "category": "Heritage",
-    "brief": "Explain the shape of a calm visit without quoting changeable ticket prices or promising exact opening times. Include cultural respect, heat preparation and a slower nearby experience.",
-    "internalLinks": ["/destinations/sigiriya-rock-fortress", "/journeys"]
-  },
-  {
-    "key": "kandy-cultural-day",
-    "title": "A thoughtful cultural day in Kandy",
-    "primaryKeyword": "Kandy one day itinerary",
-    "searchIntent": "A one-day Kandy plan balancing heritage, nature and respectful temple visits",
-    "category": "Heritage",
-    "brief": "Build a realistic day rather than a checklist. Explain respectful clothing and behaviour, and avoid unsupported historical claims.",
-    "internalLinks": ["/destinations/kandy", "/journeys"]
-  },
-  {
-    "key": "ultimate-sri-lanka-travel-guide-2026",
-    "title": "The Ultimate Sri Lanka Travel Guide 2026",
-    "primaryKeyword": "Sri Lanka travel guide",
-    "searchIntent": "Comprehensive planning guidance for first-time travellers researching a trip to Sri Lanka",
-    "category": "Travel guide",
-    "brief": "Create a comprehensive evergreen guide covering the best time to visit, major regions, transport, accommodation, food, money, connectivity, cultural etiquette, beaches, wildlife, hill country and practical preparation. Avoid quoting changeable prices, visa rules, schedules or opening times unless they can be reliably verified. Encourage travellers to explore destination and journey pages for deeper planning.",
-    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella", "/destinations/galle-fort", "/destinations/yala-national-park", "/destinations/mirissa-beach"]
-  },
-  {
-    "key": "best-places-to-visit-sri-lanka",
-    "title": "20 Best Places to Visit in Sri Lanka",
-    "primaryKeyword": "best places to visit in Sri Lanka",
-    "searchIntent": "Destination inspiration for travellers deciding which places to include in a Sri Lanka trip",
-    "category": "Travel inspiration",
-    "brief": "Introduce 20 of Sri Lanka's strongest travel destinations across heritage, beaches, wildlife, hill country and culture. Include places such as Sigiriya, Kandy, Ella, Galle, Yala, Mirissa, Nuwara Eliya, Anuradhapura, Polonnaruwa, Trincomalee, Arugam Bay and Jaffna. Explain what makes each place worth considering without turning the article into a rushed checklist.",
-    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella", "/destinations/galle-fort", "/destinations/yala-national-park", "/destinations/mirissa-beach"]
-  },
-  {
-    "key": "sri-lanka-10-day-itinerary",
-    "title": "The Perfect 10-Day Sri Lanka Itinerary for First-Time Visitors",
-    "primaryKeyword": "Sri Lanka 10 day itinerary",
-    "searchIntent": "A realistic route for first-time travellers planning approximately ten days in Sri Lanka",
-    "category": "Journey planning",
-    "brief": "Create a balanced ten-day route combining heritage, hill country, wildlife and the coast. Explain travel-day trade-offs and provide alternatives for travellers who prefer slower travel. Avoid presenting the itinerary as the only correct way to experience Sri Lanka.",
-    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella", "/destinations/yala-national-park", "/destinations/mirissa-beach", "/destinations/galle-fort"]
-  },
-  {
-    "key": "best-time-to-visit-sri-lanka",
-    "title": "Best Time to Visit Sri Lanka: A Month-by-Month Guide",
-    "primaryKeyword": "best time to visit Sri Lanka",
-    "searchIntent": "Seasonal planning for travellers deciding when and where to visit Sri Lanka",
+    "key": "sri-lanka-trip-cost-budget-guide",
+    "title": "How Much Does a Trip to Sri Lanka Cost? A Practical Budget Guide",
+    "primaryKeyword": "Sri Lanka trip cost",
+    "searchIntent": "Budget planning for travellers estimating the cost of a Sri Lanka holiday",
     "category": "Travel planning",
-    "brief": "Explain Sri Lanka's broad seasonal and regional weather patterns month by month. Show how conditions can differ between the south and west, east coast and hill country. Avoid guaranteeing weather conditions and encourage travellers to check current forecasts before travelling.",
-    "internalLinks": ["/destinations", "/journeys", "/destinations/mirissa-beach", "/destinations/ella", "/destinations/yala-national-park"]
+    "brief": "Help travellers understand the main costs of visiting Sri Lanka, including accommodation, food, local transport, private drivers, trains, activities, safaris and beach stays. Compare budget, mid-range and more comfortable travel styles without relying on fixed prices that may quickly become outdated. Explain which parts of a Sri Lanka trip usually affect the budget most and where travellers can save without reducing the quality of their experience.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/ella",
+      "/destinations/yala-national-park",
+      "/destinations/mirissa-beach"
+    ]
   },
   {
-    "key": "best-beaches-sri-lanka",
-    "title": "15 Best Beaches in Sri Lanka for Your Next Trip",
-    "primaryKeyword": "best beaches in Sri Lanka",
-    "searchIntent": "Beach inspiration for travellers choosing where to stay along Sri Lanka's coastline",
-    "category": "Coast",
-    "brief": "Introduce 15 beaches across Sri Lanka's south, west and east coasts. Explain which destinations suit swimming, surfing, relaxation, families, wildlife experiences and quieter stays. Discuss seasonal differences carefully without guaranteeing sea or weather conditions.",
-    "internalLinks": ["/destinations", "/journeys", "/destinations/mirissa-beach"]
-  },
-  {
-    "key": "sri-lanka-travel-tips-first-trip",
-    "title": "15 Things to Know Before Your First Trip to Sri Lanka",
-    "primaryKeyword": "Sri Lanka travel tips",
-    "searchIntent": "Practical preparation for international travellers visiting Sri Lanka for the first time",
-    "category": "Practical travel",
-    "brief": "Give practical first-trip advice covering transport, trains, tuk-tuks, cultural etiquette, temple clothing, money, connectivity, weather, sun and heat, wildlife ethics, food, luggage and realistic travel times. Avoid quoting changeable regulations, fares or visa requirements without reliable verification.",
-    "internalLinks": ["/destinations", "/journeys", "/destinations/sigiriya-rock-fortress", "/destinations/kandy", "/destinations/ella"]
-  },
-  {
-    "key": "ella-slow-travel-guide",
-    "title": "A slower way to experience Ella",
-    "primaryKeyword": "Ella travel guide",
-    "searchIntent": "Advice for travellers who want walks, viewpoints and village time around Ella",
-    "category": "Hill country",
-    "brief": "Discuss pacing, changing hill-country weather and responsible walking. Do not state live train schedules or guaranteed journey times.",
-    "internalLinks": ["/destinations/ella", "/journeys"]
-  },
-  {
-    "key": "south-coast-season-planning",
-    "title": "Planning a Sri Lanka south-coast journey by season",
-    "primaryKeyword": "best time to visit Sri Lanka south coast",
-    "searchIntent": "Season-aware itinerary guidance for Sri Lanka's south coast",
-    "category": "Coast",
-    "brief": "Explain broad seasonal patterns with uncertainty and useful alternatives. Avoid presenting weather as guaranteed.",
-    "internalLinks": ["/destinations/mirissa-beach", "/journeys"]
-  },
-  {
-    "key": "yala-responsible-safari",
-    "title": "How to choose a responsible safari around Yala",
-    "primaryKeyword": "responsible Yala safari",
-    "searchIntent": "Responsible wildlife-viewing guidance for visitors considering Yala",
-    "category": "Wildlife",
-    "brief": "Prioritise animal welfare, patient observation and responsible operator questions. Never promise sightings.",
-    "internalLinks": ["/destinations/yala-national-park", "/journeys"]
-  },
-  {
-    "key": "galle-fort-walking-guide",
-    "title": "How to explore Galle Fort beyond the main streets",
-    "primaryKeyword": "Galle Fort walking guide",
-    "searchIntent": "A practical and culturally aware walking guide to Galle Fort",
-    "category": "Heritage",
-    "brief": "Describe a slow walking approach, living heritage and respectful photography. Avoid invented stories about individual buildings.",
-    "internalLinks": ["/destinations/galle-fort", "/journeys"]
-  },
-  {
-    "key": "sri-lanka-train-travel-planning",
-    "title": "What to know before planning train travel in Sri Lanka",
-    "primaryKeyword": "Sri Lanka train travel",
-    "searchIntent": "Practical preparation for travellers using Sri Lankan trains",
-    "category": "Practical travel",
-    "brief": "Cover comfort, flexibility, luggage and booking preparation without quoting live timetables, fares or availability.",
-    "internalLinks": ["/destinations/ella", "/journeys"]
-  },
-  {
-    "key": "two-week-sri-lanka-pacing",
-    "title": "How to pace a two-week Sri Lanka journey",
-    "primaryKeyword": "two week Sri Lanka itinerary",
-    "searchIntent": "Itinerary structure for first-time visitors who want variety without rushing",
+    "key": "sri-lanka-7-day-itinerary",
+    "title": "7 Days in Sri Lanka: The Best One-Week Itinerary for First-Time Visitors",
+    "primaryKeyword": "Sri Lanka 7 day itinerary",
+    "searchIntent": "Route planning for travellers who have approximately one week to explore Sri Lanka",
     "category": "Journey planning",
-    "brief": "Explain route trade-offs and rest days. Keep the article useful without claiming one perfect itinerary for everyone.",
-    "internalLinks": ["/destinations", "/journeys"]
+    "brief": "Create a realistic seven-day Sri Lanka route for travellers with limited time. Focus on choosing a manageable combination of heritage, hill country, wildlife and coast rather than trying to see the entire island. Explain what travellers may need to skip, how travel days affect the itinerary and offer alternative routes for culture-focused, wildlife-focused and beach-focused visitors.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy",
+      "/destinations/ella",
+      "/destinations/yala-national-park",
+      "/destinations/galle-fort"
+    ]
+  },
+  {
+    "key": "sri-lanka-honeymoon-guide",
+    "title": "Sri Lanka Honeymoon Guide: Romantic Places, Beaches and Experiences",
+    "primaryKeyword": "Sri Lanka honeymoon",
+    "searchIntent": "Trip inspiration and itinerary planning for couples considering Sri Lanka for a honeymoon",
+    "category": "Travel inspiration",
+    "brief": "Build a romantic Sri Lanka travel guide covering hill-country stays, scenic train journeys, quiet beaches, wildlife experiences, heritage locations and slower travel. Suggest combinations such as Sigiriya, Kandy, Ella, the south coast and Galle while explaining how couples can avoid spending too much of their honeymoon moving between hotels. Include ideas for different honeymoon styles without recommending specific hotels unless verified.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy",
+      "/destinations/ella",
+      "/destinations/mirissa-beach",
+      "/destinations/galle-fort"
+    ]
+  },
+  {
+    "key": "sri-lanka-east-coast-travel-guide",
+    "title": "Sri Lanka East Coast Travel Guide: Trincomalee, Nilaveli, Arugam Bay and More",
+    "primaryKeyword": "Sri Lanka east coast",
+    "searchIntent": "Seasonal destination planning for travellers considering Sri Lanka's east coast",
+    "category": "Coast",
+    "brief": "Create a complete introduction to travelling along Sri Lanka's east coast, including Trincomalee, Nilaveli, Pasikuda, Kalkudah and Arugam Bay. Explain beaches, surfing, snorkelling, wildlife and cultural experiences while carefully discussing seasonal conditions. Help travellers decide when the east coast makes more sense than the south coast and suggest ways to connect it with the Cultural Triangle.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/sigiriya-rock-fortress"
+    ]
+  },
+  {
+    "key": "sri-lanka-getting-around-guide",
+    "title": "Getting Around Sri Lanka: Trains, Buses, Tuk-Tuks, Taxis and Private Drivers",
+    "primaryKeyword": "getting around Sri Lanka",
+    "searchIntent": "Transport planning for international travellers deciding how to travel around Sri Lanka",
+    "category": "Practical travel",
+    "brief": "Compare the main ways travellers can move around Sri Lanka, including trains, public buses, tuk-tuks, taxis, ride-hailing services and private drivers. Explain the advantages and disadvantages of each option, luggage considerations, comfort, flexibility and realistic travel-day planning. Avoid quoting live fares or schedules and encourage travellers to verify current transport information before travelling.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/kandy",
+      "/destinations/ella",
+      "/destinations/galle-fort"
+    ]
+  },
+  {
+    "key": "sigiriya-vs-pidurangala",
+    "title": "Sigiriya vs Pidurangala: Which Rock Should You Climb?",
+    "primaryKeyword": "Sigiriya vs Pidurangala",
+    "searchIntent": "Comparison for travellers deciding whether to climb Sigiriya, Pidurangala or both",
+    "category": "Heritage",
+    "brief": "Compare Sigiriya Rock Fortress and Pidurangala from a traveller's perspective. Discuss scenery, heritage value, hiking difficulty, photography, sunrise experiences, time requirements and the advantages of visiting both. Make clear that Sigiriya is an important archaeological and cultural site while Pidurangala offers a different hiking and viewpoint experience. Avoid relying on changeable ticket prices or opening times.",
+    "internalLinks": [
+      "/destinations/sigiriya-rock-fortress",
+      "/journeys",
+      "/destinations"
+    ]
+  },
+  {
+    "key": "yala-vs-udawalawe-safari",
+    "title": "Yala vs Udawalawe: Which Sri Lanka Safari Is Better for You?",
+    "primaryKeyword": "Yala vs Udawalawe",
+    "searchIntent": "Safari comparison for travellers deciding which Sri Lankan national park to include in their itinerary",
+    "category": "Wildlife",
+    "brief": "Compare Yala and Udawalawe for first-time visitors based on wildlife experiences, landscapes, elephant viewing opportunities, leopard expectations, crowd levels, route planning and overall safari style. Never guarantee animal sightings. Include responsible wildlife guidance and explain how each park fits into common routes between Ella and Sri Lanka's southern coast.",
+    "internalLinks": [
+      "/destinations/yala-national-park",
+      "/destinations/ella",
+      "/journeys",
+      "/destinations"
+    ]
+  },
+  {
+    "key": "sri-lanka-family-travel-guide",
+    "title": "Sri Lanka with Kids: A Practical Family Travel Guide",
+    "primaryKeyword": "Sri Lanka with kids",
+    "searchIntent": "Family trip planning for parents considering a holiday in Sri Lanka",
+    "category": "Family travel",
+    "brief": "Help families plan a comfortable Sri Lanka trip with realistic travel times, child-friendly beaches, wildlife experiences, cultural attractions and hill-country stops. Discuss heat, long road journeys, food, luggage, rest days, wildlife safety and choosing a slower itinerary. Suggest destinations suitable for different age groups without making unsupported safety guarantees.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy",
+      "/destinations/ella",
+      "/destinations/yala-national-park",
+      "/destinations/mirissa-beach"
+    ]
+  },
+  {
+    "key": "sri-lanka-south-coast-road-trip",
+    "title": "Sri Lanka South Coast Road Trip: Galle, Unawatuna, Mirissa, Weligama and Tangalle",
+    "primaryKeyword": "Sri Lanka south coast itinerary",
+    "searchIntent": "Coastal itinerary planning for travellers exploring southern Sri Lanka",
+    "category": "Coast",
+    "brief": "Create a flexible south-coast route connecting Galle, Unawatuna, Weligama, Mirissa, Hiriketiya and Tangalle. Explain which places suit surfing, swimming, nightlife, couples, families and quieter beach stays. Show travellers why staying longer in fewer beach towns can produce a better trip than changing hotels every day. Discuss seasonal sea and weather conditions without guaranteeing them.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/galle-fort",
+      "/destinations/mirissa-beach"
+    ]
+  },
+  {
+    "key": "sri-lanka-hidden-gems",
+    "title": "15 Hidden Gems in Sri Lanka Beyond the Usual Tourist Route",
+    "primaryKeyword": "hidden gems in Sri Lanka",
+    "searchIntent": "Destination discovery for travellers looking for less obvious places beyond Sri Lanka's major attractions",
+    "category": "Travel inspiration",
+    "brief": "Introduce lesser-known places and experiences beyond the classic Sigiriya, Kandy, Ella, Yala and Mirissa route. Consider locations such as Jaffna, Kalpitiya, Knuckles Mountain Range, Haputale, Belihuloya, Gal Oya, Delft Island, Mannar, Ritigala, Madulsima and quieter east-coast destinations. Focus on why each place may suit particular travellers and encourage responsible exploration rather than presenting them simply as undiscovered tourist attractions.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/ella",
+      "/destinations/sigiriya-rock-fortress"
+    ]
   }
 ]
