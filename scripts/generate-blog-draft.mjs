@@ -4,6 +4,7 @@ import {
   AUTOMATION_AUTHOR_ID,
   blocksToPortableText,
   draftIdFor,
+  ensureRequiredInternalLinks,
   loadTopics,
   publishedIdFor,
   slugify,
@@ -131,7 +132,7 @@ async function generateArticle(topic) {
     throw new Error(`AI request failed (${response.status}): ${detail}`);
   }
 
-  const article = JSON.parse(responseText(await response.json()));
+  const article = ensureRequiredInternalLinks(JSON.parse(responseText(await response.json())), topic);
   const errors = validateGeneratedArticle(article, topic);
   if (errors.length > 0) throw new Error(`Generated article failed validation:\n- ${errors.join('\n- ')}`);
   return article;

@@ -7,6 +7,7 @@ import {
   blocksToPortableText,
   canonicalBlogHref,
   draftIdFor,
+  ensureRequiredInternalLinks,
   isPublishableDraft,
   slugify,
   validateGeneratedArticle
@@ -37,6 +38,39 @@ test('blog links use the public www origin and preserve safe external links', ()
 
 test('generated article validation rejects thin drafts', () => {
   assert.ok(validateGeneratedArticle({ title: 'Too short' }).length > 0);
+});
+
+test('missing required links are added with descriptive localized anchors', () => {
+  const article = {
+    translations: Object.fromEntries(
+      BLOG_LOCALES.map((locale) => [
+        locale,
+        {
+          blocks: [
+            {
+              style: 'normal',
+              text: 'Keep this existing [Ella guide](/destinations/ella) link unchanged.'
+            }
+          ]
+        }
+      ])
+    )
+  };
+  const topic = {
+    internalLinks: ['/destinations', '/journeys', '/destinations/ella']
+  };
+
+  const repaired = ensureRequiredInternalLinks(article, topic);
+
+  assert.notEqual(repaired, article);
+  assert.equal(article.translations.en.blocks.length, 1);
+  for (const locale of BLOG_LOCALES) {
+    const text = repaired.translations[locale].blocks.map((block) => block.text).join('\n');
+    assert.match(text, /\]\(\/destinations\)/);
+    assert.match(text, /\]\(\/journeys\)/);
+    assert.equal(text.match(/\]\(\/destinations\/ella\)/g)?.length, 1);
+    assert.doesNotMatch(text, /\[(click here|read more|learn more|here)]\(/i);
+  }
 });
 
 test('SEO audit catches thin content and generic link anchors', () => {

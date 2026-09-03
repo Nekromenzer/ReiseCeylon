@@ -11,6 +11,36 @@ const localeNames = {
   nl: 'Dutch'
 };
 
+const internalLinkCopy = {
+  en: {
+    destinations: 'Sri Lanka destination guides',
+    journeys: 'Sri Lanka journey ideas',
+    destination: (name) => `${name} destination guide`
+  },
+  de: {
+    destinations: 'Reiseführer für Sri Lankas Reiseziele',
+    journeys: 'Ideen für Sri-Lanka-Rundreisen',
+    destination: (name) => `Reiseführer für ${name}`
+  },
+  fr: {
+    destinations: 'guides des destinations au Sri Lanka',
+    journeys: 'idées de circuits au Sri Lanka',
+    destination: (name) => `guide de ${name}`
+  },
+  nl: {
+    destinations: 'gidsen voor bestemmingen in Sri Lanka',
+    journeys: 'ideeën voor rondreizen door Sri Lanka',
+    destination: (name) => `reisgids voor ${name}`
+  }
+};
+
+const internalLinkIntroductions = {
+  en: 'Continue planning with',
+  de: 'Planen Sie Ihre Reise weiter mit',
+  fr: 'Poursuivez la préparation avec',
+  nl: 'Plan uw reis verder met'
+};
+
 export function slugify(value) {
   return value
     .normalize('NFKD')
@@ -81,6 +111,46 @@ export function blocksToPortableText(blocks) {
       children
     };
   });
+}
+
+function titleFromLink(link) {
+  const segment = link.split('/').filter(Boolean).at(-1) ?? '';
+  return segment
+    .split('-')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+function localizedLinkAnchor(locale, link) {
+  const copy = internalLinkCopy[locale] ?? internalLinkCopy.en;
+  if (link === '/destinations') return copy.destinations;
+  if (link === '/journeys') return copy.journeys;
+  return copy.destination(titleFromLink(link));
+}
+
+/**
+ * Structured output guarantees the article shape, but models can still omit a
+ * requested link. Add only missing links so one recoverable omission does not
+ * discard an otherwise reviewable four-language draft.
+ */
+export function ensureRequiredInternalLinks(article, topic) {
+  if (!article || typeof article !== 'object' || !Array.isArray(topic?.internalLinks)) return article;
+
+  const repaired = structuredClone(article);
+  for (const locale of BLOG_LOCALES) {
+    const blocks = repaired.translations?.[locale]?.blocks;
+    if (!Array.isArray(blocks)) continue;
+
+    const articleText = blocks.map((block) => block?.text ?? '').join('\n');
+    const missingLinks = topic.internalLinks.filter((link) => !articleText.includes(`](${link})`));
+    if (missingLinks.length === 0) continue;
+
+    const links = missingLinks.map((link) => `[${localizedLinkAnchor(locale, link)}](${link})`);
+    const text = `${internalLinkIntroductions[locale] ?? internalLinkIntroductions.en} ${links.join(', ')}.`;
+    blocks.push({ style: 'normal', text });
+  }
+  return repaired;
 }
 
 function blockText(block) {
