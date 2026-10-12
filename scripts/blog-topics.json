@@ -1,152 +1,415 @@
 [
   {
-    "key": "sri-lanka-trip-cost-budget-guide",
-    "title": "How Much Does a Trip to Sri Lanka Cost? A Practical Budget Guide",
-    "primaryKeyword": "Sri Lanka trip cost",
-    "searchIntent": "Budget planning for travellers estimating the cost of a Sri Lanka holiday",
+    "key": "sri-lanka-weather-in-april",
+    "title": "Sri Lanka in April: Weather, Best Places to Visit & Travel Tips",
+    "primaryKeyword": "Sri Lanka weather in April",
+    "secondaryKeywords": [
+      "Sri Lanka in April",
+      "Sri Lanka April weather",
+      "best places to visit Sri Lanka in April",
+      "Sri Lanka April itinerary",
+      "is April a good time to visit Sri Lanka"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "wetter sri lanka im april",
+        "wetter april sri lanka",
+        "sri lanka im april",
+        "sri lanka april regenzeit"
+      ],
+      "fr": [
+        "Sri Lanka en avril",
+        "météo Sri Lanka avril",
+        "climat Sri Lanka avril",
+        "voyage Sri Lanka avril"
+      ]
+    },
+    "searchIntent": "Seasonal travel planning for international travellers researching April weather, destinations and holiday options in Sri Lanka",
     "category": "Travel planning",
-    "brief": "Help travellers understand the main costs of visiting Sri Lanka, including accommodation, food, local transport, private drivers, trains, activities, safaris and beach stays. Compare budget, mid-range and more comfortable travel styles without relying on fixed prices that may quickly become outdated. Explain which parts of a Sri Lanka trip usually affect the budget most and where travellers can save without reducing the quality of their experience.",
+    "metaTitle": "Sri Lanka Weather in April: Best Places & Tips",
+    "metaDescription": "Planning Sri Lanka in April? Explore regional weather, rainfall, beaches, cultural attractions and the best places to visit.",
+    "seoPriority": "High",
+    "conversionIntent": "High",
+    "brief": "Create a comprehensive travel guide to Sri Lanka in April. Explain the first inter-monsoon season, regional temperatures, humidity, rainfall and afternoon thunderstorms. Compare the south coast, west coast, east coast, Cultural Triangle and hill country. Cover Sigiriya, Kandy, Ella, Nuwara Eliya, Mirissa and Trincomalee. Explain how Sinhala and Tamil New Year celebrations may affect travel arrangements. Include recommended activities, packing advice, a realistic seven-day itinerary and answers to common questions. Avoid guaranteeing weather conditions or quoting unverified climate statistics. Naturally introduce customised April holiday packages.",
     "internalLinks": [
       "/destinations",
       "/journeys",
       "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy",
       "/destinations/ella",
-      "/destinations/yala-national-park",
       "/destinations/mirissa-beach"
-    ]
+    ],
+    "targetCTA": "Plan Your April Sri Lanka Holiday"
   },
   {
-    "key": "sri-lanka-7-day-itinerary",
-    "title": "7 Days in Sri Lanka: The Best One-Week Itinerary for First-Time Visitors",
-    "primaryKeyword": "Sri Lanka 7 day itinerary",
-    "searchIntent": "Route planning for travellers who have approximately one week to explore Sri Lanka",
-    "category": "Journey planning",
-    "brief": "Create a realistic seven-day Sri Lanka route for travellers with limited time. Focus on choosing a manageable combination of heritage, hill country, wildlife and coast rather than trying to see the entire island. Explain what travellers may need to skip, how travel days affect the itinerary and offer alternative routes for culture-focused, wildlife-focused and beach-focused visitors.",
-    "internalLinks": [
-      "/destinations",
-      "/journeys",
-      "/destinations/sigiriya-rock-fortress",
-      "/destinations/kandy",
-      "/destinations/ella",
-      "/destinations/yala-national-park",
-      "/destinations/galle-fort"
-    ]
-  },
-  {
-    "key": "sri-lanka-honeymoon-guide",
-    "title": "Sri Lanka Honeymoon Guide: Romantic Places, Beaches and Experiences",
-    "primaryKeyword": "Sri Lanka honeymoon",
-    "searchIntent": "Trip inspiration and itinerary planning for couples considering Sri Lanka for a honeymoon",
-    "category": "Travel inspiration",
-    "brief": "Build a romantic Sri Lanka travel guide covering hill-country stays, scenic train journeys, quiet beaches, wildlife experiences, heritage locations and slower travel. Suggest combinations such as Sigiriya, Kandy, Ella, the south coast and Galle while explaining how couples can avoid spending too much of their honeymoon moving between hotels. Include ideas for different honeymoon styles without recommending specific hotels unless verified.",
-    "internalLinks": [
-      "/destinations",
-      "/journeys",
-      "/destinations/sigiriya-rock-fortress",
-      "/destinations/kandy",
-      "/destinations/ella",
-      "/destinations/mirissa-beach",
-      "/destinations/galle-fort"
-    ]
-  },
-  {
-    "key": "sri-lanka-east-coast-travel-guide",
-    "title": "Sri Lanka East Coast Travel Guide: Trincomalee, Nilaveli, Arugam Bay and More",
-    "primaryKeyword": "Sri Lanka east coast",
-    "searchIntent": "Seasonal destination planning for travellers considering Sri Lanka's east coast",
-    "category": "Coast",
-    "brief": "Create a complete introduction to travelling along Sri Lanka's east coast, including Trincomalee, Nilaveli, Pasikuda, Kalkudah and Arugam Bay. Explain beaches, surfing, snorkelling, wildlife and cultural experiences while carefully discussing seasonal conditions. Help travellers decide when the east coast makes more sense than the south coast and suggest ways to connect it with the Cultural Triangle.",
-    "internalLinks": [
-      "/destinations",
-      "/journeys",
-      "/destinations/sigiriya-rock-fortress"
-    ]
-  },
-  {
-    "key": "sri-lanka-getting-around-guide",
-    "title": "Getting Around Sri Lanka: Trains, Buses, Tuk-Tuks, Taxis and Private Drivers",
-    "primaryKeyword": "getting around Sri Lanka",
-    "searchIntent": "Transport planning for international travellers deciding how to travel around Sri Lanka",
-    "category": "Practical travel",
-    "brief": "Compare the main ways travellers can move around Sri Lanka, including trains, public buses, tuk-tuks, taxis, ride-hailing services and private drivers. Explain the advantages and disadvantages of each option, luggage considerations, comfort, flexibility and realistic travel-day planning. Avoid quoting live fares or schedules and encourage travellers to verify current transport information before travelling.",
+    "key": "sri-lanka-weather-in-october",
+    "title": "Sri Lanka in October: Weather, Rainfall & Best Places to Visit",
+    "primaryKeyword": "Sri Lanka weather in October",
+    "secondaryKeywords": [
+      "Sri Lanka in October",
+      "Sri Lanka October weather",
+      "Sri Lanka October rainy season",
+      "best places to visit Sri Lanka in October",
+      "Sri Lanka October itinerary"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "wetter oktober sri lanka",
+        "sri lanka wetter oktober",
+        "sri lanka im oktober",
+        "sri lanka oktober regenzeit"
+      ],
+      "fr": [
+        "Sri Lanka en octobre",
+        "météo Sri Lanka octobre",
+        "climat Sri Lanka octobre",
+        "voyage Sri Lanka octobre"
+      ]
+    },
+    "searchIntent": "Seasonal trip planning for travellers deciding whether to visit Sri Lanka during October",
+    "category": "Travel planning",
+    "metaTitle": "Sri Lanka in October: Weather & Travel Guide",
+    "metaDescription": "Discover Sri Lanka's October weather, rainy season, regional differences and the best places to visit during your holiday.",
+    "seoPriority": "High",
+    "conversionIntent": "High",
+    "brief": "Explain Sri Lanka's October weather and the second inter-monsoon period. Discuss rainfall patterns, thunderstorms, humidity and regional weather differences. Compare Colombo, Galle, Ella, Kandy, Sigiriya, Trincomalee and the southern beaches. Explain how travellers can build flexible itineraries during wetter periods. Include cultural attractions, indoor alternatives, wildlife considerations, packing recommendations and a suggested ten-day route. Avoid describing any destination as guaranteed dry. Include a contextual CTA for customised October holiday packages.",
     "internalLinks": [
       "/destinations",
       "/journeys",
       "/destinations/kandy",
       "/destinations/ella",
-      "/destinations/galle-fort"
-    ]
-  },
-  {
-    "key": "sigiriya-vs-pidurangala",
-    "title": "Sigiriya vs Pidurangala: Which Rock Should You Climb?",
-    "primaryKeyword": "Sigiriya vs Pidurangala",
-    "searchIntent": "Comparison for travellers deciding whether to climb Sigiriya, Pidurangala or both",
-    "category": "Heritage",
-    "brief": "Compare Sigiriya Rock Fortress and Pidurangala from a traveller's perspective. Discuss scenery, heritage value, hiking difficulty, photography, sunrise experiences, time requirements and the advantages of visiting both. Make clear that Sigiriya is an important archaeological and cultural site while Pidurangala offers a different hiking and viewpoint experience. Avoid relying on changeable ticket prices or opening times.",
-    "internalLinks": [
-      "/destinations/sigiriya-rock-fortress",
-      "/journeys",
-      "/destinations"
-    ]
-  },
-  {
-    "key": "yala-vs-udawalawe-safari",
-    "title": "Yala vs Udawalawe: Which Sri Lanka Safari Is Better for You?",
-    "primaryKeyword": "Yala vs Udawalawe",
-    "searchIntent": "Safari comparison for travellers deciding which Sri Lankan national park to include in their itinerary",
-    "category": "Wildlife",
-    "brief": "Compare Yala and Udawalawe for first-time visitors based on wildlife experiences, landscapes, elephant viewing opportunities, leopard expectations, crowd levels, route planning and overall safari style. Never guarantee animal sightings. Include responsible wildlife guidance and explain how each park fits into common routes between Ella and Sri Lanka's southern coast.",
-    "internalLinks": [
-      "/destinations/yala-national-park",
-      "/destinations/ella",
-      "/journeys",
-      "/destinations"
-    ]
-  },
-  {
-    "key": "sri-lanka-family-travel-guide",
-    "title": "Sri Lanka with Kids: A Practical Family Travel Guide",
-    "primaryKeyword": "Sri Lanka with kids",
-    "searchIntent": "Family trip planning for parents considering a holiday in Sri Lanka",
-    "category": "Family travel",
-    "brief": "Help families plan a comfortable Sri Lanka trip with realistic travel times, child-friendly beaches, wildlife experiences, cultural attractions and hill-country stops. Discuss heat, long road journeys, food, luggage, rest days, wildlife safety and choosing a slower itinerary. Suggest destinations suitable for different age groups without making unsupported safety guarantees.",
-    "internalLinks": [
-      "/destinations",
-      "/journeys",
-      "/destinations/sigiriya-rock-fortress",
-      "/destinations/kandy",
-      "/destinations/ella",
-      "/destinations/yala-national-park",
-      "/destinations/mirissa-beach"
-    ]
-  },
-  {
-    "key": "sri-lanka-south-coast-road-trip",
-    "title": "Sri Lanka South Coast Road Trip: Galle, Unawatuna, Mirissa, Weligama and Tangalle",
-    "primaryKeyword": "Sri Lanka south coast itinerary",
-    "searchIntent": "Coastal itinerary planning for travellers exploring southern Sri Lanka",
-    "category": "Coast",
-    "brief": "Create a flexible south-coast route connecting Galle, Unawatuna, Weligama, Mirissa, Hiriketiya and Tangalle. Explain which places suit surfing, swimming, nightlife, couples, families and quieter beach stays. Show travellers why staying longer in fewer beach towns can produce a better trip than changing hotels every day. Discuss seasonal sea and weather conditions without guaranteeing them.",
-    "internalLinks": [
-      "/destinations",
-      "/journeys",
       "/destinations/galle-fort",
-      "/destinations/mirissa-beach"
-    ]
+      "/destinations/sigiriya-rock-fortress"
+    ],
+    "targetCTA": "Explore Sri Lanka October Tours"
   },
   {
-    "key": "sri-lanka-hidden-gems",
-    "title": "15 Hidden Gems in Sri Lanka Beyond the Usual Tourist Route",
-    "primaryKeyword": "hidden gems in Sri Lanka",
-    "searchIntent": "Destination discovery for travellers looking for less obvious places beyond Sri Lanka's major attractions",
+    "key": "what-is-sri-lanka-famous-for",
+    "title": "What Is Sri Lanka Famous For? 20 Amazing Things to Discover",
+    "primaryKeyword": "what is Sri Lanka famous for",
+    "secondaryKeywords": [
+      "what Sri Lanka is famous for",
+      "famous things in Sri Lanka",
+      "what is special about Sri Lanka",
+      "why visit Sri Lanka",
+      "Sri Lanka famous attractions"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "wofür ist sri lanka bekannt",
+        "sri lanka sehenswürdigkeiten",
+        "was ist besonders an sri lanka"
+      ],
+      "fr": [
+        "pour quoi le Sri Lanka est connu",
+        "que voir au Sri Lanka",
+        "pourquoi visiter le Sri Lanka"
+      ]
+    },
+    "searchIntent": "Destination discovery for international travellers researching Sri Lanka's culture, attractions and unique experiences",
     "category": "Travel inspiration",
-    "brief": "Introduce lesser-known places and experiences beyond the classic Sigiriya, Kandy, Ella, Yala and Mirissa route. Consider locations such as Jaffna, Kalpitiya, Knuckles Mountain Range, Haputale, Belihuloya, Gal Oya, Delft Island, Mannar, Ritigala, Madulsima and quieter east-coast destinations. Focus on why each place may suit particular travellers and encourage responsible exploration rather than presenting them simply as undiscovered tourist attractions.",
+    "metaTitle": "What Is Sri Lanka Famous For? 20 Amazing Things",
+    "metaDescription": "Discover what Sri Lanka is famous for, including Ceylon tea, Sigiriya, wildlife, beaches, scenic trains, ancient cities and culture.",
+    "seoPriority": "Very High",
+    "conversionIntent": "Medium",
+    "brief": "Create an engaging guide explaining twenty things Sri Lanka is famous for. Cover Ceylon tea, Sigiriya Rock Fortress, elephants, leopards, scenic trains, tropical beaches, surfing, ancient kingdoms, Buddhist temples, traditional food, spices, gemstones, Ayurveda, cultural festivals, national parks and hospitality. Explain what makes each experience special and where travellers can experience it. Include practical travel suggestions and internal links to relevant destinations. Finish with a section showing how travellers can experience several highlights through customised Sri Lanka holiday packages.",
     "internalLinks": [
       "/destinations",
       "/journeys",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy",
       "/destinations/ella",
-      "/destinations/sigiriya-rock-fortress"
-    ]
+      "/destinations/yala-national-park",
+      "/destinations/mirissa-beach"
+    ],
+    "targetCTA": "Discover Sri Lanka Tour Packages"
+  },
+  {
+    "key": "ceylon-tea-complete-guide",
+    "title": "Ceylon Tea: Black Tea, Green Tea & Sri Lanka's Tea Heritage",
+    "primaryKeyword": "Ceylon tea",
+    "secondaryKeywords": [
+      "Ceylon black tea",
+      "Ceylon green tea",
+      "Sri Lanka Ceylon tea",
+      "Ceylon tea origin",
+      "Sri Lanka tea culture",
+      "Ceylon tea plantations"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "ceylon tee",
+        "ceylon schwarztee",
+        "ceylon grüntee",
+        "sri lanka teeplantagen"
+      ],
+      "fr": [
+        "thé de Ceylan",
+        "thé noir de Ceylan",
+        "thé vert de Ceylan",
+        "plantations de thé Sri Lanka"
+      ]
+    },
+    "searchIntent": "Informational research about Ceylon tea, its varieties, production, origins and connection to Sri Lankan culture",
+    "category": "Culture",
+    "metaTitle": "Ceylon Tea: Black Tea, Green Tea & Origins",
+    "metaDescription": "Explore Ceylon tea, from black and green varieties to Sri Lanka's famous tea plantations, growing regions and tea culture.",
+    "seoPriority": "High",
+    "conversionIntent": "Medium",
+    "brief": "Create a comprehensive guide to Ceylon tea and its cultural importance in Sri Lanka. Explain the history of tea cultivation, differences between Ceylon black tea and green tea, growing regions, production methods, flavour characteristics and brewing techniques. Cover Nuwara Eliya, Dimbula, Uva, Kandy and other recognised tea-growing regions. Discuss responsible tea tourism, plantation visits, tea factory tours and tasting experiences. Avoid unsupported medical claims. Include a section explaining how travellers can explore Sri Lanka's tea heritage through guided plantation experiences.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/kandy",
+      "/destinations/ella"
+    ],
+    "targetCTA": "Explore Sri Lanka Tea Country Tours"
+  },
+  {
+    "key": "sri-lanka-tea-trails-guide",
+    "title": "Sri Lanka Tea Trails: Best Plantations, Scenic Routes & Experiences",
+    "primaryKeyword": "Sri Lanka tea trails",
+    "secondaryKeywords": [
+      "Sri Lanka Ceylon tea trails",
+      "Ceylon tea trails",
+      "Sri Lanka tea country",
+      "Sri Lanka tea plantation experiences",
+      "tea trails Sri Lanka itinerary"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "sri lanka teeplantagen",
+        "ceylon tea trails",
+        "teeplantagen rundreise sri lanka",
+        "sri lanka hochland tee"
+      ],
+      "fr": [
+        "route du thé Sri Lanka",
+        "plantations de thé Sri Lanka",
+        "circuit plantations de thé Sri Lanka",
+        "Ceylon Tea Trails"
+      ]
+    },
+    "searchIntent": "Experience and itinerary planning for travellers interested in Sri Lanka's tea-growing highlands",
+    "category": "Experiences",
+    "metaTitle": "Sri Lanka Tea Trails: Plantations & Scenic Tours",
+    "metaDescription": "Explore Sri Lanka's beautiful tea trails, plantations, scenic highlands, tea factory visits and unforgettable tea-country experiences.",
+    "seoPriority": "Very High",
+    "conversionIntent": "Very High",
+    "brief": "Create an immersive guide to Sri Lanka's tea country and scenic tea trails. Cover Hatton, Nuwara Eliya, Ella, Haputale and Kandy. Explain tea estate walks, tea factory visits, tastings, scenic railway journeys, viewpoints and tea-country accommodation. Distinguish general tea-country routes from the specific Ceylon Tea Trails hospitality brand. Include a realistic three-day itinerary and a longer five-day option. Discuss responsible tourism, weather conditions and travel distances. Naturally introduce private tea-country tours and customised hill-country holiday packages.",
+    "internalLinks": [
+      "/destinations/kandy",
+      "/destinations/ella",
+      "/destinations",
+      "/journeys"
+    ],
+    "targetCTA": "Plan Your Private Tea Country Tour"
+  },
+  {
+    "key": "best-tea-plantation-tours-sri-lanka",
+    "title": "Best Tea Plantation Tours in Sri Lanka: Ella, Kandy & Nuwara Eliya",
+    "primaryKeyword": "Sri Lanka tea plantation tour",
+    "secondaryKeywords": [
+      "tea factory tour Sri Lanka",
+      "Nuwara Eliya tea plantation tour",
+      "Ella tea plantation tour",
+      "Kandy tea factory tour",
+      "Sri Lanka tea tasting experience"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "teeplantage sri lanka besichtigung",
+        "sri lanka teeplantagen tour",
+        "teeplantage nuwara eliya",
+        "tee fabrik sri lanka"
+      ],
+      "fr": [
+        "visite plantation de thé Sri Lanka",
+        "visite usine de thé Sri Lanka",
+        "plantation de thé Nuwara Eliya",
+        "dégustation thé Sri Lanka"
+      ]
+    },
+    "searchIntent": "Experience booking research for travellers interested in visiting tea plantations and factories in Sri Lanka",
+    "category": "Experiences",
+    "metaTitle": "Best Sri Lanka Tea Plantation Tours & Tastings",
+    "metaDescription": "Discover the best tea plantation tours in Sri Lanka. Explore tea factories, scenic estates and tasting experiences in Ella, Kandy and Nuwara Eliya.",
+    "seoPriority": "Very High",
+    "conversionIntent": "Very High",
+    "brief": "Compare tea plantation experiences around Ella, Kandy, Nuwara Eliya, Hatton and Haputale. Explain what visitors can expect from plantation walks, tea factory visits, tea tasting sessions and guided experiences. Discuss the tea-making process, cultural significance, photography etiquette and responsible interactions with plantation workers. Include suggested half-day and full-day itineraries, practical transport advice and considerations for families and couples. Avoid claiming that specific factories are open without verification. Include a strong but natural CTA for arranging private tea plantation experiences.",
+    "internalLinks": [
+      "/destinations/ella",
+      "/destinations/kandy",
+      "/destinations",
+      "/journeys"
+    ],
+    "targetCTA": "Book a Private Tea Plantation Experience"
+  },
+  {
+    "key": "sri-lanka-private-tours-guide",
+    "title": "Sri Lanka Private Tours: How to Plan Your Perfect Custom Holiday",
+    "primaryKeyword": "Sri Lanka private tours",
+    "secondaryKeywords": [
+      "private Sri Lanka tours",
+      "Sri Lanka custom tours",
+      "Sri Lanka private guided tours",
+      "tailor made Sri Lanka holidays",
+      "Sri Lanka private driver tours"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "sri lanka privatreise",
+        "sri lanka private rundreise",
+        "sri lanka rundreise mit fahrer",
+        "individuelle sri lanka rundreise"
+      ],
+      "fr": [
+        "circuit privé Sri Lanka",
+        "voyage privé Sri Lanka",
+        "circuit sur mesure Sri Lanka",
+        "Sri Lanka avec chauffeur privé"
+      ]
+    },
+    "searchIntent": "Commercial research by travellers considering personalised private tours with drivers and flexible itineraries",
+    "category": "Tour packages",
+    "metaTitle": "Sri Lanka Private Tours & Custom Holidays",
+    "metaDescription": "Plan a private Sri Lanka tour with flexible itineraries, experienced drivers, cultural attractions, wildlife safaris and beautiful beaches.",
+    "seoPriority": "Very High",
+    "conversionIntent": "Very High",
+    "brief": "Create a practical commercial guide explaining how private Sri Lanka tours work. Cover personalised itineraries, private vehicles, driver arrangements, accommodation options, sightseeing flexibility and guided experiences. Explain the advantages and trade-offs of private tours compared with group tours and independent travel. Include suggestions for couples, families, honeymooners and small groups. Provide sample seven-day, ten-day and fourteen-day routes. Explain what travellers should confirm before booking, including inclusions, exclusions and cancellation conditions. Avoid inventing package prices or guarantees. Encourage visitors to request a personalised quotation from ReiseCeylon.",
+    "internalLinks": [
+      "/journeys",
+      "/destinations",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy",
+      "/destinations/ella",
+      "/destinations/yala-national-park"
+    ],
+    "targetCTA": "Request Your Custom Sri Lanka Tour"
+  },
+  {
+    "key": "sri-lanka-tour-packages-booking-guide",
+    "title": "Sri Lanka Tour Packages: What to Know Before Booking Your Holiday",
+    "primaryKeyword": "Sri Lanka tour packages",
+    "secondaryKeywords": [
+      "Sri Lanka holiday packages",
+      "Sri Lanka vacation packages",
+      "Sri Lanka travel packages",
+      "Sri Lanka guided tour packages",
+      "best Sri Lanka tour packages"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "sri lanka rundreise",
+        "sri lanka reiseangebote",
+        "sri lanka pauschalreise",
+        "sri lanka urlaub buchen"
+      ],
+      "fr": [
+        "circuit Sri Lanka",
+        "voyage organisé Sri Lanka",
+        "séjour Sri Lanka",
+        "forfait voyage Sri Lanka"
+      ]
+    },
+    "searchIntent": "Commercial investigation by travellers comparing Sri Lanka holiday packages, inclusions and booking options",
+    "category": "Tour packages",
+    "metaTitle": "Sri Lanka Tour Packages: Complete Booking Guide",
+    "metaDescription": "Compare Sri Lanka tour packages, travel styles, destinations and inclusions. Learn how to choose the right holiday for your budget and interests.",
+    "seoPriority": "Very High",
+    "conversionIntent": "Very High",
+    "brief": "Create a comprehensive buyer's guide to Sri Lanka tour packages. Explain different package types, including cultural tours, wildlife safaris, beach holidays, honeymoon packages, family holidays and luxury experiences. Compare private tours, group tours and independently arranged travel. Discuss accommodation categories, vehicle options, itinerary flexibility, travel duration and common inclusions and exclusions. Explain how seasonality can affect route planning and overall costs. Include a checklist of questions to ask before booking. Avoid unsupported pricing claims. Provide natural opportunities to explore ReiseCeylon holiday packages and request personalised quotations. Keep the focus on comparing and booking packages rather than duplicating the private tours guide.",
+    "internalLinks": [
+      "/journeys",
+      "/destinations",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/ella",
+      "/destinations/yala-national-park",
+      "/destinations/mirissa-beach"
+    ],
+    "targetCTA": "Explore Sri Lanka Holiday Packages"
+  },
+  {
+    "key": "sri-lanka-14-day-culture-wildlife-beach-itinerary",
+    "title": "Sri Lanka 14-Day Itinerary: Culture, Wildlife, Tea Country & Beaches",
+    "primaryKeyword": "Sri Lanka 14 day itinerary",
+    "secondaryKeywords": [
+      "Sri Lanka two week itinerary",
+      "Sri Lanka 14 days tour",
+      "Sri Lanka 2 week travel route",
+      "Sri Lanka culture wildlife beach itinerary",
+      "Sri Lanka 14 day private tour"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "sri lanka rundreise 14 tage",
+        "sri lanka 2 wochen rundreise",
+        "sri lanka reiseroute 14 tage",
+        "sri lanka rundreise mit strand"
+      ],
+      "fr": [
+        "Sri Lanka itinéraire 14 jours",
+        "circuit Sri Lanka 2 semaines",
+        "Sri Lanka en deux semaines",
+        "voyage Sri Lanka 14 jours"
+      ]
+    },
+    "searchIntent": "Detailed itinerary planning for travellers seeking a two-week route combining Sri Lanka's major experiences",
+    "category": "Journey planning",
+    "metaTitle": "Sri Lanka 14-Day Itinerary: Culture to Coast",
+    "metaDescription": "Explore a realistic 14-day Sri Lanka itinerary combining Sigiriya, Kandy, Ella, wildlife safaris, tea country and beautiful beaches.",
+    "seoPriority": "High",
+    "conversionIntent": "Very High",
+    "brief": "Create a detailed fourteen-day Sri Lanka itinerary focused specifically on combining cultural heritage, tea-country experiences, wildlife safaris and coastal relaxation. Include Sigiriya, Dambulla, Kandy, Nuwara Eliya, Ella, a suitable national park and the southern coast. Provide a realistic day-by-day route with travel-day considerations, accommodation suggestions by category and seasonal alternatives. Explain where travellers can add rest days or remove stops. Differentiate the article from the existing general two-week Sri Lanka pacing guide by focusing on a specific bookable route and practical daily planning. Include a contextual CTA for requesting a personalised fourteen-day tour package.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy",
+      "/destinations/ella",
+      "/destinations/yala-national-park",
+      "/destinations/galle-fort"
+    ],
+    "targetCTA": "Customise Your 14-Day Sri Lanka Tour"
+  },
+  {
+    "key": "sri-lanka-cultural-triangle-guide",
+    "title": "Sri Lanka Cultural Triangle: Sigiriya, Dambulla & Ancient Cities",
+    "primaryKeyword": "Sri Lanka Cultural Triangle",
+    "secondaryKeywords": [
+      "Sri Lanka Cultural Triangle itinerary",
+      "Cultural Triangle Sri Lanka attractions",
+      "Sigiriya Dambulla Polonnaruwa",
+      "Sri Lanka ancient cities",
+      "Cultural Triangle Sri Lanka tour"
+    ],
+    "localizedKeywords": {
+      "de": [
+        "kulturdreieck sri lanka",
+        "sri lanka kulturelles dreieck",
+        "sigiriya dambulla polonnaruwa",
+        "sri lanka kultur rundreise"
+      ],
+      "fr": [
+        "triangle culturel Sri Lanka",
+        "circuit triangle culturel Sri Lanka",
+        "Sigiriya Dambulla Polonnaruwa",
+        "sites historiques Sri Lanka"
+      ]
+    },
+    "searchIntent": "Heritage destination research and itinerary planning for travellers interested in Sri Lanka's ancient cities and archaeological sites",
+    "category": "Heritage",
+    "metaTitle": "Sri Lanka Cultural Triangle: Complete Guide",
+    "metaDescription": "Explore Sri Lanka's Cultural Triangle, including Sigiriya, Dambulla, Polonnaruwa and Anuradhapura. Plan your heritage journey.",
+    "seoPriority": "High",
+    "conversionIntent": "High",
+    "brief": "Create a comprehensive guide to Sri Lanka's Cultural Triangle. Cover Sigiriya Rock Fortress, Dambulla Cave Temple, Polonnaruwa, Anuradhapura and other relevant heritage attractions. Explain the historical and cultural significance of each destination using reliable sources. Discuss how to organise a realistic two-day, three-day or four-day heritage route. Include practical transport advice, temple etiquette, clothing recommendations, heat preparation and respectful photography. Explain how the Cultural Triangle connects with Kandy and wider Sri Lanka itineraries. Avoid unverified ticket prices, opening times and historical claims. Naturally introduce private cultural heritage tours and customised travel packages.",
+    "internalLinks": [
+      "/destinations",
+      "/journeys",
+      "/destinations/sigiriya-rock-fortress",
+      "/destinations/kandy"
+    ],
+    "targetCTA": "Explore Sri Lanka Cultural Tours"
   }
 ]
