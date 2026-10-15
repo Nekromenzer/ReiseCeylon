@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AdSlot } from '@/components/AdSlot';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -111,6 +112,7 @@ export default async function JournalEntryPage({
         </div>
       </section>
 
+      <AdSlot locale={locale} />
       <article className="article-shell">
         <aside className="article-meta">
           <div>
@@ -130,11 +132,13 @@ export default async function JournalEntryPage({
               <span>{post.category}</span>
             </div>
           ) : null}
+          <AdSlot format="sidebar" locale={locale} />
         </aside>
         <Reveal>
           <PortableBody value={post.body} />
         </Reveal>
       </article>
+      <AdSlot format="rectangle" locale={locale} />
 
       {related.length > 0 ? (
         <section className="content-section">

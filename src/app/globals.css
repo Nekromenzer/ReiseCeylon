@@ -3318,3 +3318,46 @@ html.dark .rc-plan-transfer-tag { color: var(--light-gold) !important; backgroun
 @media (prefers-reduced-motion: reduce) {
   .rc-reveal { opacity: 1; transform: none; filter: none; transition: none; }
 }
+
+/* Advertising stays in document flow, outside discovery/booking controls.
+   Fixed creative dimensions reserve space before the provider responds. */
+.ad-slot {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  min-width: 0;
+  margin: 32px auto;
+  padding: 24px 0;
+  border-block: 1px solid var(--hairline);
+  color: var(--muted);
+  overflow: hidden;
+}
+.ad-slot .ad-slot-label {
+  color: var(--muted);
+  font-family: var(--font-interface), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.ad-slot-space { display: grid; place-items: center; width: 100%; min-width: 0; }
+.ad-slot iframe { display: block; flex-shrink: 0; max-width: none; border: 0; }
+.ad-slot--banner { max-width: 720px; }
+.ad-slot--banner .ad-slot-space { height: 50px; }
+.ad-slot--rectangle { max-width: 720px; }
+.ad-slot--rectangle .ad-slot-space { height: 250px; }
+.ad-slot--sidebar { width: 100%; margin: 32px 0 0; }
+.ad-slot--sidebar .ad-slot-space { height: 300px; }
+@media (min-width: 468px) {
+  .ad-slot--banner .ad-slot-space { height: 60px; }
+}
+@media (max-width: 1024px) {
+  .ad-slot--sidebar { display: none; }
+}
+@media (max-width: 319px) {
+  .ad-slot--banner { display: none; }
+}
+@media (max-width: 299px) {
+  .ad-slot--rectangle { display: none; }
+}

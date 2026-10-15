@@ -268,3 +268,31 @@ migration time.
 Until the sync has run, `/destinations` still lists every atlas place: Sanity
 documents come first, and anything the studio has never heard of is filled in
 from `public/json`.
+
+## Advertising
+
+Blog and destination index/detail pages include Adsterra placements in every
+locale. `src/lib/advertising.ts` owns the supplied unit keys and script URLs.
+The responsive banner selects 468×60 or 320×50 from its available width; detail
+pages use a 160×300 unit in the existing editorial margin on screens wider than
+1024px. A 300×250 unit sits between lower content sections. All placements have
+translated advertisement labels, reserved dimensions, and use existing theme
+tokens. Creatives remain provider-controlled and do not inherit the site theme.
+
+Banners start only when visible and wide enough, in separate sandboxed iframe
+documents so their `atOptions` globals cannot collide or alter the parent layout.
+They allow ad links to open new tabs but cannot navigate the parent document.
+An unavailable or blocked creative leaves its reserved space; it never blocks
+content. Scrolling does not refresh an impression.
+
+`PageAdvertising` also loads the two supplied page-level tags once per document
+on blog/destination routes. Their overlays, popunders and frequency are controlled
+by the provider; configure these in Adsterra to suit the reading experience.
+Leaving those routes triggers a full document reload to clear third-party timers,
+listeners and overlays before the traveller uses another section. Removing script
+tags alone would not clear them. Other routes do not load advertising on a fresh
+visit. Validate live delivery and impressions on the approved production domain;
+local layout checks do not prove fill, account approval or revenue reporting.
+
+`npm test` runs the script tests and colocated advertising tests using Node 22's
+TypeScript stripping support.

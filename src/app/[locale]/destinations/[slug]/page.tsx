@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AdSlot } from '@/components/AdSlot';
 import Image from 'next/image';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -240,8 +241,12 @@ export default async function DestinationPage({
         </section>
       ) : null}
 
+      <AdSlot locale={locale} />
       <section className="detail-intro">
-        <div>{t('whyGo')}</div>
+        <div>
+          {t('whyGo')}
+          <AdSlot format="sidebar" locale={locale} />
+        </div>
         <Reveal>
           <blockquote>{destination.introHeading}</blockquote>
           <p>{destination.introCopy}</p>
@@ -279,6 +284,8 @@ export default async function DestinationPage({
           </div>
         </section>
       ) : null}
+
+      <AdSlot format="rectangle" locale={locale} />
 
       {nearby.length > 0 ? (
         <section className="detail-nearby">

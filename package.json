@@ -20,7 +20,7 @@
     "migrate:locales": "node --env-file=.env scripts/migrate-locale-fields.mjs",
     "audit:destinations": "node scripts/audit-destination-content.mjs",
     "images:destinations": "node scripts/generate-destination-images.mjs",
-    "test": "node --test scripts/*.test.mjs"
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs src/lib/*.test.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

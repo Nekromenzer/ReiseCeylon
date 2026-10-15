@@ -1,3 +1,4 @@
+import { PageAdvertising } from '@/components/PageAdvertising';
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import { notFound } from 'next/navigation';
@@ -134,6 +135,7 @@ export default async function LocaleLayout({
           {children}
           <Footer />
         </ClientMessages>
+        <PageAdvertising />
         <Analytics />
         <GoogleAnalytics gaId="G-2NS65L5S3F" />
       </body>

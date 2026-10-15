@@ -638,3 +638,16 @@ Recommended fallback stack:
 ```css
 --font-display: "Cormorant Garamond", Georgia, serif;
 --font-interface: "Manrope", Inter, system-ui, sans-serif;
+```
+
+## Editorial advertising placements
+
+Advertising on blog and destination pages uses existing `--muted`, `--hairline`
+and interface typography tokens, with translated 10px labels and 24px vertical
+padding. Reserve the exact creative dimensions before loading. Use a centered
+468×60 banner (320×50 on narrow screens), a 160×300 detail-page margin placement
+above 1024px, and a centered 300×250 unit between lower sections. Keep hero imagery,
+reading widths, discovery filters, maps and enquiry controls intact. Banner
+creatives are isolated in their own documents; their colors are provider-owned.
+Page-level Adsterra formats are enabled separately and can add provider-controlled
+overlays/popunders; their appearance and frequency need provider-side tuning.

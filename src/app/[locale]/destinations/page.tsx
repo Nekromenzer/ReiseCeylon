@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AdSlot } from '@/components/AdSlot';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DestinationAtlas } from '@/components/DestinationAtlas';
@@ -133,6 +134,7 @@ export default async function DestinationsPage({
         </section>
       ) : null}
 
+      <AdSlot locale={locale} />
       <ClientMessages locale={locale} namespaces={['atlas']}>
         <DestinationAtlas
           destinations={destinations.map((place) => ({
@@ -166,6 +168,7 @@ export default async function DestinationsPage({
         and the page never read as the hub for the other 150. This list closes
         that gap in the initial html, at the cost of one flat `<ul>`.
       */}
+      <AdSlot format="rectangle" locale={locale} />
       <section className="atlas-index">
         <Reveal>
           <p className="eyebrow">{atlasCopy('indexEyebrow')}</p>

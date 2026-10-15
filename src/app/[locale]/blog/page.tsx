@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AdSlot } from '@/components/AdSlot';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { JsonLd } from '@/components/JsonLd';
@@ -129,6 +130,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
               ))}
         </div>
       </section>
+      <AdSlot locale={locale} />
       <section className="detail-intro">
         <div>{t('eyebrow')}</div>
         <Reveal>
@@ -140,6 +142,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
           <p>{t('intro')}</p>
         </Reveal>
       </section>
+      <AdSlot format="rectangle" locale={locale} />
       <section className="detail-intro editorial-copy-section">
         <div>{t('guideEyebrow')}</div>
         <Reveal>
